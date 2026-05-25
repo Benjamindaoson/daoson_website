@@ -1808,3 +1808,186 @@ body.has-sidebar main {
   border-top: none;
   text-align: left;
 }
+
+/* ============================================
+   Sidebar v3 — Medium 极简风重写
+   覆盖之前所有 sidebar 相关样式
+   ============================================ */
+
+/* 重新定义布局：sidebar 收窄到 220px */
+.site-layout {
+  grid-template-columns: 220px 1fr !important;
+  max-width: 1140px !important;
+}
+
+/* sidebar 容器 */
+.site-sidebar {
+  border-right: 1px solid var(--border);
+  background: var(--bg-elevated);
+}
+
+.sidebar-inner {
+  padding: 2.5rem 1.5rem 1.5rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2rem !important;
+}
+
+/* 紧凑品牌：单行 $ name ▌ */
+.brand-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+  text-decoration: none !important;
+  border: none !important;
+  color: var(--text) !important;
+  margin-bottom: 0 !important;
+}
+
+.brand-link:hover { color: var(--text) !important; }
+.brand-link:hover .brand-name { color: var(--accent); }
+
+.brand-link .brand-mark {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.brand-link .brand-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  transition: color 0.15s ease;
+}
+
+.brand-link .cursor {
+  display: inline-block;
+  width: 8px;
+  height: 0.95rem;
+  background: var(--accent);
+  margin-left: 2px;
+  vertical-align: -2px;
+  animation: blink 1s steps(2) infinite;
+}
+
+/* 主导航：图标 + 文字 */
+.sidebar-nav {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  border-top: none !important;
+  padding-top: 0 !important;
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+}
+
+.sidebar-nav-link {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.85rem !important;
+  padding: 0.6rem 0.7rem !important;
+  border-radius: var(--radius);
+  font-family: var(--font-sans) !important;
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  color: var(--text-muted);
+  text-decoration: none;
+  border: none;
+  transition: all 0.12s ease;
+}
+
+.sidebar-nav-link:hover {
+  background: var(--accent-bg);
+  color: var(--text);
+}
+
+.sidebar-nav-link.active {
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.sidebar-nav-link .nav-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: currentColor;
+  opacity: 0.75;
+}
+
+.sidebar-nav-link:hover .nav-icon,
+.sidebar-nav-link.active .nav-icon {
+  opacity: 1;
+}
+
+/* 隐藏老的 ./ prefix（如果还在 DOM 里） */
+.sidebar-nav-link .nav-prefix {
+  display: none !important;
+}
+
+/* Connect 区 */
+.sidebar-connect {
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+}
+
+.sidebar-connect .sidebar-section-title {
+  margin: 0 0 0.75rem !important;
+  letter-spacing: 0.08em;
+}
+
+.connect-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.connect-list a {
+  display: block;
+  padding: 0.25rem 0;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: none;
+  transition: color 0.12s ease;
+}
+
+.connect-list a:hover {
+  color: var(--accent);
+}
+
+/* 微 footer */
+.sidebar-footer {
+  margin-top: 0 !important;
+  padding-top: 1rem !important;
+  border-top: 1px solid var(--border) !important;
+  text-align: left;
+  font-size: 0.78rem !important;
+}
+
+/* ============================================
+   主内容区：给 Medium 风留出更多左右白
+   ============================================ */
+.site-main {
+  padding: 3rem 3rem 2rem !important;
+}
+
+.site-main-inner {
+  max-width: 800px !important;
+}
+
+/* 响应式覆写 */
+@media (max-width: 900px) {
+  .site-layout {
+    grid-template-columns: 1fr !important;
+  }
+  .site-sidebar {
+    width: 260px !important;
+  }
+  .site-main {
+    padding: 4rem 1.25rem 1rem !important;
+  }
+}
