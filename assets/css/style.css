@@ -2037,3 +2037,45 @@ body.has-sidebar main {
     max-width: 100% !important;
   }
 }
+
+/* ============================================
+   主内容区 v5 — 在右侧列内真正水平居中
+   ============================================ */
+
+.site-main {
+  display: block !important;
+  padding: 3rem 2.5rem 2rem !important;
+}
+
+.site-main-inner {
+  max-width: 760px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+}
+
+/* footer 也居中对齐 */
+body.has-sidebar .footer {
+  max-width: 760px !important;
+  margin: 3rem auto 0 !important;
+  text-align: left !important;
+}
+
+/* 超宽屏稍宽 */
+@media (min-width: 1400px) {
+  .site-main-inner {
+    max-width: 820px !important;
+  }
+  body.has-sidebar .footer {
+    max-width: 820px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .site-main {
+    padding: 4rem 1.25rem 1rem !important;
+  }
+  .site-main-inner,
+  body.has-sidebar .footer {
+    max-width: 100% !important;
+  }
+}
