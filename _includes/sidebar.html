@@ -1,0 +1,127 @@
+{%- comment -%}
+  ====================================================
+  📝 你只需要编辑这个文件里 4 处 [方括号] 标记的内容：
+     1. 第 22-24 行：bio（一两句话定位自己）
+     2. 第 46-49 行：4 条 HIGHLIGHTS（成果亮点）
+  其他都是从 _config.yml 自动取值，不用动。
+  ====================================================
+{%- endcomment -%}
+
+<aside class="site-sidebar">
+
+  <!-- 移动端汉堡 -->
+  <button class="sidebar-toggle" id="sidebar-toggle" aria-label="打开导航" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="sidebar-inner">
+
+    {%- comment -%} ============ 顶部：「我」 ============ {%- endcomment -%}
+    <div class="sidebar-top">
+
+      <!-- 品牌块 -->
+      <header class="brand-block">
+        <a href="{{ '/' | relative_url }}" class="brand-link">
+          <div class="brand-avatar">{{ site.author | slice: 0, 1 | default: 'G' }}</div>
+          <div class="brand-text">
+            <h2 class="brand-name">{{ site.author }}</h2>
+            <p class="brand-title mono small">// {{ site.github_username | default: 'your_name' }}<span class="cursor"></span></p>
+          </div>
+        </a>
+        <p class="brand-bio">
+          做小而有用的东西，把复杂的事讲清楚。<br>
+          相信「保持简单」比想象中难。
+        </p>
+      </header>
+
+      <!-- 社交链接 -->
+      <ul class="brand-social mono small">
+        {% if site.github_username %}
+          <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" title="GitHub">[gh]</a></li>
+        {% endif %}
+        {% if site.email %}
+          <li><a href="mailto:{{ site.email }}" title="Email">[mail]</a></li>
+        {% endif %}
+        {% if site.twitter_username %}
+          <li><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener" title="Twitter">[tw]</a></li>
+        {% endif %}
+        <li><a href="{{ '/feed.xml' | relative_url }}" title="RSS">[rss]</a></li>
+      </ul>
+
+      <!-- ★ 成果亮点 -->
+      <section class="sidebar-section">
+        <h3 class="sidebar-section-title mono small subtle">★ HIGHLIGHTS</h3>
+        <ul class="sidebar-highlights">
+          <li><span class="hl-icon">⚡</span>主要技术栈：<span class="mono">TypeScript · Python · Rust</span></li>
+          <li><span class="hl-icon">✍</span>在这个博客记录技术、工具与思考</li>
+          <li><span class="hl-icon">📦</span>在 <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a> 维护开源项目：<strong>[填项目名]</strong></li>
+          <li><span class="hl-icon">🚀</span>目前在做：<strong>[填一句话当前重点]</strong></li>
+        </ul>
+      </section>
+
+      <!-- 主导航 -->
+      <nav class="sidebar-nav" aria-label="主导航">
+        <a href="{{ '/' | relative_url }}" class="sidebar-nav-link" data-nav="home">
+          <span class="nav-prefix mono">./</span>home
+        </a>
+        <a href="{{ '/archive/' | relative_url }}" class="sidebar-nav-link" data-nav="archive">
+          <span class="nav-prefix mono">./</span>writing
+        </a>
+        <a href="{{ '/projects/' | relative_url }}" class="sidebar-nav-link" data-nav="projects">
+          <span class="nav-prefix mono">./</span>projects
+        </a>
+        <a href="{{ '/tags/' | relative_url }}" class="sidebar-nav-link" data-nav="tags">
+          <span class="nav-prefix mono">./</span>thoughts
+        </a>
+        <a href="{{ '/about/' | relative_url }}" class="sidebar-nav-link" data-nav="about">
+          <span class="nav-prefix mono">./</span>resume
+        </a>
+      </nav>
+
+      <!-- 最近文章 -->
+      <section class="sidebar-section">
+        <h3 class="sidebar-section-title mono small subtle">RECENT POSTS</h3>
+        <ul class="sidebar-post-list">
+          {% for post in site.posts limit: 4 %}
+            <li>
+              <a href="{{ post.url | relative_url }}">
+                <span class="sidebar-post-title">{{ post.title }}</span>
+                <span class="sidebar-post-date mono small subtle">{{ post.date | date: "%Y-%m-%d" }}</span>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+
+    </div>
+
+    <div class="sidebar-spacer"></div>
+
+    {%- comment -%} ============ 底部：「这个站」 ============ {%- endcomment -%}
+    <div class="sidebar-bottom">
+
+      <section class="sidebar-section sidebar-about-site">
+        <h3 class="sidebar-section-title mono small subtle">// ABOUT THIS SITE</h3>
+        <p class="mono small subtle">
+          手写 HTML / CSS / JS<br>
+          用 Jekyll 静态生成<br>
+          部署在 GitHub Pages
+        </p>
+        <p class="about-site-links mono small">
+          {% if site.github_username %}
+            <a href="https://github.com/{{ site.github_username }}/daoson_website" target="_blank" rel="noopener">[source]</a>
+          {% endif %}
+          <a href="{{ '/feed.xml' | relative_url }}">[rss]</a>
+        </p>
+      </section>
+
+      <footer class="sidebar-footer mono small subtle">
+        © {{ 'now' | date: '%Y' }} {{ site.author }} · MIT
+      </footer>
+
+    </div>
+
+  </div>
+</aside>
+
+<div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>

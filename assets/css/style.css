@@ -1315,3 +1315,496 @@ hr {
     justify-content: flex-start;
   }
 }
+
+/* ============================================
+   双栏布局 Two-Column Personal Site
+   ============================================ */
+
+body.has-sidebar {
+  /* 移除 has-sidebar body 的 main 默认 padding */
+}
+
+.site-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   左侧 Sidebar
+   ============================================ */
+.site-sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  border-right: 1px solid var(--border);
+  background: var(--bg-elevated);
+  z-index: 50;
+}
+
+.sidebar-inner {
+  height: 100%;
+  overflow-y: auto;
+  padding: 2rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* 滚动条美化 */
+.sidebar-inner::-webkit-scrollbar { width: 4px; }
+.sidebar-inner::-webkit-scrollbar-track { background: transparent; }
+.sidebar-inner::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* 品牌块 */
+.brand-block {
+  text-align: left;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--text);
+  border: none;
+  margin-bottom: 0.6rem;
+}
+
+.brand-link:hover { color: var(--text); }
+.brand-link:hover .brand-name { color: var(--accent); }
+
+.brand-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--accent-bg), var(--bg-code));
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.brand-text { min-width: 0; }
+
+.brand-name {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+  transition: color 0.15s ease;
+}
+
+.brand-title {
+  margin: 0.15rem 0 0;
+  color: var(--text-muted);
+  line-height: 1.2;
+}
+
+.brand-title .cursor {
+  display: inline-block;
+  width: 7px;
+  height: 0.85rem;
+  background: var(--accent);
+  margin-left: 2px;
+  vertical-align: -2px;
+  animation: blink 1s steps(2) infinite;
+}
+
+.brand-bio {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+/* 社交链接 */
+.brand-social {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.brand-social a {
+  display: inline-block;
+  padding: 0.15rem 0.45rem;
+  background: var(--bg-code);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.brand-social a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-bg);
+}
+
+/* 主导航 */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  border-top: 1px dashed var(--border);
+  padding-top: 1.25rem;
+}
+
+.sidebar-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  border: none;
+  transition: all 0.12s ease;
+}
+
+.sidebar-nav-link:hover {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+
+.sidebar-nav-link .nav-prefix {
+  color: var(--text-subtle);
+  font-size: 0.85em;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.sidebar-nav-link:hover .nav-prefix,
+.sidebar-nav-link.active .nav-prefix {
+  opacity: 0.7;
+}
+
+.sidebar-nav-link.active {
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Sidebar 小节 */
+.sidebar-section {
+  border-top: 1px dashed var(--border);
+  padding-top: 1.25rem;
+}
+
+.sidebar-section-title {
+  margin: 0 0 0.6rem;
+  letter-spacing: 0.06em;
+  display: block;
+}
+
+.sidebar-section-title::before {
+  content: none !important;
+}
+
+.sidebar-post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.sidebar-post-list a {
+  display: block;
+  text-decoration: none;
+  color: var(--text);
+  border-bottom: none;
+  line-height: 1.4;
+  padding: 0.2rem 0;
+  border-left: 2px solid transparent;
+  padding-left: 0.5rem;
+  margin-left: -0.5rem;
+  transition: all 0.15s ease;
+}
+
+.sidebar-post-list a:hover {
+  border-left-color: var(--accent);
+  color: var(--accent);
+  padding-left: 0.7rem;
+}
+
+.sidebar-post-title {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-bottom: 0.1rem;
+}
+
+.sidebar-post-date {
+  display: block;
+}
+
+.sidebar-now {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px dashed var(--border);
+}
+
+.sidebar-footer a {
+  color: var(--text-muted);
+  border-bottom-style: dotted;
+}
+
+.sidebar-footer a:hover {
+  color: var(--accent);
+}
+
+/* ============================================
+   主列 Main
+   ============================================ */
+.site-main {
+  min-width: 0;
+  padding: 2rem 2.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-main-inner {
+  flex-grow: 1;
+  max-width: 880px;
+  width: 100%;
+}
+
+/* 双栏下，main 内的 .container 不再 max-width 限制 */
+body.has-sidebar .container {
+  max-width: 100%;
+  padding: 0;
+}
+
+/* 双栏下，footer 全宽放在 main 底部 */
+body.has-sidebar .footer {
+  margin-top: 3rem;
+  padding: 1.5rem 0;
+  text-align: left;
+  border-top: 1px dashed var(--border-strong);
+}
+
+/* 双栏下，hero 微调 */
+body.has-sidebar .hero {
+  padding: 2rem 0 2rem;
+  margin-bottom: 2rem;
+}
+
+body.has-sidebar main {
+  padding: 0;
+}
+
+/* ============================================
+   汉堡 / 移动端
+   ============================================ */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 0.9rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  z-index: 100;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.sidebar-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--text);
+  transition: all 0.2s ease;
+}
+
+.sidebar-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.sidebar-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.sidebar-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 49;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar-backdrop.is-shown {
+  opacity: 1;
+}
+
+/* ============================================
+   响应式
+   ============================================ */
+@media (max-width: 900px) {
+  .site-layout {
+    display: block;
+  }
+
+  .site-sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100vh;
+    transition: left 0.25s ease;
+    box-shadow: 2px 0 12px rgba(0,0,0,0.04);
+  }
+
+  .site-sidebar.is-open {
+    left: 0;
+  }
+
+  .sidebar-toggle {
+    display: flex;
+  }
+
+  .sidebar-backdrop.is-shown {
+    display: block;
+  }
+
+  .site-main {
+    padding: 4rem 1.25rem 1rem;
+  }
+
+  .site-main-inner {
+    max-width: 100%;
+  }
+}
+
+/* ============================================
+   Sidebar: 上"我"下"站"的信息架构
+   ============================================ */
+
+.sidebar-inner {
+  /* 改为完整 flex column，便于推开底部 */
+  display: flex !important;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sidebar-top {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sidebar-spacer {
+  flex: 1 1 auto;
+  min-height: 1.5rem;
+}
+
+.sidebar-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* ============================================
+   HIGHLIGHTS（成果亮点）
+   ============================================ */
+.sidebar-highlights {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text);
+  padding-left: 0.1rem;
+}
+
+.sidebar-highlights .hl-icon {
+  flex-shrink: 0;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  width: 1.2rem;
+  text-align: center;
+}
+
+/* ============================================
+   ABOUT THIS SITE（底部）
+   ============================================ */
+.sidebar-about-site {
+  background: var(--bg);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+}
+
+.sidebar-about-site p {
+  margin: 0 0 0.5rem;
+  line-height: 1.6;
+}
+
+.sidebar-about-site p:last-child {
+  margin-bottom: 0;
+}
+
+.about-site-links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.about-site-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  border: none;
+  padding: 0.1rem 0.35rem;
+  background: var(--bg-code);
+  border-radius: 3px;
+  transition: all 0.15s ease;
+}
+
+.about-site-links a:hover {
+  color: var(--accent);
+  background: var(--accent-bg);
+}
+
+/* sidebar-footer 在新结构里更紧凑 */
+.sidebar-footer {
+  margin-top: 0 !important;
+  padding-top: 0.5rem;
+  border-top: none;
+  text-align: left;
+}
