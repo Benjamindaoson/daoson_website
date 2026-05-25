@@ -1,0 +1,35 @@
+---
+layout: default
+title: 首页
+description: 一个极客风格的个人博客 — 记录技术、思考与生活
+---
+
+<!-- Hero -->
+<section class="hero">
+  <span class="prompt">~/welcome $ whoami</span>
+  <h1>Hi, I'm {{ site.author }}</h1>
+  <p>这里是我的个人博客。一个安静的角落，记录我在编程、设计、学习与生活路上的所思所想。欢迎随便看看。</p>
+  <div class="tag-row">
+    {% assign all_tags = site.tags | sort %}
+    {% for tag in all_tags limit: 6 %}
+      <a href="{{ '/tags/' | relative_url }}#{{ tag[0] }}" class="tag">{{ tag[0] }}</a>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- 最近文章 -->
+<section>
+  <h2>最近的文章</h2>
+  <input type="text" id="search-input" class="search-box" placeholder="// 搜索文章标题或摘要...">
+
+  <ul class="post-list" id="post-list">
+    {% for post in site.posts %}
+      {% include post-card.html post=post %}
+    {% endfor %}
+  </ul>
+
+  <p class="mono small subtle" style="margin-top: 1.5rem; text-align: center;">
+    // 共 <span id="search-result-count">{{ site.posts | size }}</span> 篇文章 ·
+    <a href="{{ '/feed.xml' | relative_url }}">订阅 RSS</a>
+  </p>
+</section>

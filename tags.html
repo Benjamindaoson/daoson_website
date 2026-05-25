@@ -1,0 +1,32 @@
+---
+layout: default
+title: 标签
+permalink: /tags/
+description: 按标签浏览所有文章
+---
+
+<section class="hero">
+  <span class="prompt">~/tags $ ls -la</span>
+  <h1>分类与标签</h1>
+  <p>按主题浏览全部文章。点击下方任意标签即可过滤。</p>
+</section>
+
+<!-- 标签云 -->
+<h2>标签云</h2>
+<div class="tag-cloud">
+  <a href="#" class="tag active" data-tag-filter="all">all<span class="tag-count">{{ site.posts | size }}</span></a>
+  {% assign sorted_tags = site.tags | sort %}
+  {% for tag in sorted_tags %}
+    <a href="#{{ tag[0] }}" class="tag" data-tag-filter="{{ tag[0] }}" id="{{ tag[0] }}">
+      {{ tag[0] }}<span class="tag-count">{{ tag[1] | size }}</span>
+    </a>
+  {% endfor %}
+</div>
+
+<h2>所有文章 (<span id="tag-result-count">{{ site.posts | size }}</span>)</h2>
+
+<ul class="post-list">
+  {% for post in site.posts %}
+    {% include post-card.html post=post %}
+  {% endfor %}
+</ul>

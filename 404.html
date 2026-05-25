@@ -1,0 +1,35 @@
+---
+layout: default
+title: 404 · 页面走丢了
+permalink: /404.html
+---
+
+<div style="text-align: center; padding: 4rem 1rem;">
+
+  <div class="terminal" style="max-width: 520px; margin: 0 auto; text-align: left;">
+    <div class="terminal-head">
+      <span class="dot r"></span>
+      <span class="dot y"></span>
+      <span class="dot g"></span>
+      <span class="title">error.log</span>
+    </div>
+    <div class="terminal-body">
+      <span class="line"><span class="green">$</span> open <span class="yellow">requested_page</span></span>
+      <span class="line gray">ERROR: 404 — file not found</span>
+      <span class="line gray">  at <span class="cyan">page</span> (./router.js:42)</span>
+      <span class="line gray">  at <span class="cyan">navigate</span> (./router.js:18)</span>
+      <span class="line"><span class="green">$</span> echo "页面走丢了"</span>
+      <span class="line gray">页面走丢了</span>
+      <span class="line"><span class="green">$</span> <span class="yellow">_</span></span>
+    </div>
+  </div>
+
+  <h1 style="font-family: var(--font-mono); font-size: 3rem; margin: 2rem 0 0.5rem;">404</h1>
+  <p class="muted" style="margin-bottom: 2rem;">这里没有你要找的页面，但下面这些方向可能有帮助。</p>
+
+  <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+    <a href="{{ '/' | relative_url }}" class="btn">← 回首页</a>
+    <a href="{{ '/tags/' | relative_url }}" class="btn secondary"># 浏览标签</a>
+  </div>
+
+</div>

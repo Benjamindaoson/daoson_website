@@ -1,0 +1,18 @@
+{% comment %}
+  渲染一个文章卡片。
+  参数: include.post (Jekyll post 对象)
+{% endcomment %}
+<li>
+  <a href="{{ include.post.url | relative_url }}" class="post-item"
+     data-tags="{{ include.post.tags | join: ',' }}"
+     data-search="{{ include.post.title | append: ' ' | append: include.post.excerpt | strip_html | strip_newlines }}">
+    <div class="post-meta">
+      <span class="post-date">{{ include.post.date | date: "%Y-%m-%d" }}</span>
+      {% for tag in include.post.tags %}
+        <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    <h3>{{ include.post.title }}</h3>
+    <p class="excerpt">{{ include.post.description | default: include.post.excerpt | strip_html | truncate: 120 }}</p>
+  </a>
+</li>

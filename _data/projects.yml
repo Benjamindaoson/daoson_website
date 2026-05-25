@@ -1,0 +1,74 @@
+# ============================================
+# 项目数据 - 编辑此文件即可更新 projects 页面
+# ============================================
+# 字段说明：
+#   name        - 项目名（必填）
+#   description - 简介（必填）
+#   icon        - 图标符号（一两个字符，如 { }、>_、⚡）
+#   status      - active | archived
+#   category    - web | cli | tool | game | library （用于筛选）
+#   url         - 项目链接（GitHub / Demo）
+#   stars       - star 数（可省）
+#   lang        - 主要语言
+#   year        - 年份
+# ============================================
+
+- name: "项目名称 A"
+  description: "一个极简的待办事项管理工具，支持快捷键操作、本地存储、Markdown 渲染。"
+  icon: "{ }"
+  status: active
+  category: web
+  url: "https://github.com/your_username/project-a"
+  stars: 128
+  lang: TypeScript
+  year: 2026
+
+- name: "项目名称 B"
+  description: "一个基于 Rust 的命令行工具，可以批量重命名文件并自动归类。"
+  icon: ">_"
+  status: active
+  category: cli
+  url: "https://github.com/your_username/project-b"
+  stars: 56
+  lang: Rust
+  year: 2025
+
+- name: "项目名称 C"
+  description: "一个轻量级 Vue 组件库，专注于数据可视化场景，零依赖、可摇树。"
+  icon: "⌬"
+  status: active
+  category: library
+  url: "https://github.com/your_username/project-c"
+  stars: 234
+  lang: "Vue, TS"
+  year: 2025
+
+- name: "项目名称 D"
+  description: "一款用 Canvas 实现的小型像素风冒险游戏，灵感来自经典的塞尔达系列。"
+  icon: "▣"
+  status: active
+  category: game
+  url: "https://github.com/your_username/project-d"
+  stars: 87
+  lang: JavaScript
+  year: 2024
+
+- name: "项目名称 E"
+  description: "面向开发者的 dotfiles 管理脚本，跨机器一键同步配置和插件。"
+  icon: "⚡"
+  status: active
+  category: tool
+  url: "https://github.com/your_username/project-e"
+  stars: 19
+  lang: Shell
+  year: 2024
+
+- name: "项目名称 F"
+  description: "早年间写过的一个 Markdown 解析器，已停止维护但代码仍可参考。"
+  icon: "◈"
+  status: archived
+  category: library
+  url: "https://github.com/your_username/project-f"
+  stars: 312
+  lang: JavaScript
+  year: 2022

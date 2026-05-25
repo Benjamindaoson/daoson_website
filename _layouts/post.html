@@ -1,0 +1,41 @@
+---
+layout: default
+---
+
+<article data-reading-time>
+
+  <header class="post-header">
+    <p class="mono small accent" style="margin-bottom: 0.4rem;">// post</p>
+    <h1>{{ page.title }}</h1>
+    <div class="post-meta">
+      <span>📅 {{ page.date | date: "%Y-%m-%d" }}</span>
+      <span>⏱ <span id="reading-time">~ {{ content | number_of_words | divided_by: 300 | plus: 1 }} min read</span></span>
+      {% for tag in page.tags %}
+        <a href="{{ '/tags/' | relative_url }}#{{ tag }}" class="tag">{{ tag }}</a>
+      {% endfor %}
+    </div>
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+</article>
+
+<!-- 上一篇 / 下一篇 -->
+<nav style="margin-top: 3rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: space-between;">
+  {% if page.previous.url %}
+    <a href="{{ page.previous.url | relative_url }}" class="btn secondary">← {{ page.previous.title | truncate: 24 }}</a>
+  {% else %}
+    <span></span>
+  {% endif %}
+  {% if page.next.url %}
+    <a href="{{ page.next.url | relative_url }}" class="btn secondary">{{ page.next.title | truncate: 24 }} →</a>
+  {% endif %}
+</nav>
+
+<!-- 文末导航 -->
+<div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+  <a href="{{ '/' | relative_url }}" class="btn secondary">← 返回首页</a>
+  <a href="{{ '/tags/' | relative_url }}" class="btn secondary"># 浏览全部标签</a>
+</div>

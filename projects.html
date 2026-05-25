@@ -1,0 +1,46 @@
+---
+layout: default
+title: 项目展示
+permalink: /projects/
+description: 我做过的一些项目
+---
+
+<section class="hero">
+  <span class="prompt">~/projects $ ls -la</span>
+  <h1>项目展示</h1>
+  <p>这里收集了我做过的一些项目——有些已经上线，有些还在打磨，有些已经归档。点击卡片查看详情或源码。</p>
+</section>
+
+<!-- 过滤 -->
+<div class="tag-cloud" style="margin-bottom: 1.5rem;">
+  <a href="#" class="tag active" data-tag-filter="all">all</a>
+  {% assign cats = site.data.projects | map: "category" | uniq %}
+  {% for cat in cats %}
+    <a href="#" class="tag" data-tag-filter="{{ cat }}">{{ cat }}</a>
+  {% endfor %}
+</div>
+
+<!-- 项目网格 -->
+<div class="project-grid">
+  {% for proj in site.data.projects %}
+    <a href="{{ proj.url | default: '#' }}" class="project-card" data-tags="{{ proj.category }}">
+      <div class="project-head">
+        <span class="project-icon">{{ proj.icon }}</span>
+        <span class="project-status {% if proj.status == 'archived' %}archived{% endif %}">{{ proj.status }}</span>
+      </div>
+      <h3>{{ proj.name }}</h3>
+      <p class="project-desc">{{ proj.description }}</p>
+      <div class="project-meta">
+        {% if proj.stars %}<span>★ {{ proj.stars }}</span>{% endif %}
+        {% if proj.lang %}<span>{{ proj.lang }}</span>{% endif %}
+        {% if proj.year %}<span>{{ proj.year }}</span>{% endif %}
+      </div>
+    </a>
+  {% endfor %}
+</div>
+
+<hr>
+
+<p class="mono small subtle" style="text-align: center;">
+  // 更多项目请访问 <a href="https://github.com/{{ site.github_username }}">github.com/{{ site.github_username }}</a>
+</p>

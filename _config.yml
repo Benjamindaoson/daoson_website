@@ -1,0 +1,67 @@
+# ============================================
+# Jekyll 站点配置
+# ============================================
+
+# 站点信息
+title: "你的名字 · 个人博客"
+description: "一个极客风格的个人博客 — 记录技术、思考与生活"
+author: "你的名字"
+email: "you@example.com"
+
+# 部署地址
+# 如果用 用户名.github.io 仓库 → url 填 https://用户名.github.io ，baseurl 留空
+# 如果用 项目仓库（如 blog）   → url 填 https://用户名.github.io ，baseurl 填 "/blog"
+url: "https://Benjamindaoson.github.io"
+baseurl: "/daoson_website"
+
+# 社交链接（在页脚、关于页用）
+github_username: "Benjamindaoson"
+twitter_username: "your_username"
+
+# 构建配置
+markdown: kramdown
+highlighter: rouge
+permalink: /posts/:year/:month/:day/:title/
+timezone: Asia/Shanghai
+
+# 启用的插件（GitHub Pages 白名单内）
+plugins:
+  - jekyll-feed         # 自动生成 RSS
+  - jekyll-seo-tag      # 自动生成 SEO meta 标签
+  - jekyll-sitemap      # 生成 sitemap.xml
+  - jekyll-paginate     # 首页分页
+
+# 首页分页
+paginate: 8
+paginate_path: "/page:num/"
+
+# 默认 front matter
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+
+# Markdown 配置
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+
+# 排除文件
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
+  - .git
