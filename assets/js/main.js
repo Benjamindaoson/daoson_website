@@ -5,19 +5,43 @@
 (function() {
   'use strict';
 
+  // ---------- i18n 语言切换 ----------
+  function getStoredLang() {
+    try {
+      return localStorage.getItem('site-lang') || 'zh';
+    } catch (e) { return 'zh'; }
+  }
+
+  function setStoredLang(lang) {
+    try { localStorage.setItem('site-lang', lang); } catch (e) {}
+  }
+
+  function applyLang(lang) {
+    document.documentElement.lang = (lang === 'en') ? 'en' : 'zh';
+  }
+
+  function setupLangToggle() {
+    const btn = document.getElementById('lang-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.lang || 'zh';
+      const next = current === 'zh' ? 'en' : 'zh';
+      applyLang(next);
+      setStoredLang(next);
+    });
+  }
+
   // ---------- 高亮当前导航 ----------
   function highlightNav() {
     let path = location.pathname.replace(/\/$/, '');
     const segments = path.split('/').filter(Boolean);
     const last = segments[segments.length - 1] || '';
 
-    // 双栏布局的 sidebar nav + 老的水平 nav 都处理
     const navLinks = document.querySelectorAll('.sidebar-nav-link, .nav-links a');
     navLinks.forEach(link => {
       const href = (link.getAttribute('href') || '').replace(/\/$/, '');
       const linkLast = href.split('/').filter(Boolean).pop() || '';
       const dataNav = link.dataset.nav || '';
-      // 根目录特殊处理
       if (last === '' || last === segments[0] && segments.length === 1 && last.includes('.html') === false) {
         if (linkLast === '' || linkLast === 'home' || dataNav === 'home' || href === '/' || href === '') {
           if (last === '' && (href === '/' || href === '' || linkLast === '' || dataNav === 'home')) {
@@ -31,7 +55,6 @@
       }
     });
 
-    // 兜底：如果 URL 根路径，激活 home
     if (last === '' || last === 'index.html') {
       const home = document.querySelector('[data-nav="home"]');
       if (home) home.classList.add('active');
@@ -64,14 +87,12 @@
     });
     if (backdrop) backdrop.addEventListener('click', close);
 
-    // 点击导航后关闭
     sidebar.querySelectorAll('.sidebar-nav-link, .sidebar-post-list a').forEach(link => {
       link.addEventListener('click', () => {
         if (window.innerWidth < 900) close();
       });
     });
 
-    // ESC 关闭
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && sidebar.classList.contains('is-open')) close();
     });
@@ -221,8 +242,112 @@
     }
   }
 
+  // ---------- 代码块复制按钮 ----------
+  function setupCodeCopy() {
+    const blocks = document.querySelectorAll('.highlight, .post-content pre');
+    blocks.forEach(block => {
+      // 防止重复注入
+      if (block.querySelector('.code-copy-btn')) return;
+      // 如果是 pre 但被 .highlight 包裹，跳过 pre（避免重复）
+      if (block.tagName === 'PRE' && block.closest('.highlight')) return;
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'code-copy-btn';
+      btn.setAttribute('aria-label', '复制代码 / Copy code');
+      btn.innerHTML = '<span class="i18n i18n-zh">复制</span><span class="i18n i18n-en">Copy</span>';
+
+      // 确保容器是 position: relative
+      const cs = window.getComputedStyle(block);
+      if (cs.position === 'static') block.style.position = 'relative';
+
+      block.appendChild(btn);
+
+      btn.addEventListener('click', async () => {
+        const codeEl = block.querySelector('code') || block;
+        const text = codeEl.innerText || codeEl.textContent || '';
+        try {
+          await navigator.clipboard.writeText(text);
+          btn.classList.add('is-copied');
+          btn.innerHTML = '<span class="i18n i18n-zh">已复制 ✓</span><span class="i18n i18n-en">Copied ✓</span>';
+          setTimeout(() => {
+            btn.classList.remove('is-copied');
+            btn.innerHTML = '<span class="i18n i18n-zh">复制</span><span class="i18n i18n-en">Copy</span>';
+          }, 1500);
+        } catch (e) {
+          btn.textContent = 'Error';
+          setTimeout(() => {
+            btn.innerHTML = '<span class="i18n i18n-zh">复制</span><span class="i18n i18n-en">Copy</span>';
+          }, 1500);
+        }
+      });
+    });
+  }
+
+  // ---------- 文章分享按钮 ----------
+  function setupShare() {
+    const container = document.getElementById('post-share');
+    if (!container) return;
+
+    const url = location.href;
+    const title = document.title;
+
+    // Twitter / X
+    const twitterBtn = container.querySelector('[data-share="twitter"]');
+    if (twitterBtn) {
+      const text = encodeURIComponent(title);
+      const u = encodeURIComponent(url);
+      twitterBtn.href = `https://twitter.com/intent/tweet?text=${text}&url=${u}`;
+    }
+
+    // Email
+    const emailBtn = container.querySelector('[data-share="email"]');
+    if (emailBtn) {
+      const subject = encodeURIComponent(title);
+      const body = encodeURIComponent(`${title}\n${url}`);
+      emailBtn.href = `mailto:?subject=${subject}&body=${body}`;
+    }
+
+    // Copy Link
+    const copyBtn = container.querySelector('[data-share="copy"]');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        try {
+          await navigator.clipboard.writeText(url);
+          copyBtn.classList.add('is-copied');
+          const originalHTML = copyBtn.innerHTML;
+          copyBtn.innerHTML = '<span class="i18n i18n-zh">已复制链接 ✓</span><span class="i18n i18n-en">Link copied ✓</span>';
+          setTimeout(() => {
+            copyBtn.classList.remove('is-copied');
+            copyBtn.innerHTML = originalHTML;
+          }, 1500);
+        } catch (err) {}
+      });
+    }
+
+    // Web Share API (mobile native share sheet)
+    const nativeBtn = container.querySelector('[data-share="native"]');
+    if (nativeBtn) {
+      if (navigator.share) {
+        nativeBtn.style.display = '';
+        nativeBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          navigator.share({ title: title, url: url }).catch(() => {});
+        });
+      } else {
+        nativeBtn.style.display = 'none';
+      }
+    }
+  }
+
   // ---------- 启动 ----------
+  // 在 DOMContentLoaded 之前应用语言（防止闪烁）
+  applyLang(getStoredLang());
+
   document.addEventListener('DOMContentLoaded', () => {
+    applyLang(getStoredLang());
+    setupLangToggle();
     highlightNav();
     setupSidebarToggle();
     setupTagFilter();
@@ -230,6 +355,8 @@
     setupTypewriter();
     estimateReadingTime();
     buildTOC();
+    setupCodeCopy();
+    setupShare();
   });
 
 })();

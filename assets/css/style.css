@@ -2079,3 +2079,153 @@ body.has-sidebar .footer {
     max-width: 100% !important;
   }
 }
+
+/* ============================================
+   i18n 中英文切换 — 默认 zh，CSS 控制显示
+   ============================================ */
+
+/* 默认隐藏 EN，显示 ZH */
+.i18n { display: inline; }
+html[lang="en"] .i18n-zh,
+html:not([lang="en"]) .i18n-en {
+  display: none !important;
+}
+html[lang="en"] .i18n-en {
+  display: inline !important;
+}
+
+/* 语言切换按钮 */
+.sidebar-lang {
+  border-top: 1px solid var(--border);
+  padding-top: 1.25rem;
+}
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.7rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.15s ease;
+}
+
+.lang-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-bg);
+}
+
+.lang-toggle .lang-toggle-arrow {
+  opacity: 0.5;
+  font-size: 0.9em;
+}
+
+.lang-toggle .lang-toggle-other {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* ============================================
+   代码块复制按钮
+   ============================================ */
+.code-copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.25rem 0.6rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.15s ease;
+  z-index: 5;
+}
+
+.highlight:hover .code-copy-btn,
+.post-content pre:hover .code-copy-btn,
+.code-copy-btn:focus {
+  opacity: 1;
+}
+
+.code-copy-btn:hover {
+  background: var(--accent-bg);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.code-copy-btn.is-copied {
+  opacity: 1 !important;
+  background: var(--accent-bg);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* 触屏设备始终显示 */
+@media (hover: none) {
+  .code-copy-btn {
+    opacity: 0.6;
+  }
+}
+
+/* ============================================
+   文章底部分享按钮
+   ============================================ */
+.post-share {
+  margin: 2.5rem 0 0;
+  padding: 1.25rem 0;
+  border-top: 1px dashed var(--border);
+  border-bottom: 1px dashed var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.post-share .share-label {
+  letter-spacing: 0.08em;
+  margin-right: 0.25rem;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.share-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-bg);
+  transform: translateY(-1px);
+}
+
+.share-btn.is-copied {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-bg);
+}
+
+.share-btn svg {
+  flex-shrink: 0;
+}
