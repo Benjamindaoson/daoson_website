@@ -2,40 +2,89 @@
 layout: default
 ---
 
-<article data-reading-time>
+<div class="post-narrow">
 
-  <header class="post-header">
-    <p class="mono small accent" style="margin-bottom: 0.4rem;">// post</p>
-    <h1>{{ page.title }}</h1>
-    <div class="post-meta">
-      <span>📅 {{ page.date | date: "%Y-%m-%d" }}</span>
-      <span>⏱ <span id="reading-time">~ {{ content | number_of_words | divided_by: 300 | plus: 1 }} min read</span></span>
-      {% for tag in page.tags %}
-        <a href="{{ '/tags/' | relative_url }}#{{ tag }}" class="tag">{{ tag }}</a>
+  <article data-reading-time>
+
+    <header class="post-header">
+      <p class="mono small accent" style="margin-bottom: 0.4rem;">// post</p>
+      <h1>{{ page.title }}</h1>
+      <div class="post-meta">
+        <span>📅 {{ page.date | date: "%Y-%m-%d" }}</span>
+        <span>⏱ <span id="reading-time">~ {{ page.content | strip_html | size | divided_by: 300 | plus: 1 }} min read</span></span>
+        {% for tag in page.tags %}
+          <a href="{{ '/tags/' | relative_url }}#{{ tag }}" class="tag">{{ tag }}</a>
+        {% endfor %}
+      </div>
+    </header>
+
+    {%- comment -%} 封面图（如果设置了） {%- endcomment -%}
+    {% if page.cover %}
+      <div class="post-detail-cover">
+        <img src="{{ page.cover | relative_url }}" alt="{{ page.title }}" loading="eager">
+      </div>
+    {% endif %}
+
+    {%- comment -%} 系列横幅 {%- endcomment -%}
+    {% if page.series %}
+      {% assign series_posts = site.posts | where: "series", page.series | sort: "date" %}
+      {% assign series_count = series_posts | size %}
+      {% assign current_index = 0 %}
+      {% for sp in series_posts %}
+        {% if sp.url == page.url %}
+          {% assign current_index = forloop.index %}
+        {% endif %}
       {% endfor %}
-    </div>
-  </header>
 
-  <div class="post-content">
-    {{ content }}
+      <aside class="series-banner">
+        <div class="series-head">
+          <span class="series-icon">📚</span>
+          <div class="series-meta">
+            <span class="series-label mono small subtle">SERIES · {{ current_index }} / {{ series_count }}</span>
+            <strong class="series-title">{{ page.series }}</strong>
+          </div>
+        </div>
+        <ol class="series-list">
+          {% for sp in series_posts %}
+            <li class="series-item {% if sp.url == page.url %}is-current{% endif %}">
+              {% if sp.url == page.url %}
+                <span class="series-num mono">{{ forloop.index }}.</span>
+                <span class="series-item-title"><strong>{{ sp.title }}</strong></span>
+                <span class="series-current-tag mono small">← 你在这里</span>
+              {% else %}
+                <span class="series-num mono">{{ forloop.index }}.</span>
+                <a href="{{ sp.url | relative_url }}" class="series-item-title">{{ sp.title }}</a>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ol>
+      </aside>
+    {% endif %}
+
+    {%- comment -%} TOC 由 main.js 客户端生成 {%- endcomment -%}
+    <aside class="post-toc" id="post-toc" hidden></aside>
+
+    <div class="post-content">
+      {{ content }}
+    </div>
+
+  </article>
+
+  <nav class="post-nav">
+    {% if page.previous.url %}
+      <a href="{{ page.previous.url | relative_url }}" class="btn secondary">← {{ page.previous.title | truncate: 24 }}</a>
+    {% else %}
+      <span></span>
+    {% endif %}
+    {% if page.next.url %}
+      <a href="{{ page.next.url | relative_url }}" class="btn secondary">{{ page.next.title | truncate: 24 }} →</a>
+    {% endif %}
+  </nav>
+
+  <div class="post-end-nav">
+    <a href="{{ '/' | relative_url }}" class="btn secondary">← 返回首页</a>
+    <a href="{{ '/archive/' | relative_url }}" class="btn secondary">📅 归档</a>
+    <a href="{{ '/tags/' | relative_url }}" class="btn secondary"># 浏览全部标签</a>
   </div>
 
-</article>
-
-<!-- 上一篇 / 下一篇 -->
-<nav style="margin-top: 3rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: space-between;">
-  {% if page.previous.url %}
-    <a href="{{ page.previous.url | relative_url }}" class="btn secondary">← {{ page.previous.title | truncate: 24 }}</a>
-  {% else %}
-    <span></span>
-  {% endif %}
-  {% if page.next.url %}
-    <a href="{{ page.next.url | relative_url }}" class="btn secondary">{{ page.next.title | truncate: 24 }} →</a>
-  {% endif %}
-</nav>
-
-<!-- 文末导航 -->
-<div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-  <a href="{{ '/' | relative_url }}" class="btn secondary">← 返回首页</a>
-  <a href="{{ '/tags/' | relative_url }}" class="btn secondary"># 浏览全部标签</a>
 </div>

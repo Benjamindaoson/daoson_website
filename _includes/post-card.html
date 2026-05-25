@@ -1,18 +1,47 @@
-{% comment %}
-  渲染一个文章卡片。
+{%- comment -%}
+  渲染一个带封面的文章卡片。
   参数: include.post (Jekyll post 对象)
-{% endcomment %}
-<li>
-  <a href="{{ include.post.url | relative_url }}" class="post-item"
-     data-tags="{{ include.post.tags | join: ',' }}"
-     data-search="{{ include.post.title | append: ' ' | append: include.post.excerpt | strip_html | strip_newlines }}">
-    <div class="post-meta">
-      <span class="post-date">{{ include.post.date | date: "%Y-%m-%d" }}</span>
-      {% for tag in include.post.tags %}
-        <span class="tag">{{ tag }}</span>
-      {% endfor %}
+
+  - 摘要用完整段落（description 优先，否则 excerpt），不截断；CSS line-clamp 限制行数。
+  - 阅读时长显示在 meta 区。
+  - data-tags / data-search 放在 <li> 上以便筛选时整张卡片隐藏。
+{%- endcomment -%}
+
+{%- assign primary_tag = include.post.tags | first | default: 'post' -%}
+{%- assign excerpt_text = include.post.description | default: include.post.excerpt | strip_html | strip_newlines | strip -%}
+{%- assign search_blob = include.post.title | append: ' ' | append: excerpt_text -%}
+{%- assign content_len = include.post.content | strip_html | size -%}
+{%- assign read_min = content_len | divided_by: 300 | plus: 1 -%}
+
+<li class="post-card-wrap"
+    data-tags="{{ include.post.tags | join: ',' }}"
+    data-search="{{ search_blob }}">
+  <a href="{{ include.post.url | relative_url }}" class="post-card">
+
+    <div class="post-cover">
+      {% if include.post.cover %}
+        <img src="{{ include.post.cover | relative_url }}" alt="{{ include.post.title }}" loading="lazy">
+      {% else %}
+        <div class="post-cover-fallback">
+          <span class="cover-tag">{{ primary_tag }}</span>
+        </div>
+      {% endif %}
+      {% if include.post.series %}
+        <span class="series-pill mono small" title="系列：{{ include.post.series }}">📚 {{ include.post.series }}</span>
+      {% endif %}
     </div>
-    <h3>{{ include.post.title }}</h3>
-    <p class="excerpt">{{ include.post.description | default: include.post.excerpt | strip_html | truncate: 120 }}</p>
+
+    <div class="post-body">
+      <div class="post-meta">
+        <span class="post-date">{{ include.post.date | date: "%Y-%m-%d" }}</span>
+        <span class="reading-time mono small">⏱ {{ read_min }} min</span>
+        {% for tag in include.post.tags limit: 3 %}
+          <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      <h3>{{ include.post.title }}</h3>
+      <p class="excerpt">{{ excerpt_text }}</p>
+    </div>
+
   </a>
 </li>

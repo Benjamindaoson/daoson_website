@@ -3,6 +3,8 @@ title: "代码可读性的本质是什么"
 date: 2026-05-12 14:30:00 +0800
 tags: [编程, 思考]
 description: 为什么有的代码读起来像散文，有的却像加密电报？聊聊命名、抽象层级和「写给未来的自己看」的几条心得。
+cover: /assets/img/covers/code-readability.svg
+series: "工程师的思考札记"
 ---
 
 为什么有的代码读起来像散文，有的却像加密电报？

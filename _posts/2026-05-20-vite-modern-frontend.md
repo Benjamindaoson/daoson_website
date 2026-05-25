@@ -3,6 +3,8 @@ title: "使用 Vite 搭建现代化前端项目"
 date: 2026-05-20 10:00:00 +0800
 tags: [前端, 工具]
 description: 从零开始，一步步配置一个干净、快速、可维护的前端开发环境。
+cover: /assets/img/covers/vite.svg
+series: "前端工程实践"
 ---
 
 这是一篇示例文章。你可以把它当成模板，每次写新文章时复制一份，

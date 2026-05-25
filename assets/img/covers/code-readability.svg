@@ -1,0 +1,47 @@
+<svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bgCR" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0fdf4"/>
+      <stop offset="1" stop-color="#e8f3eb"/>
+    </linearGradient>
+    <pattern id="dotsCR" patternUnits="userSpaceOnUse" width="32" height="32">
+      <circle cx="16" cy="16" r="1.4" fill="#2d7a3e" fill-opacity="0.16"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bgCR)"/>
+  <rect width="1200" height="675" fill="url(#dotsCR)"/>
+
+  <!-- 左侧代码对比 -->
+  <g transform="translate(80,120)">
+    <!-- 不好的代码 -->
+    <rect width="480" height="180" rx="10" fill="#fff" stroke="#e5e5dc"/>
+    <text x="20" y="30" font-family="ui-monospace, monospace" font-size="14" fill="#8a8a82">// 不好</text>
+    <text x="20" y="70" font-family="ui-monospace, monospace" font-size="20" fill="#1a1a1a">function f(x, y) {</text>
+    <text x="40" y="100" font-family="ui-monospace, monospace" font-size="20" fill="#1a1a1a">return x.filter(</text>
+    <text x="60" y="130" font-family="ui-monospace, monospace" font-size="20" fill="#1a1a1a">i =&gt; i.s === y);</text>
+    <text x="20" y="160" font-family="ui-monospace, monospace" font-size="20" fill="#1a1a1a">}</text>
+
+    <!-- 箭头 -->
+    <text x="240" y="220" font-family="ui-monospace, monospace" font-size="32" fill="#2d7a3e" text-anchor="middle">↓</text>
+
+    <!-- 好的代码 -->
+    <rect y="240" width="480" height="200" rx="10" fill="#fff" stroke="#2d7a3e"/>
+    <text x="20" y="270" font-family="ui-monospace, monospace" font-size="14" fill="#2d7a3e">// 好</text>
+    <text x="20" y="310" font-family="ui-monospace, monospace" font-size="20" fill="#1a1a1a">function findUsersByStatus(</text>
+    <text x="40" y="340" font-family="ui-monospace, monospace" font-size="20" fill="#1a1a1a">users, status</text>
+    <text x="20" y="370" font-family="ui-monospace, monospace" font-size="20" fill="#1a1a1a">) {</text>
+    <text x="40" y="400" font-family="ui-monospace, monospace" font-size="20" fill="#1a1a1a">return users.filter(...)</text>
+    <text x="20" y="430" font-family="ui-monospace, monospace" font-size="20" fill="#1a1a1a">}</text>
+  </g>
+
+  <!-- 右侧标题 -->
+  <g transform="translate(640,180)">
+    <text x="0" y="0" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="42" font-weight="700" fill="#1a1a1a">代码可读性</text>
+    <text x="0" y="56" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="42" font-weight="700" fill="#1a1a1a">的本质</text>
+    <text x="0" y="120" font-family="ui-monospace, monospace" font-size="22" fill="#6b6b66">// 字符少 ≠ 概念少</text>
+    <text x="0" y="156" font-family="ui-monospace, monospace" font-size="22" fill="#6b6b66">// 写给未来的自己看</text>
+  </g>
+
+  <text x="80" y="610" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="22" fill="#1f5a2c" opacity="0.7">// 系列：工程师的思考札记</text>
+</svg>

@@ -1,0 +1,41 @@
+---
+layout: default
+title: 归档
+permalink: /archive/
+description: 按年份倒序浏览所有文章
+---
+
+<section class="hero">
+  <span class="prompt">~/archive $ ls -lat _posts/</span>
+  <h1>归档</h1>
+  <p>所有文章按时间倒序排列。共 <strong class="accent mono">{{ site.posts | size }}</strong> 篇。</p>
+</section>
+
+<div class="archive">
+
+{% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+{% for year_group in posts_by_year %}
+  <section class="archive-year">
+    <h2 class="archive-year-head">
+      <span class="archive-year-num mono">{{ year_group.name }}</span>
+      <span class="archive-year-count mono small subtle">// {{ year_group.items | size }} 篇</span>
+    </h2>
+
+    <ul class="archive-list">
+      {% for post in year_group.items %}
+        {%- assign content_len = post.content | strip_html | size -%}
+        {%- assign read_min = content_len | divided_by: 300 | plus: 1 -%}
+        <li class="archive-item">
+          <span class="archive-date mono small">{{ post.date | date: "%m-%d" }}</span>
+          <a href="{{ post.url | relative_url }}" class="archive-title">{{ post.title }}</a>
+          <span class="archive-meta mono small">
+            {% for tag in post.tags limit: 3 %}<span class="archive-tag">#{{ tag }}</span>{% endfor %}
+            <span class="archive-reading subtle">⏱ {{ read_min }}m</span>
+          </span>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endfor %}
+
+</div>
