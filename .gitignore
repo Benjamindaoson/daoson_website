@@ -17,3 +17,7 @@ node_modules/
 
 .idea/
 
+# 私密内容：日记和草稿不进 git
+_daily/
+_drafts/
+

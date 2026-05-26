@@ -1,0 +1,50 @@
+{%- comment -%}
+  通用视频嵌入 include
+  用法：
+    B 站：    {% include video.html platform="bilibili" id="BV1xx411c7mu" %}
+    YouTube： {% include video.html platform="youtube"  id="dQw4w9WgXcQ" %}
+    腾讯视频：{% include video.html platform="tencent"  id="x0123456789" %}
+    自托管：  {% include video.html platform="self"     src="/assets/video/demo.mp4" poster="/assets/img/posts/xx/cover.jpg" %}
+
+  可选参数：
+    ratio="9x16"  竖屏（手机录的）
+    ratio="4x3"   传统 4:3
+    （不传默认 16:9）
+{%- endcomment -%}
+
+{%- assign ratio_class = "" -%}
+{%- if include.ratio == "9x16" -%}{%- assign ratio_class = " video-embed-9x16" -%}{%- endif -%}
+{%- if include.ratio == "4x3"  -%}{%- assign ratio_class = " video-embed-4x3"  -%}{%- endif -%}
+
+{%- if include.platform == "self" -%}
+  {%- comment -%} 自托管视频不需要 iframe 比例容器，<video> 本身就是响应式 {%- endcomment -%}
+  <video controls preload="metadata"
+         {% if include.poster %}poster="{{ include.poster | relative_url }}"{% endif %}>
+    <source src="{{ include.src | relative_url }}" type="video/mp4">
+    你的浏览器不支持 HTML5 视频。<a href="{{ include.src | relative_url }}">下载视频</a>
+  </video>
+{%- else -%}
+  <div class="video-embed{{ ratio_class }}">
+    {%- case include.platform -%}
+      {%- when "bilibili" -%}
+        <iframe src="//player.bilibili.com/player.html?bvid={{ include.id }}&autoplay=0&high_quality=1&danmaku=0"
+                scrolling="no" border="0" frameborder="no" framespacing="0"
+                allowfullscreen="true"
+                loading="lazy"></iframe>
+      {%- when "youtube" -%}
+        <iframe src="https://www.youtube.com/embed/{{ include.id }}"
+                title="YouTube video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy"></iframe>
+      {%- when "tencent" -%}
+        <iframe src="https://v.qq.com/txp/iframe/player.html?vid={{ include.id }}"
+                frameborder="0"
+                allowfullscreen
+                loading="lazy"></iframe>
+      {%- else -%}
+        <p style="color:#c00;padding:1rem;">⚠️ video.html: 未知 platform "{{ include.platform }}"，支持的值：bilibili / youtube / tencent / self</p>
+    {%- endcase -%}
+  </div>
+{%- endif -%}

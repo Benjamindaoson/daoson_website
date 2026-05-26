@@ -1,0 +1,64 @@
+---
+layout: default
+---
+
+{%- assign updated_date = page.updated | default: page.date -%}
+
+<div class="post-narrow note-page" data-note-lang="{{ page.lang | default: 'zh' }}">
+
+  <article class="note-article">
+
+    <header class="note-header">
+      <p class="mono small accent" style="margin-bottom: 0.4rem;">
+        <a href="{{ '/notes/' | relative_url }}" style="color: inherit; text-decoration: none;">// notes</a>
+        / {{ page.slug | default: 'untitled' }}
+      </p>
+
+      <h1>{{ page.title }}</h1>
+
+      <div class="note-meta">
+        {% include note-status.html status=page.status %}
+
+        {% if updated_date %}
+          <span class="note-meta-item">
+            <span class="i18n i18n-zh">📝 更新于</span>
+            <span class="i18n i18n-en">📝 Updated</span>
+            {{ updated_date | date: "%Y-%m-%d" }}
+          </span>
+        {% endif %}
+
+        {% if page.tags and page.tags.size > 0 %}
+          <span class="note-meta-tags">
+            {% for tag in page.tags %}
+              <a href="{{ '/tags/' | relative_url }}#{{ tag }}" class="tag">#{{ tag }}</a>
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+    </header>
+
+    <div class="post-content note-content">
+      {{ content }}
+    </div>
+
+  </article>
+
+  {%- comment -%} Backlinks 面板（由 _plugins/backlinks.rb 提供数据） {%- endcomment -%}
+  {% include backlinks.html %}
+
+  <nav class="note-end-nav">
+    <a href="{{ '/notes/' | relative_url }}" class="btn secondary">
+      <span class="i18n i18n-zh">← 全部笔记</span>
+      <span class="i18n i18n-en">← All notes</span>
+    </a>
+    <a href="{{ '/' | relative_url }}" class="btn secondary">
+      <span class="i18n i18n-zh">🏠 返回首页</span>
+      <span class="i18n i18n-en">🏠 Home</span>
+    </a>
+    <a href="{{ '/tags/' | relative_url }}" class="btn secondary">
+      <span class="i18n i18n-zh"># 全部标签</span>
+      <span class="i18n i18n-en"># All tags</span>
+    </a>
+  </nav>
+
+</div>

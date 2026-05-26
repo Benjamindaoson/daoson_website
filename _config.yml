@@ -24,14 +24,23 @@ highlighter: rouge
 permalink: /posts/:year/:month/:day/:title/
 timezone: Asia/Shanghai
 
-# 启用的插件（GitHub Pages 白名单内）
+# 启用的插件（已切换到 GitHub Actions 构建，可用自定义插件）
 plugins:
   - jekyll-feed         # 自动生成 RSS
   - jekyll-seo-tag      # 自动生成 SEO meta 标签
   - jekyll-sitemap      # 生成 sitemap.xml
   - jekyll-paginate     # 首页分页
 
-# 首页分页
+# ============================================
+# Collections —— 博客 + 笔记两套内容
+# ============================================
+collections:
+  notes:
+    output: true
+    permalink: /notes/:path/
+    sort_by: updated
+
+# 首页分页（仅针对 posts，不影响 notes）
 paginate: 8
 paginate_path: "/page:num/"
 
@@ -42,6 +51,13 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+  - scope:
+      path: ""
+      type: "notes"
+    values:
+      layout: "note"
+      status: "seedling"   # 默认成熟度：刚发芽
+      lang: "zh"           # 默认中文，可在单篇里覆盖为 en
   - scope:
       path: ""
       type: "pages"
@@ -62,8 +78,12 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - NOTES_GUIDE.md
   - node_modules
   - vendor
   - .sass-cache
   - .jekyll-cache
   - .git
+  - .github
+  - _drafts
+  - _daily

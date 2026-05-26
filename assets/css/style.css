@@ -787,6 +787,91 @@ hr {
 }
 
 /* ============================================
+   正文媒体：图片 / 视频 / 嵌入
+   ============================================ */
+
+/* 正文图片：自适应宽度、圆角、阴影 */
+.post-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: var(--bg-code);
+}
+
+/* 图片说明文字：在 Markdown 里用 *斜体* 紧跟在 ![]() 后面会自动生效，
+   也可以用 <figure><img><figcaption> 结构 */
+.post-content figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.post-content figure img {
+  margin: 0 auto 0.5rem;
+}
+
+.post-content figcaption {
+  font-size: 0.9rem;
+  color: var(--text-muted, var(--text));
+  opacity: 0.75;
+  font-style: italic;
+}
+
+/* 自托管视频 */
+.post-content video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: #000;
+}
+
+/* 视频嵌入包裹器：16:9 响应式比例，外站 iframe（B站/YouTube/腾讯）放在里面 */
+.video-embed {
+  position: relative;
+  width: 100%;
+  margin: 1.5rem 0;
+  padding-top: 56.25%; /* 16:9 */
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: #000;
+}
+
+.video-embed iframe,
+.video-embed embed,
+.video-embed object {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0;
+}
+
+/* 4:3 比例的备用类：<div class="video-embed video-embed-4x3"> */
+.video-embed-4x3 {
+  padding-top: 75%;
+}
+
+/* 竖屏 9:16（适合手机录的演示视频） */
+.video-embed-9x16 {
+  padding-top: 177.78%;
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 兜底：正文里裸写的 iframe（没套 .video-embed）也强制响应式宽度，不至于撑破布局 */
+.post-content iframe {
+  max-width: 100%;
+}
+
+/* ============================================
    系列横幅 Series Banner
    ============================================ */
 .series-banner {
@@ -2307,3 +2392,292 @@ html:not([lang="en"]) .share-set-en {
 
 /* 移除旧的 qzone 样式（如果还存在） */
 .share-btn.share-qzone { display: none !important; }
+
+/* ============================================
+   笔记系统：Notes / Digital Garden
+   ============================================ */
+
+/* ---------- 笔记页面元信息条 ---------- */
+.note-page .note-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px dashed var(--border);
+}
+
+.note-page .note-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.note-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  opacity: 0.85;
+}
+
+.note-meta-tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+/* ---------- 成熟度小标签 ---------- */
+.note-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.note-status-icon {
+  line-height: 1;
+}
+
+.note-status-seedling {
+  color: #b08900;
+  border-color: rgba(176, 137, 0, 0.35);
+  background: rgba(176, 137, 0, 0.08);
+}
+
+.note-status-sapling {
+  color: #2c8c3e;
+  border-color: rgba(44, 140, 62, 0.35);
+  background: rgba(44, 140, 62, 0.08);
+}
+
+.note-status-evergreen {
+  color: #1e6b8c;
+  border-color: rgba(30, 107, 140, 0.35);
+  background: rgba(30, 107, 140, 0.08);
+}
+
+/* ---------- Wiki 链接（[[xxx]] 渲染出的样式） ---------- */
+.wikilink {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dashed currentColor;
+  padding: 0 0.05em;
+  transition: background 0.15s ease;
+}
+
+.wikilink:hover {
+  background: var(--bg-code);
+}
+
+.wikilink.broken,
+.wikilink-broken {
+  color: #c0392b;
+  border-bottom-style: dotted;
+  cursor: help;
+  opacity: 0.8;
+}
+
+.wikilink.broken::after,
+.wikilink-broken::after {
+  content: "?";
+  font-size: 0.75em;
+  vertical-align: super;
+  margin-left: 0.1em;
+}
+
+/* ---------- Backlinks 面板 ---------- */
+.backlinks-panel {
+  margin-top: 3rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+}
+
+.backlinks-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1rem 0;
+  letter-spacing: 0.04em;
+}
+
+.backlinks-icon {
+  font-size: 1.1em;
+}
+
+.backlinks-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.backlinks-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px dotted var(--border);
+}
+
+.backlinks-item:last-child {
+  border-bottom: 0;
+}
+
+.backlinks-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.backlinks-link:hover .backlinks-link-title {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.backlinks-badge {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  vertical-align: 2px;
+}
+
+.backlinks-badge-post {
+  background: rgba(30, 107, 140, 0.15);
+  color: #1e6b8c;
+}
+
+.backlinks-badge-note {
+  background: rgba(44, 140, 62, 0.15);
+  color: #2c8c3e;
+}
+
+.backlinks-context {
+  margin: 0.3rem 0 0 3.1rem;
+  font-size: 0.85rem;
+  color: var(--text);
+  opacity: 0.65;
+  font-style: italic;
+}
+
+/* ---------- 笔记目录页（/notes/） ---------- */
+.notes-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 1rem;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.notes-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.notes-index {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.notes-index-item {
+  padding: 1rem 1.25rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.notes-index-item:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.notes-index-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.notes-index-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  flex: 1;
+}
+
+.notes-index-title:hover {
+  color: var(--accent);
+}
+
+.notes-index-desc {
+  margin: 0.35rem 0 0.5rem 0;
+  color: var(--text);
+  opacity: 0.85;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.notes-index-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.9rem;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.notes-index-tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.notes-index-refs {
+  color: var(--accent);
+}
+
+.notes-empty {
+  margin: 3rem 0;
+  padding: 2rem;
+  text-align: center;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+}
+
+/* ---------- 笔记页底部导航 ---------- */
+.note-end-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--border);
+}
+
+/* ---------- 响应式：手机上笔记卡更紧凑 ---------- */
+@media (max-width: 640px) {
+  .notes-index-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+  .note-page .note-meta {
+    gap: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+}

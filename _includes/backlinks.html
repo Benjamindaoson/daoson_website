@@ -1,0 +1,35 @@
+{%- comment -%}
+  Backlinks 面板：显示有哪些笔记/文章引用了当前页
+  数据来源：_plugins/backlinks.rb 生成的 site.data.backlinks
+  数据结构：{ "笔记slug" => [ {title:, url:, type:}, ... ] }
+{%- endcomment -%}
+
+{%- assign me = page.slug | default: page.url -%}
+{%- assign refs = site.data.backlinks[me] -%}
+
+{%- if refs and refs.size > 0 -%}
+  <aside class="backlinks-panel" aria-label="Backlinks">
+    <h3 class="backlinks-title mono small subtle">
+      <span class="backlinks-icon">🔗</span>
+      <span class="i18n i18n-zh">被以下页面引用（{{ refs.size }}）</span>
+      <span class="i18n i18n-en">Referenced by ({{ refs.size }})</span>
+    </h3>
+    <ul class="backlinks-list">
+      {%- for r in refs -%}
+        <li class="backlinks-item">
+          <a href="{{ r.url | relative_url }}" class="backlinks-link">
+            {%- if r.type == "post" -%}
+              <span class="backlinks-badge backlinks-badge-post mono small">POST</span>
+            {%- else -%}
+              <span class="backlinks-badge backlinks-badge-note mono small">NOTE</span>
+            {%- endif -%}
+            <span class="backlinks-link-title">{{ r.title }}</span>
+          </a>
+          {%- if r.context -%}
+            <p class="backlinks-context">「{{ r.context }}」</p>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </aside>
+{%- endif -%}

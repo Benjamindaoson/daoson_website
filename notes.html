@@ -1,0 +1,86 @@
+---
+layout: default
+title: 笔记 / Notes
+permalink: /notes/
+description: 个人的数字花园 —— 互相链接、不断生长的笔记网络
+---
+
+<section class="hero">
+  <span class="prompt">~/notes $ ls -lat _notes/</span>
+  <h1>
+    <span class="i18n i18n-zh">笔记花园</span>
+    <span class="i18n i18n-en">Digital Garden</span>
+  </h1>
+  <p class="hero-lead">
+    <span class="i18n i18n-zh">
+      这里是<strong>未完成的</strong>的思考、半成品的想法、互相引用的概念。
+      它们会被反复修改、增删、合并 —— 不像博客文章那样定稿封存。
+      <br>
+      共 <strong class="accent mono">{{ site.notes | size }}</strong> 篇，按最近更新排序。
+    </span>
+    <span class="i18n i18n-en">
+      Half-baked thoughts, evolving ideas, interconnected concepts.
+      Unlike polished blog posts, these notes will be revised, merged, and grown over time.
+      <br>
+      <strong class="accent mono">{{ site.notes | size }}</strong> notes total, sorted by recent update.
+    </span>
+  </p>
+
+  <div class="notes-legend mono small subtle">
+    <span class="i18n i18n-zh">成熟度：</span><span class="i18n i18n-en">Maturity: </span>
+    <span class="notes-legend-item">🌱 <span class="i18n i18n-zh">新芽</span><span class="i18n i18n-en">seedling</span></span>
+    <span class="notes-legend-item">🌿 <span class="i18n i18n-zh">成长中</span><span class="i18n i18n-en">sapling</span></span>
+    <span class="notes-legend-item">🌳 <span class="i18n i18n-zh">常青</span><span class="i18n i18n-en">evergreen</span></span>
+  </div>
+</section>
+
+{%- comment -%} 按最近更新排序 {%- endcomment -%}
+{%- assign sorted_notes = site.notes | sort: "updated" | reverse -%}
+
+{%- if sorted_notes.size == 0 -%}
+
+  <div class="notes-empty">
+    <p class="subtle mono small">// 还没有笔记。在 <code>_notes/</code> 下新建第一篇试试。</p>
+  </div>
+
+{%- else -%}
+
+  <div class="notes-index">
+    {% for note in sorted_notes %}
+      <article class="notes-index-item" data-status="{{ note.status | default: 'seedling' }}">
+
+        <header class="notes-index-head">
+          <a href="{{ note.url | relative_url }}" class="notes-index-title">{{ note.title }}</a>
+          {% include note-status.html status=note.status %}
+        </header>
+
+        {% if note.description %}
+          <p class="notes-index-desc">{{ note.description }}</p>
+        {% elsif note.excerpt %}
+          <p class="notes-index-desc">{{ note.excerpt | strip_html | truncate: 140 }}</p>
+        {% endif %}
+
+        <footer class="notes-index-meta mono small subtle">
+          {%- assign updated_date = note.updated | default: note.date -%}
+          {% if updated_date %}
+            <span>📝 {{ updated_date | date: "%Y-%m-%d" }}</span>
+          {% endif %}
+
+          {% if note.tags and note.tags.size > 0 %}
+            <span class="notes-index-tags">
+              {% for tag in note.tags limit: 4 %}<span class="archive-tag">#{{ tag }}</span>{% endfor %}
+            </span>
+          {% endif %}
+
+          {%- comment -%} 显示这篇笔记被多少其它笔记引用 {%- endcomment -%}
+          {%- assign refs = site.data.backlinks[note.slug] -%}
+          {% if refs and refs.size > 0 %}
+            <span class="notes-index-refs">🔗 {{ refs.size }}</span>
+          {% endif %}
+        </footer>
+
+      </article>
+    {% endfor %}
+  </div>
+
+{%- endif -%}

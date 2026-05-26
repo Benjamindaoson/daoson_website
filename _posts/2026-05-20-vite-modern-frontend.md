@@ -22,6 +22,15 @@ Vite 利用浏览器原生的 ES Modules 能力，开发时无需打包，启动
 - 开箱即用支持 TypeScript、JSX、CSS 预处理器
 - 生产环境用 Rollup 打包，输出更精简
 
+下面这张图是 `npm run dev` 启动后的终端截图，注意那个 187ms 的启动时间：
+
+![Vite 开发服务器启动后的终端输出](/assets/img/posts/vite-modern-frontend/dev-server.svg)
+*Vite dev server · 冷启动 187ms*
+
+> **图片放法**：把图放到 `assets/img/posts/<文章 slug>/` 目录，
+> 然后用 `![描述](/assets/img/posts/xxx/yyy.png)` 引用。紧跟在图片下面的
+> 一行 `*斜体*` 文字会自动渲染成图注。
+
 ## 快速开始
 
 用一行命令就能创建一个新项目：
@@ -34,6 +43,19 @@ npm run dev
 ```
 
 就这么简单。打开 `http://localhost:5173`，你就能看到默认页面了。
+
+如果你想直观感受一下开发体验，可以看下面这个 B 站演示视频
+（把 `BVxxxxxxxxxx` 换成你自己的 BV 号即可）：
+
+{% include video.html platform="bilibili" id="BV1xx411c7mu" %}
+
+YouTube 同理 —— 用视频 URL 里 `v=` 后面那串 ID：
+
+{% include video.html platform="youtube" id="dQw4w9WgXcQ" %}
+
+如果你有一段自己录的短演示（mp4 文件放到 `assets/video/` 下），可以这样嵌：
+
+{% include video.html platform="self" src="/assets/video/vite-hmr-demo.mp4" poster="/assets/img/posts/vite-modern-frontend/dev-server.svg" %}
 
 ## 常用配置
 

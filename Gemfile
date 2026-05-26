@@ -1,20 +1,27 @@
 source "https://rubygems.org"
 
-# 使用 GitHub Pages 官方 gem（自动锁定与 GitHub Pages 同步的版本）
-gem "github-pages", group: :jekyll_plugins
+# 直接用 Jekyll（不用 github-pages gem，因为它不允许自定义 plugin）
+# 站点通过 GitHub Actions 构建，详见 .github/workflows/deploy.yml
+gem "jekyll", "~> 4.3"
 
-# 已经包含在 github-pages 里的常用插件
+# 站点用到的 Jekyll 官方插件
 group :jekyll_plugins do
-  gem "jekyll-feed"
-  gem "jekyll-seo-tag"
-  gem "jekyll-sitemap"
-  gem "jekyll-paginate"
+  gem "jekyll-feed",     "~> 0.17"
+  gem "jekyll-seo-tag",  "~> 2.8"
+  gem "jekyll-sitemap",  "~> 1.4"
+  gem "jekyll-paginate", "~> 1.1"
 end
+
+# Markdown 引擎（kramdown 已是 jekyll 的依赖，这里固定 GFM 解析器版本）
+gem "kramdown-parser-gfm", "~> 1.1"
 
 # Windows / JRuby 兼容
 platforms :mingw, :x64_mingw, :mswin, :jruby do
-  gem "tzinfo", "~> 1.2"
+  gem "tzinfo", "~> 2.0"
   gem "tzinfo-data"
 end
 
 gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
+
+# 本地构建性能（可选）
+gem "webrick", "~> 1.8"

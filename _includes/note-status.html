@@ -1,0 +1,25 @@
+{%- comment -%}
+  笔记成熟度小标签
+  用法：{% include note-status.html status=page.status %}
+  支持值：seedling（🌱 新芽）/ sapling（🌿 成长中）/ evergreen（🌳 成熟）
+{%- endcomment -%}
+{%- assign s = include.status | default: "seedling" -%}
+{%- case s -%}
+  {%- when "seedling" -%}
+    <span class="note-status note-status-seedling" title="新芽 · 想法刚记下，还没整理">
+      <span class="note-status-icon">🌱</span>
+      <span class="i18n i18n-zh">新芽</span><span class="i18n i18n-en">Seedling</span>
+    </span>
+  {%- when "sapling" -%}
+    <span class="note-status note-status-sapling" title="成长中 · 已有结构但还在迭代">
+      <span class="note-status-icon">🌿</span>
+      <span class="i18n i18n-zh">成长中</span><span class="i18n i18n-en">Sapling</span>
+    </span>
+  {%- when "evergreen" -%}
+    <span class="note-status note-status-evergreen" title="常青 · 经过反复打磨，基本稳定">
+      <span class="note-status-icon">🌳</span>
+      <span class="i18n i18n-zh">常青</span><span class="i18n i18n-en">Evergreen</span>
+    </span>
+  {%- else -%}
+    <span class="note-status">{{ s }}</span>
+{%- endcase -%}
