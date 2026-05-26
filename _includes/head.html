@@ -11,7 +11,21 @@
 
 {%- assign cache_bust = site.time | date: '%s' -%}
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ cache_bust }}">
-<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+
+{%- comment -%} 双 RSS：一个 ZH，一个 EN（各自只含对应语言文章） {%- endcomment -%}
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }} (中文)" href="{{ '/feed-zh.xml' | relative_url }}" hreflang="zh">
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }} (English)" href="{{ '/feed-en.xml' | relative_url }}" hreflang="en">
+
+{%- comment -%} hreflang：SEO 跨语言声明。若当前页有 translation_key，声明各语言版本 {%- endcomment -%}
+{%- if page.translation_key -%}
+  {%- assign post_translations = site.posts | where: "translation_key", page.translation_key -%}
+  {%- assign note_translations = site.notes | where: "translation_key", page.translation_key -%}
+  {%- assign all_translations = post_translations | concat: note_translations -%}
+  {%- for t in all_translations -%}
+    <link rel="alternate" hreflang="{{ t.lang | default: 'zh' }}" href="{{ t.url | absolute_url }}">
+  {%- endfor -%}
+{%- endif -%}
+
 {% seo %}
 
 {%- comment -%} 仅文章页加载 KaTeX (math: false 可关闭) {%- endcomment -%}

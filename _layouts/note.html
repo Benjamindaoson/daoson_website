@@ -19,6 +19,8 @@ layout: default
       <div class="note-meta">
         {% include note-status.html status=page.status %}
 
+        <span class="post-lang-badge post-lang-badge-{{ page.lang | default: 'zh' }}">{{ page.lang | default: 'zh' | upcase }}</span>
+
         {% if updated_date %}
           <span class="note-meta-item">
             <span class="i18n i18n-zh">📝 更新于</span>
@@ -36,6 +38,8 @@ layout: default
         {% endif %}
       </div>
     </header>
+
+    {% include translation-link.html %}
 
     <div class="post-content note-content">
       {{ content }}

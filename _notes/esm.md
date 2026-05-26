@@ -6,6 +6,7 @@ date: 2026-05-20
 updated: 2026-05-26
 description: 浏览器和 Node 都原生支持的 JavaScript 模块系统，import/export 语法。
 lang: zh
+translation_key: esm
 ---
 
 JavaScript 官方的模块系统，2015 年随 ES6 进入语言规范，2017 年后浏览器陆续原生支持。

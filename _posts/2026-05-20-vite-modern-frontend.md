@@ -5,6 +5,8 @@ tags: [前端, 工具]
 description: 从零开始，一步步配置一个干净、快速、可维护的前端开发环境。
 cover: /assets/img/covers/vite.svg
 series: "前端工程实践"
+lang: zh
+translation_key: vite-modern-frontend
 ---
 
 这是一篇示例文章。你可以把它当成模板，每次写新文章时复制一份，

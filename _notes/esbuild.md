@@ -6,6 +6,7 @@ date: 2026-05-23
 updated: 2026-05-26
 description: 用 Go 写的 JavaScript/TypeScript 打包器，比 webpack 快 10-100 倍。
 lang: zh
+translation_key: esbuild
 ---
 
 Go 写的 JavaScript bundler，作者 Evan Wallace（Figma 联合创始人）。

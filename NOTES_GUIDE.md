@@ -118,3 +118,54 @@ git push
 正文里大量用 `[[]]` 链到笔记。读者读完博客可以顺着链接挖到原始思考过程。
 
 这就是「博客 + 花园」的完整循环。
+
+---
+
+## 双语写作工作流
+
+站点支持真双语 —— 中文文章和英文文章互为翻译，可以互相跳转、各自独立 SEO、独立 RSS。
+
+### 数据模型
+
+每篇 post 或 note 在 front matter 写两个字段：
+
+```yaml
+lang: zh                          # 或 en
+translation_key: vite-modern-frontend   # 互为翻译的两篇文章共享同一个 key
+```
+
+`lang` 不写则默认 `zh`（在 `_config.yml` 的 defaults 里）。
+
+### 写一篇双语文章
+
+假设要写一篇 Vite 的文章，中文版和英文版：
+
+```
+_posts/2026-06-01-cool-thing.md         ← 中文版（lang: zh，可省）
+_posts/2026-06-01-cool-thing.en.md      ← 英文版（lang: en）
+```
+
+两个文件的 `translation_key` 都填 `cool-thing`（slug 一致）。系统就会：
+
+- 在中文版顶部显示"本文有英文版：→"链接
+- 在英文版顶部显示"This post is also available in Chinese: →"链接
+- `<head>` 自动注入 `<link rel="alternate" hreflang="zh">` / `hreflang="en">`（SEO）
+- 切到 EN 时首页只显示英文文章
+- `/feed-en.xml` 只包含英文文章；`/feed-zh.xml` 只包含中文
+
+### 如果某篇文章只有一种语言
+
+完全没问题。只写中文版就只是中文版，不写 `translation_key` 也行 ——
+单语文章在站点内正常存在，只是切到另一种语言时不会出现在列表里。
+
+### 双语 RSS 订阅链接
+
+- 中文订阅者用 `https://你的域名/feed-zh.xml`
+- 英文订阅者用 `https://你的域名/feed-en.xml`
+- 旧的 `/feed.xml` 仍然存在（jekyll-feed 自动生成的全量 feed，向后兼容）
+
+### 笔记的双语
+
+笔记同样支持，但建议谨慎使用 —— 笔记是给自己的，双语会让维护成本翻倍。
+我的建议：**博客认真做双语，笔记只用母语写**。如果某条笔记真的需要英文版，
+单独写一篇 `_notes/xxx.en.md` 即可。

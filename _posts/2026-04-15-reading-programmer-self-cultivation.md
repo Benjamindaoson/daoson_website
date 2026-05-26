@@ -3,6 +3,8 @@ title: "读《程序员的自我修养》有感"
 date: 2026-04-15 21:00:00 +0800
 tags: [读书, 随笔]
 description: 链接、装载、运行——这本书让我第一次真正「看见」了代码是如何变成可执行程序的。
+lang: zh
+translation_key: reading-programmer-self-cultivation
 ---
 
 写代码很多年，直到读了《程序员的自我修养——链接、装载与库》，

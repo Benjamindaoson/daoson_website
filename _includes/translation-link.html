@@ -1,0 +1,32 @@
+{%- comment -%}
+  跨语言链接：如果当前文章有 translation_key，且存在另一种语言的翻译版，
+  在文章顶部显示"阅读其他语言版本"的提示条。
+  支持 posts 和 notes 两种类型。
+{%- endcomment -%}
+
+{%- if page.translation_key -%}
+  {%- assign current_lang = page.lang | default: site.default_language -%}
+
+  {%- comment -%} 同时在 posts 和 notes 集合里搜，找到非当前语言的版本 {%- endcomment -%}
+  {%- assign post_translations = site.posts | where: "translation_key", page.translation_key -%}
+  {%- assign note_translations = site.notes | where: "translation_key", page.translation_key -%}
+  {%- assign all_translations = post_translations | concat: note_translations -%}
+
+  {%- for t in all_translations -%}
+    {%- if t.lang != current_lang -%}
+      <div class="translation-banner" role="note">
+        <span class="translation-banner-icon">🌐</span>
+        <span class="translation-banner-text">
+          {%- if t.lang == 'en' -%}
+            <span class="i18n i18n-zh">本文有英文版：</span>
+            <span class="i18n i18n-en">This post is also available in English:</span>
+          {%- else -%}
+            <span class="i18n i18n-zh">本文有中文版：</span>
+            <span class="i18n i18n-en">This post is also available in Chinese:</span>
+          {%- endif -%}
+          <a href="{{ t.url | relative_url }}" class="translation-banner-link">{{ t.title }}</a>
+        </span>
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}

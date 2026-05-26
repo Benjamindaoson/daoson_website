@@ -3,6 +3,8 @@ title: "周末骑行去山里"
 date: 2026-03-18 18:00:00 +0800
 tags: [随笔, 生活]
 description: 逃离屏幕，骑了 40 公里到山里露营。山风、咖啡、和一本翻不完的书。
+lang: zh
+translation_key: weekend-cycling
 ---
 
 周末看天气预报说连续两天晴，于是临时决定骑车去山里。

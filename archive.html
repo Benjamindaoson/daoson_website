@@ -33,10 +33,12 @@ description: 按年份倒序浏览所有文章
       {% for post in year_group.items %}
         {%- assign content_len = post.content | strip_html | size -%}
         {%- assign read_min = content_len | divided_by: 300 | plus: 1 -%}
-        <li class="archive-item">
+        {%- assign post_lang = post.lang | default: 'zh' -%}
+        <li class="archive-item" data-post-lang="{{ post_lang }}">
           <span class="archive-date mono small">{{ post.date | date: "%m-%d" }}</span>
           <a href="{{ post.url | relative_url }}" class="archive-title">{{ post.title }}</a>
           <span class="archive-meta mono small">
+            <span class="post-lang-badge post-lang-badge-{{ post_lang }}">{{ post_lang | upcase }}</span>
             {% for tag in post.tags limit: 3 %}<span class="archive-tag">#{{ tag }}</span>{% endfor %}
             <span class="archive-reading subtle">⏱ {{ read_min }}m</span>
           </span>

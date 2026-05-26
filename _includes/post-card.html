@@ -13,9 +13,12 @@
 {%- assign content_len = include.post.content | strip_html | size -%}
 {%- assign read_min = content_len | divided_by: 300 | plus: 1 -%}
 
+{%- assign post_lang = include.post.lang | default: 'zh' -%}
+
 <li class="post-card-wrap"
     data-tags="{{ include.post.tags | join: ',' }}"
-    data-search="{{ search_blob }}">
+    data-search="{{ search_blob }}"
+    data-post-lang="{{ post_lang }}">
   <a href="{{ include.post.url | relative_url }}" class="post-card">
 
     <div class="post-cover">
@@ -29,6 +32,7 @@
       {% if include.post.series %}
         <span class="series-pill mono small" title="系列：{{ include.post.series }}">📚 {{ include.post.series }}</span>
       {% endif %}
+      <span class="post-lang-badge post-lang-badge-{{ post_lang }}">{{ post_lang | upcase }}</span>
     </div>
 
     <div class="post-body">

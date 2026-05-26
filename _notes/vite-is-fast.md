@@ -6,6 +6,7 @@ date: 2026-05-22
 updated: 2026-05-26
 description: 拆解 Vite 启动 187ms 背后的两件事 —— ESM 原生加载 + esbuild 冷预构建。
 lang: zh
+translation_key: vite-is-fast
 ---
 
 很多人以为 [[esm]] 就是 Vite 快的全部原因，其实只对了一半。

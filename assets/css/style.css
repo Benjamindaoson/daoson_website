@@ -2394,6 +2394,124 @@ html:not([lang="en"]) .share-set-en {
 .share-btn.share-qzone { display: none !important; }
 
 /* ============================================
+   真双语：语言徽章 + 列表过滤 + 跨语言提示条
+   ============================================ */
+
+/* 当前 UI 语言不匹配的列表项隐藏（搜索的 .is-hidden 也共用 display:none） */
+.lang-hidden { display: none !important; }
+
+/* 文章/笔记的语言徽章（小标签：ZH / EN） */
+.post-lang-badge {
+  display: inline-block;
+  padding: 0.1rem 0.42rem;
+  border-radius: 3px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  vertical-align: 1px;
+  user-select: none;
+}
+
+.post-lang-badge-zh {
+  background: rgba(229, 62, 62, 0.12);
+  color: #c0392b;
+  border: 1px solid rgba(229, 62, 62, 0.25);
+}
+
+.post-lang-badge-en {
+  background: rgba(56, 139, 253, 0.12);
+  color: #1f6feb;
+  border: 1px solid rgba(56, 139, 253, 0.25);
+}
+
+/* 卡片上的语言徽章绝对定位到右上角 */
+.post-cover {
+  position: relative;
+}
+
+.post-cover .post-lang-badge {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: rgba(13, 17, 23, 0.85);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+}
+
+.post-cover .post-lang-badge-en {
+  background: rgba(31, 111, 235, 0.92);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.post-cover .post-lang-badge-zh {
+  background: rgba(192, 57, 43, 0.92);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* 笔记列表里语言徽章和成熟度并排显示 */
+.notes-index-badges {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* 跨语言提示条（page 顶部）：本文有英文版/中文版 */
+.translation-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 1.75rem 0;
+  padding: 0.7rem 1rem;
+  background: linear-gradient(
+    135deg,
+    rgba(56, 139, 253, 0.08),
+    rgba(56, 139, 253, 0.03)
+  );
+  border: 1px solid rgba(56, 139, 253, 0.25);
+  border-left: 3px solid #388bfd;
+  border-radius: var(--radius);
+  font-size: 0.92rem;
+}
+
+.translation-banner-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.translation-banner-text {
+  flex: 1;
+}
+
+.translation-banner-link {
+  font-weight: 600;
+  color: #1f6feb;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.translation-banner-link:hover {
+  opacity: 0.85;
+}
+
+/* 列表空态：当前语言没有文章时显示 */
+.lang-empty-state {
+  margin: 2rem 0;
+  padding: 2rem;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  text-align: center;
+  color: var(--text);
+  opacity: 0.75;
+}
+
+.lang-empty-state .mono {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================
    笔记系统：Notes / Digital Garden
    ============================================ */
 

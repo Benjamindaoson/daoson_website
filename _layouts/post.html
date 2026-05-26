@@ -7,16 +7,19 @@ layout: default
   <article data-reading-time>
 
     <header class="post-header">
-      <p class="mono small accent" style="margin-bottom: 0.4rem;">// post</p>
+      <p class="mono small accent" style="margin-bottom: 0.4rem;">// post · {{ page.lang | default: 'zh' | upcase }}</p>
       <h1>{{ page.title }}</h1>
       <div class="post-meta">
         <span>📅 {{ page.date | date: "%Y-%m-%d" }}</span>
         <span>⏱ <span id="reading-time">~ {{ page.content | strip_html | size | divided_by: 300 | plus: 1 }} min read</span></span>
+        <span class="post-lang-badge post-lang-badge-{{ page.lang | default: 'zh' }}">{{ page.lang | default: 'zh' | upcase }}</span>
         {% for tag in page.tags %}
           <a href="{{ '/tags/' | relative_url }}#{{ tag }}" class="tag">{{ tag }}</a>
         {% endfor %}
       </div>
     </header>
+
+    {% include translation-link.html %}
 
     {%- comment -%} 封面图 {%- endcomment -%}
     {% if page.cover %}

@@ -18,10 +18,67 @@
   function applyLang(lang) {
     const l = (lang === 'en') ? 'en' : 'zh';
     document.documentElement.lang = l;
+
     // 处理 input/textarea placeholder（不能用 CSS）
     document.querySelectorAll('[data-placeholder-zh], [data-placeholder-en]').forEach(el => {
       const txt = el.getAttribute('data-placeholder-' + l);
       if (txt) el.setAttribute('placeholder', txt);
+    });
+
+    // 真双语：按 data-post-lang 过滤所有文章/笔记列表项
+    // 当前语言匹配 → 显示；不匹配 → 隐藏（用 .lang-hidden 类，搜索过滤可叠加）
+    filterListsByLang(l);
+
+    // 更新各种列表的可见计数（首页、tags 页等）
+    updateVisibleCounts();
+
+    // 通知空态显示器
+    refreshEmptyStates(l);
+  }
+
+  function filterListsByLang(lang) {
+    document.querySelectorAll('[data-post-lang]').forEach(el => {
+      const postLang = el.getAttribute('data-post-lang');
+      if (postLang === lang) {
+        el.classList.remove('lang-hidden');
+      } else {
+        el.classList.add('lang-hidden');
+      }
+    });
+  }
+
+  function updateVisibleCounts() {
+    // 首页文章计数（已存在的搜索/筛选用 .is-hidden）
+    const searchCount = document.getElementById('search-result-count');
+    if (searchCount) {
+      const list = document.getElementById('post-list');
+      if (list) {
+        const visible = list.querySelectorAll(
+          '.post-card-wrap:not(.lang-hidden):not(.is-hidden)'
+        ).length;
+        searchCount.textContent = visible;
+      }
+    }
+    // tags 页计数
+    const tagCount = document.getElementById('tag-result-count');
+    if (tagCount) {
+      const visible = document.querySelectorAll(
+        '.post-list .post-card-wrap:not(.lang-hidden):not(.is-hidden)'
+      ).length;
+      tagCount.textContent = visible;
+    }
+  }
+
+  function refreshEmptyStates(lang) {
+    // 给当前页可能存在的"空态"占位区添加/移除显示
+    document.querySelectorAll('[data-empty-when-lang]').forEach(el => {
+      const targetLang = el.getAttribute('data-empty-when-lang');
+      const listSelector = el.getAttribute('data-empty-for-list');
+      if (!listSelector) return;
+      const list = document.querySelector(listSelector);
+      if (!list) return;
+      const hasVisible = list.querySelector('[data-post-lang="' + lang + '"]') !== null;
+      el.hidden = !(targetLang === lang && !hasVisible);
     });
   }
 
@@ -129,18 +186,24 @@
     });
   }
 
-  // ---------- 搜索 ----------
+  // ---------- 搜索（语言敏感） ----------
   function setupSearch() {
     const input = document.getElementById('search-input');
     const items = document.querySelectorAll('[data-search]');
     if (!input || !items.length) return;
     input.addEventListener('input', e => {
       const q = e.target.value.toLowerCase().trim();
+      const currentLang = document.documentElement.lang || 'zh';
       let visible = 0;
       items.forEach(item => {
         const text = (item.dataset.search || '').toLowerCase();
-        if (!q || text.includes(q)) { item.classList.remove('is-hidden'); visible++; }
-        else item.classList.add('is-hidden');
+        const itemLang = item.getAttribute('data-post-lang') || 'zh';
+        const matchSearch = !q || text.includes(q);
+        const matchLang   = itemLang === currentLang;
+        if (matchSearch) { item.classList.remove('is-hidden'); }
+        else { item.classList.add('is-hidden'); }
+        // 同时受语言过滤影响（已由 filterListsByLang 设置 .lang-hidden）
+        if (matchSearch && matchLang) visible++;
       });
       const counter = document.getElementById('search-result-count');
       if (counter) counter.textContent = visible;

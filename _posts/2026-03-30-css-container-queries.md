@@ -4,6 +4,8 @@ date: 2026-03-30 16:00:00 +0800
 tags: [前端, CSS]
 description: 媒体查询的时代正在过去——容器查询让组件真正实现「响应式」。
 series: "前端工程实践"
+lang: zh
+translation_key: css-container-queries
 ---
 
 很长一段时间，"响应式设计"约等于"媒体查询"。但媒体查询有个根本问题：
