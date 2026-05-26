@@ -7,9 +7,8 @@
 
   // ---------- i18n 语言切换 ----------
   function getStoredLang() {
-    try {
-      return localStorage.getItem('site-lang') || 'zh';
-    } catch (e) { return 'zh'; }
+    try { return localStorage.getItem('site-lang') || 'zh'; }
+    catch (e) { return 'zh'; }
   }
 
   function setStoredLang(lang) {
@@ -17,7 +16,13 @@
   }
 
   function applyLang(lang) {
-    document.documentElement.lang = (lang === 'en') ? 'en' : 'zh';
+    const l = (lang === 'en') ? 'en' : 'zh';
+    document.documentElement.lang = l;
+    // 处理 input/textarea placeholder（不能用 CSS）
+    document.querySelectorAll('[data-placeholder-zh], [data-placeholder-en]').forEach(el => {
+      const txt = el.getAttribute('data-placeholder-' + l);
+      if (txt) el.setAttribute('placeholder', txt);
+    });
   }
 
   function setupLangToggle() {
@@ -246,9 +251,7 @@
   function setupCodeCopy() {
     const blocks = document.querySelectorAll('.highlight, .post-content pre');
     blocks.forEach(block => {
-      // 防止重复注入
       if (block.querySelector('.code-copy-btn')) return;
-      // 如果是 pre 但被 .highlight 包裹，跳过 pre（避免重复）
       if (block.tagName === 'PRE' && block.closest('.highlight')) return;
 
       const btn = document.createElement('button');
@@ -257,7 +260,6 @@
       btn.setAttribute('aria-label', '复制代码 / Copy code');
       btn.innerHTML = '<span class="i18n i18n-zh">复制</span><span class="i18n i18n-en">Copy</span>';
 
-      // 确保容器是 position: relative
       const cs = window.getComputedStyle(block);
       if (cs.position === 'static') block.style.position = 'relative';
 
@@ -284,65 +286,103 @@
     });
   }
 
-  // ---------- 文章分享按钮 ----------
+  // ---------- 文章分享按钮（中英文双套）----------
   function setupShare() {
     const container = document.getElementById('post-share');
     if (!container) return;
 
     const url = location.href;
-    const title = document.title;
+    const u = encodeURIComponent(url);
+    const titleRaw = document.title;
+    const title = encodeURIComponent(titleRaw);
 
-    // Twitter / X
-    const twitterBtn = container.querySelector('[data-share="twitter"]');
-    if (twitterBtn) {
-      const text = encodeURIComponent(title);
-      const u = encodeURIComponent(url);
-      twitterBtn.href = `https://twitter.com/intent/tweet?text=${text}&url=${u}`;
+    // ===== 中文平台 =====
+    // 微博：唯一有真实分享 URL 的
+    const weiboBtn = container.querySelector('[data-share="weibo"]');
+    if (weiboBtn) {
+      weiboBtn.href = `https://service.weibo.com/share/share.php?url=${u}&title=${title}`;
     }
 
-    // Email
-    const emailBtn = container.querySelector('[data-share="email"]');
-    if (emailBtn) {
-      const subject = encodeURIComponent(title);
-      const body = encodeURIComponent(`${title}\n${url}`);
-      emailBtn.href = `mailto:?subject=${subject}&body=${body}`;
-    }
-
-    // Copy Link
-    const copyBtn = container.querySelector('[data-share="copy"]');
-    if (copyBtn) {
-      copyBtn.addEventListener('click', async (e) => {
+    // 其他平台都是"复制 + 去对应 App 粘贴"模式
+    const copyToPlatform = (selector, platformName) => {
+      const btn = container.querySelector(selector);
+      if (!btn) return;
+      btn.addEventListener('click', async (e) => {
         e.preventDefault();
         try {
           await navigator.clipboard.writeText(url);
-          copyBtn.classList.add('is-copied');
-          const originalHTML = copyBtn.innerHTML;
-          copyBtn.innerHTML = '<span class="i18n i18n-zh">已复制链接 ✓</span><span class="i18n i18n-en">Link copied ✓</span>';
+          btn.classList.add('is-copied');
+          const orig = btn.innerHTML;
+          btn.innerHTML = `<span>已复制，去${platformName}粘贴 ✓</span>`;
           setTimeout(() => {
-            copyBtn.classList.remove('is-copied');
-            copyBtn.innerHTML = originalHTML;
+            btn.classList.remove('is-copied');
+            btn.innerHTML = orig;
+          }, 2000);
+        } catch (err) {}
+      });
+    };
+    copyToPlatform('[data-share="xhs"]',    '小红书');
+    copyToPlatform('[data-share="wechat"]', '微信');
+    copyToPlatform('[data-share="mp"]',     '公众号');
+    copyToPlatform('[data-share="zhihu"]',  '知乎');
+    copyToPlatform('[data-share="juejin"]', '掘金');
+    copyToPlatform('[data-share="csdn"]',   'CSDN');
+
+    // ===== 英文平台 =====
+    const twitterBtn = container.querySelector('[data-share="twitter"]');
+    if (twitterBtn) {
+      twitterBtn.href = `https://twitter.com/intent/tweet?text=${title}&url=${u}`;
+    }
+    const linkedinBtn = container.querySelector('[data-share="linkedin"]');
+    if (linkedinBtn) {
+      linkedinBtn.href = `https://www.linkedin.com/sharing/share-offsite/?url=${u}`;
+    }
+    const redditBtn = container.querySelector('[data-share="reddit"]');
+    if (redditBtn) {
+      redditBtn.href = `https://reddit.com/submit?url=${u}&title=${title}`;
+    }
+
+    // ===== 通用 =====
+    // Email（两套都有）
+    container.querySelectorAll('[data-share="email"]').forEach(btn => {
+      const subject = title;
+      const body = encodeURIComponent(`${titleRaw}\n${url}`);
+      btn.href = `mailto:?subject=${subject}&body=${body}`;
+    });
+
+    // Copy link（两套都有）
+    container.querySelectorAll('[data-share="copy"]').forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        try {
+          await navigator.clipboard.writeText(url);
+          btn.classList.add('is-copied');
+          const orig = btn.innerHTML;
+          const isZh = document.documentElement.lang !== 'en';
+          btn.innerHTML = isZh ? '<span>已复制 ✓</span>' : '<span>Copied ✓</span>';
+          setTimeout(() => {
+            btn.classList.remove('is-copied');
+            btn.innerHTML = orig;
           }, 1500);
         } catch (err) {}
       });
-    }
+    });
 
-    // Web Share API (mobile native share sheet)
-    const nativeBtn = container.querySelector('[data-share="native"]');
-    if (nativeBtn) {
+    // Native share (mobile)
+    container.querySelectorAll('[data-share="native"]').forEach(btn => {
       if (navigator.share) {
-        nativeBtn.style.display = '';
-        nativeBtn.addEventListener('click', (e) => {
+        btn.style.display = '';
+        btn.addEventListener('click', (e) => {
           e.preventDefault();
-          navigator.share({ title: title, url: url }).catch(() => {});
+          navigator.share({ title: titleRaw, url: url }).catch(() => {});
         });
       } else {
-        nativeBtn.style.display = 'none';
+        btn.style.display = 'none';
       }
-    }
+    });
   }
 
   // ---------- 启动 ----------
-  // 在 DOMContentLoaded 之前应用语言（防止闪烁）
   applyLang(getStoredLang());
 
   document.addEventListener('DOMContentLoaded', () => {

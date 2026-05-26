@@ -7,12 +7,20 @@ description: 按标签浏览所有文章
 
 <section class="hero">
   <span class="prompt">~/tags $ ls -la</span>
-  <h1>分类与标签</h1>
-  <p>按主题浏览全部文章。点击下方任意标签即可过滤。</p>
+  <h1>
+    <span class="i18n i18n-zh">分类与标签</span>
+    <span class="i18n i18n-en">Tags & Topics</span>
+  </h1>
+  <p>
+    <span class="i18n i18n-zh">按主题浏览全部文章。点击下方任意标签即可过滤。</span>
+    <span class="i18n i18n-en">Browse all posts by topic. Click any tag below to filter.</span>
+  </p>
 </section>
 
-<!-- 标签云 -->
-<h2>标签云</h2>
+<h2>
+  <span class="i18n i18n-zh">标签云</span>
+  <span class="i18n i18n-en">Tag cloud</span>
+</h2>
 <div class="tag-cloud">
   <a href="#" class="tag active" data-tag-filter="all">all<span class="tag-count">{{ site.posts | size }}</span></a>
   {% assign sorted_tags = site.tags | sort %}
@@ -23,7 +31,11 @@ description: 按标签浏览所有文章
   {% endfor %}
 </div>
 
-<h2>所有文章 (<span id="tag-result-count">{{ site.posts | size }}</span>)</h2>
+<h2>
+  <span class="i18n i18n-zh">所有文章</span>
+  <span class="i18n i18n-en">All posts</span>
+  (<span id="tag-result-count">{{ site.posts | size }}</span>)
+</h2>
 
 <ul class="post-list">
   {% for post in site.posts %}

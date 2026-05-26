@@ -2229,3 +2229,81 @@ html[lang="en"] .i18n-en {
 .share-btn svg {
   flex-shrink: 0;
 }
+
+/* ============================================
+   分享按钮：中英文按 html.lang 切换平台集合
+   ============================================ */
+.share-set {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+html[lang="en"] .share-set-zh,
+html:not([lang="en"]) .share-set-en {
+  display: none !important;
+}
+
+/* 平台特定 hover 色（微博红 / 微信绿 / Twitter 黑等可选） */
+.share-btn.share-weibo:hover {
+  border-color: #e6162d;
+  color: #e6162d;
+  background: #fff0f0;
+}
+.share-btn.share-wechat:hover {
+  border-color: #07c160;
+  color: #07c160;
+  background: #e8f8ef;
+}
+.share-btn.share-qzone:hover {
+  border-color: #f9a825;
+  color: #f9a825;
+  background: #fff8e1;
+}
+.share-btn.share-twitter:hover,
+.share-btn.share-linkedin:hover,
+.share-btn.share-reddit:hover {
+  border-color: var(--text);
+  color: var(--text);
+  background: var(--bg-code);
+}
+
+/* ============================================
+   品牌 Badge — 中文平台的小圆形首字标
+   ============================================ */
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  letter-spacing: 0;
+}
+
+.brand-mark-weibo  { background: #e6162d; }   /* 微博红 */
+.brand-mark-xhs    { background: #ff2442; }   /* 小红书红 */
+.brand-mark-wechat { background: #07c160; }   /* 微信绿 */
+.brand-mark-mp     { background: #2dad44; }   /* 公众号深绿 */
+.brand-mark-zhihu  { background: #0084ff; }   /* 知乎蓝 */
+.brand-mark-juejin { background: #1e80ff; }   /* 掘金蓝 */
+.brand-mark-csdn   { background: #fc5531; }   /* CSDN 橙红 */
+
+/* hover 时按钮整体边框跟随平台色 */
+.share-btn.share-weibo:hover  { border-color: #e6162d; color: #e6162d; background: #fff0f0; }
+.share-btn.share-xhs:hover    { border-color: #ff2442; color: #ff2442; background: #fff0f2; }
+.share-btn.share-wechat:hover { border-color: #07c160; color: #07c160; background: #e8f8ef; }
+.share-btn.share-mp:hover     { border-color: #2dad44; color: #2dad44; background: #e8f5ec; }
+.share-btn.share-zhihu:hover  { border-color: #0084ff; color: #0084ff; background: #e8f3ff; }
+.share-btn.share-juejin:hover { border-color: #1e80ff; color: #1e80ff; background: #e8f3ff; }
+.share-btn.share-csdn:hover   { border-color: #fc5531; color: #fc5531; background: #fff1ec; }
+
+/* 移除旧的 qzone 样式（如果还存在） */
+.share-btn.share-qzone { display: none !important; }

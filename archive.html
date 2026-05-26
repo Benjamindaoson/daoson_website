@@ -7,18 +7,26 @@ description: 按年份倒序浏览所有文章
 
 <section class="hero">
   <span class="prompt">~/archive $ ls -lat _posts/</span>
-  <h1>归档</h1>
-  <p>所有文章按时间倒序排列。共 <strong class="accent mono">{{ site.posts | size }}</strong> 篇。</p>
+  <h1>
+    <span class="i18n i18n-zh">归档</span>
+    <span class="i18n i18n-en">Archive</span>
+  </h1>
+  <p>
+    <span class="i18n i18n-zh">所有文章按时间倒序排列。共 <strong class="accent mono">{{ site.posts | size }}</strong> 篇。</span>
+    <span class="i18n i18n-en">All posts in reverse chronological order. Total <strong class="accent mono">{{ site.posts | size }}</strong>.</span>
+  </p>
 </section>
 
 <div class="archive">
-
 {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
 {% for year_group in posts_by_year %}
   <section class="archive-year">
     <h2 class="archive-year-head">
       <span class="archive-year-num mono">{{ year_group.name }}</span>
-      <span class="archive-year-count mono small subtle">// {{ year_group.items | size }} 篇</span>
+      <span class="archive-year-count mono small subtle">
+        <span class="i18n i18n-zh">// {{ year_group.items | size }} 篇</span>
+        <span class="i18n i18n-en">// {{ year_group.items | size }} posts</span>
+      </span>
     </h2>
 
     <ul class="archive-list">
@@ -37,5 +45,4 @@ description: 按年份倒序浏览所有文章
     </ul>
   </section>
 {% endfor %}
-
 </div>

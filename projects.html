@@ -7,11 +7,16 @@ description: 我做过的一些项目
 
 <section class="hero">
   <span class="prompt">~/projects $ ls -la</span>
-  <h1>项目展示</h1>
-  <p>这里收集了我做过的一些项目——有些已经上线，有些还在打磨，有些已经归档。点击卡片查看详情或源码。</p>
+  <h1>
+    <span class="i18n i18n-zh">项目展示</span>
+    <span class="i18n i18n-en">Projects</span>
+  </h1>
+  <p>
+    <span class="i18n i18n-zh">这里收集了我做过的一些项目——有些已经上线，有些还在打磨，有些已经归档。点击卡片查看详情或源码。</span>
+    <span class="i18n i18n-en">Some projects I've built — some shipped, some still being polished, some archived. Click any card for details or source.</span>
+  </p>
 </section>
 
-<!-- 过滤 -->
 <div class="tag-cloud" style="margin-bottom: 1.5rem;">
   <a href="#" class="tag active" data-tag-filter="all">all</a>
   {% assign cats = site.data.projects | map: "category" | uniq %}
@@ -20,7 +25,6 @@ description: 我做过的一些项目
   {% endfor %}
 </div>
 
-<!-- 项目网格 -->
 <div class="project-grid">
   {% for proj in site.data.projects %}
     <a href="{{ proj.url | default: '#' }}" class="project-card" data-tags="{{ proj.category }}">
@@ -42,5 +46,6 @@ description: 我做过的一些项目
 <hr>
 
 <p class="mono small subtle" style="text-align: center;">
-  // 更多项目请访问 <a href="https://github.com/{{ site.github_username }}">github.com/{{ site.github_username }}</a>
+  <span class="i18n i18n-zh">// 更多项目请访问 <a href="https://github.com/{{ site.github_username }}">github.com/{{ site.github_username }}</a></span>
+  <span class="i18n i18n-en">// More projects on <a href="https://github.com/{{ site.github_username }}">github.com/{{ site.github_username }}</a></span>
 </p>
