@@ -1,22 +1,28 @@
 ---
 layout: default
-title: 关于我
+title: 关于
 permalink: /about/
-description: 我做了什么 · 我在想什么 · 怎么找到我
+description: 我是谁 · 我在想什么 · 怎么找到我
 ---
 
 <section class="hero">
   <span class="prompt">~/about $ cat me.md</span>
-  <h1>关于我</h1>
-  <p>这页是我的「数字简历」。不写「在哪上的学」，只写「做了什么 / 在想什么 / 怎么找到我」。</p>
+  <h1>
+    <span class="i18n i18n-zh">关于</span>
+    <span class="i18n i18n-en">About</span>
+  </h1>
+  <p>
+    <span class="i18n i18n-zh">不写「在哪上的学」，只写「在做什么 · 在想什么 · 怎么找到我」。</span>
+    <span class="i18n i18n-en">No CV. Just what I'm building, what I'm thinking, and how to reach me.</span>
+  </p>
 </section>
 
 <section class="about-layout">
 
   <div>
-    <div class="avatar">{{ site.author | slice: 0, 1 | default: 'G' }}</div>
+    <div class="avatar">{{ site.author | slice: 0, 1 }}</div>
     <p class="mono small subtle" style="margin-top: 0.75rem; text-align: center;">
-      // {{ site.github_username | default: 'your_name' }}
+      // {{ site.github_username }}
     </p>
   </div>
 
@@ -26,9 +32,13 @@ description: 我做了什么 · 我在想什么 · 怎么找到我
 
 你好 👋 我是 **{{ site.author }}**。
 
-工程师 / 写作者 / 折腾爱好者。喜欢用代码做小而有用的东西，喜欢把复杂的事讲清楚。
+> TODO：用 2-3 句话讲清楚你是谁、做什么、为什么写这个博客。
+> 这是整个站点最重要的一段话，值得反复修改。
+> 比如："工程师 / 写作者 / 折腾爱好者。喜欢用代码做小而有用的东西。
+> 这里记录我在编程、设计、阅读路上的思考。"
 
-这个网站是我自己用 Jekyll + 手写 CSS 搭的——**没有评论、没有追踪、没有广告**，就是个干净的角落。
+这个网站是我用 Jekyll + 手写 CSS 搭的 —— **没有评论、没有追踪、没有广告**，
+就是一个干净的角落。文章用 Markdown 写，源代码在 [GitHub]({{ '/' | prepend: 'https://github.com/' | prepend: site.github_username }}) 上公开。
 
 </div>
 
@@ -42,83 +52,65 @@ description: 我做了什么 · 我在想什么 · 怎么找到我
   </div>
   <div class="terminal-body">
     <span class="line"><span class="green">$</span> whoami</span>
-    <span class="line gray">{{ site.github_username | default: 'your_name' }}</span>
+    <span class="line gray">{{ site.author }}</span>
     <span class="line"><span class="green">$</span> cat ~/.profile</span>
-    <span class="line"><span class="cyan">building</span>:&nbsp;&nbsp;小而有用的东西</span>
-    <span class="line"><span class="cyan">writing</span>:&nbsp;&nbsp;&nbsp;技术、工具、思考、生活</span>
+    <span class="line"><span class="cyan">building</span>:&nbsp;&nbsp;<span class="i18n i18n-zh">小而有用的东西</span><span class="i18n i18n-en">small useful things</span></span>
+    <span class="line"><span class="cyan">writing</span>:&nbsp;&nbsp;&nbsp;<span class="i18n i18n-zh">技术 · 工具 · 思考 · 生活</span><span class="i18n i18n-en">tech · tools · thinking · life</span></span>
     <span class="line"><span class="cyan">stack</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TypeScript · Python · Rust</span>
     <span class="line"><span class="cyan">contact</span>:&nbsp;&nbsp;{{ site.email }}</span>
     <span class="line"><span class="green">$</span> <span class="yellow">_</span></span>
   </div>
 </div>
 
-## 🛠 我在做什么
+## <span class="i18n i18n-zh">🛠 在做什么</span><span class="i18n i18n-en">🛠 Currently</span>
 
 <div markdown="1">
 
-- **正在做**：[填一句话当前重点]——比如"重构 X 项目"、"在写一本 Y 书"、"做一个 Z 工具"。
-- **正在写**：技术文章、工具评测、思考随笔。每月 2-4 篇，发到 [博客]({{ '/' | relative_url }})。
-- **正在折腾**：开源工具、独立产品、副业实验。
+> TODO：每隔一两个月手动更新这里。
+> 写一两句最近的真实状态 —— 比如"在写一本关于 X 的指南"、"在折腾 Y 项目"、
+> "在读 Z 这本书"。让读者知道这个站点是活的。
+
+- **<span class="i18n i18n-zh">在做</span><span class="i18n i18n-en">Building</span>**：（一句话当前重点）
+- **<span class="i18n i18n-zh">在写</span><span class="i18n i18n-en">Writing</span>**：<span class="i18n i18n-zh">技术文章、工具评测、思考随笔</span><span class="i18n i18n-en">tech essays, tool reviews, reflections</span>
+- **<span class="i18n i18n-zh">在读</span><span class="i18n i18n-en">Reading</span>**：（书名 / 主题）
 
 </div>
 
-## 📦 我做过的项目
+## <span class="i18n i18n-zh">📦 项目</span><span class="i18n i18n-en">📦 Projects</span>
 
 <div markdown="1">
 
-我做过的项目都列在 [projects 页]({{ '/projects/' | relative_url }})。挑几个有代表性的简单说说：
-
-- **[项目 A]** — 一句话描述这个项目解决了什么问题。
-- **[项目 B]** — 一句话描述这个项目解决了什么问题。
-- **[项目 C]** — 一句话描述这个项目解决了什么问题。
+<span class="i18n i18n-zh">我做过的东西都在 [projects 页]({{ '/projects/' | relative_url }})。源代码在 [GitHub](https://github.com/{{ site.github_username }})。</span><span class="i18n i18n-en">See [projects]({{ '/projects/' | relative_url }}) for what I've built. Source on [GitHub](https://github.com/{{ site.github_username }}).</span>
 
 </div>
 
-## ⚙️ 技术栈
-
-<div class="info-block">
-  <ul class="skill-list">
-    <li class="tag">TypeScript</li>
-    <li class="tag">Python</li>
-    <li class="tag">Rust</li>
-    <li class="tag">React</li>
-    <li class="tag">Vue</li>
-    <li class="tag">Node.js</li>
-    <li class="tag">PostgreSQL</li>
-    <li class="tag">Docker</li>
-    <li class="tag">Linux</li>
-    <li class="tag">Git</li>
-    <li class="tag">Figma</li>
-    <li class="tag">Markdown</li>
-  </ul>
-</div>
-
-## 💭 我相信什么
+## <span class="i18n i18n-zh">💭 我相信什么</span><span class="i18n i18n-en">💭 What I believe</span>
 
 <div markdown="1">
 
-- **保持简单** 比想象中难，但值得反复练习。
-- **写下来** 是把含糊变清晰的唯一方法。
-- **慢慢来**，比较快。
-- **工具应该服务于思想**，而不是相反。
+- <span class="i18n i18n-zh">**保持简单** 比想象中难，但值得反复练习。</span><span class="i18n i18n-en">**Simplicity** is harder than it looks, and worth practicing.</span>
+- <span class="i18n i18n-zh">**写下来** 是把含糊变清晰的唯一方法。</span><span class="i18n i18n-en">**Writing** is the only way to turn vague into clear.</span>
+- <span class="i18n i18n-zh">**慢慢来**，比较快。</span><span class="i18n i18n-en">**Slow** is fast.</span>
+- <span class="i18n i18n-zh">**工具应该服务于思想**，而不是相反。</span><span class="i18n i18n-en">**Tools should serve thinking**, not the other way around.</span>
 
 </div>
 
-## 📬 怎么找到我
+## <span class="i18n i18n-zh">📬 联系</span><span class="i18n i18n-en">📬 Get in touch</span>
 
 <div markdown="1">
 
-下面这些都能联系到我，我会尽量回复：
+<span class="i18n i18n-zh">下面这些都能找到我，我会尽量回复：</span><span class="i18n i18n-en">Any of these work — I try to reply:</span>
 
-- 📧 邮箱：[{{ site.email }}](mailto:{{ site.email }})
+- 📧 <span class="i18n i18n-zh">邮箱</span><span class="i18n i18n-en">Email</span>：[{{ site.email }}](mailto:{{ site.email }})
 - 🐙 GitHub：[github.com/{{ site.github_username }}](https://github.com/{{ site.github_username }})
-{% if site.twitter_username and site.twitter_username != 'your_username' %}- 🐦 Twitter：[@{{ site.twitter_username }}](https://twitter.com/{{ site.twitter_username }}){% endif %}
-- 📡 RSS：[订阅本站]({{ '/feed.xml' | relative_url }})
+{% if site.twitter_username and site.twitter_username != '' %}- 🐦 Twitter：[@{{ site.twitter_username }}](https://twitter.com/{{ site.twitter_username }})
+{% endif %}- 📡 RSS：[{{ '/feed.xml' | relative_url }}]({{ '/feed.xml' | relative_url }})
 
 </div>
 
 <blockquote>
-  「保持好奇，温柔地对待这个世界。」
+  <span class="i18n i18n-zh">「保持好奇，温柔地对待这个世界。」</span>
+  <span class="i18n i18n-en">"Stay curious. Be gentle to the world."</span>
 </blockquote>
 
   </div>
