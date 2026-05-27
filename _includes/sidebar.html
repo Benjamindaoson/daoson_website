@@ -14,6 +14,16 @@
       <span class="cursor"></span>
     </a>
 
+    <!-- 全站搜索按钮（按 Cmd/Ctrl+K 也能触发） -->
+    <button class="sidebar-search-btn" data-open-search aria-label="Open site search">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.3-4.3"/>
+      </svg>
+      <span class="i18n i18n-zh">搜索</span><span class="i18n i18n-en">Search</span>
+      <kbd class="sidebar-search-kbd mono small">⌘K</kbd>
+    </button>
+
     <!-- 主导航 with SVG icons -->
     <nav class="sidebar-nav" aria-label="主导航">
       <a href="{{ '/' | relative_url }}" class="sidebar-nav-link" data-nav="home">
@@ -40,6 +50,12 @@
           <path d="M8 7l3 4M16 7l-3 4M8 17l3-4M16 17l-3-4"/>
         </svg>
         <span class="i18n i18n-zh">笔记</span><span class="i18n i18n-en">Notes</span>
+      </a>
+      <a href="{{ '/til/' | relative_url }}" class="sidebar-nav-link" data-nav="til">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 2l2.39 6.95H22l-6.19 4.5 2.39 6.95L12 16.9l-6.19 4.5 2.39-6.95L2 8.95h7.61z"/>
+        </svg>
+        <span class="i18n i18n-zh">TIL</span><span class="i18n i18n-en">TIL</span>
       </a>
       <a href="{{ '/projects/' | relative_url }}" class="sidebar-nav-link" data-nav="projects">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

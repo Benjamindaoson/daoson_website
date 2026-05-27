@@ -64,6 +64,10 @@ collections:
     output: true
     permalink: /notes/:path/
     sort_by: updated
+  til:
+    output: true
+    permalink: /til/:path/
+    sort_by: date
 
 # 首页分页（仅针对 posts，不影响 notes）
 paginate: 8
@@ -84,6 +88,12 @@ defaults:
       layout: "note"
       status: "seedling"   # 默认成熟度：刚发芽
       lang: "zh"           # 默认中文，可在单篇里覆盖为 en
+  - scope:
+      path: ""
+      type: "til"
+    values:
+      layout: "til"
+      lang: "zh"
   - scope:
       path: ""
       type: "pages"

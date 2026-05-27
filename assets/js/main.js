@@ -186,6 +186,119 @@
     });
   }
 
+  // ---------- 全局搜索：Pagefind ----------
+  function setupPagefind() {
+    const modal = document.getElementById('pagefind-modal');
+    const mount = document.getElementById('pagefind-search');
+    if (!modal || !mount) return;
+
+    let inited = false;
+
+    function open() {
+      modal.hidden = false;
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      if (!inited && window.PagefindUI) {
+        new window.PagefindUI({
+          element: '#pagefind-search',
+          showImages: false,
+          showSubResults: true,
+          excerptLength: 25,
+          resetStyles: false,
+          translations: (document.documentElement.lang === 'en') ? {
+            placeholder: 'Search posts, notes, TILs...',
+            zero_results: 'No results for "[SEARCH_TERM]"'
+          } : {
+            placeholder: '搜索博客 / 笔记 / TIL...',
+            zero_results: '没有匹配 "[SEARCH_TERM]" 的内容'
+          }
+        });
+        inited = true;
+      }
+      // Focus input after UI mounts
+      setTimeout(() => {
+        const input = modal.querySelector('.pagefind-ui__search-input');
+        if (input) input.focus();
+      }, 100);
+    }
+
+    function close() {
+      modal.hidden = true;
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    // 关闭按钮 / 背景点击
+    modal.querySelectorAll('[data-pagefind-close]').forEach(el => {
+      el.addEventListener('click', close);
+    });
+
+    // 键盘快捷键
+    document.addEventListener('keydown', e => {
+      const isCmdK = (e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k';
+      if (isCmdK) { e.preventDefault(); open(); return; }
+      if (e.key === 'Escape' && !modal.hidden) close();
+      if (e.key === '/' && !modal.hidden === false) {
+        // 仅当不在输入框时，斜杠也能打开搜索
+        const tag = (e.target.tagName || '').toLowerCase();
+        if (tag !== 'input' && tag !== 'textarea' && !e.target.isContentEditable) {
+          e.preventDefault();
+          open();
+        }
+      }
+    });
+
+    // 暴露给侧边栏触发按钮
+    document.querySelectorAll('[data-open-search]').forEach(btn => {
+      btn.addEventListener('click', e => { e.preventDefault(); open(); });
+    });
+  }
+
+  // ---------- Sidenotes（Tufte 风边注） ----------
+  // 把 kramdown 渲染的标准脚注 [^1] 在桌面端搬到右侧空白边距
+  function setupSidenotes() {
+    const article = document.querySelector('.post-content');
+    if (!article) return;
+
+    // kramdown 产物：
+    //   inline marker → <sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>
+    //   底部 footnotes → <div class="footnotes"><ol><li id="fn:1"><p>...<a class="reversefootnote">↩</a></p></li></ol></div>
+    const markers = article.querySelectorAll('sup[id^="fnref"]');
+    const footnotesDiv = article.querySelector('.footnotes');
+    if (!markers.length || !footnotesDiv) return;
+
+    markers.forEach((marker, idx) => {
+      // 从 marker 的 a.footnote 找到对应的 #fn:N
+      const link = marker.querySelector('a.footnote, a[href^="#fn"]');
+      if (!link) return;
+      const targetId = link.getAttribute('href').replace('#', '');
+      const fnLi = footnotesDiv.querySelector('#' + CSS.escape(targetId));
+      if (!fnLi) return;
+
+      // 抽取脚注正文（去掉那个回跳箭头）
+      const clone = fnLi.cloneNode(true);
+      const back = clone.querySelector('.reversefootnote');
+      if (back) back.remove();
+
+      // 构造 sidenote 元素
+      const note = document.createElement('span');
+      note.className = 'sidenote';
+      note.innerHTML =
+        '<span class="sidenote-number">' + (idx + 1) + '.</span>' +
+        clone.innerHTML.trim();
+
+      // 插到 marker 后面（marker 本身保留作为 anchor）
+      marker.insertAdjacentElement('afterend', note);
+
+      // 移动端：点击 marker 切换 sidenote 展开
+      marker.addEventListener('click', e => {
+        if (window.innerWidth >= 1100) return; // 桌面端不拦截，让原跳转行为生效
+        e.preventDefault();
+        note.classList.toggle('is-expanded');
+      });
+    });
+  }
+
   // ---------- 搜索（语言敏感） ----------
   function setupSearch() {
     const input = document.getElementById('search-input');
@@ -460,6 +573,8 @@
     buildTOC();
     setupCodeCopy();
     setupShare();
+    setupSidenotes();
+    setupPagefind();
   });
 
 })();

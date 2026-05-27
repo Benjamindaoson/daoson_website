@@ -17,6 +17,21 @@
     </main>
   </div>
 
+  {%- comment -%} 全局搜索模态：Cmd/Ctrl+K 触发，由 Pagefind UI 驱动 {%- endcomment -%}
+  <div id="pagefind-modal" class="pagefind-modal" hidden aria-hidden="true">
+    <div class="pagefind-modal-backdrop" data-pagefind-close></div>
+    <div class="pagefind-modal-panel" role="dialog" aria-labelledby="pagefind-modal-title">
+      <header class="pagefind-modal-head">
+        <span id="pagefind-modal-title" class="mono small subtle">
+          <span class="i18n i18n-zh">// 全站搜索（按 Esc 关闭）</span>
+          <span class="i18n i18n-en">// Site-wide search (Esc to close)</span>
+        </span>
+        <button class="pagefind-modal-close" data-pagefind-close aria-label="Close">✕</button>
+      </header>
+      <div id="pagefind-search"></div>
+    </div>
+  </div>
+
   <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>

@@ -1,0 +1,58 @@
+---
+layout: default
+---
+
+<div class="post-narrow til-page" data-til-lang="{{ page.lang | default: 'zh' }}">
+
+  <article class="til-article">
+
+    <header class="til-header">
+      <p class="mono small accent" style="margin-bottom: 0.4rem;">
+        <a href="{{ '/til/' | relative_url }}" style="color: inherit; text-decoration: none;">// til</a>
+        / {{ page.slug | default: 'untitled' }}
+      </p>
+      <h1>{{ page.title }}</h1>
+
+      <div class="til-meta">
+        {% if page.date %}
+          <span class="til-meta-item">
+            <span class="i18n i18n-zh">📅 学于</span>
+            <span class="i18n i18n-en">📅 Learned on</span>
+            {{ page.date | date: "%Y-%m-%d" }}
+          </span>
+        {% endif %}
+
+        <span class="post-lang-badge post-lang-badge-{{ page.lang | default: 'zh' }}">{{ page.lang | default: 'zh' | upcase }}</span>
+
+        {% if page.tags and page.tags.size > 0 %}
+          <span class="til-meta-tags">
+            {% for tag in page.tags %}
+              <a href="{{ '/tags/' | relative_url }}#{{ tag }}" class="tag">#{{ tag }}</a>
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+    </header>
+
+    {% include translation-link.html %}
+
+    <div class="post-content til-content">
+      {{ content }}
+    </div>
+
+  </article>
+
+  {% include backlinks.html %}
+
+  <nav class="til-end-nav">
+    <a href="{{ '/til/' | relative_url }}" class="btn secondary">
+      <span class="i18n i18n-zh">← 全部 TIL</span>
+      <span class="i18n i18n-en">← All TILs</span>
+    </a>
+    <a href="{{ '/' | relative_url }}" class="btn secondary">
+      <span class="i18n i18n-zh">🏠 首页</span>
+      <span class="i18n i18n-en">🏠 Home</span>
+    </a>
+  </nav>
+
+</div>

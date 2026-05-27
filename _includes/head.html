@@ -28,6 +28,10 @@
 
 {% seo %}
 
+{%- comment -%} Pagefind 全文搜索（站点构建时由 npx pagefind 生成 /pagefind/ 目录） {%- endcomment -%}
+<link rel="stylesheet" href="{{ '/pagefind/pagefind-ui.css' | relative_url }}">
+<script src="{{ '/pagefind/pagefind-ui.js' | relative_url }}" defer></script>
+
 {%- comment -%} 仅文章页加载 KaTeX (math: false 可关闭) {%- endcomment -%}
 {% if page.layout == 'post' and page.math != false %}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"

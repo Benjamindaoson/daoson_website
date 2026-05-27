@@ -1,0 +1,68 @@
+---
+layout: default
+title: TIL · Today I Learned
+permalink: /til/
+description: 每天学到的一个小东西。短、原子化、可索引。
+---
+
+<section class="hero">
+  <span class="prompt">~/til $ tail -f learnings.log</span>
+  <h1>
+    <span class="i18n i18n-zh">TIL · 今天学到</span>
+    <span class="i18n i18n-en">TIL · Today I Learned</span>
+  </h1>
+  <p class="hero-lead">
+    <span class="i18n i18n-zh">
+      <strong>每天学到的一个小东西。</strong>
+      不写长文，不展开论述，就是一个具体的发现 + 必要的上下文。
+      累积一年就是 365 条可搜索的小知识 —— 别人 Google 时大概率会撞到。
+      <br>
+      共 <strong class="accent mono">{{ site.til | size }}</strong> 条，按时间倒序。
+    </span>
+    <span class="i18n i18n-en">
+      <strong>One small thing I learned, daily.</strong>
+      No essays. No buildup. Just a concrete finding plus the minimal context needed.
+      Over a year that's 365 searchable atoms — and Google indexes each one.
+      <br>
+      <strong class="accent mono">{{ site.til | size }}</strong> entries, newest first.
+    </span>
+  </p>
+</section>
+
+{%- assign sorted_til = site.til | sort: "date" | reverse -%}
+
+{%- if sorted_til.size == 0 -%}
+  <div class="notes-empty">
+    <p class="subtle mono small">// 还没有 TIL。在 <code>_til/</code> 下新建第一条试试。</p>
+  </div>
+{%- else -%}
+
+  {%- comment -%} 按月分组 {%- endcomment -%}
+  {% assign til_by_month = sorted_til | group_by_exp: "t", "t.date | date: '%Y-%m'" %}
+
+  <div class="til-index">
+    {% for month_group in til_by_month %}
+      <section class="til-month">
+        <h2 class="til-month-head">
+          <span class="til-month-name mono">{{ month_group.name }}</span>
+          <span class="til-month-count mono small subtle">// {{ month_group.items | size }}</span>
+        </h2>
+
+        <ul class="til-list">
+          {% for t in month_group.items %}
+            {%- assign til_lang = t.lang | default: 'zh' -%}
+            <li class="til-item" data-post-lang="{{ til_lang }}">
+              <span class="til-date mono small">{{ t.date | date: "%m-%d" }}</span>
+              <a href="{{ t.url | relative_url }}" class="til-item-title">{{ t.title }}</a>
+              <span class="til-item-meta mono small">
+                <span class="post-lang-badge post-lang-badge-{{ til_lang }}">{{ til_lang | upcase }}</span>
+                {% for tag in t.tags limit: 2 %}<span class="archive-tag">#{{ tag }}</span>{% endfor %}
+              </span>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endfor %}
+  </div>
+
+{%- endif -%}

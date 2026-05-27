@@ -42,6 +42,30 @@ jobs:
             --baseurl "${{ steps.pages.outputs.base_path }}" \
             --destination _site
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install rsvg-convert (for OG card PNG conversion)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y librsvg2-bin
+
+      - name: Convert OG SVG cards to PNG
+        run: |
+          mkdir -p _site/assets/og-cards-png
+          for f in _site/assets/og-cards/*.svg; do
+            [ -e "$f" ] || continue
+            name=$(basename "$f" .svg)
+            rsvg-convert -w 1200 -h 630 -o "_site/assets/og-cards-png/${name}.png" "$f" || true
+          done
+          echo "Generated $(ls _site/assets/og-cards-png/*.png 2>/dev/null | wc -l) PNG OG cards"
+
+      - name: Build Pagefind search index
+        run: |
+          npx --yes pagefind@latest --site _site --output-subdir pagefind
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

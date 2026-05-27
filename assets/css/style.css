@@ -2495,6 +2495,111 @@ html:not([lang="en"]) .share-set-en {
   opacity: 0.85;
 }
 
+/* ============================================
+   Sidenotes（Tufte 风边注）
+   桌面端：脚注从底部移到正文右侧空白边距
+   移动端：折叠为点击展开
+   ============================================ */
+
+/* 让 .post-narrow 在宽屏时可以容纳右侧边注 */
+@media (min-width: 1100px) {
+  .post-narrow {
+    /* 给右侧留出 240px 边注区域 */
+    padding-right: 260px;
+    max-width: 960px;  /* 720 + 240 */
+    position: relative;
+  }
+}
+
+/* 脚注标记：上标小数字（来自 kramdown） */
+.post-content sup.footnote-ref,
+.post-content sup[id^="fnref"],
+.post-content a.footnote {
+  font-size: 0.75em;
+  line-height: 1;
+  vertical-align: super;
+  color: var(--accent, #58a6ff);
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0 0.15em;
+}
+
+.post-content sup.footnote-ref:hover,
+.post-content a.footnote:hover {
+  text-decoration: underline;
+}
+
+/* Sidenote 容器（由 JS 注入到 marker 旁边） */
+.sidenote {
+  display: none;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text);
+  opacity: 0.85;
+}
+
+.sidenote-number {
+  font-weight: 600;
+  color: var(--accent, #58a6ff);
+  margin-right: 0.25em;
+}
+
+/* 桌面端：边注定位到右侧 */
+@media (min-width: 1100px) {
+  .sidenote {
+    display: block;
+    position: absolute;
+    right: -260px;
+    width: 230px;
+    margin-top: -0.4em;
+    padding: 0.5rem 0.75rem;
+    border-left: 2px solid var(--border, rgba(255,255,255,0.1));
+    background: var(--bg-elevated, rgba(255,255,255,0.02));
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  /* 桌面端：原来的底部 footnotes 区域隐藏（已经搬到边上了） */
+  .post-content .footnotes {
+    display: none;
+  }
+}
+
+/* 移动端：保持 marker 但 sidenote 通过点击展开 */
+@media (max-width: 1099px) {
+  .sidenote.is-expanded {
+    display: block;
+    margin: 0.5rem 0;
+    padding: 0.6rem 0.8rem;
+    border-left: 2px solid var(--accent, #58a6ff);
+    background: var(--bg-elevated, rgba(255,255,255,0.04));
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 0.88rem;
+  }
+
+  /* 移动端：底部 footnotes 区域保留（兜底） */
+  .post-content .footnotes {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed var(--border, rgba(255,255,255,0.1));
+    font-size: 0.9rem;
+  }
+
+  .post-content .footnotes ol {
+    padding-left: 1.5rem;
+  }
+
+  .post-content .footnotes li {
+    margin-bottom: 0.6rem;
+  }
+
+  .post-content .footnotes .reversefootnote {
+    margin-left: 0.4em;
+    text-decoration: none;
+    color: var(--accent, #58a6ff);
+  }
+}
+
 /* 列表空态：当前语言没有文章时显示 */
 .lang-empty-state {
   margin: 2rem 0;
@@ -2509,6 +2614,254 @@ html:not([lang="en"]) .share-set-en {
 .lang-empty-state .mono {
   display: block;
   margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   TIL 索引页
+   ============================================ */
+.til-index {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.til-month {
+  border-left: 2px dashed var(--border, rgba(255,255,255,0.1));
+  padding-left: 1rem;
+}
+
+.til-month-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 0 0 0.75rem 0;
+  font-size: 1.1rem;
+}
+
+.til-month-name {
+  font-weight: 700;
+  color: var(--accent, #58a6ff);
+}
+
+.til-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.til-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px dotted var(--border, rgba(255,255,255,0.08));
+}
+
+.til-item:last-child { border-bottom: 0; }
+
+.til-date {
+  color: var(--text);
+  opacity: 0.55;
+  flex-shrink: 0;
+  width: 3.5rem;
+}
+
+.til-item-title {
+  flex: 1;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.til-item-title:hover {
+  color: var(--accent, #58a6ff);
+}
+
+.til-item-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.til-end-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--border, rgba(255,255,255,0.1));
+}
+
+.til-page .til-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px dashed var(--border, rgba(255,255,255,0.1));
+}
+
+.til-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   404 页面
+   ============================================ */
+.not-found {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.not-found-terminal {
+  max-width: 520px;
+  margin: 0 auto 2rem;
+  text-align: left;
+}
+
+.not-found-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0 0.5rem;
+  flex-wrap: wrap;
+}
+
+.not-found-code {
+  font-size: 3rem;
+  color: var(--accent, #58a6ff);
+}
+
+.not-found-lead {
+  color: var(--text);
+  opacity: 0.8;
+  margin-bottom: 2rem;
+}
+
+.not-found-search {
+  margin: 2rem 0;
+  text-align: left;
+}
+
+.not-found-search .post-list {
+  margin-top: 1rem;
+}
+
+.not-found-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* ============================================
+   全局搜索：Pagefind Modal
+   ============================================ */
+.sidebar-search-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  margin: 0 0 0.75rem 0;
+  background: var(--bg-elevated, rgba(255,255,255,0.04));
+  border: 1px solid var(--border, rgba(255,255,255,0.12));
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 0.88rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: border-color 0.15s ease;
+}
+
+.sidebar-search-btn:hover {
+  border-color: var(--accent, #58a6ff);
+}
+
+.sidebar-search-kbd {
+  margin-left: auto;
+  padding: 0.05rem 0.3rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border, rgba(255,255,255,0.12));
+  border-radius: 3px;
+  font-size: 0.72rem;
+  color: var(--text);
+  opacity: 0.7;
+}
+
+.pagefind-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10vh 1rem 2rem;
+}
+
+.pagefind-modal[hidden] { display: none; }
+
+.pagefind-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+.pagefind-modal-panel {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  background: var(--bg-elevated, #161b22);
+  border: 1px solid var(--border, rgba(255,255,255,0.12));
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  overflow: hidden;
+}
+
+.pagefind-modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border, rgba(255,255,255,0.08));
+}
+
+.pagefind-modal-close {
+  background: transparent;
+  border: 0;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0 0.4rem;
+  opacity: 0.7;
+}
+
+.pagefind-modal-close:hover { opacity: 1; }
+
+/* Pagefind UI 内部样式微调 */
+#pagefind-search {
+  padding: 1rem;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.pagefind-ui {
+  --pagefind-ui-primary: var(--accent, #58a6ff);
+  --pagefind-ui-text: var(--text, #c9d1d9);
+  --pagefind-ui-background: transparent;
+  --pagefind-ui-border: var(--border, rgba(255,255,255,0.12));
+  --pagefind-ui-tag: var(--bg-elevated, rgba(255,255,255,0.05));
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 6px;
+  --pagefind-ui-font: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
 }
 
 /* ============================================
