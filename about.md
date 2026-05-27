@@ -20,7 +20,11 @@ description: 我是谁 · 我在想什么 · 怎么找到我
 <section class="about-layout">
 
   <div>
-    <div class="avatar">{{ site.author | slice: 0, 1 }}</div>
+    <div class="avatar avatar-photo">
+      <img src="{{ '/assets/img/avatar.jpg' | relative_url }}"
+           alt="{{ site.author }}"
+           onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'{{ site.author | slice: 0, 1 }}',className:'avatar-fallback'}))">
+    </div>
     <p class="mono small subtle" style="margin-top: 0.75rem; text-align: center;">
       // {{ site.github_username }}
     </p>
