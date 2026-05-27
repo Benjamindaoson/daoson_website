@@ -3,11 +3,10 @@
 # ============================================
 
 # 站点信息
-# TODO: 把下面这些改成你想对外用的样子。author 显示在首页"嗨，我是 X"那里。
-title: "Benjamin Daoson · 笔记 / 思考 / 工程"
-description: "一个工程师的个人博客和数字花园 —— 记录技术、思考、与生活。"
+title: "Benjamin Daoson · Agent / 工程 / 思考"
+description: "一个在折腾 multi-agent system 和数字员工的工程师，记录技术、思考、与生活。"
 author: "Benjamin Daoson"
-email: "you@example.com"   # TODO: 改成真实邮箱（会显示在 About / 页脚 / RSS 里）
+email: "benjamindaoson@gmail.com"
 
 # 部署地址
 # 如果用 用户名.github.io 仓库 → url 填 https://用户名.github.io ，baseurl 留空
@@ -17,7 +16,7 @@ baseurl: "/daoson_website"
 
 # 社交链接（在页脚、关于页用）
 github_username: "Benjamindaoson"
-twitter_username: ""         # TODO: 填你的 Twitter handle（不带 @），不用 Twitter 就保留空字符串
+twitter_username: "Benjamindaoson"
 
 # 构建配置
 markdown: kramdown

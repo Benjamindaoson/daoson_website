@@ -7,34 +7,34 @@
 #   description - 一句话简介（必填）
 #   icon        - 图标符号（一两个字符，如 { }、>_、⚡）
 #   status      - active | archived
-#   category    - web | cli | tool | game | library （用于筛选）
+#   category    - web | cli | tool | game | library | ai （用于筛选）
 #   url         - 项目链接（GitHub / Demo）
 #   stars       - GitHub star 数（可省）
 #   lang        - 主要语言
 #   year        - 年份
-#
-# ⚠️ TODO：下面是两个示例条目（用 TODO 标记）。
-#    把它们替换成你真实的项目；不写假的好过写假的。
-#    一两个真实项目就够撑场面，没必要凑数。
 # ============================================
 
-- name: "TODO: 项目 1"
-  description: "一句话讲清楚这个项目解决了什么问题、给谁用、用了什么技术。不要写空话，写具体场景。"
-  icon: "{ }"
+- name: "数字员工系统 / Digital Employee Platform"
+  description: "Multi-agent system —— 让多个 LLM agent 协作完成本来需要真人员工才能做的工作。重点在 agent 协议、工具调用可靠性、人在回路的工程实践。"
+  icon: "🤖"
   status: active
-  category: web
-  url: "https://github.com/Benjamindaoson"
-  lang: TypeScript
+  category: ai
+  url: "https://github.com/Benjamindaoson"   # TODO: 项目有 public 仓库后改成具体地址
+  lang: "Python · TypeScript"
   year: 2026
 
-- name: "TODO: 项目 2"
-  description: "另一个项目的简介。如果暂时没有第二个项目，删掉这条即可。"
-  icon: ">_"
-  status: active
-  category: cli
-  url: "https://github.com/Benjamindaoson"
-  lang: Rust
-  year: 2025
+# TODO: 等有了第二个项目（哪怕只是一个写过的 dotfile 仓库或一篇代表作合集）
+#       再加一条。空着比写假的好。
+#
+# 模板（取消注释后编辑）：
+# - name: "项目名"
+#   description: "一句话讲清楚解决什么问题。"
+#   icon: "⚡"
+#   status: active             # 或 archived
+#   category: tool             # 或 web / cli / library / ai
+#   url: "https://github.com/Benjamindaoson/项目"
+#   lang: "Rust"
+#   year: 2025
 
-# 提示：项目可以是任何东西 —— 开源工具、写过的文章合集、
-# 业余实验、一个 dotfile 仓库都算。重要的不是数量，是真实。
+# 提示：projects 页面也支持"已归档"的旧项目（status: archived），
+# 用淡色显示。如果你想展示过往作品来撑信任度，也值得收录。

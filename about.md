@@ -32,13 +32,16 @@ description: 我是谁 · 我在想什么 · 怎么找到我
 
 你好 👋 我是 **{{ site.author }}**。
 
-> TODO：用 2-3 句话讲清楚你是谁、做什么、为什么写这个博客。
-> 这是整个站点最重要的一段话，值得反复修改。
-> 比如："工程师 / 写作者 / 折腾爱好者。喜欢用代码做小而有用的东西。
-> 这里记录我在编程、设计、阅读路上的思考。"
+工程师 / agent 系统折腾者。**我目前在做 multi-agent system 和数字员工系统** ——
+把 LLM 从"会聊天的工具"推到"能独立完成工作的同事"。
+我相信接下来 3-5 年里，能把这条曲线做对的人会塑造软件的下一种形态。
 
-这个网站是我用 Jekyll + 手写 CSS 搭的 —— **没有评论、没有追踪、没有广告**，
-就是一个干净的角落。文章用 Markdown 写，源代码在 [GitHub]({{ '/' | prepend: 'https://github.com/' | prepend: site.github_username }}) 上公开。
+这个博客是我记录沿途思考的地方：agent 架构、LLM 工程实践、读到的好书、踩过的坑。
+中英双语写作，因为这个领域的好东西分散在两种语言里，
+而我想做一个能让两边读者都看见对方思考的小桥梁。
+
+网站本身用 Jekyll + 手写 CSS 搭 —— **没有评论、没有追踪、没有广告**，
+就是个干净的角落。文章和源代码都在 [GitHub](https://github.com/{{ site.github_username }}/daoson_website) 上公开。
 
 </div>
 
@@ -66,13 +69,9 @@ description: 我是谁 · 我在想什么 · 怎么找到我
 
 <div markdown="1">
 
-> TODO：每隔一两个月手动更新这里。
-> 写一两句最近的真实状态 —— 比如"在写一本关于 X 的指南"、"在折腾 Y 项目"、
-> "在读 Z 这本书"。让读者知道这个站点是活的。
-
-- **<span class="i18n i18n-zh">在做</span><span class="i18n i18n-en">Building</span>**：（一句话当前重点）
-- **<span class="i18n i18n-zh">在写</span><span class="i18n i18n-en">Writing</span>**：<span class="i18n i18n-zh">技术文章、工具评测、思考随笔</span><span class="i18n i18n-en">tech essays, tool reviews, reflections</span>
-- **<span class="i18n i18n-zh">在读</span><span class="i18n i18n-en">Reading</span>**：（书名 / 主题）
+- **<span class="i18n i18n-zh">在做</span><span class="i18n i18n-en">Building</span>**：<span class="i18n i18n-zh">multi-agent system / 数字员工系统</span><span class="i18n i18n-en">multi-agent systems / digital employees</span>
+- **<span class="i18n i18n-zh">在写</span><span class="i18n i18n-en">Writing</span>**：<span class="i18n i18n-zh">agent 架构 · LLM 工程 · 读书与思考</span><span class="i18n i18n-en">agent architectures · LLM engineering · reading notes</span>
+- **<span class="i18n i18n-zh">在读</span><span class="i18n i18n-en">Reading</span>**：<span class="i18n i18n-zh">详见 <a href="{{ '/now/' | relative_url }}">/now</a> 页面，每月更新</span><span class="i18n i18n-en">see <a href="{{ '/now/' | relative_url }}">/now</a>, updated monthly</span>
 
 </div>
 
