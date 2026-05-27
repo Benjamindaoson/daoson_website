@@ -2835,6 +2835,14 @@ html:not([lang="en"]) .share-set-en {
   transition: border-color 0.15s ease;
 }
 
+/* 修复：搜索按钮内的 SVG 必须显式约束尺寸，否则会撑满整行 */
+.sidebar-search-btn .nav-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
 .sidebar-search-btn:hover {
   border-color: var(--accent, #58a6ff);
 }
