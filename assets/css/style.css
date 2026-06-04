@@ -843,6 +843,191 @@ hr {
 }
 
 /* ============================================
+   Labs / 构建记录
+   ============================================ */
+.labs-hero p {
+  max-width: 760px;
+  line-height: 1.7;
+}
+
+.labs-section {
+  margin: 3rem 0;
+}
+
+.labs-section-header {
+  max-width: 760px;
+  margin-bottom: 1rem;
+}
+
+.labs-kicker {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  color: var(--accent);
+}
+
+.labs-principles,
+.labs-status-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.labs-mini-card,
+.labs-status-item,
+.labs-note,
+.labs-contact {
+  padding: 1rem 1.15rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.labs-mini-card h3 {
+  margin: 0.45rem 0 0;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.labs-status-list {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.labs-status-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.project-status.prototype {
+  background: rgba(217, 119, 6, 0.14);
+  color: var(--highlight);
+}
+
+.project-status.learning {
+  background: rgba(21, 101, 192, 0.12);
+  color: var(--link);
+}
+
+.labs-featured-card {
+  display: block;
+  padding: 1.35rem 1.5rem;
+  background:
+    linear-gradient(180deg, rgba(232, 243, 235, 0.55), rgba(255,255,255,0) 38%),
+    var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.labs-featured-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-hover);
+}
+
+.labs-featured-card h3 {
+  margin-top: 0.4rem;
+  font-size: 1.25rem;
+}
+
+.labs-featured-card p {
+  max-width: 760px;
+  color: var(--text-muted);
+}
+
+.labs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.labs-card {
+  min-height: 100%;
+}
+
+.labs-card .project-meta {
+  flex-wrap: wrap;
+}
+
+.labs-project-facts {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1rem 0 0;
+  padding-top: 0.8rem;
+  border-top: 1px dashed var(--border);
+}
+
+.labs-project-facts div {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.labs-project-facts dt {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.labs-project-facts dd {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.labs-note {
+  border-style: dashed;
+  background: var(--bg);
+}
+
+.labs-note h2,
+.labs-contact h2 {
+  margin-top: 0;
+}
+
+.labs-note p {
+  max-width: 760px;
+  margin-bottom: 0;
+  color: var(--text-muted);
+}
+
+.labs-contact {
+  border-top: 3px solid var(--accent);
+}
+
+.labs-link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+@media (max-width: 900px) {
+  .labs-principles,
+  .labs-status-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .labs-principles,
+  .labs-status-list,
+  .labs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .labs-featured-card,
+  .labs-note,
+  .labs-contact {
+    padding: 1.1rem;
+  }
+}
+
+/* ============================================
    关于我 About
    ============================================ */
 .about-layout {

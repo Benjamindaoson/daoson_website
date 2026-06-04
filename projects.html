@@ -1,51 +1,196 @@
 ---
 layout: default
-title: 项目展示
+title: Labs / 构建记录
 permalink: /projects/
-description: 我做过的一些项目
+description: 正在构建、验证和复盘的项目实验。
 ---
 
-<section class="hero">
-  <span class="prompt">~/projects $ ls -la</span>
+<section class="hero labs-hero">
+  <span class="prompt">~/labs $ tail -f build.log</span>
   <h1>
-    <span class="i18n i18n-zh">项目展示</span>
-    <span class="i18n i18n-en">Projects</span>
+    <span class="i18n i18n-zh">Labs / 构建记录</span>
+    <span class="i18n i18n-en">Labs / Build Log</span>
   </h1>
   <p>
-    <span class="i18n i18n-zh">这里收集了我做过的一些项目——有些已经上线，有些还在打磨，有些已经归档。点击卡片查看详情或源码。</span>
-    <span class="i18n i18n-en">Some projects I've built — some shipped, some still being polished, some archived. Click any card for details or source.</span>
+    <span class="i18n i18n-zh">这里记录我正在构建、验证和复盘的项目实验。不是作品集包装，而是学习、系统设计和真实构建过程。</span>
+    <span class="i18n i18n-en">A build log for projects, prototypes, and experiments — focused on learning, systems, and honest progress.</span>
   </p>
 </section>
 
-<div class="tag-cloud" style="margin-bottom: 1.5rem;">
-  <a href="#" class="tag active" data-tag-filter="all">all</a>
-  {% assign cats = site.data.projects | map: "category" | uniq %}
-  {% for cat in cats %}
-    <a href="#" class="tag" data-tag-filter="{{ cat }}">{{ cat }}</a>
-  {% endfor %}
-</div>
+<section class="labs-section" aria-labelledby="labs-principles-heading">
+  <div class="labs-section-header">
+    <span class="labs-kicker mono small">principles</span>
+    <h2 id="labs-principles-heading">
+      <span class="i18n i18n-zh">实验原则</span>
+      <span class="i18n i18n-en">Lab Principles</span>
+    </h2>
+  </div>
 
-<div class="project-grid">
-  {% for proj in site.data.projects %}
-    <a href="{{ proj.url | default: '#' }}" class="project-card" data-tags="{{ proj.category }}">
+  <div class="labs-principles">
+    <article class="labs-mini-card">
+      <span class="mono small subtle">01</span>
+      <h3>
+        <span class="i18n i18n-zh">公开构建，但保持诚实</span>
+        <span class="i18n i18n-en">Build in public, but honestly</span>
+      </h3>
+    </article>
+    <article class="labs-mini-card">
+      <span class="mono small subtle">02</span>
+      <h3>
+        <span class="i18n i18n-zh">小实验胜过假作品集</span>
+        <span class="i18n i18n-en">Small experiments over fake portfolios</span>
+      </h3>
+    </article>
+    <article class="labs-mini-card">
+      <span class="mono small subtle">03</span>
+      <h3>
+        <span class="i18n i18n-zh">关注系统、工具和学习闭环</span>
+        <span class="i18n i18n-en">Systems, tools, and learning loops</span>
+      </h3>
+    </article>
+  </div>
+</section>
+
+<section class="labs-section" aria-labelledby="labs-status-heading">
+  <div class="labs-section-header">
+    <span class="labs-kicker mono small">status_index</span>
+    <h2 id="labs-status-heading">
+      <span class="i18n i18n-zh">状态说明</span>
+      <span class="i18n i18n-en">Status Overview</span>
+    </h2>
+  </div>
+
+  <div class="labs-status-list">
+    <div class="labs-status-item labs-status-active">
+      <span class="project-status">active</span>
+      <span class="i18n i18n-zh">正在持续投入</span>
+      <span class="i18n i18n-en">ongoing work</span>
+    </div>
+    <div class="labs-status-item labs-status-prototype">
+      <span class="project-status prototype">prototype</span>
+      <span class="i18n i18n-zh">有原型，正在验证</span>
+      <span class="i18n i18n-en">working prototype, still validating</span>
+    </div>
+    <div class="labs-status-item labs-status-learning">
+      <span class="project-status learning">learning</span>
+      <span class="i18n i18n-zh">学习型项目</span>
+      <span class="i18n i18n-en">learning project</span>
+    </div>
+    <div class="labs-status-item labs-status-archived">
+      <span class="project-status archived">archived</span>
+      <span class="i18n i18n-zh">已归档，但保留复盘价值</span>
+      <span class="i18n i18n-en">archived, kept for reflection</span>
+    </div>
+  </div>
+</section>
+
+{% assign active_projects = site.data.projects | where: "status", "active" %}
+{% if active_projects.size > 0 %}
+  {% assign featured_project = active_projects | first %}
+  {% assign featured_href = featured_project.url | default: '/projects/' %}
+  <section class="labs-section labs-featured" aria-labelledby="labs-featured-heading">
+    <div class="labs-section-header">
+      <span class="labs-kicker mono small">active_project</span>
+      <h2 id="labs-featured-heading">
+        <span class="i18n i18n-zh">当前重点</span>
+        <span class="i18n i18n-en">Featured / Active Project</span>
+      </h2>
+    </div>
+
+    <a href="{% if featured_href contains 'http' %}{{ featured_href }}{% else %}{{ featured_href | relative_url }}{% endif %}" class="labs-featured-card" {% if featured_href contains 'http' %}target="_blank" rel="noopener"{% endif %}>
       <div class="project-head">
-        <span class="project-icon">{{ proj.icon }}</span>
-        <span class="project-status {% if proj.status == 'archived' %}archived{% endif %}">{{ proj.status }}</span>
+        <span class="project-icon">{{ featured_project.icon }}</span>
+        <span class="project-status">{{ featured_project.status }}</span>
       </div>
-      <h3>{{ proj.name }}</h3>
-      <p class="project-desc">{{ proj.description }}</p>
-      <div class="project-meta">
-        {% if proj.stars %}<span>★ {{ proj.stars }}</span>{% endif %}
-        {% if proj.lang %}<span>{{ proj.lang }}</span>{% endif %}
-        {% if proj.year %}<span>{{ proj.year }}</span>{% endif %}
-      </div>
+      <h3>{{ featured_project.name }}</h3>
+      <p>{{ featured_project.description }}</p>
+      <dl class="labs-project-facts">
+        {% if featured_project.problem %}
+          <div>
+            <dt>problem</dt>
+            <dd>{{ featured_project.problem }}</dd>
+          </div>
+        {% endif %}
+        {% if featured_project.next %}
+          <div>
+            <dt>next</dt>
+            <dd>{{ featured_project.next }}</dd>
+          </div>
+        {% endif %}
+      </dl>
     </a>
-  {% endfor %}
-</div>
+  </section>
+{% endif %}
 
-<hr>
+<section class="labs-section" aria-labelledby="labs-list-heading">
+  <div class="labs-section-header">
+    <span class="labs-kicker mono small">project_list</span>
+    <h2 id="labs-list-heading">
+      <span class="i18n i18n-zh">项目列表</span>
+      <span class="i18n i18n-en">Project List</span>
+    </h2>
+  </div>
 
-<p class="mono small subtle" style="text-align: center;">
-  <span class="i18n i18n-zh">// 更多项目请访问 <a href="https://github.com/{{ site.github_username }}">github.com/{{ site.github_username }}</a></span>
-  <span class="i18n i18n-en">// More projects on <a href="https://github.com/{{ site.github_username }}">github.com/{{ site.github_username }}</a></span>
-</p>
+  <div class="labs-grid">
+    {% for proj in site.data.projects %}
+      {% assign project_href = proj.url | default: '/projects/' %}
+      <a href="{% if project_href contains 'http' %}{{ project_href }}{% else %}{{ project_href | relative_url }}{% endif %}" class="project-card labs-card" data-tags="{{ proj.category }}" {% if project_href contains 'http' %}target="_blank" rel="noopener"{% endif %}>
+        <div class="project-head">
+          <span class="project-icon">{{ proj.icon }}</span>
+          <span class="project-status {% if proj.status == 'archived' %}archived{% elsif proj.status == 'prototype' %}prototype{% elsif proj.status == 'learning' %}learning{% endif %}">{{ proj.status }}</span>
+        </div>
+        <h3>{{ proj.name }}</h3>
+        <p class="project-desc">{{ proj.description }}</p>
+        <div class="project-meta">
+          {% if proj.category %}<span>{{ proj.category }}</span>{% endif %}
+          {% if proj.lang %}<span>{{ proj.lang }}</span>{% endif %}
+          {% if proj.year %}<span>{{ proj.year }}</span>{% endif %}
+        </div>
+        {% if proj.problem or proj.next %}
+          <dl class="labs-project-facts">
+            {% if proj.problem %}
+              <div>
+                <dt>problem</dt>
+                <dd>{{ proj.problem }}</dd>
+              </div>
+            {% endif %}
+            {% if proj.next %}
+              <div>
+                <dt>next</dt>
+                <dd>{{ proj.next }}</dd>
+              </div>
+            {% endif %}
+          </dl>
+        {% endif %}
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="labs-section labs-note" aria-labelledby="labs-note-heading">
+  <span class="labs-kicker mono small">in_progress</span>
+  <h2 id="labs-note-heading">
+    <span class="i18n i18n-zh">正在整理中</span>
+    <span class="i18n i18n-en">In Progress</span>
+  </h2>
+  <p>
+    <span class="i18n i18n-zh">更多项目正在整理中。我只会添加真实可公开、能说明问题背景、技术取舍和学习过程的项目。</span>
+    <span class="i18n i18n-en">More projects are being organized. I only add work that can be described honestly, with context, tradeoffs, and learning notes.</span>
+  </p>
+</section>
+
+<section class="labs-section labs-contact" aria-labelledby="labs-contact-heading">
+  <span class="labs-kicker mono small">links</span>
+  <h2 id="labs-contact-heading">
+    <span class="i18n i18n-zh">继续查看</span>
+    <span class="i18n i18n-en">Keep Looking</span>
+  </h2>
+  <div class="labs-link-row">
+    {% if site.github_username %}
+      <a class="btn secondary" href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">View GitHub</a>
+    {% endif %}
+    {% if site.email %}
+      <a class="btn secondary" href="mailto:{{ site.email }}">Contact / Email</a>
+    {% endif %}
+  </div>
+</section>
