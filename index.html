@@ -288,6 +288,44 @@ description: Benjamin Daoson 的长期数字花园，记录 AI、编程、产品
   </p>
 </section>
 
+{% assign elsewhere_items = site.data.elsewhere | sort: "date" | reverse %}
+{% if elsewhere_items.size > 0 %}
+  <section class="home-section elsewhere-home-section" aria-labelledby="home-elsewhere-heading">
+    <div class="home-section-header">
+      <span class="home-section-kicker mono small">elsewhere</span>
+      <h2 id="home-elsewhere-heading">
+        <span class="i18n i18n-zh">外部发布</span>
+        <span class="i18n i18n-en">Elsewhere</span>
+      </h2>
+      <p class="home-section-lead">
+        <span class="i18n i18n-zh">我在其他平台发布的内容索引，只保留摘要和原文链接。</span>
+        <span class="i18n i18n-en">A lightweight index of things I publish on other platforms, with summaries and original links.</span>
+      </p>
+    </div>
+
+    <div class="elsewhere-list elsewhere-home-list">
+      {% for item in elsewhere_items limit: 3 %}
+        <article class="elsewhere-card">
+          <div class="elsewhere-card-head">
+            {% if item.platform %}<span class="elsewhere-platform">{{ item.platform }}</span>{% endif %}
+            {% if item.type %}<span class="elsewhere-type">{{ item.type }}</span>{% endif %}
+            {% if item.date %}<time class="mono small subtle" datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%Y-%m-%d" }}</time>{% endif %}
+          </div>
+          <h3>{{ item.title }}</h3>
+          {% if item.summary %}<p>{{ item.summary }}</p>{% endif %}
+          {% if item.url %}
+            <a class="elsewhere-link mono small" href="{{ item.url }}" target="_blank" rel="noopener">
+              <span class="i18n i18n-zh">查看原文</span>
+              <span class="i18n i18n-en">Open original</span>
+            </a>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+    <p class="home-section-link mono small"><a href="{{ '/elsewhere/' | relative_url }}">~/elsewhere</a></p>
+  </section>
+{% endif %}
+
 <section class="home-section home-contact-section" aria-labelledby="contact-heading">
   <div class="home-section-header">
     <span class="home-section-kicker mono small">contact</span>

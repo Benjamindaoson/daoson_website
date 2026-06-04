@@ -431,9 +431,14 @@ a.home-card:hover {
   border-top: 1px dashed var(--border-strong);
 }
 
+.elsewhere-home-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 @media (max-width: 900px) {
   .home-card-grid,
-  .home-garden-grid {
+  .home-garden-grid,
+  .elsewhere-home-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -456,7 +461,8 @@ a.home-card:hover {
 
   .home-card-grid,
   .home-garden-grid,
-  .home-project-grid {
+  .home-project-grid,
+  .elsewhere-home-list {
     grid-template-columns: 1fr;
   }
 
@@ -464,6 +470,115 @@ a.home-card:hover {
     flex-direction: column;
     align-items: flex-start;
     padding: 1.15rem;
+  }
+}
+
+/* ============================================
+   Elsewhere / 外部发布索引
+   ============================================ */
+.elsewhere-hero p {
+  max-width: 760px;
+  line-height: 1.7;
+}
+
+.elsewhere-section {
+  margin: 3rem 0;
+}
+
+.elsewhere-section-header {
+  max-width: 760px;
+  margin-bottom: 1rem;
+}
+
+.elsewhere-kicker {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  color: var(--accent);
+}
+
+.elsewhere-platforms,
+.elsewhere-card-head,
+.elsewhere-tags,
+.elsewhere-list,
+.elsewhere-link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.elsewhere-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.elsewhere-card,
+.elsewhere-empty,
+.elsewhere-note {
+  padding: 1.1rem 1.2rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.elsewhere-card h3 {
+  margin: 0.7rem 0 0.45rem;
+  font-size: 1.05rem;
+}
+
+.elsewhere-card p,
+.elsewhere-empty p,
+.elsewhere-note p {
+  margin-bottom: 0;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.elsewhere-platform,
+.elsewhere-type {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.65rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  border: 1px solid var(--border);
+  background: var(--bg-code);
+  color: var(--text-muted);
+}
+
+.elsewhere-type {
+  background: var(--accent-bg);
+  color: var(--accent);
+  border-color: transparent;
+}
+
+.elsewhere-link {
+  display: inline-flex;
+  width: max-content;
+  margin-top: 0.8rem;
+}
+
+.elsewhere-empty,
+.elsewhere-note {
+  border-style: dashed;
+  background: var(--bg);
+}
+
+.elsewhere-note h2 {
+  margin-top: 0;
+}
+
+@media (max-width: 640px) {
+  .elsewhere-list {
+    grid-template-columns: 1fr;
+  }
+
+  .elsewhere-card,
+  .elsewhere-empty,
+  .elsewhere-note {
+    padding: 1rem;
   }
 }
 

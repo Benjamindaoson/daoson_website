@@ -1,0 +1,13 @@
+# External publications index.
+# Keep this file manually maintained. Do not copy platform content here.
+#
+# Example:
+# - title: "External publication title"
+#   platform: "YouTube"
+#   date: 2026-06-01
+#   type: video
+#   summary: "One-sentence summary written for this site, not copied from the platform."
+#   url: "https://..."
+#   tags: ["AI", "frontend"]
+#   language: "zh"
+[]
