@@ -205,6 +205,26 @@ main {
   line-height: 1.75;
 }
 
+.home-hero .home-hero-tagline {
+  display: inline-flex;
+  max-width: 100%;
+  margin: 0.25rem 0 0;
+  padding: 0.45rem 0.7rem;
+  background: var(--bg-code);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.home-hero .home-hero-tagline::before {
+  content: '>';
+  margin-right: 0.55rem;
+  color: var(--accent);
+}
+
 .home-actions {
   display: flex;
   flex-wrap: wrap;
@@ -298,17 +318,83 @@ a.home-card:hover {
   margin-bottom: 0.25rem;
 }
 
+.home-featured-grid {
+  align-items: stretch;
+}
+
+.home-featured-card {
+  position: relative;
+}
+
+.home-featured-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.home-featured-primary {
+  border-color: var(--border-strong);
+  background:
+    linear-gradient(180deg, rgba(232, 243, 235, 0.6), rgba(255,255,255,0) 42%),
+    var(--bg-elevated);
+}
+
+.home-featured-primary h3 {
+  font-size: 1.12rem;
+}
+
+.home-featured-primary::after {
+  border-top: 3px solid var(--accent);
+}
+
 .home-project-grid {
   margin-top: 1rem;
+}
+
+.home-project-card {
+  border-color: var(--border-strong);
+}
+
+.home-project-card .project-status {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .home-placeholder-card {
   border-style: dashed;
   background: var(--bg);
+  opacity: 0.72;
+}
+
+.home-placeholder-card h3,
+.home-placeholder-card p {
+  color: var(--text-muted);
 }
 
 .home-section-link {
   margin-top: 0.8rem;
+}
+
+.home-garden-grid {
+  padding: 1rem;
+  background:
+    linear-gradient(90deg, var(--border) 1px, transparent 1px),
+    linear-gradient(var(--border) 1px, transparent 1px);
+  background-size: 24px 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.home-garden-grid .home-link-card {
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.home-garden-meta {
+  margin-top: auto;
+  padding-top: 0.8rem;
+  color: var(--accent);
 }
 
 .home-now-panel {
@@ -337,6 +423,12 @@ a.home-card:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
+}
+
+.home-contact-section {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px dashed var(--border-strong);
 }
 
 @media (max-width: 900px) {

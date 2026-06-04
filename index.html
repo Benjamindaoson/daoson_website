@@ -14,6 +14,10 @@ description: Benjamin Daoson 的长期数字花园，记录 AI、编程、产品
     <span class="i18n i18n-zh">我是 Daoson。我在这里记录关于 AI、编程、产品设计和个人系统的长期思考。这个网站是我的数字花园：记录我如何学习、构建、犯错、修正，并把想法变成作品。</span>
     <span class="i18n i18n-en">I’m Daoson. This is my long-term digital garden for AI, programming, product thinking, and personal systems — a place where I document what I learn, what I build, and how my thinking evolves.</span>
   </p>
+  <p class="home-hero-tagline mono">
+    <span class="i18n i18n-zh">把学习、写作和构建，沉淀成一个长期系统。</span>
+    <span class="i18n i18n-en">Turning learning, writing, and building into a long-term system.</span>
+  </p>
   <div class="home-actions">
     <a class="btn" href="#latest-updates">
       <span class="i18n i18n-zh">阅读文章</span>
@@ -96,8 +100,13 @@ description: Benjamin Daoson 的长期数字花园，记录 AI、编程、产品
         {% endif %}
       {% endfor %}
       {% if featured_post %}
-        <a class="home-card home-featured-card" href="{{ featured_post.url | relative_url }}" data-post-lang="{{ featured_post.lang | default: 'zh' }}">
-          <span class="home-card-code mono small">{{ featured_post.date | date: "%Y-%m-%d" }}</span>
+        <a class="home-card home-featured-card {% if forloop.first %}home-featured-primary{% endif %}" href="{{ featured_post.url | relative_url }}" data-post-lang="{{ featured_post.lang | default: 'zh' }}">
+          <span class="home-card-code mono small">
+            {% if forloop.first %}
+              <span class="i18n i18n-zh">代表作</span><span class="i18n i18n-en">Selected</span> ·
+            {% endif %}
+            {{ featured_post.date | date: "%Y-%m-%d" }}
+          </span>
           <h3>{{ featured_post.title }}</h3>
           <p>{{ featured_post.description }}</p>
           <span class="home-card-meta mono small">
@@ -127,7 +136,7 @@ description: Benjamin Daoson 的长期数字花园，记录 AI、编程、产品
     <div class="project-grid home-project-grid">
       {% for proj in home_projects limit: 2 %}
         {% assign project_href = proj.url | default: '/projects/' %}
-        <a href="{% if project_href contains 'http' %}{{ project_href }}{% else %}{{ project_href | relative_url }}{% endif %}" class="project-card" data-tags="{{ proj.category }}" {% if project_href contains 'http' %}target="_blank" rel="noopener"{% endif %}>
+        <a href="{% if project_href contains 'http' %}{{ project_href }}{% else %}{{ project_href | relative_url }}{% endif %}" class="project-card home-project-card" data-tags="{{ proj.category }}" {% if project_href contains 'http' %}target="_blank" rel="noopener"{% endif %}>
           <div class="project-head">
             <span class="project-icon">{{ proj.icon }}</span>
             <span class="project-status {% if proj.status == 'archived' %}archived{% endif %}">{{ proj.status }}</span>
@@ -185,36 +194,40 @@ description: Benjamin Daoson 的长期数字花园，记录 AI、编程、产品
 
   <div class="home-card-grid home-garden-grid">
     <a class="home-card home-link-card" href="{{ '/notes/' | relative_url }}">
-      <span class="home-card-code mono small">notes</span>
+      <span class="home-card-code mono small">garden://notes</span>
       <h3>Notes</h3>
       <p>
         <span class="i18n i18n-zh">还在生长的概念、阅读摘记和互相链接的想法。</span>
         <span class="i18n i18n-en">Evolving concepts, reading notes, and connected ideas.</span>
       </p>
+      <span class="home-garden-meta mono small">{{ site.notes | size }} nodes</span>
     </a>
     <a class="home-card home-link-card" href="{{ '/til/' | relative_url }}">
-      <span class="home-card-code mono small">til</span>
+      <span class="home-card-code mono small">garden://til</span>
       <h3>TIL</h3>
       <p>
         <span class="i18n i18n-zh">短小、具体、可搜索的每日学习记录。</span>
         <span class="i18n i18n-en">Small, concrete, searchable learning atoms.</span>
       </p>
+      <span class="home-garden-meta mono small">{{ site.til | size }} entries</span>
     </a>
     <a class="home-card home-link-card" href="{{ '/tags/' | relative_url }}#思考">
-      <span class="home-card-code mono small">thinking</span>
+      <span class="home-card-code mono small">garden://thinking</span>
       <h3>Thinking</h3>
       <p>
         <span class="i18n i18n-zh">围绕编程、产品和系统的判断与复盘。</span>
         <span class="i18n i18n-en">Judgment and reflection around programming, product, and systems.</span>
       </p>
+      <span class="home-garden-meta mono small">topic trail</span>
     </a>
     <a class="home-card home-link-card" href="#latest-updates">
-      <span class="home-card-code mono small">writing</span>
+      <span class="home-card-code mono small">garden://writing</span>
       <h3>Writing</h3>
       <p>
         <span class="i18n i18n-zh">较完整的文章、教程和长期复盘。</span>
         <span class="i18n i18n-en">Longer essays, tutorials, and retrospectives.</span>
       </p>
+      <span class="home-garden-meta mono small">{{ site.posts | size }} posts</span>
     </a>
   </div>
 </section>
@@ -236,26 +249,6 @@ description: Benjamin Daoson 的长期数字花园，记录 AI、编程、产品
       <span class="i18n i18n-zh">查看 Now</span>
       <span class="i18n i18n-en">View Now</span>
     </a>
-  </div>
-</section>
-
-<section class="home-section" aria-labelledby="contact-heading">
-  <div class="home-section-header">
-    <span class="home-section-kicker mono small">contact</span>
-    <h2 id="contact-heading">
-      <span class="i18n i18n-zh">关注 / 联系</span>
-      <span class="i18n i18n-en">Contact / Follow</span>
-    </h2>
-  </div>
-
-  <div class="home-contact-row">
-    {% if site.github_username %}
-      <a class="btn secondary" href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a>
-    {% endif %}
-    {% if site.email %}
-      <a class="btn secondary" href="mailto:{{ site.email }}">Email</a>
-    {% endif %}
-    <a class="btn secondary" href="{{ '/feed.xml' | relative_url }}">RSS</a>
   </div>
 </section>
 
@@ -293,4 +286,28 @@ description: Benjamin Daoson 的长期数字花园，记录 AI、编程、产品
     <span class="i18n i18n-zh">// 共 <span class="search-result-count" data-search-result-count>{{ site.posts | size }}</span> 篇文章 · <a href="{{ '/feed.xml' | relative_url }}">订阅 RSS</a></span>
     <span class="i18n i18n-en">// <span class="search-result-count" data-search-result-count>{{ site.posts | size }}</span> posts total · <a href="{{ '/feed.xml' | relative_url }}">Subscribe RSS</a></span>
   </p>
+</section>
+
+<section class="home-section home-contact-section" aria-labelledby="contact-heading">
+  <div class="home-section-header">
+    <span class="home-section-kicker mono small">contact</span>
+    <h2 id="contact-heading">
+      <span class="i18n i18n-zh">关注 / 联系</span>
+      <span class="i18n i18n-en">Contact / Follow</span>
+    </h2>
+    <p class="home-section-lead">
+      <span class="i18n i18n-zh">如果这些记录对你有帮助，可以从这里继续关注或联系我。</span>
+      <span class="i18n i18n-en">If these notes are useful, this is the quiet end of the page to follow along or reach out.</span>
+    </p>
+  </div>
+
+  <div class="home-contact-row">
+    {% if site.github_username %}
+      <a class="btn secondary" href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a>
+    {% endif %}
+    {% if site.email %}
+      <a class="btn secondary" href="mailto:{{ site.email }}">Email</a>
+    {% endif %}
+    <a class="btn secondary" href="{{ '/feed.xml' | relative_url }}">RSS</a>
+  </div>
 </section>
