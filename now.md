@@ -46,11 +46,17 @@ Focus areas:
 
 ## <span class="i18n i18n-zh">📚 在读</span><span class="i18n i18n-en">📚 Reading</span>
 
-> TODO：当前在读的 1-3 本书。可以加一句话感想。
-> 建议跟工作主题相关，让读者一眼看出"这人有思想线"。
+<span class="i18n i18n-zh">
+正在整理中。这里会补充我最近真正读过、正在读、并且愿意推荐或反思的书。
+</span>
+<span class="i18n i18n-en">
+Still organizing this section. I will add books I am actually reading, recommending, or thinking through.
+</span>
 
-- *书名 1* — 一句话评价
-- *书名 2* — 一句话评价
+<span class="i18n i18n-zh">需要我补充的信息：</span><span class="i18n i18n-en">To fill in:</span>
+
+- <span class="i18n i18n-zh">最近在读的 1-3 本书</span><span class="i18n i18n-en">1-3 books currently on my desk</span>
+- <span class="i18n i18n-zh">每本书的一句话收获或保留意见</span><span class="i18n i18n-en">one takeaway or caveat for each book</span>
 
 ## <span class="i18n i18n-zh">🧠 在想</span><span class="i18n i18n-en">🧠 Thinking about</span>
 
@@ -67,12 +73,18 @@ Questions that keep coming back:
 
 ## <span class="i18n i18n-zh">🎯 接下来 90 天</span><span class="i18n i18n-en">🎯 Next 90 days</span>
 
-> TODO：3 个你想完成的具体目标。**写下来才有意义**，不写会忘。
-> 建议至少一个是"输出"（文章 / 演讲 / 代码发布），一个是"输入"（读完什么 / 学会什么）。
+<span class="i18n i18n-zh">
+正在整理中。我会只写已经决定投入的目标，而不是为了填满页面列愿望清单。
+</span>
+<span class="i18n i18n-en">
+Still organizing this section. I will only list goals I have actually committed to, not filler wishes.
+</span>
 
-1. <span class="i18n i18n-zh">目标 1：（比如：把数字员工系统的 v0.1 跑通在 1 个真实场景上）</span><span class="i18n i18n-en">Goal 1: (e.g., ship v0.1 of the digital employee platform in one real-world scenario)</span>
-2. <span class="i18n i18n-zh">目标 2：（比如：在博客写 6 篇 agent 工程长文）</span><span class="i18n i18n-en">Goal 2: (e.g., 6 long-form posts on agent engineering)</span>
-3. <span class="i18n i18n-zh">目标 3：（比如：读完 X 本书 / 跟 Y 个同行深聊）</span><span class="i18n i18n-en">Goal 3: (e.g., finish X books / have deep conversations with Y peers)</span>
+<span class="i18n i18n-zh">需要我补充的信息：</span><span class="i18n i18n-en">To fill in:</span>
+
+1. <span class="i18n i18n-zh">一个明确的输出目标，例如文章、演示或代码发布</span><span class="i18n i18n-en">one concrete output goal, such as writing, demo, or code release</span>
+2. <span class="i18n i18n-zh">一个明确的输入目标，例如读完什么或学会什么</span><span class="i18n i18n-en">one concrete input goal, such as a book or skill to finish</span>
+3. <span class="i18n i18n-zh">一个和当前项目直接相关的工程目标</span><span class="i18n i18n-en">one engineering goal tied directly to the current project</span>
 
 ---
 

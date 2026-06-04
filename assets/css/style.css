@@ -193,6 +193,189 @@ main {
 }
 
 /* ============================================
+   首页品牌入口 Home
+   ============================================ */
+.home-hero {
+  padding-top: 3.4rem;
+}
+
+.home-hero p {
+  max-width: 760px;
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+}
+
+.home-section {
+  margin: 3rem 0;
+}
+
+.home-section-header {
+  max-width: 760px;
+  margin-bottom: 1.1rem;
+}
+
+.home-section-header h2 {
+  margin-bottom: 0.45rem;
+}
+
+.home-section-kicker {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  color: var(--accent);
+}
+
+.home-section-lead {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.home-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.home-garden-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.home-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 1.15rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+}
+
+a.home-card {
+  text-decoration: none;
+  border-bottom: 0;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+a.home-card:hover {
+  color: var(--text);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-1px);
+}
+
+.home-card h3 {
+  margin: 0.55rem 0 0.45rem;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.home-card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.home-card-code,
+.home-card-meta {
+  color: var(--text-subtle);
+}
+
+.home-card-meta {
+  margin-top: auto;
+  padding-top: 0.85rem;
+}
+
+.home-featured-card p {
+  margin-bottom: 0.25rem;
+}
+
+.home-project-grid {
+  margin-top: 1rem;
+}
+
+.home-placeholder-card {
+  border-style: dashed;
+  background: var(--bg);
+}
+
+.home-section-link {
+  margin-top: 0.8rem;
+}
+
+.home-now-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.35rem 1.5rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+}
+
+.home-now-panel h2 {
+  margin-top: 0;
+}
+
+.home-now-panel p {
+  max-width: 680px;
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.home-contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+@media (max-width: 900px) {
+  .home-card-grid,
+  .home-garden-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .home-hero {
+    padding-top: 2.4rem;
+  }
+
+  .home-actions,
+  .home-contact-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .home-actions .btn,
+  .home-contact-row .btn {
+    justify-content: center;
+  }
+
+  .home-card-grid,
+  .home-garden-grid,
+  .home-project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-now-panel {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.15rem;
+  }
+}
+
+/* ============================================
    通用 元素
    ============================================ */
 h1, h2, h3, h4 {
@@ -2915,6 +3098,18 @@ html:not([lang="en"]) .share-set-en {
   overflow-y: auto;
 }
 
+.pagefind-unavailable {
+  padding: 1rem;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+
+.pagefind-unavailable p {
+  margin: 0.55rem 0 0;
+  color: var(--text-muted);
+}
+
 .pagefind-ui {
   --pagefind-ui-primary: var(--accent, #58a6ff);
   --pagefind-ui-text: var(--text, #c9d1d9);
@@ -3212,5 +3407,27 @@ html:not([lang="en"]) .share-set-en {
   .note-page .note-meta {
     gap: 0.5rem 0.75rem;
     font-size: 0.85rem;
+  }
+}
+
+/* 尊重系统"减少动态效果"设置 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .post-card:hover,
+  .project-card:hover,
+  .btn:hover,
+  .share-btn:hover {
+    transform: none;
   }
 }

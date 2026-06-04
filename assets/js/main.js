@@ -6,9 +6,21 @@
   'use strict';
 
   // ---------- i18n 语言切换 ----------
+  function normalizeLang(lang) {
+    return String(lang || '').toLowerCase().startsWith('en') ? 'en' : 'zh';
+  }
+
+  function getCurrentLang() {
+    return normalizeLang(document.documentElement.dataset.uiLang || document.documentElement.lang || 'zh');
+  }
+
+  function getPageLang() {
+    return normalizeLang(document.documentElement.dataset.pageLang || document.documentElement.lang || 'zh');
+  }
+
   function getStoredLang() {
-    try { return localStorage.getItem('site-lang') || 'zh'; }
-    catch (e) { return 'zh'; }
+    try { return localStorage.getItem('site-lang') || getCurrentLang(); }
+    catch (e) { return getCurrentLang(); }
   }
 
   function setStoredLang(lang) {
@@ -16,8 +28,18 @@
   }
 
   function applyLang(lang) {
-    const l = (lang === 'en') ? 'en' : 'zh';
-    document.documentElement.lang = l;
+    const l = normalizeLang(lang);
+    document.documentElement.dataset.uiLang = l;
+    document.documentElement.lang = getPageLang();
+
+    document.querySelectorAll('.i18n-zh, .i18n-en').forEach(el => {
+      const shouldShow = el.classList.contains('i18n-' + l);
+      el.style.setProperty('display', shouldShow ? 'inline' : 'none', 'important');
+    });
+    document.querySelectorAll('.share-set-zh, .share-set-en').forEach(el => {
+      const shouldShow = el.classList.contains('share-set-' + l);
+      el.style.setProperty('display', shouldShow ? 'flex' : 'none', 'important');
+    });
 
     // 处理 input/textarea placeholder（不能用 CSS）
     document.querySelectorAll('[data-placeholder-zh], [data-placeholder-en]').forEach(el => {
@@ -49,14 +71,14 @@
 
   function updateVisibleCounts() {
     // 首页文章计数（已存在的搜索/筛选用 .is-hidden）
-    const searchCount = document.getElementById('search-result-count');
-    if (searchCount) {
+    const searchCounts = document.querySelectorAll('[data-search-result-count]');
+    if (searchCounts.length) {
       const list = document.getElementById('post-list');
       if (list) {
         const visible = list.querySelectorAll(
           '.post-card-wrap:not(.lang-hidden):not(.is-hidden)'
         ).length;
-        searchCount.textContent = visible;
+        searchCounts.forEach(count => { count.textContent = visible; });
       }
     }
     // tags 页计数
@@ -86,7 +108,7 @@
     const btn = document.getElementById('lang-toggle');
     if (!btn) return;
     btn.addEventListener('click', () => {
-      const current = document.documentElement.lang || 'zh';
+      const current = getCurrentLang();
       const next = current === 'zh' ? 'en' : 'zh';
       applyLang(next);
       setStoredLang(next);
@@ -127,20 +149,30 @@
   function setupSidebarToggle() {
     const toggle = document.getElementById('sidebar-toggle');
     const sidebar = document.querySelector('.site-sidebar');
+    const sidebarContent = document.getElementById('sidebar-content');
     const backdrop = document.getElementById('sidebar-backdrop');
-    if (!toggle || !sidebar) return;
+    if (!toggle || !sidebar || !sidebarContent) return;
+
+    function syncSidebarA11y() {
+      const shouldHide = window.innerWidth < 900 && !sidebar.classList.contains('is-open');
+      sidebarContent.setAttribute('aria-hidden', String(shouldHide));
+    }
+    syncSidebarA11y();
 
     function open() {
       sidebar.classList.add('is-open');
       if (backdrop) backdrop.classList.add('is-shown');
       toggle.setAttribute('aria-expanded', 'true');
+      sidebarContent.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
     }
     function close() {
       sidebar.classList.remove('is-open');
       if (backdrop) backdrop.classList.remove('is-shown');
       toggle.setAttribute('aria-expanded', 'false');
+      syncSidebarA11y();
       document.body.style.overflow = '';
+      toggle.focus();
     }
 
     toggle.addEventListener('click', () => {
@@ -158,6 +190,7 @@
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && sidebar.classList.contains('is-open')) close();
     });
+    window.addEventListener('resize', syncSidebarA11y);
   }
 
   // ---------- 标签筛选 ----------
@@ -193,8 +226,25 @@
     if (!modal || !mount) return;
 
     let inited = false;
+    let unavailableShown = false;
+    let previousFocus = null;
+    const focusableSelector = [
+      'a[href]',
+      'button:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      'textarea:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])'
+    ].join(',');
 
     function open() {
+      if (!modal.hidden) {
+        const input = modal.querySelector('.pagefind-ui__search-input');
+        if (input) input.focus();
+        else modal.querySelector('[data-pagefind-close]')?.focus();
+        return;
+      }
+      previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
       modal.hidden = false;
       modal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
@@ -205,7 +255,7 @@
           showSubResults: true,
           excerptLength: 25,
           resetStyles: false,
-          translations: (document.documentElement.lang === 'en') ? {
+          translations: (getCurrentLang() === 'en') ? {
             placeholder: 'Search posts, notes, TILs...',
             zero_results: 'No results for "[SEARCH_TERM]"'
           } : {
@@ -214,11 +264,24 @@
           }
         });
         inited = true;
+      } else if (!inited && !window.PagefindUI && !unavailableShown) {
+        const isEn = getCurrentLang() === 'en';
+        mount.innerHTML = '<div class="pagefind-unavailable" role="status">'
+          + '<span class="mono small subtle">// pagefind index unavailable</span>'
+          + '<p>' + (isEn
+            ? 'Search is not available in this local preview because the Pagefind index has not been generated yet.'
+            : '当前本地预览尚未生成 Pagefind 搜索索引，因此全站搜索暂不可用。') + '</p>'
+          + '<p class="mono small subtle">' + (isEn
+            ? 'Run: bundle exec jekyll build && npx --yes pagefind@latest --site _site --output-subdir pagefind'
+            : '请运行：bundle exec jekyll build && npx --yes pagefind@latest --site _site --output-subdir pagefind') + '</p>'
+          + '</div>';
+        unavailableShown = true;
       }
       // Focus input after UI mounts
       setTimeout(() => {
         const input = modal.querySelector('.pagefind-ui__search-input');
         if (input) input.focus();
+        else modal.querySelector('[data-pagefind-close]')?.focus();
       }, 100);
     }
 
@@ -226,6 +289,10 @@
       modal.hidden = true;
       modal.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      if (previousFocus && typeof previousFocus.focus === 'function') {
+        previousFocus.focus();
+      }
+      previousFocus = null;
     }
 
     // 关闭按钮 / 背景点击
@@ -238,6 +305,20 @@
       const isCmdK = (e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k';
       if (isCmdK) { e.preventDefault(); open(); return; }
       if (e.key === 'Escape' && !modal.hidden) close();
+      if (e.key === 'Tab' && !modal.hidden) {
+        const focusables = Array.from(modal.querySelectorAll(focusableSelector))
+          .filter(el => el.offsetParent !== null || el === document.activeElement);
+        if (!focusables.length) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
       if (e.key === '/' && !modal.hidden === false) {
         // 仅当不在输入框时，斜杠也能打开搜索
         const tag = (e.target.tagName || '').toLowerCase();
@@ -306,7 +387,7 @@
     if (!input || !items.length) return;
     input.addEventListener('input', e => {
       const q = e.target.value.toLowerCase().trim();
-      const currentLang = document.documentElement.lang || 'zh';
+      const currentLang = getCurrentLang();
       let visible = 0;
       items.forEach(item => {
         const text = (item.dataset.search || '').toLowerCase();
@@ -318,8 +399,9 @@
         // 同时受语言过滤影响（已由 filterListsByLang 设置 .lang-hidden）
         if (matchSearch && matchLang) visible++;
       });
-      const counter = document.getElementById('search-result-count');
-      if (counter) counter.textContent = visible;
+      document.querySelectorAll('[data-search-result-count]').forEach(counter => {
+        counter.textContent = visible;
+      });
     });
   }
 
@@ -534,7 +616,7 @@
           await navigator.clipboard.writeText(url);
           btn.classList.add('is-copied');
           const orig = btn.innerHTML;
-          const isZh = document.documentElement.lang !== 'en';
+          const isZh = getCurrentLang() !== 'en';
           btn.innerHTML = isZh ? '<span>已复制 ✓</span>' : '<span>Copied ✓</span>';
           setTimeout(() => {
             btn.classList.remove('is-copied');

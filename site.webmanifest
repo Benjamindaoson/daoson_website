@@ -1,19 +1,22 @@
+---
+layout: null
+---
 {
   "name": "Benjamin Daoson · Blog",
   "short_name": "daoson",
   "description": "A personal blog and digital garden.",
-  "start_url": "/",
+  "start_url": "{{ '/' | relative_url }}",
   "display": "standalone",
   "background_color": "#0d1117",
   "theme_color": "#0d1117",
   "icons": [
     {
-      "src": "/assets/favicon.svg",
+      "src": "{{ '/assets/favicon.svg' | relative_url }}",
       "sizes": "any",
       "type": "image/svg+xml"
     },
     {
-      "src": "/assets/apple-touch-icon.svg",
+      "src": "{{ '/assets/apple-touch-icon.svg' | relative_url }}",
       "sizes": "180x180",
       "type": "image/svg+xml"
     }

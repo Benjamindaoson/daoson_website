@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+{%- assign page_lang = page.lang | default: site.default_language | default: 'zh' -%}
+<html lang="{{ page_lang }}" data-page-lang="{{ page_lang }}">
 <head>
   {% include head.html %}
 </head>
@@ -20,7 +21,7 @@
   {%- comment -%} 全局搜索模态：Cmd/Ctrl+K 触发，由 Pagefind UI 驱动 {%- endcomment -%}
   <div id="pagefind-modal" class="pagefind-modal" hidden aria-hidden="true">
     <div class="pagefind-modal-backdrop" data-pagefind-close></div>
-    <div class="pagefind-modal-panel" role="dialog" aria-labelledby="pagefind-modal-title">
+    <div class="pagefind-modal-panel" role="dialog" aria-modal="true" aria-labelledby="pagefind-modal-title">
       <header class="pagefind-modal-head">
         <span id="pagefind-modal-title" class="mono small subtle">
           <span class="i18n i18n-zh">// 全站搜索（按 Esc 关闭）</span>

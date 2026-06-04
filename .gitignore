@@ -9,6 +9,8 @@ _site/
 
 Gemfile.lock
 
+.bundle/
+
 .DS_Store
 
 node_modules/
@@ -20,4 +22,3 @@ node_modules/
 # 私密内容：日记和草稿不进 git
 _daily/
 _drafts/
-

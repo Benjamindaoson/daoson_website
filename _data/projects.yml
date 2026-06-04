@@ -19,12 +19,11 @@
   icon: "🤖"
   status: active
   category: ai
-  url: "https://github.com/Benjamindaoson"   # TODO: 项目有 public 仓库后改成具体地址
+  url: "https://github.com/Benjamindaoson"
   lang: "Python · TypeScript"
   year: 2026
 
-# TODO: 等有了第二个项目（哪怕只是一个写过的 dotfile 仓库或一篇代表作合集）
-#       再加一条。空着比写假的好。
+# 等有了第二个真实可公开项目，再加一条。空着比写假的好。
 #
 # 模板（取消注释后编辑）：
 # - name: "项目名"

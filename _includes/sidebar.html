@@ -1,11 +1,11 @@
-<aside class="site-sidebar">
+<aside class="site-sidebar" id="site-sidebar">
 
   <!-- 移动端汉堡 -->
-  <button class="sidebar-toggle" id="sidebar-toggle" aria-label="打开导航" aria-expanded="false">
+  <button class="sidebar-toggle" id="sidebar-toggle" aria-label="打开导航" aria-controls="sidebar-content" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 
-  <div class="sidebar-inner">
+  <div class="sidebar-inner" id="sidebar-content">
 
     <!-- 头像 + 品牌名 -->
     <a href="{{ '/about/' | relative_url }}" class="sidebar-avatar" aria-label="关于 {{ site.author }}">

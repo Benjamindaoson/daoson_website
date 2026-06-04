@@ -195,11 +195,21 @@ gem install bundler
 # 3. 安装依赖
 bundle install
 
-# 4. 启动本地服务
+# 4. 启动本地服务（不包含 Pagefind 全站搜索索引）
 bundle exec jekyll serve
 
 # 访问 http://localhost:4000
 ```
+
+如果需要本地测试全站搜索，请先安装 Node.js，然后生成 Pagefind 索引：
+
+```bash
+bundle exec jekyll build
+npx --yes pagefind@latest --site _site --output-subdir pagefind
+bundle exec jekyll serve --skip-initial-build
+```
+
+线上 GitHub Actions 会在部署时自动运行 Pagefind。
 
 > 不本地预览也完全 OK，直接 push 看 GitHub Pages 构建结果即可。
 

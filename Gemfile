@@ -21,7 +21,9 @@ platforms :mingw, :x64_mingw, :mswin, :jruby do
   gem "tzinfo-data"
 end
 
-gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
+# wdm 仅用于 Windows 下的文件监听优化，Jekyll build 不需要。
+# 新版 Ruby 上 wdm 0.1.1 native extensions 容易安装失败，先禁用以保证构建可复现。
+# gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
 
 # 本地构建性能（可选）
 gem "webrick", "~> 1.8"
