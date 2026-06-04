@@ -9,8 +9,9 @@ lang: en
 translation_key: vite-modern-frontend
 ---
 
-This is a sample post. Treat it as a template — copy it whenever you start
-something new, swap out title, date, tags, and write in Markdown.
+This note records how I set up a clean, fast, maintainable frontend
+experiment with Vite. It is a practical setup note, not a complete framework
+tutorial.
 
 > "Tools should serve thought, not the other way around."
 
@@ -25,15 +26,11 @@ Webpack flow, the wins are:
 - TypeScript, JSX, and CSS preprocessors work out of the box
 - Production builds use Rollup, with smaller output than Webpack
 
-The terminal screenshot below is what `npm run dev` looks like — note the
-187ms startup:
+The terminal output below shows what `npm run dev` looks like — note the 187ms
+startup:
 
 ![Vite dev server terminal output](/assets/img/posts/vite-modern-frontend/dev-server.svg)
 *Vite dev server · cold start in 187ms*
-
-> **Where to put images**: drop them in `assets/img/posts/<slug>/`,
-> then reference with `![alt](/assets/img/posts/xxx/yyy.png)`. The italic
-> line on the next paragraph becomes the figure caption automatically.
 
 ## Getting started
 
@@ -48,18 +45,8 @@ npm run dev
 
 Open `http://localhost:5173` and you'll see the default page.
 
-For a quick visual demo, here's a B-site walkthrough
-(replace `BVxxxxxxxxxx` with your own video ID):
-
-{% include video.html platform="bilibili" id="BV1xx411c7mu" %}
-
-YouTube works the same way — use the ID after `v=` in the URL:
-
-{% include video.html platform="youtube" id="dQw4w9WgXcQ" %}
-
-And for a self-hosted clip (mp4 in `assets/video/`):
-
-{% include video.html platform="self" src="/assets/video/vite-hmr-demo.mp4" poster="/assets/img/posts/vite-modern-frontend/dev-server.svg" %}
+I am not embedding a video demo here yet. If I record a real project walkthrough,
+I will link it from Elsewhere or add it to the article later.
 
 ## Common configuration
 

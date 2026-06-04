@@ -47,16 +47,17 @@ Focus areas:
 ## <span class="i18n i18n-zh">📚 在读</span><span class="i18n i18n-en">📚 Reading</span>
 
 <span class="i18n i18n-zh">
-正在整理中。这里会补充我最近真正读过、正在读、并且愿意推荐或反思的书。
+在读书单正在整理中。暂时不写书名，避免把还没认真读完、还没形成判断的内容放上来。
 </span>
 <span class="i18n i18n-en">
-Still organizing this section. I will add books I am actually reading, recommending, or thinking through.
+The reading list is still being organized. I am not listing book titles yet, because I only want to include books I have actually read enough to think about.
 </span>
 
-<span class="i18n i18n-zh">需要我补充的信息：</span><span class="i18n i18n-en">To fill in:</span>
+<span class="i18n i18n-zh">当前更确定的学习方向：</span><span class="i18n i18n-en">Current learning directions:</span>
 
-- <span class="i18n i18n-zh">最近在读的 1-3 本书</span><span class="i18n i18n-en">1-3 books currently on my desk</span>
-- <span class="i18n i18n-zh">每本书的一句话收获或保留意见</span><span class="i18n i18n-en">one takeaway or caveat for each book</span>
+- <span class="i18n i18n-zh">multi-agent system 的协作协议、工具调用可靠性和人在回路设计</span><span class="i18n i18n-en">multi-agent coordination protocols, tool-use reliability, and human-in-the-loop design</span>
+- <span class="i18n i18n-zh">Jekyll / Liquid / Pagefind 这套轻量个人网站系统的长期维护方式</span><span class="i18n i18n-en">long-term maintenance of a lightweight personal site built with Jekyll, Liquid, and Pagefind</span>
+- <span class="i18n i18n-zh">如何把文章、笔记、TIL 和 Labs 组织成可持续的知识系统</span><span class="i18n i18n-en">how to organize essays, notes, TILs, and Labs into a sustainable knowledge system</span>
 
 ## <span class="i18n i18n-zh">🧠 在想</span><span class="i18n i18n-en">🧠 Thinking about</span>
 
@@ -74,17 +75,15 @@ Questions that keep coming back:
 ## <span class="i18n i18n-zh">🎯 接下来 90 天</span><span class="i18n i18n-en">🎯 Next 90 days</span>
 
 <span class="i18n i18n-zh">
-正在整理中。我会只写已经决定投入的目标，而不是为了填满页面列愿望清单。
+接下来 90 天，我先把范围控制在已经公开的方向里：
 </span>
 <span class="i18n i18n-en">
-Still organizing this section. I will only list goals I have actually committed to, not filler wishes.
+For the next 90 days, I am keeping the scope close to what is already public:
 </span>
 
-<span class="i18n i18n-zh">需要我补充的信息：</span><span class="i18n i18n-en">To fill in:</span>
-
-1. <span class="i18n i18n-zh">一个明确的输出目标，例如文章、演示或代码发布</span><span class="i18n i18n-en">one concrete output goal, such as writing, demo, or code release</span>
-2. <span class="i18n i18n-zh">一个明确的输入目标，例如读完什么或学会什么</span><span class="i18n i18n-en">one concrete input goal, such as a book or skill to finish</span>
-3. <span class="i18n i18n-zh">一个和当前项目直接相关的工程目标</span><span class="i18n i18n-en">one engineering goal tied directly to the current project</span>
+1. <span class="i18n i18n-zh">把个人网站的首页、Labs、Uses、Now 和外部发布索引打磨到可以长期维护的状态。</span><span class="i18n i18n-en">Bring the homepage, Labs, Uses, Now, and Elsewhere index into a maintainable baseline.</span>
+2. <span class="i18n i18n-zh">补一篇关于数字员工系统的公开说明，讲清楚问题、边界、当前状态和下一步。</span><span class="i18n i18n-en">Publish a public note on the digital employee system: the problem, boundaries, current state, and next steps.</span>
+3. <span class="i18n i18n-zh">持续补充 AI 辅助开发、前端工程和个人知识系统相关的文章、笔记和 TIL。</span><span class="i18n i18n-en">Keep adding essays, notes, and TILs around AI-assisted development, frontend engineering, and personal knowledge systems.</span>
 
 ---
 
