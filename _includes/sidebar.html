@@ -70,7 +70,7 @@
           <path d="m3.3 7 8.7 5 8.7-5"/>
           <path d="M12 22V12"/>
         </svg>
-        <span class="i18n i18n-zh">项目</span><span class="i18n i18n-en">Projects</span>
+        <span class="i18n i18n-zh">Labs / 构建</span><span class="i18n i18n-en">Labs</span>
       </a>
       <a href="{{ '/elsewhere/' | relative_url }}" class="sidebar-nav-link" data-nav="elsewhere">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -105,9 +105,6 @@
         {% endif %}
         {% if site.email %}
           <li><a href="mailto:{{ site.email }}"><span class="i18n i18n-zh">邮箱</span><span class="i18n i18n-en">Email</span></a></li>
-        {% endif %}
-        {% if site.twitter_username %}
-          <li><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener">Twitter</a></li>
         {% endif %}
         <li>
           <a href="{{ '/feed-zh.xml' | relative_url }}" class="i18n i18n-zh" data-feed-zh>RSS (中文)</a>

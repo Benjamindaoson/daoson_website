@@ -208,19 +208,20 @@ main {
 .home-hero .home-hero-tagline {
   display: inline-flex;
   max-width: 100%;
-  margin: 0.25rem 0 0;
-  padding: 0.45rem 0.7rem;
-  background: var(--bg-code);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
-  border-radius: var(--radius);
+  margin: 0.55rem 0 0;
+  padding: 0.65rem 0 0;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--border-strong);
+  border-radius: 0;
   color: var(--text);
-  font-size: 0.92rem;
+  font-size: 1rem;
+  font-weight: 600;
   line-height: 1.45;
 }
 
 .home-hero .home-hero-tagline::before {
-  content: '>';
+  content: '//';
   margin-right: 0.55rem;
   color: var(--accent);
 }
@@ -312,6 +313,16 @@ a.home-card:hover {
 .home-card-meta {
   margin-top: auto;
   padding-top: 0.85rem;
+}
+
+.home-focus-grid .home-card {
+  background: color-mix(in srgb, var(--bg-elevated) 84%, var(--bg-code));
+  border-left: 3px solid var(--border-strong);
+}
+
+.home-focus-grid .home-card-code {
+  color: var(--accent);
+  font-weight: 600;
 }
 
 .home-featured-card p {
