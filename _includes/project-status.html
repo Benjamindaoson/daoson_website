@@ -1,0 +1,17 @@
+{%- assign status = include.status | default: "prototype" -%}
+<span class="project-status {% if status == 'archived' %}archived{% elsif status == 'prototype' %}prototype{% elsif status == 'learning' %}learning{% endif %}">
+  <span class="i18n i18n-zh">
+    {%- if status == "active" -%}
+      持续构建
+    {%- elsif status == "prototype" -%}
+      原型验证
+    {%- elsif status == "learning" -%}
+      学习项目
+    {%- elsif status == "archived" -%}
+      已归档
+    {%- else -%}
+      {{ status }}
+    {%- endif -%}
+  </span>
+  <span class="i18n i18n-en">{{ status }}</span>
+</span>

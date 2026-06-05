@@ -1,0 +1,24 @@
+{%- assign project = include.project -%}
+{%- assign project_href = project.url | default: "/projects/" -%}
+<a href="{% if project_href contains 'http' %}{{ project_href }}{% else %}{{ project_href | relative_url }}{% endif %}"
+   class="project-card {{ include.class }}"
+   data-tags="{{ project.category }}"
+   {% if project_href contains 'http' %}target="_blank" rel="noopener"{% endif %}>
+  <div class="project-head">
+    {% if project.icon %}<span class="project-icon">{{ project.icon }}</span>{% endif %}
+    {% include project-status.html status=project.status %}
+  </div>
+  <h3>
+    <span class="i18n i18n-zh">{{ project.name_zh | default: project.name }}</span>
+    <span class="i18n i18n-en">{{ project.name_en | default: project.name }}</span>
+  </h3>
+  <p class="project-desc">
+    <span class="i18n i18n-zh">{{ project.description_zh | default: project.description }}</span>
+    <span class="i18n i18n-en">{{ project.description_en | default: project.description }}</span>
+  </p>
+  <div class="project-meta">
+    {% if include.show_category and project.category %}<span>{{ project.category }}</span>{% endif %}
+    {% if project.lang %}<span>{{ project.lang }}</span>{% endif %}
+    {% if project.year %}<span>{{ project.year }}</span>{% endif %}
+  </div>
+</a>

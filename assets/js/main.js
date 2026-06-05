@@ -14,10 +14,6 @@
     return normalizeLang(document.documentElement.dataset.uiLang || document.documentElement.lang || 'zh');
   }
 
-  function getPageLang() {
-    return normalizeLang(document.documentElement.dataset.pageLang || document.documentElement.lang || 'zh');
-  }
-
   function getStoredLang() {
     try { return localStorage.getItem('site-lang') || getCurrentLang(); }
     catch (e) { return getCurrentLang(); }
@@ -30,16 +26,6 @@
   function applyLang(lang) {
     const l = normalizeLang(lang);
     document.documentElement.dataset.uiLang = l;
-    document.documentElement.lang = getPageLang();
-
-    document.querySelectorAll('.i18n-zh, .i18n-en').forEach(el => {
-      const shouldShow = el.classList.contains('i18n-' + l);
-      el.style.setProperty('display', shouldShow ? 'inline' : 'none', 'important');
-    });
-    document.querySelectorAll('.share-set-zh, .share-set-en').forEach(el => {
-      const shouldShow = el.classList.contains('share-set-' + l);
-      el.style.setProperty('display', shouldShow ? 'flex' : 'none', 'important');
-    });
 
     // 处理 input/textarea placeholder（不能用 CSS）
     document.querySelectorAll('[data-placeholder-zh], [data-placeholder-en]').forEach(el => {
@@ -121,7 +107,7 @@
     const segments = path.split('/').filter(Boolean);
     const last = segments[segments.length - 1] || '';
 
-    const navLinks = document.querySelectorAll('.sidebar-nav-link, .nav-links a');
+    const navLinks = document.querySelectorAll('.sidebar-nav-link');
     navLinks.forEach(link => {
       const href = (link.getAttribute('href') || '').replace(/\/$/, '');
       const linkLast = href.split('/').filter(Boolean).pop() || '';
@@ -272,8 +258,8 @@
             ? 'Search is not available in this local preview because the Pagefind index has not been generated yet.'
             : '当前本地预览尚未生成 Pagefind 搜索索引，因此全站搜索暂不可用。') + '</p>'
           + '<p class="mono small subtle">' + (isEn
-            ? 'Run: bundle exec jekyll build && npx --yes pagefind@latest --site _site --output-subdir pagefind'
-            : '请运行：bundle exec jekyll build && npx --yes pagefind@latest --site _site --output-subdir pagefind') + '</p>'
+            ? 'Run: powershell -ExecutionPolicy Bypass -File scripts/build_pagefind.ps1'
+            : '请运行：powershell -ExecutionPolicy Bypass -File scripts/build_pagefind.ps1') + '</p>'
           + '</div>';
         unavailableShown = true;
       }

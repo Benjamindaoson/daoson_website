@@ -113,9 +113,11 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - AGENTS.md
+  - CONTENT_SCHEMA.md
   - README.md
-  - NOTES_GUIDE.md
+  - scripts
   - node_modules
+  - .tmp-npm-cache
   - vendor
   - .sass-cache
   - .jekyll-cache

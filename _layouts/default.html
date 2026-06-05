@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 {%- assign page_lang = page.lang | default: site.default_language | default: 'zh' -%}
-<html lang="{{ page_lang }}" data-page-lang="{{ page_lang }}">
+<html lang="{{ page_lang }}" data-page-lang="{{ page_lang }}" data-ui-lang="{{ site.default_language | default: 'zh' }}">
 <head>
   {% include head.html %}
 </head>
 <body class="has-sidebar">
+  <a class="skip-link" href="#main-content">
+    <span class="i18n i18n-zh">跳到正文</span>
+    <span class="i18n i18n-en">Skip to content</span>
+  </a>
 
   <div class="site-layout">
     {% include sidebar.html %}
 
-    <main class="site-main">
+    <main class="site-main" id="main-content" tabindex="-1">
       <div class="site-main-inner">
         {{ content }}
       </div>

@@ -4,7 +4,8 @@
       © {{ 'now' | date: "%Y" }} {{ site.author }} ·
       {% if site.github_username %}<a href="https://github.com/{{ site.github_username }}">GitHub</a> ·{% endif %}
       <a href="mailto:{{ site.email }}">Email</a> ·
-      <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+      <a class="ui-lang-zh" href="{{ '/feed-zh.xml' | relative_url }}">RSS</a>
+      <a class="ui-lang-en" href="{{ '/feed-en.xml' | relative_url }}">RSS</a>
     </p>
     <p class="subtle small" style="margin-top: 0.5rem;">
       Built with Jekyll &amp; ❤ · Hosted on GitHub Pages

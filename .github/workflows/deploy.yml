@@ -64,7 +64,9 @@ jobs:
 
       - name: Build Pagefind search index
         run: |
-          npx --yes pagefind@latest --site _site --output-subdir pagefind
+          npx --yes pagefind@1.5.2 --site _site --output-subdir pagefind
+          test -f _site/pagefind/pagefind-ui.js
+          test -f _site/pagefind/pagefind-ui.css
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

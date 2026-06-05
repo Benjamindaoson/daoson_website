@@ -1,8 +1,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0d1117">
-<title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-<meta name="description" content="{{ page.description | default: site.description }}">
 
 {%- comment -%} Favicon 体系：SVG 优先（现代浏览器），apple-touch-icon 给 iOS 主屏 {%- endcomment -%}
 <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}">
@@ -12,7 +10,8 @@
 {%- assign cache_bust = site.time | date: '%s' -%}
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ cache_bust }}">
 
-{%- comment -%} 双 RSS：一个 ZH，一个 EN（各自只含对应语言文章） {%- endcomment -%}
+{%- comment -%} RSS：可见入口按语言分流，feed.xml 保留为全量聚合 feed {%- endcomment -%}
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }} (All posts)" href="{{ '/feed.xml' | relative_url }}">
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }} (中文)" href="{{ '/feed-zh.xml' | relative_url }}" hreflang="zh">
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }} (English)" href="{{ '/feed-en.xml' | relative_url }}" hreflang="en">
 
@@ -27,6 +26,28 @@
 {%- endif -%}
 
 {% seo %}
+
+{%- comment -%} 基础结构化数据：只声明站点与作者，不编造履历或组织信息 {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": {{ '/about/' | absolute_url | append: '#person' | jsonify }},
+  "name": {{ site.author | jsonify }},
+  "url": {{ '/about/' | absolute_url | jsonify }},
+  "email": {{ site.email | jsonify }},
+  "sameAs": [
+    {%- assign has_same_as = false -%}
+    {%- if site.github_username -%}
+      "https://github.com/{{ site.github_username }}"{%- assign has_same_as = true -%}
+    {%- endif -%}
+    {%- if site.twitter_username -%}
+      {%- if has_same_as -%},{%- endif -%}
+      "https://twitter.com/{{ site.twitter_username }}"
+    {%- endif -%}
+  ]
+}
+</script>
 
 {%- comment -%} Pagefind 全文搜索（站点构建时由 npx pagefind 生成 /pagefind/ 目录） {%- endcomment -%}
 <link rel="stylesheet" href="{{ '/pagefind/pagefind-ui.css' | relative_url }}">

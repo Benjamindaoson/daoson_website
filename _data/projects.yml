@@ -3,8 +3,9 @@
 # ============================================
 #
 # 字段说明：
-#   name        - 项目名（必填）
-#   description - 一句话简介（必填）
+#   name_zh     - 中文项目名（必填）
+#   name_en     - English project name（必填）
+#   description_zh / description_en - 一句话简介（必填）
 #   icon        - 图标符号（一两个字符，如 { }、>_、⚡）
 #   status      - active | prototype | learning | archived
 #   category    - web | cli | tool | game | library | ai （用于筛选）
@@ -12,40 +13,55 @@
 #   stars       - GitHub star 数（可省）
 #   lang        - 主要语言
 #   year        - 年份
-#   problem     - 这个项目想解决的问题（可省）
-#   next        - 下一步计划或正在整理的内容（可省）
+#   hypothesis_zh / hypothesis_en - 正在验证的核心假设（可省）
+#   problem_zh / problem_en - 这个项目想解决的问题（可省）
+#   next_zh / next_en - 下一步计划或正在整理的内容（可省）
 #   visibility  - public | private | writing
-#   public_boundary - 当前公开边界（可省）
+#   public_boundary_zh / public_boundary_en - 当前公开边界（可省）
 # ============================================
 
-- name: "数字员工系统 / Digital Employee Platform"
-  description: "Multi-agent system —— 一个正在构建中的数字员工实验，重点在 agent 协作协议、工具调用可靠性、状态恢复和人在回路。"
+- name_zh: "数字员工系统"
+  name_en: "Digital Employee System"
+  description_zh: "一个正在构建中的智能体实验，重点在协作协议、工具调用可靠性、状态恢复和人在回路。"
+  description_en: "An active agent-systems experiment focused on coordination protocols, reliable tool use, state recovery, and human-in-the-loop design."
   icon: "🤖"
   status: active
   category: ai
   url: "https://github.com/Benjamindaoson"
   lang: "Python · TypeScript"
   year: 2026
-  problem: "探索多个 LLM agent 如何分工、协作、调用工具，并在失败时恢复到可控状态。"
-  public_boundary: "目前只公开方向、问题背景和构建记录；具体仓库、演示和实现细节还在整理中。"
-  next: "补充一篇可公开的项目说明，讲清楚当前原型状态、架构取舍、还没有解决的问题，以及是否能开放具体仓库。"
+  hypothesis_zh: "多个智能体只有通过清晰协议、可靠工具调用和必要的人类介入，才可能从演示走向可持续工作流。"
+  hypothesis_en: "Agents only become useful working systems when coordination protocols, reliable tool use, and human checkpoints are designed together."
+  problem_zh: "探索多个大语言模型智能体如何分工、协作、调用工具，并在失败时恢复到可控状态。"
+  problem_en: "Exploring how multiple language-model agents can divide work, coordinate, call tools, and recover from failures in a controlled way."
+  public_boundary_zh: "目前只公开方向、问题背景和构建记录；具体仓库、演示和实现细节还在整理中。"
+  public_boundary_en: "For now, only the direction, problem context, and build notes are public; the repository, demo, and implementation details are still being organized."
+  next_zh: "补充一篇可公开的系统说明，讲清楚当前原型状态、架构取舍、还没有解决的问题，以及是否能开放具体仓库。"
+  next_en: "Publish a public system note covering the current prototype state, architecture tradeoffs, unsolved problems, and whether a specific repository can be opened."
   visibility: writing
 
 # 等有了第二个真实可公开项目，再加一条。空着比写假的好。
 #
 # 模板（取消注释后编辑）：
-# - name: "项目名"
-#   description: "一句话讲清楚解决什么问题。"
+# - name_zh: "项目名"
+#   name_en: "Project name"
+#   description_zh: "一句话讲清楚解决什么问题。"
+#   description_en: "One sentence describing the problem."
 #   icon: "⚡"
 #   status: active             # 或 prototype / learning / archived
 #   category: tool             # 或 web / cli / library / ai
 #   url: "https://github.com/Benjamindaoson/项目"
 #   lang: "Rust"
 #   year: 2025
-#   problem: "这个项目想解决的问题。"
-#   next: "下一步计划或正在整理的内容。"
+#   hypothesis_zh: "正在验证的核心假设。"
+#   hypothesis_en: "The core hypothesis being tested."
+#   problem_zh: "这个项目想解决的问题。"
+#   problem_en: "The problem being explored."
+#   next_zh: "下一步计划或正在整理的内容。"
+#   next_en: "The next honest step."
 #   visibility: public
-#   public_boundary: "当前能公开什么，不能公开什么。"
+#   public_boundary_zh: "当前能公开什么，不能公开什么。"
+#   public_boundary_en: "What is public and what is not public yet."
 
 # 提示：projects 页面也支持"已归档"的旧项目（status: archived），
 # 用淡色显示。如果你想展示过往作品来撑信任度，也值得收录。
