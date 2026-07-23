@@ -351,7 +351,7 @@
 
       // 移动端：点击 marker 切换 sidenote 展开
       marker.addEventListener('click', e => {
-        if (window.innerWidth >= 1100) return; // 桌面端不拦截，让原跳转行为生效
+        if (window.innerWidth >= 1600) return; // 超宽屏边注不拦截，让原跳转行为生效
         e.preventDefault();
         note.classList.toggle('is-expanded');
       });
