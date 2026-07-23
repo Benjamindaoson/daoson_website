@@ -3,9 +3,9 @@
 # ============================================
 
 # 站点信息
-title: "Benjamin Daoson · Agent / 工程 / 思考"
-description: "一个在折腾 multi-agent system 和数字员工的工程师，记录技术、思考、与生活。"
-author: "Benjamin Daoson"
+title: "本杰铭"
+description: "本杰铭的中文技术网站，记录 Agent 系统、评估、可靠 AI 应用工程、技术写作和长期知识积累。"
+author: "本杰铭"
 email: "benjamindaoson@gmail.com"
 
 # 部署地址
@@ -59,6 +59,9 @@ plugins:
 # Collections —— 博客 + 笔记两套内容
 # ============================================
 collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
   notes:
     output: true
     permalink: /notes/:path/
@@ -95,6 +98,12 @@ defaults:
       lang: "zh"
   - scope:
       path: ""
+      type: "projects"
+    values:
+      layout: "project"
+      lang: "zh"
+  - scope:
+      path: ""
       type: "pages"
     values:
       layout: "default"
@@ -115,6 +124,7 @@ exclude:
   - AGENTS.md
   - CONTENT_SCHEMA.md
   - README.md
+  - docs
   - scripts
   - node_modules
   - .tmp-npm-cache

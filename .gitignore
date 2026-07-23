@@ -24,3 +24,13 @@ node_modules/
 # 私密内容：日记和草稿不进 git
 _daily/
 _drafts/
+
+# 本地导入和内容草稿，不发布、不提交
+tmp/
+imports/
+*.log
+*.db
+*.sqlite
+*.sqlite3
+.env
+.env.*

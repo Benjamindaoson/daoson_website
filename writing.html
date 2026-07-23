@@ -1,0 +1,89 @@
+---
+layout: default
+title: 文章
+permalink: /writing/
+description: 围绕 Agent Systems、Evals、RAG、模型工程和生产 AI 的正式文章。
+---
+
+<section class="hero">
+  <span class="prompt">
+    <span class="i18n i18n-zh">~/writing $ start-here</span>
+    <span class="i18n i18n-en">~/writing $ start-here</span>
+  </span>
+  <h1>
+    <span class="i18n i18n-zh">文章</span>
+    <span class="i18n i18n-en">Writing</span>
+  </h1>
+  <p>
+    <span class="i18n i18n-zh">正式、完整、可公开引用的技术文章。主题围绕 Agent Systems、Agent Evals、RAG &amp; Context Engineering、Applied Model Engineering 和 Production AI。</span>
+    <span class="i18n i18n-en">Polished technical writing around Agent Systems, Agent Evals, RAG &amp; Context Engineering, Applied Model Engineering, and Production AI.</span>
+  </p>
+</section>
+<section class="home-section" aria-labelledby="writing-start-heading">
+  <div class="home-section-header">
+    <span class="home-section-kicker mono small">start_here</span>
+    <h2 id="writing-start-heading">
+      <span class="i18n i18n-zh">推荐阅读</span>
+      <span class="i18n i18n-en">Start Here</span>
+    </h2>
+  </div>
+
+  {% assign featured_paths = "_posts/2026-06-05-why-build-digital-employee-system.md|_posts/2026-06-05-why-build-digital-employee-system.en.md|_posts/2026-05-12-code-readability.md" | split: "|" %}
+  <div class="home-card-grid home-featured-grid">
+    {% for featured_path in featured_paths %}
+      {% assign featured_post = false %}
+      {% for post in site.posts %}
+        {% if post.path == featured_path %}
+          {% assign featured_post = post %}
+        {% endif %}
+      {% endfor %}
+      {% if featured_post %}
+        <a class="home-card home-featured-card" href="{{ featured_post.url | relative_url }}" data-post-lang="{{ featured_post.lang | default: 'zh' }}">
+          <span class="home-card-code mono small">{{ featured_post.date | date: "%Y-%m-%d" }}</span>
+          <h3>{{ featured_post.title }}</h3>
+          <p>{{ featured_post.description }}</p>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+<section class="home-section" aria-labelledby="writing-topics-heading">
+  <div class="home-section-header">
+    <span class="home-section-kicker mono small">topics</span>
+    <h2 id="writing-topics-heading">
+      <span class="i18n i18n-zh">主题</span>
+      <span class="i18n i18n-en">Topics</span>
+    </h2>
+  </div>
+  <div class="tag-row">
+    <span class="tag">Agent Systems</span>
+    <span class="tag">Agent Evals</span>
+    <span class="tag">RAG &amp; Context</span>
+    <span class="tag">Applied Model Engineering</span>
+    <span class="tag">Production AI</span>
+  </div>
+</section>
+
+<section class="home-section" aria-labelledby="all-writing-heading">
+  <div class="home-section-header">
+    <span class="home-section-kicker mono small">all_writing</span>
+    <h2 id="all-writing-heading">
+      <span class="i18n i18n-zh">全部文章</span>
+      <span class="i18n i18n-en">All Writing</span>
+    </h2>
+  </div>
+
+  <ul class="post-list" id="post-list">
+    {% for post in site.posts %}
+      {% include post-card.html post=post %}
+    {% endfor %}
+  </ul>
+
+  <p class="home-section-link mono small">
+    <a href="{{ '/archive/' | relative_url }}">
+      <span class="i18n i18n-zh">查看归档</span>
+      <span class="i18n i18n-en">Open archive</span>
+    </a>
+  </p>
+</section>

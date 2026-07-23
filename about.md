@@ -29,7 +29,7 @@ description: 我正在研究什么、如何思考，以及如何联系我。
            onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'{{ site.author | slice: 0, 1 }}',className:'avatar-fallback'}))">
     </div>
     <p class="mono small subtle" style="margin-top: 0.75rem; text-align: center;">
-      // {{ site.github_username }}
+      // {{ site.author }}
     </p>
   </div>
 
@@ -99,7 +99,7 @@ description: 我正在研究什么、如何思考，以及如何联系我。
 <span class="i18n i18n-en">If you are thinking about AI agents, software reliability, or personal knowledge systems, these are the best ways to reach me.</span>
 
 - <span class="i18n i18n-zh">邮箱</span><span class="i18n i18n-en">Email</span>：[{{ site.email }}](mailto:{{ site.email }})
-- GitHub：[github.com/{{ site.github_username }}](https://github.com/{{ site.github_username }})
+- GitHub：[本杰铭的 GitHub](https://github.com/{{ site.github_username }})
 - <span class="i18n i18n-zh">订阅源</span><span class="i18n i18n-en">RSS</span>：<a class="ui-lang-zh" href="{{ '/feed-zh.xml' | relative_url }}">中文 RSS</a><a class="ui-lang-en" href="{{ '/feed-en.xml' | relative_url }}">English RSS</a>
 
 </div>

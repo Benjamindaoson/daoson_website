@@ -1,6 +1,6 @@
 ---
 title: "Vite 为什么这么快"
-status: sapling
+status: growing
 tags: [前端, 构建工具]
 date: 2026-05-22
 updated: 2026-05-26

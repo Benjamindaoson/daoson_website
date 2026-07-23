@@ -2,9 +2,9 @@
 layout: null
 ---
 {
-  "name": "Benjamin Daoson · Blog",
-  "short_name": "daoson",
-  "description": "A personal blog and digital garden.",
+  "name": "本杰铭个人网站",
+  "short_name": "本杰铭",
+  "description": "本杰铭的个人技术网站和长期数字花园。",
   "start_url": "{{ '/' | relative_url }}",
   "display": "standalone",
   "background_color": "#0d1117",
