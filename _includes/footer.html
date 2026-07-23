@@ -3,12 +3,18 @@
     <p>
       © {{ 'now' | date: "%Y" }} {{ site.author }} ·
       {% if site.github_username %}<a href="https://github.com/{{ site.github_username }}">GitHub</a> ·{% endif %}
-      <a href="mailto:{{ site.email }}">Email</a> ·
+      <a href="mailto:{{ site.email }}">邮箱</a> ·
+      <a href="{{ '/writing/' | relative_url }}">文章</a> ·
+      <a href="{{ '/notes/' | relative_url }}">笔记</a> ·
+      <a href="{{ '/til/' | relative_url }}">每日所学</a> ·
+      <a href="{{ '/tags/' | relative_url }}">标签</a> ·
+      <a href="{{ '/archive/' | relative_url }}">归档</a> ·
+      <a href="{{ '/uses/' | relative_url }}">工具清单</a> ·
       <a class="ui-lang-zh" href="{{ '/feed-zh.xml' | relative_url }}">RSS</a>
       <a class="ui-lang-en" href="{{ '/feed-en.xml' | relative_url }}">RSS</a>
     </p>
     <p class="subtle small" style="margin-top: 0.5rem;">
-      Built with Jekyll &amp; ❤ · Hosted on GitHub Pages
+      使用 Jekyll 构建 · 托管于 GitHub Pages
     </p>
   </div>
 </footer>

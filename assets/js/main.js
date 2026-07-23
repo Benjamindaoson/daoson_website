@@ -7,7 +7,7 @@
 
   // ---------- i18n 语言切换 ----------
   function normalizeLang(lang) {
-    return String(lang || '').toLowerCase().startsWith('en') ? 'en' : 'zh';
+    return 'zh';
   }
 
   function getCurrentLang() {
@@ -15,12 +15,11 @@
   }
 
   function getStoredLang() {
-    try { return localStorage.getItem('site-lang') || getCurrentLang(); }
-    catch (e) { return getCurrentLang(); }
+    return 'zh';
   }
 
   function setStoredLang(lang) {
-    try { localStorage.setItem('site-lang', lang); } catch (e) {}
+    return;
   }
 
   function applyLang(lang) {
@@ -91,14 +90,7 @@
   }
 
   function setupLangToggle() {
-    const btn = document.getElementById('lang-toggle');
-    if (!btn) return;
-    btn.addEventListener('click', () => {
-      const current = getCurrentLang();
-      const next = current === 'zh' ? 'en' : 'zh';
-      applyLang(next);
-      setStoredLang(next);
-    });
+    return;
   }
 
   // ---------- 高亮当前导航 ----------

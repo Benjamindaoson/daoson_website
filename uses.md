@@ -20,10 +20,10 @@ description: 我使用的工具、写作环境和这个网站的技术栈。
 <div markdown="1" class="uses-content">
 
 <span class="i18n i18n-zh">
-这份清单仍在整理中。第一版先公开我能确认的网站技术栈和内容工作流；个人硬件、编辑器和日常软件等信息，等确认后再补。
+这份清单目前只保留和这个网站直接相关的公开工具。个人硬件、编辑器和日常软件如果以后能写清楚使用原因，再单独补充。
 </span>
 <span class="i18n i18n-en">
-This list is still being organized. The first version only includes the site stack and publishing workflow I can confirm; personal hardware, editor, and daily software will be added once verified.
+This page currently lists only public tools directly related to this site. Personal hardware, editor, and daily software can be added later if I can explain why they matter.
 </span>
 
 ## <span class="i18n i18n-zh">网站技术栈</span><span class="i18n i18n-en">Website stack</span>
@@ -40,17 +40,6 @@ This list is still being organized. The first version only includes the site sta
 - **Writing**：长文章放在 `_posts`，生长中的想法放在 `_notes`，小发现放在 `_til`。
 - **Labs**：项目记录由 `_data/projects.yml` 手动维护，优先真实进度而不是作品集包装。
 - **Elsewhere**：外部发布由 `_data/elsewhere.yml` 手动维护，只保存索引和摘要，不搬运全文。
-
-## <span class="i18n i18n-zh">正在确认</span><span class="i18n i18n-en">Still verifying</span>
-
-- **Computer / 电脑**：正在整理中。
-- **Editor / 编辑器**：正在整理中。
-- **Terminal / 终端**：正在整理中。
-- **Browser / 浏览器**：正在整理中。
-- **AI tools / AI 工具**：正在整理中。
-- **Writing / 写作工具**：正在整理中。
-
----
 
 <p class="mono small subtle">
 <span class="i18n i18n-zh">这里不会放赞助或联盟链接。信息不确定时，我宁可先留空。</span>
