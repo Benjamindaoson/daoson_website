@@ -20,6 +20,48 @@
 #   public_boundary_zh / public_boundary_en - 当前公开边界（可省）
 # ============================================
 
+- name_zh: "SmartOrderingAgent"
+  name_en: "SmartOrderingAgent"
+  description_zh: "用受控工具、显式确认和 MySQL 事务，把自然语言订位与真实业务承诺隔离开。"
+  description_en: "A restaurant reservation MVP that separates natural-language assistance from confirmed business writes with controlled tools and transactions."
+  icon: "↔"
+  status: prototype
+  category: ai
+  url: "/projects/smart-ordering-agent/"
+  lang: "Python · Vue · MySQL"
+  year: 2026
+  visibility: public
+  public_boundary_zh: "公开仓库展示了可写入 MySQL 的 MVP；公网生产能力仍需补足。"
+  public_boundary_en: "The public repository demonstrates a MySQL-backed MVP; public-production capabilities remain out of scope."
+
+- name_zh: "金融资产智能问答"
+  name_en: "Financial Asset QA System"
+  description_zh: "用确定性编排、工具数据校验和响应守卫，让金融问答的数值与来源链路可追溯。"
+  description_en: "A financial QA system that makes values and sources traceable through deterministic orchestration, validation, and response guards."
+  icon: "⌁"
+  status: prototype
+  category: ai
+  url: "/projects/financial-asset-qa-system/"
+  lang: "Python · FastAPI · React"
+  year: 2026
+  visibility: public
+  public_boundary_zh: "挑战赛交付项目，不构成金融建议或已上线的生产服务。"
+  public_boundary_en: "A challenge-delivery project, not financial advice or a claim of an operating production service."
+
+- name_zh: "AI Agent Engineering Lab"
+  name_en: "AI Agent Engineering Lab"
+  description_zh: "用 19 个可运行的 Agent 子项目、闯关测试与本地学习平台构成体系化工程学习路径。"
+  description_en: "A structured engineering-learning path with 19 runnable Agent projects, gated checks, and a local learning platform."
+  icon: "{}"
+  status: active
+  category: ai
+  url: "/projects/ai-agent-engineering-lab/"
+  lang: "Python"
+  year: 2026
+  visibility: public
+  public_boundary_zh: "公开版本聚焦可运行课程工程与本地学习平台。"
+  public_boundary_en: "The public version focuses on runnable course engineering and a local learning platform."
+
 - name_zh: "数字员工系统"
   name_en: "Digital Employee System"
   description_zh: "一个正在构建中的智能体实验，重点在协作协议、工具调用可靠性、状态恢复和人在回路。"
