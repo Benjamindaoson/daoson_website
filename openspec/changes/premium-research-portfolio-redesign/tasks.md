@@ -17,4 +17,4 @@
 
 - [x] 4.1 Update focused visual-system regression assertions.
 - [x] 4.2 Run static checks, content checks, builds, and browser checks for desktop, mobile, reduced motion, contrast, and core routes.
-- [ ] 4.3 Review the final diff, commit only the intended files, push, and verify the public deployment.
+- [x] 4.3 Review the final diff, commit only the intended files, push, and verify the public deployment.
