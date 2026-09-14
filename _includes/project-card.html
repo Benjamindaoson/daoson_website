@@ -17,6 +17,7 @@
     <span class="i18n i18n-en">{{ project.description_en | default: project.description }}</span>
   </p>
   <div class="project-meta">
+    {% if include.show_category and project.portfolio_group %}<span>{{ project.portfolio_group }}</span>{% endif %}
     {% if include.show_category and project.category %}<span>{{ project.category }}</span>{% endif %}
     {% if project.lang %}<span>{{ project.lang }}</span>{% endif %}
     {% if project.year %}<span>{{ project.year }}</span>{% endif %}

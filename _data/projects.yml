@@ -1,109 +1,99 @@
-# ============================================
-# 项目数据 - 编辑此文件即可更新 projects 页面
-# ============================================
-#
-# 字段说明：
-#   name_zh     - 中文项目名（必填）
-#   name_en     - English project name（必填）
-#   description_zh / description_en - 一句话简介（必填）
-#   icon        - 图标符号（一两个字符，如 { }、>_、⚡）
-#   status      - active | prototype | learning | archived
-#   category    - web | cli | tool | game | library | ai （用于筛选）
-#   url         - 项目链接（GitHub / Demo）
-#   stars       - GitHub star 数（可省）
-#   lang        - 主要语言
-#   year        - 年份
-#   hypothesis_zh / hypothesis_en - 正在验证的核心假设（可省）
-#   problem_zh / problem_en - 这个项目想解决的问题（可省）
-#   next_zh / next_en - 下一步计划或正在整理的内容（可省）
-#   visibility  - public | private | writing
-#   public_boundary_zh / public_boundary_en - 当前公开边界（可省）
-# ============================================
+# 公开项目清单：只收录能对应到公开代码、验证材料或明确边界的工作。
 
-- name_zh: "SmartOrderingAgent"
-  name_en: "SmartOrderingAgent"
-  description_zh: "用受控工具、显式确认和 MySQL 事务，把自然语言订位与真实业务承诺隔离开。"
-  description_en: "A restaurant reservation MVP that separates natural-language assistance from confirmed business writes with controlled tools and transactions."
+- name_zh: "Reward Modeling Lab"
+  name_en: "Reward Modeling Lab"
+  description_zh: "面向奖励模型后训练的可审计实验系统，覆盖 QLoRA、鲁棒评估、捷径审计与检查点分析。"
+  description_en: "An auditable reward-model post-training system covering QLoRA, robust evaluation, shortcut auditing, and checkpoint analysis."
+  icon: "λ"
+  status: active
+  portfolio_group: flagship
+  category: ai
+  url: "https://github.com/Benjamindaoson/reward-modeling-lab"
+  lang: "Python · QLoRA"
+  year: 2026
+  public_boundary_zh: "公开仓库呈现训练与评估工件；不把研究原型表述为线上模型服务。"
+  public_boundary_en: "The public repository contains training and evaluation artifacts; it is not presented as a production model service."
+
+- name_zh: "FitGround"
+  name_en: "FitGround"
+  description_zh: "以人体与服装测量约束检验多模态模型是否真正理解合身度，而非依赖视觉或数据集捷径。"
+  description_en: "A measurement-grounded study of whether multimodal models understand garment fit rather than visual or dataset shortcuts."
+  icon: "◫"
+  status: prototype
+  portfolio_group: research
+  category: ai
+  url: "https://github.com/Benjamindaoson/FitGround"
+  lang: "Python · Multimodal AI"
+  year: 2026
+  public_boundary_zh: "公开的是研究问题、数据约束与代码边界；结论以仓库中的可复现证据为准。"
+  public_boundary_en: "The public boundary is the research question, measurement constraints, and code; conclusions remain tied to reproducible repository evidence."
+
+- name_zh: "RewardLens"
+  name_en: "RewardLens"
+  description_zh: "用于奖励模型分析与评估的证据优先工作台。"
+  description_en: "An evidence-first workspace for reward-model analysis and evaluation."
+  icon: "◎"
+  status: prototype
+  portfolio_group: research
+  category: ai
+  url: "https://github.com/Benjamindaoson/RewardLens"
+  lang: "Python"
+  year: 2026
+  public_boundary_zh: "当前公开仓库是分析与评估工作区，不替代完整训练结论。"
+  public_boundary_en: "The public repository is an analysis and evaluation workspace, not a substitute for complete training conclusions."
+
+- name_zh: "Enterprise Data Agent"
+  name_en: "Enterprise Data Agent"
+  description_zh: "面向企业数据探索、根因分析、BI 生成与业务报告的自主分析智能体。"
+  description_en: "An autonomous AI analyst for enterprise data exploration, root-cause analysis, BI generation, and business reporting."
   icon: "↔"
-  status: prototype
+  status: active
+  portfolio_group: product
   category: ai
-  url: "/projects/smart-ordering-agent/"
-  lang: "Python · Vue · MySQL"
+  url: "https://github.com/Benjamindaoson/enterprise-data-agent"
+  lang: "Python · Data Systems"
   year: 2026
-  visibility: public
-  public_boundary_zh: "公开仓库展示了可写入 MySQL 的 MVP；公网生产能力仍需补足。"
-  public_boundary_en: "The public repository demonstrates a MySQL-backed MVP; public-production capabilities remain out of scope."
+  public_boundary_zh: "只以公开代码与可核验的系统边界说明能力，不把原型称为通用生产服务。"
+  public_boundary_en: "Capabilities are described only through public code and verifiable system boundaries, not as a general production service."
 
-- name_zh: "金融资产智能问答"
-  name_en: "Financial Asset QA System"
-  description_zh: "用确定性编排、工具数据校验和响应守卫，让金融问答的数值与来源链路可追溯。"
-  description_en: "A financial QA system that makes values and sources traceable through deterministic orchestration, validation, and response guards."
-  icon: "⌁"
+- name_zh: "API Test Platform"
+  name_en: "API Test Platform"
+  description_zh: "结合变更影响分析、OpenAPI 生成、契约校验与报告的 Agent 辅助 API 测试系统。"
+  description_en: "Agent-assisted API testing with change-impact analysis, OpenAPI generation, contract validation, and reporting."
+  icon: "{}"
   status: prototype
-  category: ai
-  url: "/projects/financial-asset-qa-system/"
-  lang: "Python · FastAPI · React"
+  portfolio_group: product
+  category: tool
+  url: "https://github.com/Benjamindaoson/api-test-platform"
+  lang: "Python · API Testing"
   year: 2026
-  visibility: public
-  public_boundary_zh: "挑战赛交付项目，不构成金融建议或已上线的生产服务。"
-  public_boundary_en: "A challenge-delivery project, not financial advice or a claim of an operating production service."
+  public_boundary_zh: "公开范围是测试平台原型及其契约验证思路。"
+  public_boundary_en: "The public boundary is the testing-platform prototype and its contract-validation approach."
 
 - name_zh: "AI Agent Engineering Lab"
   name_en: "AI Agent Engineering Lab"
-  description_zh: "用 19 个可运行的 Agent 子项目、闯关测试与本地学习平台构成体系化工程学习路径。"
-  description_en: "A structured engineering-learning path with 19 runnable Agent projects, gated checks, and a local learning platform."
-  icon: "{}"
-  status: active
+  description_zh: "以可运行项目和闯关检查构成的 Agent 工程学习路径。"
+  description_en: "An Agent-engineering learning path built from runnable projects and gated checks."
+  icon: "⌁"
+  status: learning
+  portfolio_group: learning
   category: ai
-  url: "/projects/ai-agent-engineering-lab/"
+  url: "https://github.com/Benjamindaoson/ai-agent-engineering-lab"
   lang: "Python"
   year: 2026
-  visibility: public
-  public_boundary_zh: "公开版本聚焦可运行课程工程与本地学习平台。"
-  public_boundary_en: "The public version focuses on runnable course engineering and a local learning platform."
+  public_boundary_zh: "定位为学习材料，不与经过研究验证或产品化的工作混同。"
+  public_boundary_en: "It is presented as learning material, not conflated with research-validated or productized work."
 
-- name_zh: "数字员工系统"
-  name_en: "Digital Employee System"
-  description_zh: "一个正在构建中的智能体实验，重点在协作协议、工具调用可靠性、状态恢复和人在回路。"
-  description_en: "An active agent-systems experiment focused on coordination protocols, reliable tool use, state recovery, and human-in-the-loop design."
-  icon: "🤖"
-  status: active
+- name_zh: "Financial Asset QA System"
+  name_en: "Financial Asset QA System"
+  description_zh: "早期金融问答原型，保留为架构与边界复盘材料。"
+  description_en: "An earlier financial-QA prototype retained for architecture and boundary retrospectives."
+  icon: "⌁"
+  status: archived
+  portfolio_group: archived
   category: ai
-  url: "https://github.com/Benjamindaoson"
-  lang: "Python · TypeScript"
+  url: "https://github.com/Benjamindaoson/Financial_Asset_QA_System"
+  lang: "Python · FastAPI · React"
   year: 2026
-  hypothesis_zh: "多个智能体只有通过清晰协议、可靠工具调用和必要的人类介入，才可能从演示走向可持续工作流。"
-  hypothesis_en: "Agents only become useful working systems when coordination protocols, reliable tool use, and human checkpoints are designed together."
-  problem_zh: "探索多个大语言模型智能体如何分工、协作、调用工具，并在失败时恢复到可控状态。"
-  problem_en: "Exploring how multiple language-model agents can divide work, coordinate, call tools, and recover from failures in a controlled way."
-  public_boundary_zh: "目前只公开方向、问题背景和构建记录；具体仓库、演示和实现细节还在整理中。"
-  public_boundary_en: "For now, only the direction, problem context, and build notes are public; the repository, demo, and implementation details are still being organized."
-  next_zh: "补充一篇可公开的系统说明，讲清楚当前原型状态、架构取舍、还没有解决的问题，以及是否能开放具体仓库。"
-  next_en: "Publish a public system note covering the current prototype state, architecture tradeoffs, unsolved problems, and whether a specific repository can be opened."
-  visibility: writing
-
-# 等有了第二个真实可公开项目，再加一条。空着比写假的好。
-#
-# 模板（取消注释后编辑）：
-# - name_zh: "项目名"
-#   name_en: "Project name"
-#   description_zh: "一句话讲清楚解决什么问题。"
-#   description_en: "One sentence describing the problem."
-#   icon: "⚡"
-#   status: active             # 或 prototype / learning / archived
-#   category: tool             # 或 web / cli / library / ai
-#   url: "https://github.com/Benjamindaoson/项目"
-#   lang: "Rust"
-#   year: 2025
-#   hypothesis_zh: "正在验证的核心假设。"
-#   hypothesis_en: "The core hypothesis being tested."
-#   problem_zh: "这个项目想解决的问题。"
-#   problem_en: "The problem being explored."
-#   next_zh: "下一步计划或正在整理的内容。"
-#   next_en: "The next honest step."
-#   visibility: public
-#   public_boundary_zh: "当前能公开什么，不能公开什么。"
-#   public_boundary_en: "What is public and what is not public yet."
-
-# 提示：projects 页面也支持"已归档"的旧项目（status: archived），
-# 用淡色显示。如果你想展示过往作品来撑信任度，也值得收录。
+  public_boundary_zh: "已归档；不构成金融建议或线上服务声明。"
+  public_boundary_en: "Archived; it is neither financial advice nor a claim of an operating service."
