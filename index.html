@@ -5,42 +5,42 @@ description: 关注大模型后训练、多模态算法与可靠 Agent 系统的
 ---
 
 <section class="hero home-hero">
-  <span class="prompt">
-    <span class="i18n i18n-zh">~/首页 $ 运行 model-and-systems research</span>
-    <span class="i18n i18n-en">~/home $ run model-and-systems research</span>
-  </span>
-  <h1>
-    <span class="i18n i18n-zh">训练、评估并验证大模型的真实能力</span>
-    <span class="i18n i18n-en">Train, evaluate, and verify real model capabilities</span>
-  </h1>
-  <p>
-    <span class="i18n i18n-zh">我聚焦大模型后训练、奖励模型、多模态算法与少数有明确场景和验证边界的 Agent 系统。</span>
-    <span class="i18n i18n-en">I focus on LLM post-training, reward models, multimodal algorithms, and a small number of agent systems with clear use cases and verification boundaries.</span>
-  </p>
-  <p class="home-hero-tagline mono">
-    <span class="i18n i18n-zh">LLM post-training + reliable agent systems + evidence-driven AI engineering</span>
-    <span class="i18n i18n-en">LLM post-training + reliable agent systems + evidence-driven AI engineering</span>
-  </p>
-  <div class="home-actions">
-    <a class="btn" href="{{ '/knowledge/' | relative_url }}">
-      <span class="i18n i18n-zh">进入知识库</span>
-      <span class="i18n i18n-en">Read knowledge</span>
-    </a>
-    <a class="btn secondary" href="{{ '/projects/' | relative_url }}">
-      <span class="i18n i18n-zh">查看构建记录</span>
-      <span class="i18n i18n-en">View Labs</span>
-    </a>
-    <a class="btn secondary" href="{{ '/now/' | relative_url }}">
-      <span class="i18n i18n-zh">查看近况</span>
-      <span class="i18n i18n-en">View Now</span>
-    </a>
+  <div class="home-hero__copy">
+    <span class="prompt">
+      <span class="i18n i18n-zh">研究型 AI 工程</span>
+      <span class="i18n i18n-en">Research AI engineering</span>
+    </span>
+    <h1>
+      <span class="i18n i18n-zh">训练、评估并验证大模型的真实能力</span>
+      <span class="i18n i18n-en">Train, evaluate, and verify real model capabilities</span>
+    </h1>
+    <p>
+      <span class="i18n i18n-zh">我聚焦大模型后训练、奖励模型、多模态算法与少数有明确场景和验证边界的 Agent 系统。</span>
+      <span class="i18n i18n-en">I focus on LLM post-training, reward models, multimodal algorithms, and a small number of agent systems with clear use cases and verification boundaries.</span>
+    </p>
+    <p class="home-hero-tagline mono">
+      <span class="i18n i18n-zh">先建立证据，再主张能力。</span>
+      <span class="i18n i18n-en">Evidence before capability claims.</span>
+    </p>
+    <div class="home-actions">
+      <a class="btn" href="{{ '/projects/' | relative_url }}">
+        <span class="i18n i18n-zh">查看精选项目</span>
+        <span class="i18n i18n-en">View selected work</span>
+      </a>
+      <a class="btn secondary" href="{{ '/knowledge/' | relative_url }}">
+        <span class="i18n i18n-zh">进入知识库</span>
+        <span class="i18n i18n-en">Read knowledge</span>
+      </a>
+    </div>
+    <ul class="home-hero__domains" aria-label="研究方向">
+      <li>LLM post-training</li>
+      <li>Multimodal algorithms</li>
+      <li>Reliable agent systems</li>
+    </ul>
   </div>
-  <div class="tag-row">
-    {% assign all_tags = site.tags | sort %}
-    {% for tag in all_tags limit: 6 %}
-      <a href="{{ '/tags/' | relative_url }}#{{ tag[0] }}" class="tag">{{ tag[0] }}</a>
-    {% endfor %}
-  </div>
+  <figure class="home-hero__visual">
+    <img src="{{ '/assets/img/research-terrain.png' | relative_url }}" width="1536" height="1024" alt="抽象化的多模态模型训练与可靠 Agent 系统研究路径" fetchpriority="high">
+  </figure>
 </section>
 
 <section class="home-section" aria-labelledby="current-focus-heading">

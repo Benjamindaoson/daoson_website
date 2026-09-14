@@ -75,8 +75,8 @@ function categoryLabel(category: string) {
     <section class="home-hero">
       <div class="home-hero__content">
         <p class="home-kicker">AI ENGINEERING NOTES</p>
-        <h1>系统学习 LangChain、LangGraph<br />与 Agent Engineering</h1>
-        <p class="home-hero__lead">代码、原理、源码与工程实践。把零散学习整理成一套可以持续迭代的 AI Engineering 技术教材。</p>
+        <h1>从模型调用到可靠 Agent</h1>
+        <p class="home-hero__lead">系统学习 LangChain、LangGraph 与 Agent Engineering，把代码、原理、源码和工程实践整理成可持续迭代的技术教材。</p>
         <div class="home-hero__actions">
           <a class="home-button home-button--primary" :href="withBase('/langchain/')">开始学习 LangChain <span>→</span></a>
           <a class="home-button" :href="withBase('/learning-paths/')">查看学习路径</a>
