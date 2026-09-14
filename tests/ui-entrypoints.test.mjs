@@ -24,14 +24,18 @@ test('keeps mobile main content padded beside the navigation toggle', async () =
 test('keeps the evidence-first hero visually anchored and route-safe', async () => {
   const [home, styles] = await Promise.all([
     readFile(resolve('index.html'), 'utf8'),
-    readFile(resolve('assets/css/style.css'), 'utf8')
+    readFile(resolve('assets/css/portfolio-refresh.css'), 'utf8')
   ])
 
   await access(resolve('assets/img/research-terrain.png'))
   assert.match(home, /class="home-hero__visual"/)
   assert.match(home, /'\/projects\/' \| relative_url/)
   assert.match(home, /'\/knowledge\/' \| relative_url/)
-  assert.match(styles, /--accent: #9adf70;/)
+  assert.match(home, /招聘与技术合作/)
+  assert.match(home, /AI 学习与培训/)
+  assert.match(home, /学术与机构合作/)
+  assert.match(styles, /--accent: #155eef;/)
+  assert.match(styles, /--bg: #f8f7f3;/)
   assert.match(styles, /@media \(prefers-reduced-motion: reduce\)/)
 })
 
@@ -42,6 +46,6 @@ test('uses the portfolio visual language in the knowledge hub', async () => {
   ])
 
   assert.match(config, /appearance: false/)
-  assert.match(styles, /--vp-c-brand-1: #9adf70;/)
-  assert.match(styles, /--vp-c-bg: #0b100d;/)
+  assert.match(styles, /--vp-c-brand-1: #155eef;/)
+  assert.match(styles, /--vp-c-bg: #f8f7f3;/)
 })

@@ -2,241 +2,51 @@
 layout: default
 title: 项目
 permalink: /projects/
-description: 我设计、实现和验证过的 AI 系统与应用。
+description: 本杰铭的 AI 项目作品集，覆盖大模型后训练、多模态算法与可靠 Agent 系统。
 ---
 
 <section class="hero labs-hero">
-  <span class="prompt">
-    <span class="i18n i18n-zh">~/projects $ list evidence</span>
-    <span class="i18n i18n-en">~/projects $ list evidence</span>
-  </span>
-  <h1>
-    <span class="i18n i18n-zh">项目</span>
-    <span class="i18n i18n-en">Projects</span>
-  </h1>
-  <p>
-    <span class="i18n i18n-zh">围绕大模型后训练、多模态算法与可靠 Agent 系统的公开项目清单。每一项都标记其定位与公开边界。</span>
-    <span class="i18n i18n-en">A public project list for LLM post-training, multimodal algorithms, and reliable agent systems. Every entry states its role and public boundary.</span>
-  </p>
+  <p class="section-label"><span class="i18n i18n-zh">AI PROJECT PORTFOLIO</span><span class="i18n i18n-en">AI PROJECT PORTFOLIO</span></p>
+  <h1><span class="i18n i18n-zh">代表项目与可核验的构建记录</span><span class="i18n i18n-en">Selected work and verifiable build records</span></h1>
+  <p><span class="i18n i18n-zh">这里优先展示当前的大模型后训练、多模态研究和具备明确使用场景的 Agent 系统。每项工作都保留其公开边界。</span><span class="i18n i18n-en">This portfolio prioritizes current LLM post-training, multimodal research, and agent systems with concrete use cases. Every project keeps its public boundary explicit.</span></p>
 </section>
 
-<section class="labs-section labs-note" aria-labelledby="featured-case-studies-heading">
-  <span class="labs-kicker mono small">
-    <span class="i18n i18n-zh">精选案例</span>
-    <span class="i18n i18n-en">selected_case_studies</span>
-  </span>
-  <h2 id="featured-case-studies-heading">
-    <span class="i18n i18n-zh">从问题、取舍到边界</span>
-    <span class="i18n i18n-en">From Problem to Trade-off to Boundary</span>
-  </h2>
-  <p>
-    <span class="i18n i18n-zh">优先展示当前的奖励模型后训练、多模态研究和有明确场景的 Agent 系统；早期项目保留为归档，而不与当前主线混同。</span>
-    <span class="i18n i18n-en">The selection prioritizes current reward-model post-training, multimodal research, and agents with concrete use cases; earlier work stays visible as archive rather than being mixed into the current direction.</span>
-  </p>
-</section>
-
-<section class="labs-section labs-note" aria-labelledby="project-map-heading">
-  <span class="labs-kicker mono small">project_map</span>
-  <h2 id="project-map-heading">公开项目地图</h2>
-  <p><strong>flagship</strong>：当前最能代表研究主线的工作；<strong>research</strong>：待以实验和可复现证据回答的问题；<strong>product</strong>：场景清楚的系统原型；<strong>learning</strong>：学习材料；<strong>archived</strong>：保留复盘价值的早期项目。</p>
-</section>
-
-<section class="labs-section" aria-labelledby="labs-principles-heading">
-  <div class="labs-section-header">
-    <span class="labs-kicker mono small">
-      <span class="i18n i18n-zh">原则</span>
-      <span class="i18n i18n-en">principles</span>
-    </span>
-    <h2 id="labs-principles-heading">
-      <span class="i18n i18n-zh">实验原则</span>
-      <span class="i18n i18n-en">Lab Principles</span>
-    </h2>
+{% assign flagship_projects = site.data.projects | where: "portfolio_group", "flagship" %}
+{% assign research_projects = site.data.projects | where: "portfolio_group", "research" %}
+{% assign product_projects = site.data.projects | where: "portfolio_group", "product" %}
+<section class="labs-section" aria-labelledby="representative-work-heading">
+  <div class="labs-section-header"><p class="section-label">REPRESENTATIVE WORK</p><h2 id="representative-work-heading"><span class="i18n i18n-zh">先看我现在真正投入的工作</span><span class="i18n i18n-en">Start with the work I am actively advancing</span></h2><p><span class="i18n i18n-zh">每张卡都直接链接到公开仓库或项目页面。它们不是营销截图，而是继续核验代码、方法和边界的起点。</span><span class="i18n i18n-en">Each card links directly to a public repository or project page. These are not marketing screenshots, but starting points for reviewing code, methods, and boundaries.</span></p></div>
+  <div class="project-grid home-project-grid labs-representative-grid">
+    {% for proj in flagship_projects limit: 1 %}{% include project-card.html project=proj class="home-project-card home-project-card--primary" %}{% endfor %}
+    {% for proj in research_projects limit: 1 %}{% include project-card.html project=proj class="home-project-card" %}{% endfor %}
+    {% for proj in product_projects limit: 1 %}{% include project-card.html project=proj class="home-project-card" %}{% endfor %}
   </div>
+</section>
 
+<section class="labs-section labs-evidence" aria-labelledby="work-method-heading">
+  <div class="labs-section-header"><p class="section-label">HOW I WORK</p><h2 id="work-method-heading"><span class="i18n i18n-zh">从问题到证据，而不是从概念到包装</span><span class="i18n i18n-en">From problem to evidence, not concept to packaging</span></h2></div>
   <div class="labs-principles">
-    <article class="labs-mini-card">
-      <span class="mono small subtle">01</span>
-      <h3>
-        <span class="i18n i18n-zh">公开构建，但保持诚实</span>
-        <span class="i18n i18n-en">Build in public, honestly</span>
-      </h3>
-    </article>
-    <article class="labs-mini-card">
-      <span class="mono small subtle">02</span>
-      <h3>
-        <span class="i18n i18n-zh">小实验胜过假作品集</span>
-        <span class="i18n i18n-en">Small experiments over fake portfolios</span>
-      </h3>
-    </article>
-    <article class="labs-mini-card">
-      <span class="mono small subtle">03</span>
-      <h3>
-        <span class="i18n i18n-zh">把限制写清楚</span>
-        <span class="i18n i18n-en">Make constraints explicit</span>
-      </h3>
-    </article>
+    <article class="labs-mini-card"><span class="mono small subtle">01</span><h3><span class="i18n i18n-zh">先定义可验证的问题</span><span class="i18n i18n-en">Define a verifiable question</span></h3><p><span class="i18n i18n-zh">把研究假设、任务约束或真实业务场景写清楚。</span><span class="i18n i18n-en">State the hypothesis, task constraints, or real operating context.</span></p></article>
+    <article class="labs-mini-card"><span class="mono small subtle">02</span><h3><span class="i18n i18n-zh">用实验或系统工件回答</span><span class="i18n i18n-en">Answer with working artifacts</span></h3><p><span class="i18n i18n-zh">训练、评估、契约与运行记录都应能支持结论。</span><span class="i18n i18n-en">Training, evaluation, contracts, and runtime artifacts should support the claim.</span></p></article>
+    <article class="labs-mini-card"><span class="mono small subtle">03</span><h3><span class="i18n i18n-zh">把不确定性留在台面上</span><span class="i18n i18n-en">Keep uncertainty visible</span></h3><p><span class="i18n i18n-zh">原型、学习材料与已验证工作不混为一谈。</span><span class="i18n i18n-en">Prototypes, learning materials, and validated work stay distinct.</span></p></article>
   </div>
 </section>
 
-<section class="labs-section" aria-labelledby="labs-status-heading">
-  <div class="labs-section-header">
-    <span class="labs-kicker mono small">
-      <span class="i18n i18n-zh">状态索引</span>
-      <span class="i18n i18n-en">status_index</span>
-    </span>
-    <h2 id="labs-status-heading">
-      <span class="i18n i18n-zh">状态说明</span>
-      <span class="i18n i18n-en">Status Overview</span>
-    </h2>
-  </div>
-
-  <div class="labs-status-list">
-    <div class="labs-status-item labs-status-active">
-      <span class="project-status"><span class="i18n i18n-zh">持续构建</span><span class="i18n i18n-en">active</span></span>
-      <span class="i18n i18n-zh">正在持续投入</span>
-      <span class="i18n i18n-en">ongoing work</span>
-    </div>
-    <div class="labs-status-item labs-status-prototype">
-      <span class="project-status prototype"><span class="i18n i18n-zh">原型验证</span><span class="i18n i18n-en">prototype</span></span>
-      <span class="i18n i18n-zh">有原型，正在验证</span>
-      <span class="i18n i18n-en">working prototype, still validating</span>
-    </div>
-    <div class="labs-status-item labs-status-learning">
-      <span class="project-status learning"><span class="i18n i18n-zh">学习项目</span><span class="i18n i18n-en">learning</span></span>
-      <span class="i18n i18n-zh">以学习和理解为主</span>
-      <span class="i18n i18n-en">mainly for learning and understanding</span>
-    </div>
-    <div class="labs-status-item labs-status-archived">
-      <span class="project-status archived"><span class="i18n i18n-zh">已归档</span><span class="i18n i18n-en">archived</span></span>
-      <span class="i18n i18n-zh">已停止投入，但保留复盘价值</span>
-      <span class="i18n i18n-en">no longer active, kept for reflection</span>
-    </div>
-  </div>
-</section>
-
-{% assign active_projects = site.data.projects | where: "status", "active" %}
-{% if active_projects.size > 0 %}
-  {% assign featured_project = active_projects | first %}
-  {% assign featured_href = featured_project.url | default: '/projects/' %}
-  <section class="labs-section labs-featured" aria-labelledby="labs-featured-heading">
-    <div class="labs-section-header">
-      <span class="labs-kicker mono small">
-        <span class="i18n i18n-zh">正在构建</span>
-        <span class="i18n i18n-en">current_build</span>
-      </span>
-      <h2 id="labs-featured-heading">
-        <span class="i18n i18n-zh">正在构建 / 研究议程</span>
-        <span class="i18n i18n-en">Current Build / Research Agenda</span>
-      </h2>
-    </div>
-
-    <a href="{% if featured_href contains 'http' %}{{ featured_href }}{% else %}{{ featured_href | relative_url }}{% endif %}" class="labs-featured-card" {% if featured_href contains 'http' %}target="_blank" rel="noopener"{% endif %}>
-      <div class="project-head">
-        <span class="project-icon">{{ featured_project.icon }}</span>
-        {% include project-status.html status=featured_project.status %}
-      </div>
-      <h3>
-        <span class="i18n i18n-zh">{{ featured_project.name_zh | default: featured_project.name }}</span>
-        <span class="i18n i18n-en">{{ featured_project.name_en | default: featured_project.name }}</span>
-      </h3>
-      <p>
-        <span class="i18n i18n-zh">{{ featured_project.description_zh | default: featured_project.description }}</span>
-        <span class="i18n i18n-en">{{ featured_project.description_en | default: featured_project.description }}</span>
-      </p>
-      <dl class="labs-project-facts">
-        {% if featured_project.hypothesis_zh or featured_project.hypothesis_en %}
-          <div>
-            <dt><span class="i18n i18n-zh">核心假设</span><span class="i18n i18n-en">hypothesis</span></dt>
-            <dd>
-              <span class="i18n i18n-zh">{{ featured_project.hypothesis_zh }}</span>
-              <span class="i18n i18n-en">{{ featured_project.hypothesis_en }}</span>
-            </dd>
-          </div>
-        {% endif %}
-        {% if featured_project.problem_zh or featured_project.problem_en %}
-          <div>
-            <dt><span class="i18n i18n-zh">正在验证</span><span class="i18n i18n-en">current question</span></dt>
-            <dd>
-              <span class="i18n i18n-zh">{{ featured_project.problem_zh | default: featured_project.problem }}</span>
-              <span class="i18n i18n-en">{{ featured_project.problem_en | default: featured_project.problem }}</span>
-            </dd>
-          </div>
-        {% endif %}
-        {% if featured_project.public_boundary_zh or featured_project.public_boundary_en %}
-          <div>
-            <dt><span class="i18n i18n-zh">公开边界</span><span class="i18n i18n-en">public boundary</span></dt>
-            <dd>
-              <span class="i18n i18n-zh">{{ featured_project.public_boundary_zh | default: featured_project.public_boundary }}</span>
-              <span class="i18n i18n-en">{{ featured_project.public_boundary_en | default: featured_project.public_boundary }}</span>
-            </dd>
-          </div>
-        {% endif %}
-        {% if featured_project.next_zh or featured_project.next_en %}
-          <div>
-            <dt><span class="i18n i18n-zh">下一步</span><span class="i18n i18n-en">next</span></dt>
-            <dd>
-              <span class="i18n i18n-zh">{{ featured_project.next_zh | default: featured_project.next }}</span>
-              <span class="i18n i18n-en">{{ featured_project.next_en | default: featured_project.next }}</span>
-            </dd>
-          </div>
-        {% endif %}
-      </dl>
-    </a>
-  </section>
-{% endif %}
-
-<section class="labs-section" aria-labelledby="labs-list-heading">
-  <div class="labs-section-header">
-    <span class="labs-kicker mono small">
-        <span class="i18n i18n-zh">Labs</span>
-        <span class="i18n i18n-en">labs</span>
-    </span>
-    <h2 id="labs-list-heading">
-      <span class="i18n i18n-zh">Labs</span>
-      <span class="i18n i18n-en">Labs</span>
-    </h2>
-  </div>
-
+<section class="labs-section" aria-labelledby="all-projects-heading">
+  <div class="labs-section-header"><p class="section-label">ALL PUBLIC WORK</p><h2 id="all-projects-heading"><span class="i18n i18n-zh">完整公开项目清单</span><span class="i18n i18n-en">Complete public project list</span></h2><p><span class="i18n i18n-zh"><strong>flagship</strong> 是当前最能代表主线的工作，<strong>research</strong> 是待由实验回答的问题，<strong>product</strong> 是场景清楚的系统原型，<strong>learning</strong> 与 <strong>archived</strong> 保留其学习或复盘价值。</span><span class="i18n i18n-en"><strong>flagship</strong> represents current direction, <strong>research</strong> contains questions still being tested, <strong>product</strong> contains systems with clear contexts, and <strong>learning</strong> and <strong>archived</strong> retain their educational or retrospective value.</span></p></div>
   <div class="labs-grid">
-    {% for proj in site.data.projects %}
-      {% include project-card.html project=proj class="labs-card" show_category=true %}
-    {% endfor %}
+    {% for proj in site.data.projects %}{% include project-card.html project=proj class="labs-card" show_category=true %}{% endfor %}
   </div>
 </section>
 
-<section class="labs-section labs-note" aria-labelledby="labs-note-heading">
-  <span class="labs-kicker mono small">
-    <span class="i18n i18n-zh">整理中</span>
-    <span class="i18n i18n-en">in_progress</span>
-  </span>
-  <h2 id="labs-note-heading">
-    <span class="i18n i18n-zh">更多构建记录正在整理中</span>
-    <span class="i18n i18n-en">More Build Logs Are Being Organized</span>
-  </h2>
-  <p>
-    <span class="i18n i18n-zh">我只会添加真实可公开、能说明问题背景、技术取舍和学习过程的项目。空着比写假的更好。</span>
-    <span class="i18n i18n-en">I only add work that can be described honestly, with context, tradeoffs, and learning notes. Empty is better than fake.</span>
-  </p>
+<section class="labs-section labs-note" aria-labelledby="portfolio-boundary-heading">
+  <p class="section-label">PUBLIC BOUNDARY</p>
+  <h2 id="portfolio-boundary-heading"><span class="i18n i18n-zh">只把能被公开说明的工作放在这里</span><span class="i18n i18n-en">Only work that can be explained publicly belongs here</span></h2>
+  <p><span class="i18n i18n-zh">我不会把研究原型表述为线上服务，也不会把学习项目包装为经过验证的产品。若你在评估合作或招聘，可以从仓库、项目状态与公开边界继续深入。</span><span class="i18n i18n-en">Research prototypes are not presented as operating services, and learning projects are not packaged as validated products. If you are evaluating a collaboration or role, continue through the repository, project status, and public boundary.</span></p>
 </section>
 
 <section class="labs-section labs-contact" aria-labelledby="labs-contact-heading">
-  <span class="labs-kicker mono small">
-    <span class="i18n i18n-zh">链接</span>
-    <span class="i18n i18n-en">links</span>
-  </span>
-  <h2 id="labs-contact-heading">
-    <span class="i18n i18n-zh">继续查看</span>
-    <span class="i18n i18n-en">Keep Looking</span>
-  </h2>
-  <div class="labs-link-row">
-    {% if site.github_username %}
-      <a class="btn secondary" href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a>
-    {% endif %}
-    {% if site.email %}
-      <a class="btn secondary" href="mailto:{{ site.email }}">
-        <span class="i18n i18n-zh">邮箱</span>
-        <span class="i18n i18n-en">Email</span>
-      </a>
-    {% endif %}
-  </div>
+  <p class="section-label">CONTACT</p>
+  <h2 id="labs-contact-heading"><span class="i18n i18n-zh">希望进一步交流？</span><span class="i18n i18n-en">Want to discuss the work?</span></h2>
+  <div class="labs-link-row">{% if site.email %}<a class="btn" href="mailto:{{ site.email }}"><span class="i18n i18n-zh">发邮件联系</span><span class="i18n i18n-en">Email me</span></a>{% endif %}{% if site.github_username %}<a class="btn secondary" href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a>{% endif %}</div>
 </section>

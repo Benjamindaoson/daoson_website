@@ -1,6 +1,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0d1117">
+<meta name="theme-color" content="#f8f7f3">
 
 {%- comment -%} Favicon 体系：SVG 优先（现代浏览器），apple-touch-icon 给 iOS 主屏 {%- endcomment -%}
 <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}">
@@ -9,6 +9,7 @@
 
 {%- assign cache_bust = site.time | date: '%s' -%}
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ cache_bust }}">
+<link rel="stylesheet" href="{{ '/assets/css/portfolio-refresh.css' | relative_url }}?v={{ cache_bust }}">
 
 {%- comment -%} RSS：可见入口按语言分流，feed.xml 保留为全量聚合 feed {%- endcomment -%}
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }} (All posts)" href="{{ '/feed.xml' | relative_url }}">

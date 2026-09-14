@@ -133,5 +133,6 @@ exclude:
   - .jekyll-cache
   - .git
   - .github
+  - openspec
   - _drafts
   - _daily

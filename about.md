@@ -2,7 +2,7 @@
 layout: default
 title: 关于
 permalink: /about/
-description: 我正在研究什么、如何思考，以及如何联系我。
+description: 本杰铭的研究方向、工程方法、教学材料与合作入口。
 ---
 
 <section class="hero">
@@ -15,8 +15,8 @@ description: 我正在研究什么、如何思考，以及如何联系我。
     <span class="i18n i18n-en">About</span>
   </h1>
   <p>
-    <span class="i18n i18n-zh">这里不是简历页，而是我当前研究方向、判断方式和公开构建边界的说明。</span>
-    <span class="i18n i18n-en">This is not a résumé page. It explains what I study, how I think, and what I am building in public.</span>
+    <span class="i18n i18n-zh">这里说明我的研究方向、工程方法、教学内容，以及适合从哪里开始合作。</span>
+    <span class="i18n i18n-en">This page explains my research direction, engineering method, teaching material, and where a collaboration can begin.</span>
   </p>
 </section>
 
@@ -37,8 +37,8 @@ description: 我正在研究什么、如何思考，以及如何联系我。
 
 <div markdown="1">
 
-<span class="i18n i18n-zh">你好，我是 **{{ site.author }}**。我正在研究 AI 智能体如何从好看的演示走向可靠工作的系统，并把这个过程里的工程、产品和个人系统思考记录下来。</span>
-<span class="i18n i18n-en">Hi, I’m **{{ site.author }}**. I study how AI agents move from impressive demos to reliable working systems, and I document the engineering, product, and personal systems behind that transition.</span>
+<span class="i18n i18n-zh">你好，我是 **{{ site.author }}**，一名聚焦大模型训练、评估与系统落地的 AI 技术专家。我当前的主线是 LLM 后训练、多模态算法和可靠 Agent 系统，也将工程经验转化为 AI 学习与培训材料。</span>
+<span class="i18n i18n-en">Hi, I’m **{{ site.author }}**, an AI technical expert focused on model training, evaluation, and reliable systems. My current work centers on LLM post-training, multimodal algorithms, and agent reliability, with engineering practice also turned into AI learning material.</span>
 
 <span class="i18n i18n-zh">这个网站是我的公开工作台：有较完整的文章，也有正在生长的笔记、今日所得和构建记录。它不会把实验包装成成熟产品，也不会为了显得完整而编造经历。</span>
 <span class="i18n i18n-en">This site is my public workbench: essays, growing notes, TILs, and build logs. It does not present experiments as mature products, and it does not invent credentials for polish.</span>
@@ -49,6 +49,8 @@ description: 我正在研究什么、如何思考，以及如何联系我。
 
 <div markdown="1">
 
+- <span class="i18n i18n-zh">**后训练如何带来可验证的能力增益**：奖励建模、评估设计、捷径审计与检查点分析。</span><span class="i18n i18n-en">**How post-training creates verifiable gains**: reward modeling, evaluation design, shortcut auditing, and checkpoint analysis.</span>
+- <span class="i18n i18n-zh">**多模态模型是否理解约束**：用可测量的任务和数据条件区分理解、关联与捷径。</span><span class="i18n i18n-en">**Whether multimodal models understand constraints**: measurable tasks and data conditions distinguish understanding, correlation, and shortcuts.</span>
 - <span class="i18n i18n-zh">**AI 智能体如何协作**：任务边界、上下文交接、工具调用、失败恢复。</span><span class="i18n i18n-en">**How agents coordinate**: task boundaries, context handoff, tool use, and failure recovery.</span>
 - <span class="i18n i18n-zh">**不可靠模型如何组成可靠系统**：评估、状态管理、回滚、人工确认和公开边界。</span><span class="i18n i18n-en">**How unreliable models become reliable systems**: evaluation, state management, rollback, human review, and explicit boundaries.</span>
 - <span class="i18n i18n-zh">**构建者如何长期积累判断力**：写作、笔记、复盘、今日所得和小实验如何互相支撑。</span><span class="i18n i18n-en">**How builders compound judgment**: writing, notes, reviews, TILs, and small experiments reinforcing each other.</span>

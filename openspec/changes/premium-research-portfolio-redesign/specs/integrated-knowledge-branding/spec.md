@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
 ### Requirement: Knowledge hub brand continuity
-The knowledge hub SHALL use the same dark research-studio color family and accessible interaction language as the portfolio while preserving its documentation navigation, search, and content routes.
+The knowledge hub SHALL use the same light editorial color family and accessible interaction language as the portfolio while preserving its documentation navigation, search, and content routes.
 
 #### Scenario: Visitor enters the knowledge hub
 - **WHEN** a visitor opens `/knowledge/`

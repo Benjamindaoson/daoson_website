@@ -74,9 +74,9 @@ function categoryLabel(category: string) {
   <main class="home-learning-hub">
     <section class="home-hero">
       <div class="home-hero__content">
-        <p class="home-kicker">AI ENGINEERING NOTES</p>
-        <h1>从模型调用到可靠 Agent</h1>
-        <p class="home-hero__lead">系统学习 LangChain、LangGraph 与 Agent Engineering，把代码、原理、源码和工程实践整理成可持续迭代的技术教材。</p>
+        <p class="home-kicker">AI ENGINEERING LEARNING HUB</p>
+        <h1>从模型调用到可落地的 Agent 系统</h1>
+        <p class="home-hero__lead">面向希望真正掌握 AI 工程的学习者，系统学习 LangChain、LangGraph 与 Agent Engineering，把原理、代码和工程判断连成一条能持续实践的路径。</p>
         <div class="home-hero__actions">
           <a class="home-button home-button--primary" :href="withBase('/langchain/')">开始学习 LangChain <span>→</span></a>
           <a class="home-button" :href="withBase('/learning-paths/')">查看学习路径</a>
@@ -86,10 +86,10 @@ function categoryLabel(category: string) {
       <aside class="home-hero__panel" aria-label="当前学习主线">
         <div class="home-hero__panel-top">
           <span class="home-status-dot"></span>
-          <span>CURRENT TRACK</span>
+          <span>LEARNING TRACK</span>
         </div>
         <strong>LangChain → LangGraph → Agent Systems</strong>
-        <p>从模型调用开始，一直深入到状态、工具、持久化与生产级 Agent Runtime。</p>
+        <p>从模型调用开始，深入状态、工具、持久化与可验证的 Agent Runtime。</p>
         <div class="home-hero__metrics">
           <div><b>{{ notes.length }}</b><span>篇笔记</span></div>
           <div><b>5</b><span>学习模块</span></div>
@@ -104,7 +104,7 @@ function categoryLabel(category: string) {
           <p class="home-section__eyebrow">CURRICULUM</p>
           <h2>核心学习模块</h2>
         </div>
-        <p>不是按博客分类浏览，而是按工程能力逐层推进。</p>
+        <p>不是按博客标签堆叠，而是按实际工程能力逐层推进。</p>
       </div>
 
       <div class="home-course-grid">

@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
 ### Requirement: Cohesive responsive visual system
-The public Jekyll portfolio SHALL use a single dark research-studio palette with one accent color, readable typography, visible keyboard focus, and explicit mobile layouts.
+The public Jekyll portfolio SHALL use a single light editorial palette with one accent color, readable typography, visible keyboard focus, and explicit mobile layouts.
 
 #### Scenario: Visitor opens any portfolio page
 - **WHEN** a visitor loads a public Jekyll route at a desktop or phone viewport
