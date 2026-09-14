@@ -15,6 +15,7 @@ Gemfile.lock
 
 node_modules/
 .codegraph/
+.playwright-cli/
 knowledge/site/.vitepress/dist/
 knowledge/site/.vitepress/generated/
 

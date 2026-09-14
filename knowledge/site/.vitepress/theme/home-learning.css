@@ -100,13 +100,13 @@
 
 .home-button--primary {
   border-color: var(--home-accent);
-  color: #fff;
+  color: #fff !important;
   background: var(--home-accent);
 }
 
 .home-button--primary:hover {
   border-color: var(--home-accent-strong);
-  color: #fff;
+  color: #fff !important;
   background: var(--home-accent-strong);
 }
 

@@ -46,6 +46,7 @@ export default async () => {
     title: 'Benjamin 的 AI 笔记',
     description: 'AI、Python 与工程实践笔记',
     base,
+    head: [['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}favicon.svg` }]],
     cleanUrls: true,
     lastUpdated: true,
     markdown: {
