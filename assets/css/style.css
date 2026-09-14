@@ -3646,10 +3646,11 @@ a.home-card:hover { border-color: #52745a; color: var(--text); background: #151f
 /* Project and long-form pages */
 .labs-hero { max-width: 54rem; padding-top: clamp(3rem, 6vw, 6rem); }
 .labs-hero h1 { font-size: clamp(3rem, 6vw, 5.5rem); line-height: .98; }
-.labs-section { margin: clamp(3.5rem, 7vw, 7rem) 0; }
+.labs-section { margin: clamp(2.75rem, 5vw, 4.75rem) 0; }
 .labs-section h2 { font-size: clamp(1.9rem, 3vw, 3rem); line-height: 1.08; }
 .labs-kicker { color: var(--accent); letter-spacing: .1em; }
 .labs-note { max-width: 50rem; padding: 0; border: 0; background: transparent; }
+.labs-note + .labs-note { margin-top: clamp(2.25rem, 4vw, 3.5rem); }
 .labs-principles { grid-template-columns: 5fr 4fr 3fr; gap: 1rem; }
 .labs-mini-card { padding: 1.4rem; border-color: var(--border); border-radius: var(--radius); background: #111813; }
 .labs-mini-card:nth-child(2) { background: #162019; }
@@ -3663,6 +3664,8 @@ a.home-card:hover { border-color: #52745a; color: var(--text); background: #151f
 
 .post-card, .note-card, .til-item, .elsewhere-card { border-color: var(--border); background: #111813; }
 .post-card:hover, .note-card:hover, .til-item:hover { border-color: #52745a; background: #151f17; }
+
+h2::before { content: none; }
 
 @media (max-width: 900px) {
   body.has-sidebar .home-hero { grid-template-columns: 1fr; min-height: auto; gap: 2rem; }
