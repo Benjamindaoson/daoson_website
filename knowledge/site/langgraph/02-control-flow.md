@@ -1,0 +1,33 @@
+---
+title: 02 · 控制流与节点执行
+category: langgraph
+tags: [LangGraph, Agent, 控制流]
+date: 2026-08-12
+updated: 2026-08-12
+description: 使用顺序执行和条件分支组织 LangGraph 节点流程。
+difficulty: intermediate
+series: LangGraph 入门路径
+seriesOrder: 3
+---
+
+# 02. 控制流与节点执行
+
+在 LangGraph 中，边定义了节点之间的流转关系。
+
+本节建立在 [[01 · LangGraph 基础入门]] 的 State、Node 和 Edge 概念之上。
+
+## 顺序执行
+
+最简单的流程是从入口节点依次执行到结束节点。
+
+### 适用场景
+
+输入清洗、单次模型调用、结果格式化等固定步骤。
+
+## 条件分支
+
+条件边根据当前 State 决定下一步执行哪个节点。
+
+### 适用场景
+
+当输入需要分类、工具调用需要重试，或人工审核决定下一步时，使用条件分支。

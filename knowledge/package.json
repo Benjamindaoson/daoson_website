@@ -1,0 +1,24 @@
+{
+  "name": "gitpagewebnote",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "content:check": "node scripts/validate-content.mjs",
+    "content:generate": "node scripts/generate-content.mjs",
+    "note:import": "node scripts/import-note.mjs",
+    "note:import-folder": "node scripts/import-folder.mjs",
+    "note:inbox": "node scripts/import-inbox.mjs",
+    "admin": "node scripts/admin-server.mjs",
+    "content:report": "node scripts/content-report.mjs",
+    "content:backup": "node scripts/backup-notes.mjs",
+    "docs:dev": "npm run content:check && npm run content:generate && vitepress dev site",
+    "docs:build": "npm run content:check && npm run content:generate && vitepress build site",
+    "docs:preview": "vitepress preview site"
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.3",
+    "vitepress": "^1.6.4"
+  }
+}

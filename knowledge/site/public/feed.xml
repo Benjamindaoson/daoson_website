@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Benjamin 的 AI 笔记</title>
+    <link>https://benjamindaoson.github.io/daoson_website/knowledge/</link>
+    <description>AI、Python 与工程实践笔记</description>
+    <item>
+      <title>00 · 环境配置</title>
+      <link>https://benjamindaoson.github.io/daoson_website/knowledge/langgraph/00-environment</link>
+      <guid>https://benjamindaoson.github.io/daoson_website/knowledge/langgraph/00-environment</guid>
+      <description>为 LangGraph 学习和实验准备隔离、可复现的 Python 环境。</description>
+      <pubDate>Wed, 12 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>OpenClaw 源码陪读 01：从 README 建立系统地图</title>
+      <link>https://benjamindaoson.github.io/daoson_website/knowledge/openclaw/01-readme-system-map</link>
+      <guid>https://benjamindaoson.github.io/daoson_website/knowledge/openclaw/01-readme-system-map</guid>
+      <description>从官方 README 建立 OpenClaw 的产品边界、Gateway 中心架构与源码学习路线。</description>
+      <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>01 · LangGraph 基础入门</title>
+      <link>https://benjamindaoson.github.io/daoson_website/knowledge/langgraph/01-introduction</link>
+      <guid>https://benjamindaoson.github.io/daoson_website/knowledge/langgraph/01-introduction</guid>
+      <description>理解 LangGraph 的 State、Node 和 Edge 三个基础概念。</description>
+      <pubDate>Wed, 12 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>02 · 控制流与节点执行</title>
+      <link>https://benjamindaoson.github.io/daoson_website/knowledge/langgraph/02-control-flow</link>
+      <guid>https://benjamindaoson.github.io/daoson_website/knowledge/langgraph/02-control-flow</guid>
+      <description>使用顺序执行和条件分支组织 LangGraph 节点流程。</description>
+      <pubDate>Wed, 12 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
