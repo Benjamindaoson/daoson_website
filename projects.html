@@ -2,20 +2,20 @@
 layout: default
 title: 项目
 permalink: /projects/
-description: Benjamin Daoson 的 AI 项目作品集，覆盖可靠 Agent 系统、多模态评估与 LLM 后训练。
+description: 本杰铭的 AI 项目作品集，覆盖大模型后训练、多模态算法与可靠 Agent 系统。
 ---
 
 <section class="hero labs-hero">
   <p class="section-label"><span class="i18n i18n-zh">AI PROJECT PORTFOLIO</span><span class="i18n i18n-en">AI PROJECT PORTFOLIO</span></p>
-  <h1><span class="i18n i18n-zh">工程系统、研究问题与公开证据</span><span class="i18n i18n-en">Engineering systems, research questions, and public evidence</span></h1>
-  <p><span class="i18n i18n-zh">这里展示我当前最重要的 AI 工作：可靠 Agent 系统、多模态模型评估、LLM 后训练，以及能被公开代码和实验工件支撑的系统原型。</span><span class="i18n i18n-en">This portfolio shows my current AI work across reliable agent systems, multimodal evaluation, LLM post-training, and system prototypes supported by public code and experiment artifacts.</span></p>
+  <h1><span class="i18n i18n-zh">代表项目与可核验的构建记录</span><span class="i18n i18n-en">Selected work and verifiable build records</span></h1>
+  <p><span class="i18n i18n-zh">这里优先展示当前的大模型后训练、多模态研究和具备明确使用场景的 Agent 系统。每项工作都保留其公开边界。</span><span class="i18n i18n-en">This portfolio prioritizes current LLM post-training, multimodal research, and agent systems with concrete use cases. Every project keeps its public boundary explicit.</span></p>
 </section>
 
 {% assign flagship_projects = site.data.projects | where: "portfolio_group", "flagship" %}
 {% assign research_projects = site.data.projects | where: "portfolio_group", "research" %}
 {% assign product_projects = site.data.projects | where: "portfolio_group", "product" %}
 <section class="labs-section" aria-labelledby="representative-work-heading">
-  <div class="labs-section-header"><p class="section-label">REPRESENTATIVE WORK</p><h2 id="representative-work-heading"><span class="i18n i18n-zh">从最能代表当前方向的项目开始</span><span class="i18n i18n-en">Start with the work that best represents my current direction</span></h2><p><span class="i18n i18n-zh">每个项目都回答三个问题：解决什么问题、技术上做了什么、有哪些证据可以继续核验。</span><span class="i18n i18n-en">Each project answers three questions: what problem it addresses, what was built technically, and what evidence can be inspected next.</span></p></div>
+  <div class="labs-section-header"><p class="section-label">REPRESENTATIVE WORK</p><h2 id="representative-work-heading"><span class="i18n i18n-zh">先看我现在真正投入的工作</span><span class="i18n i18n-en">Start with the work I am actively advancing</span></h2><p><span class="i18n i18n-zh">每张卡都直接链接到公开仓库或项目页面。它们不是营销截图，而是继续核验代码、方法和边界的起点。</span><span class="i18n i18n-en">Each card links directly to a public repository or project page. These are not marketing screenshots, but starting points for reviewing code, methods, and boundaries.</span></p></div>
   <div class="project-grid home-project-grid labs-representative-grid">
     {% for proj in flagship_projects limit: 1 %}{% include project-card.html project=proj class="home-project-card home-project-card--primary" %}{% endfor %}
     {% for proj in research_projects limit: 1 %}{% include project-card.html project=proj class="home-project-card" %}{% endfor %}
@@ -24,16 +24,16 @@ description: Benjamin Daoson 的 AI 项目作品集，覆盖可靠 Agent 系统�
 </section>
 
 <section class="labs-section labs-evidence" aria-labelledby="work-method-heading">
-  <div class="labs-section-header"><p class="section-label">HOW I WORK</p><h2 id="work-method-heading"><span class="i18n i18n-zh">问题 → 实验 / 系统 → 证据</span><span class="i18n i18n-en">Problem → experiment / system → evidence</span></h2></div>
+  <div class="labs-section-header"><p class="section-label">HOW I WORK</p><h2 id="work-method-heading"><span class="i18n i18n-zh">从问题到证据，而不是从概念到包装</span><span class="i18n i18n-en">From problem to evidence, not concept to packaging</span></h2></div>
   <div class="labs-principles">
-    <article class="labs-mini-card"><span class="mono small subtle">01</span><h3><span class="i18n i18n-zh">定义可证伪的问题</span><span class="i18n i18n-en">Define a falsifiable question</span></h3><p><span class="i18n i18n-zh">先把假设、任务约束、失败模式或真实业务场景写清楚。</span><span class="i18n i18n-en">Start by making the hypothesis, task constraints, failure modes, or operating context explicit.</span></p></article>
-    <article class="labs-mini-card"><span class="mono small subtle">02</span><h3><span class="i18n i18n-zh">构建可检查的工件</span><span class="i18n i18n-en">Build inspectable artifacts</span></h3><p><span class="i18n i18n-zh">训练、评估、运行轨迹、契约与代码都应该支持结论，而不是只留下截图。</span><span class="i18n i18n-en">Training, evaluation, runtime traces, contracts, and code should support the claim rather than leaving only screenshots.</span></p></article>
-    <article class="labs-mini-card"><span class="mono small subtle">03</span><h3><span class="i18n i18n-zh">明确能力边界</span><span class="i18n i18n-en">Keep capability boundaries explicit</span></h3><p><span class="i18n i18n-zh">研究结果、系统原型、学习材料和生产级能力不混为一谈。</span><span class="i18n i18n-en">Research results, system prototypes, learning material, and production-grade capability remain distinct.</span></p></article>
+    <article class="labs-mini-card"><span class="mono small subtle">01</span><h3><span class="i18n i18n-zh">先定义可验证的问题</span><span class="i18n i18n-en">Define a verifiable question</span></h3><p><span class="i18n i18n-zh">把研究假设、任务约束或真实业务场景写清楚。</span><span class="i18n i18n-en">State the hypothesis, task constraints, or real operating context.</span></p></article>
+    <article class="labs-mini-card"><span class="mono small subtle">02</span><h3><span class="i18n i18n-zh">用实验或系统工件回答</span><span class="i18n i18n-en">Answer with working artifacts</span></h3><p><span class="i18n i18n-zh">训练、评估、契约与运行记录都应能支持结论。</span><span class="i18n i18n-en">Training, evaluation, contracts, and runtime artifacts should support the claim.</span></p></article>
+    <article class="labs-mini-card"><span class="mono small subtle">03</span><h3><span class="i18n i18n-zh">把不确定性留在台面上</span><span class="i18n i18n-en">Keep uncertainty visible</span></h3><p><span class="i18n i18n-zh">原型、学习材料与已验证工作不混为一谈。</span><span class="i18n i18n-en">Prototypes, learning materials, and validated work stay distinct.</span></p></article>
   </div>
 </section>
 
 <section class="labs-section" aria-labelledby="all-projects-heading">
-  <div class="labs-section-header"><p class="section-label">ALL PUBLIC WORK</p><h2 id="all-projects-heading"><span class="i18n i18n-zh">完整公开项目清单</span><span class="i18n i18n-en">Complete public project list</span></h2><p><span class="i18n i18n-zh"><strong>flagship</strong> 是当前最能代表主线的工作，<strong>research</strong> 是以实验回答问题的研究型项目，<strong>product</strong> 是场景清楚的系统原型，<strong>learning</strong> 与 <strong>archived</strong> 保留学习或复盘价值。</span><span class="i18n i18n-en"><strong>flagship</strong> represents the current core direction, <strong>research</strong> contains experiment-driven research projects, <strong>product</strong> contains systems with clear contexts, and <strong>learning</strong> and <strong>archived</strong> retain educational or retrospective value.</span></p></div>
+  <div class="labs-section-header"><p class="section-label">ALL PUBLIC WORK</p><h2 id="all-projects-heading"><span class="i18n i18n-zh">完整公开项目清单</span><span class="i18n i18n-en">Complete public project list</span></h2><p><span class="i18n i18n-zh"><strong>flagship</strong> 是当前最能代表主线的工作，<strong>research</strong> 是待由实验回答的问题，<strong>product</strong> 是场景清楚的系统原型，<strong>learning</strong> 与 <strong>archived</strong> 保留其学习或复盘价值。</span><span class="i18n i18n-en"><strong>flagship</strong> represents current direction, <strong>research</strong> contains questions still being tested, <strong>product</strong> contains systems with clear contexts, and <strong>learning</strong> and <strong>archived</strong> retain their educational or retrospective value.</span></p></div>
   <div class="labs-grid">
     {% for proj in site.data.projects %}{% include project-card.html project=proj class="labs-card" show_category=true %}{% endfor %}
   </div>
@@ -41,12 +41,12 @@ description: Benjamin Daoson 的 AI 项目作品集，覆盖可靠 Agent 系统�
 
 <section class="labs-section labs-note" aria-labelledby="portfolio-boundary-heading">
   <p class="section-label">PUBLIC BOUNDARY</p>
-  <h2 id="portfolio-boundary-heading"><span class="i18n i18n-zh">结论和代码保持同一条证据链</span><span class="i18n i18n-en">Claims stay on the same evidence chain as the code</span></h2>
-  <p><span class="i18n i18n-zh">公开页面只描述能够由仓库、实验工件或明确状态支撑的能力。研究原型不会被包装成线上服务，学习项目也不会被包装成生产系统。</span><span class="i18n i18n-en">Public pages describe only capabilities supported by repositories, experiment artifacts, or explicit status. Research prototypes are not presented as operating services, and learning projects are not presented as production systems.</span></p>
+  <h2 id="portfolio-boundary-heading"><span class="i18n i18n-zh">只把能被公开说明的工作放在这里</span><span class="i18n i18n-en">Only work that can be explained publicly belongs here</span></h2>
+  <p><span class="i18n i18n-zh">我不会把研究原型表述为线上服务，也不会把学习项目包装为经过验证的产品。若你在评估合作或招聘，可以从仓库、项目状态与公开边界继续深入。</span><span class="i18n i18n-en">Research prototypes are not presented as operating services, and learning projects are not packaged as validated products. If you are evaluating a collaboration or role, continue through the repository, project status, and public boundary.</span></p>
 </section>
 
 <section class="labs-section labs-contact" aria-labelledby="labs-contact-heading">
   <p class="section-label">CONTACT</p>
-  <h2 id="labs-contact-heading"><span class="i18n i18n-zh">讨论 AI 工程、研究或技术合作</span><span class="i18n i18n-en">Discuss AI engineering, research, or technical collaboration</span></h2>
+  <h2 id="labs-contact-heading"><span class="i18n i18n-zh">希望进一步交流？</span><span class="i18n i18n-en">Want to discuss the work?</span></h2>
   <div class="labs-link-row">{% if site.email %}<a class="btn" href="mailto:{{ site.email }}"><span class="i18n i18n-zh">发邮件联系</span><span class="i18n i18n-en">Email me</span></a>{% endif %}{% if site.github_username %}<a class="btn secondary" href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a>{% endif %}</div>
 </section>
