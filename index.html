@@ -1,87 +1,82 @@
 ---
 layout: default
 title: 首页
-description: Benjamin Daoson 的 AI 工程与研究作品集，聚焦可靠 Agent 系统、多模态评估与 LLM 后训练。
+description: Benjamin Daoson 的 AI 工程与研究作品集，聚焦可靠 Agent、多模态评估与 LLM 后训练。
 ---
 
-<section class="hero home-hero">
-  <div class="home-hero__copy">
-    <p class="home-eyebrow"><span class="i18n i18n-zh">Benjamin Daoson · AI / Agent Engineer</span><span class="i18n i18n-en">Benjamin Daoson · AI / Agent Engineer</span></p>
-    <h1><span class="i18n i18n-zh">构建并研究可靠的 AI 系统</span><span class="i18n i18n-en">Building and studying reliable AI systems</span></h1>
-    <p class="home-hero__lead"><span class="i18n i18n-zh">我聚焦可靠 Agent 系统、多模态推理与评估、LLM 后训练。核心问题不是模型能否完成一次演示，而是它是否真正使用了正确证据，并能在长期执行中保持可验证、可恢复、可控制。</span><span class="i18n i18n-en">I focus on reliable agent systems, multimodal reasoning and evaluation, and LLM post-training. The core question is not whether a model can produce one impressive demo, but whether it uses the right evidence and remains verifiable, recoverable, and controllable over long-running work.</span></p>
-    <div class="home-actions">
-      <a class="btn" href="{{ '/projects/' | relative_url }}"><span class="i18n i18n-zh">查看代表项目</span><span class="i18n i18n-en">View selected work</span></a>
-      <a class="btn secondary" href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a>
+<style>
+.project-first-home{min-height:calc(100vh - 7rem);display:grid;grid-template-rows:auto 1fr auto;gap:1.15rem}.project-first-idbar{display:flex;align-items:end;justify-content:space-between;gap:2rem;padding:.2rem 0 .95rem;border-bottom:1px solid var(--border)}.project-first-name{margin:0;color:var(--text);font-family:var(--font-sans);font-size:clamp(1.65rem,2.6vw,2.55rem);font-weight:760;letter-spacing:-.045em;line-height:1}.project-first-role{margin:.45rem 0 0;color:var(--text-muted);font-size:.94rem;font-weight:650}.project-first-meta{display:flex;align-items:center;justify-content:flex-end;gap:1rem;flex-wrap:wrap}.project-first-school{color:var(--text-muted);font-size:.82rem;font-weight:700;white-space:nowrap}.project-first-nav{display:flex;gap:.95rem;align-items:center;flex-wrap:wrap}.project-first-nav a{color:var(--text);font-size:.82rem;font-weight:750;text-decoration:none}.project-first-nav a:hover{color:var(--accent)}.project-stage{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,.85fr);gap:1rem;min-height:0}.project-hero,.project-support{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:16px;background:#fff;color:var(--text);text-decoration:none;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}.project-hero:hover,.project-support:hover{color:var(--text);border-color:#9fb6ee;box-shadow:var(--shadow-hover);transform:translateY(-2px)}.project-hero{display:flex;flex-direction:column;justify-content:space-between;min-height:540px;padding:clamp(1.65rem,3vw,2.7rem);background:linear-gradient(145deg,#edf3ff 0%,#fff 62%)}.project-kicker{margin:0;color:var(--accent);font-family:var(--font-mono);font-size:.72rem;font-weight:780;letter-spacing:.11em;text-transform:uppercase}.project-hero h1{max-width:10ch;margin:.55rem 0 0;color:var(--text);font-family:var(--font-sans);font-size:clamp(3.1rem,6.1vw,6.3rem);font-weight:780;letter-spacing:-.07em;line-height:.88}.project-hero-question{max-width:720px;margin:1.25rem 0 0;color:var(--text);font-size:clamp(1.15rem,1.8vw,1.65rem);font-weight:650;line-height:1.35}.project-proof{display:grid;grid-template-columns:auto 1fr;gap:1.1rem 1.8rem;align-items:end;margin-top:2rem;padding-top:1.4rem;border-top:1px solid #cfdafa}.project-proof-number{color:var(--accent);font-family:var(--font-sans);font-size:clamp(3.4rem,6.2vw,6.8rem);font-weight:800;letter-spacing:-.08em;line-height:.78}.project-proof-copy strong{display:block;color:var(--text);font-size:1.05rem}.project-proof-copy span{display:block;max-width:27rem;margin-top:.28rem;color:var(--text-muted);font-size:.88rem;line-height:1.45}.project-proof-secondary{grid-column:1/-1;color:var(--text-muted);font-family:var(--font-mono);font-size:.8rem}.project-support-list{display:grid;grid-template-rows:repeat(3,minmax(0,1fr));gap:1rem;min-height:0}.project-support{display:flex;flex-direction:column;justify-content:space-between;padding:1.35rem 1.4rem}.project-support h2{margin:.4rem 0 .55rem;color:var(--text);font-family:var(--font-sans);font-size:clamp(1.35rem,2vw,1.9rem);font-weight:760;letter-spacing:-.04em;line-height:1.05}.project-support p{margin:0;color:var(--text-muted);font-size:.86rem;line-height:1.45}.project-support-proof{margin-top:1rem;color:var(--text);font-size:.83rem;font-weight:750}.project-support-proof strong{color:var(--accent);font-size:1.12rem}.project-first-footer{display:flex;justify-content:space-between;gap:1.5rem;align-items:center;padding:.35rem 0 0;color:var(--text-muted);font-size:.8rem}.project-first-footer a{font-weight:750;text-decoration:none}.project-first-thesis{margin:0;max-width:45rem}.project-first-more{white-space:nowrap}@media(max-width:1000px){.project-first-home{min-height:auto}.project-stage{grid-template-columns:1fr}.project-hero{min-height:520px}.project-support-list{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:none}.project-support{min-height:190px}}@media(max-width:720px){.project-first-idbar{align-items:flex-start;flex-direction:column;gap:.75rem}.project-first-meta{justify-content:flex-start}.project-stage{display:block}.project-hero{min-height:auto;margin-bottom:1rem;padding:1.45rem}.project-hero h1{font-size:clamp(3rem,16vw,5rem)}.project-proof{grid-template-columns:1fr;gap:.7rem}.project-proof-number{font-size:4.6rem}.project-proof-secondary{grid-column:auto}.project-support-list{display:grid;grid-template-columns:1fr}.project-support{min-height:170px}.project-first-footer{align-items:flex-start;flex-direction:column}.project-first-more{white-space:normal}}
+</style>
+
+<main class="project-first-home" aria-label="Benjamin Daoson AI portfolio">
+  <header class="project-first-idbar">
+    <div>
+      <p class="project-first-name">Benjamin Daoson</p>
+      <p class="project-first-role"><span class="i18n i18n-zh">AI / Agent Engineer · Research Engineering</span><span class="i18n i18n-en">AI / Agent Engineer · Research Engineering</span></p>
     </div>
-    <p class="home-hero-tagline"><span class="i18n i18n-zh">Reliable Agents · Multimodal Evaluation · Post-training</span><span class="i18n i18n-en">Reliable Agents · Multimodal Evaluation · Post-training</span></p>
-  </div>
-  <figure class="home-hero__visual">
-    <img src="{{ '/assets/img/research-terrain.png' | relative_url }}" width="1536" height="1024" alt="抽象化的大模型训练、评估与系统协作结构" fetchpriority="high">
-  </figure>
-</section>
+    <div class="project-first-meta">
+      <span class="project-first-school">Georgia Tech · OMSCS</span>
+      <nav class="project-first-nav" aria-label="Homepage navigation">
+        <a href="{{ '/projects/' | relative_url }}"><span class="i18n i18n-zh">全部项目</span><span class="i18n i18n-en">Work</span></a>
+        <a href="{{ '/writing/' | relative_url }}">Blog</a>
+        <a href="{{ '/about/' | relative_url }}">About</a>
+        <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub ↗</a>
+      </nav>
+    </div>
+  </header>
 
-<section class="home-audience" aria-labelledby="audience-heading">
-  <div>
-    <p class="section-label">START HERE</p>
-    <h2 id="audience-heading"><span class="i18n i18n-zh">最快了解我的三个入口</span><span class="i18n i18n-en">Three fast ways to understand my work</span></h2>
-  </div>
-  <nav class="home-audience__links" aria-label="访问路径">
-    <a href="{{ '/projects/' | relative_url }}"><strong><span class="i18n i18n-zh">工程与研究项目</span><span class="i18n i18n-en">Engineering & research</span></strong><span><span class="i18n i18n-zh">公开代码、实验、评估与系统边界</span><span class="i18n i18n-en">Code, experiments, evaluation, and system boundaries</span></span></a>
-    <a href="{{ '/about/' | relative_url }}"><strong><span class="i18n i18n-zh">研究方向</span><span class="i18n i18n-en">Research direction</span></strong><span><span class="i18n i18n-zh">可靠 Agent、多模态 grounding 与后训练评估</span><span class="i18n i18n-en">Reliable agents, multimodal grounding, and post-training evaluation</span></span></a>
-    <a href="{{ '/writing/' | relative_url }}"><strong><span class="i18n i18n-zh">技术写作</span><span class="i18n i18n-en">Technical writing</span></strong><span><span class="i18n i18n-zh">工程判断、实验复盘与长期笔记</span><span class="i18n i18n-en">Engineering judgment, experiment retrospectives, and long-term notes</span></span></a>
-  </nav>
-</section>
+  <section class="project-stage" aria-label="Featured AI projects">
+    <a class="project-hero" href="https://github.com/Benjamindaoson/RewardLens" target="_blank" rel="noopener">
+      <div>
+        <p class="project-kicker">Featured Research · Multimodal Reward Models</p>
+        <h1>RewardLens</h1>
+        <p class="project-hero-question">
+          <span class="i18n i18n-zh">正确答案不等于正确证据：多模态奖励模型到底有没有真正依赖视觉信息？</span>
+          <span class="i18n i18n-en">A correct answer does not prove correct evidence use. Do multimodal reward models actually depend on the visual evidence?</span>
+        </p>
+      </div>
+      <div class="project-proof">
+        <div class="project-proof-number">29.0<span style="font-size:.42em;letter-spacing:-.04em">pt</span></div>
+        <div class="project-proof-copy">
+          <strong><span class="i18n i18n-zh">PFC 差距</span><span class="i18n i18n-en">PFC gap</span></strong>
+          <span><span class="i18n i18n-zh">静态准确率只差 1.30pt 的两个模型，在视觉证据依赖上相差 29.0pt。</span><span class="i18n i18n-en">Two models only 1.30pt apart in static accuracy diverge by 29.0pt in preservation under faithful visual change.</span></span>
+        </div>
+        <div class="project-proof-secondary">Controlled visual interventions · PFC / PSC · reproducible VLM reward-model evaluation</div>
+      </div>
+    </a>
 
-{% assign flagship_projects = site.data.projects | where: "portfolio_group", "flagship" %}
-{% assign research_projects = site.data.projects | where: "portfolio_group", "research" %}
-{% assign product_projects = site.data.projects | where: "portfolio_group", "product" %}
-<section class="home-section home-work-section" aria-labelledby="selected-work-heading">
-  <div class="home-section-header home-section-header--split">
-    <div><p class="section-label">SELECTED WORK</p><h2 id="selected-work-heading"><span class="i18n i18n-zh">先看能被验证的工作</span><span class="i18n i18n-en">Start with work that can be inspected</span></h2></div>
-    <p class="home-section-lead"><span class="i18n i18n-zh">研究问题、系统实现和公开证据放在一起。这里优先展示最能代表当前方向的项目。</span><span class="i18n i18n-en">Research questions, system implementation, and public evidence stay together. These projects best represent my current direction.</span></p>
-  </div>
-  <div class="project-grid home-project-grid">
-    {% for proj in flagship_projects limit: 1 %}{% include project-card.html project=proj class="home-project-card home-project-card--primary" %}{% endfor %}
-    {% for proj in research_projects limit: 1 %}{% include project-card.html project=proj class="home-project-card" %}{% endfor %}
-    {% for proj in product_projects limit: 1 %}{% include project-card.html project=proj class="home-project-card" %}{% endfor %}
-  </div>
-  <a class="text-link" href="{{ '/projects/' | relative_url }}"><span class="i18n i18n-zh">查看全部项目与状态说明</span><span class="i18n i18n-en">See all projects and their status</span> <span aria-hidden="true">→</span></a>
-</section>
+    <div class="project-support-list">
+      <a class="project-support" href="https://github.com/Benjamindaoson/reward-modeling-lab" target="_blank" rel="noopener">
+        <div>
+          <p class="project-kicker">LLM Post-training · Reward Modeling</p>
+          <h2>Reward Modeling Lab</h2>
+          <p><span class="i18n i18n-zh">训练 8B Reward Model，并主动攻击“漂亮的 benchmark 分数”是否来自长度捷径。</span><span class="i18n i18n-en">Train an 8B reward model, then attack whether the impressive benchmark score comes from a length shortcut.</span></p>
+        </div>
+        <div class="project-support-proof"><strong>50.42% → 91.35%</strong> · 94.61% length heuristic</div>
+      </a>
 
-<section class="home-section" aria-labelledby="focus-heading">
-  <div class="home-section-header"><p class="section-label">RESEARCH AGENDA</p><h2 id="focus-heading"><span class="i18n i18n-zh">我持续追问的三个问题</span><span class="i18n i18n-en">Three questions I keep returning to</span></h2></div>
-  <div class="home-focus-grid">
-    <article><span>01</span><h3>Reliable Agent Systems</h3><p><span class="i18n i18n-zh">长程 Agent 如何管理状态、工具、失败恢复与人工升级，使一次成功变成可重复、可审计的执行。</span><span class="i18n i18n-en">How long-horizon agents manage state, tools, recovery, and human escalation so one successful run becomes repeatable and auditable execution.</span></p></article>
-    <article><span>02</span><h3>Evidence-dependent Evaluation</h3><p><span class="i18n i18n-zh">当模型给出正确答案时，怎样判断它是否真正依赖了应该使用的视觉或任务证据，而不是捷径。</span><span class="i18n i18n-en">When a model is correct, how can we tell whether it actually relied on the intended visual or task evidence rather than a shortcut?</span></p></article>
-    <article><span>03</span><h3>Grounded Multimodal Intelligence</h3><p><span class="i18n i18n-zh">如何用测量、物理约束和反事实干预，让多模态模型的判断从相关性走向可验证 grounding。</span><span class="i18n i18n-en">How measurement, physical constraints, and counterfactual interventions can move multimodal reasoning from correlation toward verifiable grounding.</span></p></article>
-  </div>
-</section>
+      <a class="project-support" href="https://github.com/Benjamindaoson/FitGround" target="_blank" rel="noopener">
+        <div>
+          <p class="project-kicker">Multimodal · Physical Grounding</p>
+          <h2>FitGround</h2>
+          <p><span class="i18n i18n-zh">从“识别不合身”推进到“预测修改后的结果”：视觉 + 测量 + 材质 + 反事实修正。</span><span class="i18n i18n-en">Move from detecting bad fit to predicting what a correction will cause: vision, measurements, material, and counterfactual actions.</span></p>
+        </div>
+        <div class="project-support-proof">Counterfactual Fit Correction Lattice · physics-verifier design</div>
+      </a>
 
-<section class="home-section home-learning-section" aria-labelledby="learning-heading">
-  <div class="home-learning-section__copy">
-    <p class="section-label">ENGINEERING AREAS</p>
-    <h2 id="learning-heading"><span class="i18n i18n-zh">把研究问题落到工程系统里</span><span class="i18n i18n-en">Turning research questions into working systems</span></h2>
-    <p><span class="i18n i18n-zh">我的工程工作主要集中在 Agent runtime、RAG / retrieval、评估、LLM 后训练与多模态模型。知识库保留这些系统背后的实现笔记与学习路径。</span><span class="i18n i18n-en">My engineering work centers on agent runtimes, RAG and retrieval, evaluation, LLM post-training, and multimodal models. The knowledge hub keeps implementation notes and learning paths behind those systems.</span></p>
-    <div class="home-actions"><a class="btn secondary" href="{{ '/knowledge/' | relative_url }}"><span class="i18n i18n-zh">进入 AI 知识库</span><span class="i18n i18n-en">Open the AI knowledge hub</span></a><a class="text-link" href="{{ '/teaching/' | relative_url }}"><span class="i18n i18n-zh">查看教学主题</span><span class="i18n i18n-en">See teaching topics</span> <span aria-hidden="true">→</span></a></div>
-  </div>
-  <div class="home-learning-section__list" aria-label="工程主题">
-    <a href="{{ '/knowledge/openclaw/' | relative_url }}">Agent Runtime <span>State, tools, recovery</span></a>
-    <a href="{{ '/knowledge/langgraph/' | relative_url }}">Agent Orchestration <span>Graph, state, control</span></a>
-    <a href="{{ '/knowledge/langchain/' | relative_url }}">RAG & Tooling <span>Retrieval, model, tool</span></a>
-  </div>
-</section>
+      <a class="project-support" href="https://github.com/Benjamindaoson/enterprise-data-agent" target="_blank" rel="noopener">
+        <div>
+          <p class="project-kicker">Agent Systems · Enterprise Data</p>
+          <h2>Enterprise Intelligence Workspace</h2>
+          <p><span class="i18n i18n-zh">把业务问题变成可追踪的调查、受控数据执行、证据化结论和可分享报告。</span><span class="i18n i18n-en">Turn a business question into a traceable investigation, governed execution, evidence-backed findings, and a shareable report.</span></p>
+        </div>
+        <div class="project-support-proof">Stateful claims · evidence lineage · DuckDB / Parquet · FastAPI</div>
+      </a>
+    </div>
+  </section>
 
-<section class="home-section home-now-panel" aria-labelledby="now-heading">
-  <div><p class="section-label">NOW</p><h2 id="now-heading"><span class="i18n i18n-zh">当前工作</span><span class="i18n i18n-en">Current work</span></h2><p><span class="i18n i18n-zh">当前重点是多模态奖励模型的证据依赖评估、可恢复 Agent 系统，以及 measurement-grounded 的多模态理解。</span><span class="i18n i18n-en">Current work focuses on evidence-dependence evaluation for multimodal reward models, recoverable agent systems, and measurement-grounded multimodal understanding.</span></p></div>
-  <a class="btn secondary" href="{{ '/now/' | relative_url }}"><span class="i18n i18n-zh">查看最新状态</span><span class="i18n i18n-en">Read the latest status</span></a>
-</section>
-
-<section class="home-section" id="latest-updates" aria-labelledby="latest-updates-heading">
-  <div class="home-section-header home-section-header--split"><div><p class="section-label">WRITING</p><h2 id="latest-updates-heading"><span class="i18n i18n-zh">技术文章与实验复盘</span><span class="i18n i18n-en">Technical writing and experiment notes</span></h2></div><a class="text-link" href="{{ '/writing/' | relative_url }}"><span class="i18n i18n-zh">所有文章</span><span class="i18n i18n-en">All writing</span> <span aria-hidden="true">→</span></a></div>
-  <ul class="post-list" id="post-list">{% for post in site.posts limit: 4 %}{% include post-card.html post=post %}{% endfor %}</ul>
-</section>
-
-<section class="home-section home-contact-section" aria-labelledby="contact-heading">
-  <div class="home-section-header"><p class="section-label">CONTACT</p><h2 id="contact-heading"><span class="i18n i18n-zh">AI 工程、研究与技术合作</span><span class="i18n i18n-en">AI engineering, research, and technical collaboration</span></h2><p class="home-section-lead"><span class="i18n i18n-zh">如果你在招聘 AI / Agent Engineer、评估研究合作，或希望讨论可靠 Agent、多模态评估与后训练系统，可以通过邮箱或 GitHub 联系我。</span><span class="i18n i18n-en">If you are hiring an AI / Agent Engineer, evaluating a research collaboration, or working on reliable agents, multimodal evaluation, or post-training systems, reach me through email or GitHub.</span></p></div>
-  <div class="home-contact-row">{% if site.email %}<a class="btn" href="mailto:{{ site.email }}"><span class="i18n i18n-zh">发邮件联系</span><span class="i18n i18n-en">Email me</span></a>{% endif %}{% if site.github_username %}<a class="btn secondary" href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a>{% endif %}</div>
-</section>
+  <footer class="project-first-footer">
+    <p class="project-first-thesis"><span class="i18n i18n-zh">项目先于头衔。首页只展示最能说明研究与工程能力的工作；博客、笔记与知识库放在第二层。</span><span class="i18n i18n-en">Projects before titles. This page shows the strongest research and engineering evidence; the blog and knowledge garden sit behind it.</span></p>
+    <a class="project-first-more" href="{{ '/projects/' | relative_url }}"><span class="i18n i18n-zh">查看全部项目 →</span><span class="i18n i18n-en">All projects →</span></a>
+  </footer>
+</main>
