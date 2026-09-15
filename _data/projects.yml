@@ -1,57 +1,57 @@
 # 公开项目清单：只收录能对应到公开代码、验证材料或明确边界的工作。
 
-- name_zh: "RewardLens"
-  name_en: "RewardLens"
-  description_zh: "多模态奖励模型的视觉证据依赖审计：通过 base、relevant intervention 与 irrelevant intervention 对照，区分静态正确率与真正的视觉证据使用。"
-  description_en: "A visual-evidence dependency audit for multimodal reward models, using controlled base, relevant-intervention, and irrelevant-intervention comparisons to separate static accuracy from genuine evidence use."
-  icon: "◎"
-  status: active
-  portfolio_group: flagship
-  category: ai
-  url: "https://github.com/Benjamindaoson/RewardLens"
-  lang: "Python · Multimodal Evaluation"
-  year: 2026
-  public_boundary_zh: "公开仓库聚焦评估方法、实验工件与结果复现；研究结论以公开实验与论文版本为准。"
-  public_boundary_en: "The public repository focuses on evaluation methods, experiment artifacts, and reproducibility; claims remain tied to released experiments and paper versions."
-
 - name_zh: "Reward Modeling Lab"
   name_en: "Reward Modeling Lab"
   description_zh: "面向奖励模型后训练的可审计实验系统，覆盖 QLoRA、鲁棒评估、捷径审计与检查点分析。"
   description_en: "An auditable reward-model post-training system covering QLoRA, robust evaluation, shortcut auditing, and checkpoint analysis."
   icon: "λ"
   status: active
-  portfolio_group: research
+  portfolio_group: flagship
   category: ai
   url: "https://github.com/Benjamindaoson/reward-modeling-lab"
-  lang: "Python · QLoRA · Evaluation"
+  lang: "Python · QLoRA"
   year: 2026
   public_boundary_zh: "公开仓库呈现训练与评估工件；不把研究原型表述为线上模型服务。"
   public_boundary_en: "The public repository contains training and evaluation artifacts; it is not presented as a production model service."
 
 - name_zh: "FitGround"
   name_en: "FitGround"
-  description_zh: "以人体与服装测量约束检验多模态模型是否真正理解合身度，并用受控反事实区分物理 grounding、视觉关联与数据集捷径。"
-  description_en: "A measurement-grounded multimodal benchmark using controlled counterfactuals to distinguish physical grounding from visual correlation and dataset shortcuts in garment-fit reasoning."
+  description_zh: "以人体与服装测量约束检验多模态模型是否真正理解合身度，而非依赖视觉或数据集捷径。"
+  description_en: "A measurement-grounded study of whether multimodal models understand garment fit rather than visual or dataset shortcuts."
   icon: "◫"
-  status: active
+  status: prototype
   portfolio_group: research
   category: ai
   url: "https://github.com/Benjamindaoson/FitGround"
-  lang: "Python · VLM · Counterfactual Eval"
+  lang: "Python · Multimodal AI"
   year: 2026
-  public_boundary_zh: "公开的是研究问题、数据约束、评估代码与可复现实验边界；结论以仓库中的证据为准。"
-  public_boundary_en: "The public boundary includes the research question, measurement constraints, evaluation code, and reproducible experiments; conclusions remain tied to repository evidence."
+  public_boundary_zh: "公开的是研究问题、数据约束与代码边界；结论以仓库中的可复现证据为准。"
+  public_boundary_en: "The public boundary is the research question, measurement constraints, and code; conclusions remain tied to reproducible repository evidence."
+
+- name_zh: "RewardLens"
+  name_en: "RewardLens"
+  description_zh: "用于奖励模型分析与评估的证据优先工作台。"
+  description_en: "An evidence-first workspace for reward-model analysis and evaluation."
+  icon: "◎"
+  status: prototype
+  portfolio_group: research
+  category: ai
+  url: "https://github.com/Benjamindaoson/RewardLens"
+  lang: "Python"
+  year: 2026
+  public_boundary_zh: "当前公开仓库是分析与评估工作区，不替代完整训练结论。"
+  public_boundary_en: "The public repository is an analysis and evaluation workspace, not a substitute for complete training conclusions."
 
 - name_zh: "Enterprise Data Agent"
   name_en: "Enterprise Data Agent"
-  description_zh: "面向企业数据探索、根因分析、BI 生成与业务报告的自主分析智能体，重点验证从自然语言问题到可追溯分析产物的完整工作流。"
-  description_en: "An autonomous AI analyst for enterprise data exploration, root-cause analysis, BI generation, and business reporting, focused on traceable workflows from natural-language questions to analysis artifacts."
+  description_zh: "面向企业数据探索、根因分析、BI 生成与业务报告的自主分析智能体。"
+  description_en: "An autonomous AI analyst for enterprise data exploration, root-cause analysis, BI generation, and business reporting."
   icon: "↔"
   status: active
   portfolio_group: product
   category: ai
   url: "https://github.com/Benjamindaoson/enterprise-data-agent"
-  lang: "Python · Agent Systems · Data"
+  lang: "Python · Data Systems"
   year: 2026
   public_boundary_zh: "只以公开代码与可核验的系统边界说明能力，不把原型称为通用生产服务。"
   public_boundary_en: "Capabilities are described only through public code and verifiable system boundaries, not as a general production service."
