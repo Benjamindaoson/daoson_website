@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 首页
-description: Benjamin Daoson 的 AI Research & Systems Engineering 作品集：大语言模型、多模态大模型与物理 AI。
+description: Benjamin Daoson 的 AI 工程作品集：大语言模型、多模态大模型、Agent 系统与物理 AI。
 hide_sidebar: true
 hide_footer: true
 ---
@@ -11,146 +11,233 @@ body.no-sidebar .site-layout{display:block}
 body.no-sidebar .site-main{min-height:100svh;padding:0}
 body.no-sidebar .site-main-inner{width:100%;max-width:none;margin:0}
 
-.home-shell{width:min(1580px,100%);min-height:100svh;margin:0 auto;padding:clamp(.68rem,1.15vw,.96rem) clamp(1rem,2.8vw,2.8rem) .66rem;display:grid;grid-template-rows:auto auto minmax(0,1fr);gap:clamp(.42rem,.68vw,.6rem)}
-.home-topbar{display:flex;align-items:center;justify-content:space-between;gap:1.15rem;padding-bottom:.48rem;border-bottom:1px solid var(--border)}
-.home-brand{display:flex;align-items:baseline;gap:.74rem;min-width:0}.home-name{margin:0;color:var(--text);font-size:1rem;font-weight:790;letter-spacing:-.02em;white-space:nowrap}.home-role{color:var(--text-muted);font-size:.8rem;font-weight:620;white-space:nowrap}.home-role-meta{color:var(--text-subtle);font-size:.94em;font-weight:560}
-.home-meta{display:flex;align-items:center;justify-content:flex-end;gap:1rem;flex-wrap:wrap}.home-nav{display:flex;align-items:center;gap:.86rem;flex-wrap:wrap}.home-nav a{color:var(--text);font-size:.75rem;font-weight:650;text-decoration:none}.home-nav a:hover{color:var(--accent)}
+.home-shell{
+  width:min(1540px,100%);
+  min-height:100svh;
+  margin:0 auto;
+  padding:clamp(.7rem,1.25vw,1rem) clamp(1rem,2.8vw,2.7rem) .75rem;
+  display:grid;
+  grid-template-rows:auto auto minmax(0,1fr) auto;
+  gap:clamp(.7rem,1vw,.95rem);
+}
 
-.home-hero{padding:.02rem 0 .05rem}.home-kicker{margin:0 0 .16rem;color:var(--text-subtle);font-family:var(--font-mono);font-size:.55rem;font-weight:640;letter-spacing:.1em;text-transform:uppercase}.home-title{margin:0;color:var(--text);font-family:var(--font-sans);font-size:clamp(1.95rem,2.6vw,2.9rem);font-weight:780;letter-spacing:-.035em;line-height:1.03;white-space:nowrap}.home-title .arrow{color:var(--accent);font-weight:540}.home-subtitle{margin:.24rem 0 0;color:var(--text-muted);font-size:clamp(.82rem,.88vw,.91rem);line-height:1.4}.home-subtitle strong{color:var(--text);font-weight:670}
+.home-topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1.4rem;
+  padding-bottom:.62rem;
+  border-bottom:1px solid var(--border);
+}
+.home-brand{display:flex;align-items:baseline;gap:.78rem;min-width:0;flex-wrap:wrap}
+.home-name{margin:0;color:var(--text);font-size:1.02rem;font-weight:800;letter-spacing:-.02em;white-space:nowrap}
+.home-role{margin:0;color:var(--text-muted);font-size:.78rem;font-weight:610;white-space:nowrap}
+.home-role .school{color:var(--text-subtle);font-weight:560}
+.home-nav{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.home-nav a{color:var(--text);font-size:.78rem;font-weight:680;text-decoration:none}
+.home-nav a:hover{color:var(--accent)}
 
-.project-wall{display:grid;grid-template-rows:minmax(0,1.15fr) auto minmax(0,.72fr) auto;gap:.58rem;min-height:0}
-.featured-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.66rem;min-height:0}
-.section-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:1.05rem}.section-label{margin:0;color:var(--text-subtle);font-family:var(--font-mono);font-size:.56rem;font-weight:670;letter-spacing:.09em;text-transform:uppercase}.section-note{margin:0;color:var(--text-subtle);font-size:.7rem;line-height:1.35}
-.system-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.66rem;min-height:0}
+.home-intro{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;padding:.08rem 0 .02rem}
+.home-route{margin:0;color:var(--text);font-size:clamp(1.45rem,2vw,2rem);font-weight:760;letter-spacing:-.035em;line-height:1.08}
+.home-subtitle{margin:.34rem 0 0;color:var(--text-muted);font-size:clamp(.82rem,.9vw,.92rem);line-height:1.48}
+.home-subtitle strong{color:var(--text);font-weight:680}
+.home-intro-note{margin:0 0 .08rem;color:var(--text-subtle);font-family:var(--font-mono);font-size:.56rem;font-weight:650;letter-spacing:.085em;text-transform:uppercase;white-space:nowrap}
 
-.project-card{position:relative;display:flex;min-width:0;min-height:0;flex-direction:column;overflow:hidden;border:1px solid var(--border);border-radius:13px;background:#fff;color:var(--text);text-decoration:none;transition:border-color .16s ease,transform .16s ease,box-shadow .16s ease}.project-card:hover{color:var(--text);border-color:#a7b9e8;box-shadow:0 10px 24px rgb(21 34 56 / 8%);transform:translateY(-2px)}
-.project-card--hero{padding:.94rem 1rem .88rem}.project-card--system{padding:.8rem .88rem .76rem}.project-card--focus,.project-card--focus:hover{border-color:#9fb4ed!important;background:linear-gradient(155deg,#f4f7ff 0%,#fff 76%)!important;color:var(--text)!important}.project-card--focus h2,.project-card--focus .card-desc,.project-card--focus .card-proofline,.project-card--focus .card-tech{color:inherit}.project-card--physical{background:linear-gradient(155deg,#f4f8f5 0%,#fff 74%)}
-.card-head{display:flex;align-items:center;justify-content:space-between;gap:.72rem}.card-tag{color:var(--text-subtle);font-family:var(--font-mono);font-size:.56rem;font-weight:650;letter-spacing:.07em;text-transform:uppercase}.card-tag .order{color:var(--accent);font-weight:740}.card-focus{color:var(--accent);font-family:var(--font-mono);font-size:.52rem;font-weight:680;letter-spacing:.065em;text-transform:uppercase}.card-arrow{color:var(--text-subtle);font-size:.77rem;font-weight:620}.project-card:hover .card-arrow{color:var(--accent)}
-.project-card h2,.project-card h3{margin:0;color:var(--text);font-family:var(--font-sans);letter-spacing:-.025em;text-wrap:balance}.project-card h2{margin-top:.48rem;font-size:clamp(1.06rem,1.15vw,1.22rem);font-weight:730;line-height:1.14}.project-card h3{margin-top:.4rem;font-size:.9rem;font-weight:680;line-height:1.18}
-.card-desc{margin:.38rem 0 0;color:var(--text-muted);font-size:.79rem;line-height:1.46}.project-card--system .card-desc{font-size:.75rem;line-height:1.42}
-.card-proof{margin-top:auto;padding-top:.56rem}.card-metric{margin:0;color:var(--text);font-size:clamp(1.55rem,1.75vw,1.9rem);font-weight:790;letter-spacing:-.035em;line-height:1.02;font-variant-numeric:tabular-nums}.card-metric .accent{color:var(--accent)}.card-proofline{margin:.24rem 0 0;color:var(--text-muted);font-size:.72rem;line-height:1.38}.card-proofline strong{color:var(--text);font-weight:690}.card-concept{margin:0;color:var(--text);font-size:clamp(1.08rem,1.25vw,1.3rem);font-weight:730;letter-spacing:-.025em;line-height:1.12}.card-concept .accent{color:var(--accent)}
-.card-tech{margin-top:auto;padding-top:.5rem;border-top:1px solid var(--border);color:var(--text-subtle);font-family:var(--font-sans);font-size:.69rem;font-weight:510;letter-spacing:0;line-height:1.38}.project-card--hero .card-tech{font-size:.7rem}.project-card--system .card-tag{font-weight:620}.project-card--system .card-tech{color:var(--text-subtle);font-size:.67rem}
+.project-bento{
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  grid-template-rows:minmax(0,1.5fr) minmax(0,.82fr);
+  gap:.72rem;
+  min-height:0;
+}
+.project-card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  min-height:0;
+  padding:clamp(.9rem,1.25vw,1.15rem);
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:#fff;
+  color:var(--text);
+  text-decoration:none;
+  overflow:hidden;
+  transition:border-color .16s ease,box-shadow .16s ease,transform .16s ease;
+}
+.project-card:hover{color:var(--text);border-color:#aabbe8;box-shadow:0 10px 24px rgb(21 34 56 / 7%);transform:translateY(-2px)}
+.project-card--featured{grid-column:span 6;border-color:#b8c8ef;background:linear-gradient(155deg,#f5f7ff 0%,#fff 72%)}
+.project-card--primary{grid-column:span 3}
+.project-card--secondary{grid-column:span 3;padding:.82rem .9rem}
 
-.more-strip{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.86rem;min-height:2.2rem;padding:.3rem .7rem;border:1px solid var(--border);border-radius:10px;background:rgb(255 255 255 / 66%)}.more-label{color:var(--text-subtle);font-family:var(--font-mono);font-size:.54rem;font-weight:670;letter-spacing:.08em;white-space:nowrap}.more-links{display:flex;align-items:center;min-width:0;overflow:hidden}.more-links a{display:inline-flex;align-items:center;min-width:0;padding:0;color:var(--text-muted);font-size:.71rem;font-weight:570;text-decoration:none;white-space:nowrap}.more-links a+a{margin-left:.72rem;padding-left:.72rem;border-left:1px solid var(--border)}.more-links a:hover{color:var(--text);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}.more-all{color:var(--text);font-size:.71rem;font-weight:670;text-decoration:none;white-space:nowrap}.more-all:hover{color:var(--accent)}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:.65rem}
+.card-tag{color:var(--text-subtle);font-family:var(--font-mono);font-size:.55rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.card-tag .focus{color:var(--accent);font-weight:760}
+.card-arrow{color:var(--accent);font-size:.78rem;font-weight:700;opacity:0;transform:translate(-2px,2px);transition:opacity .15s ease,transform .15s ease}
+.project-card:hover .card-arrow{opacity:1;transform:none}
 
-@media(min-width:1100px) and (min-height:760px){body.no-sidebar{overflow:hidden}.home-shell{height:100svh;min-height:0}.project-wall{overflow:hidden}}
-@media(max-width:1180px){.home-title{white-space:normal}.system-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.project-wall{grid-template-rows:auto auto auto auto}.project-card--system{min-height:145px}.more-strip{grid-template-columns:1fr}.more-links{flex-wrap:wrap;overflow:visible}}
-@media(max-width:900px){.featured-grid{grid-template-columns:1fr}.project-card--hero{min-height:205px}.home-shell{min-height:auto;height:auto}}
-@media(max-width:640px){.home-topbar{align-items:flex-start;flex-direction:column;gap:.45rem}.home-brand{flex-wrap:wrap}.home-role{white-space:normal}.home-meta{width:100%;align-items:flex-start;justify-content:flex-end;gap:.62rem}.home-nav{gap:.62rem}.home-title{font-size:clamp(1.85rem,8.8vw,2.7rem)}.home-subtitle{font-size:.84rem}.system-grid{grid-template-columns:1fr}.more-links{align-items:flex-start;flex-direction:column}.more-links a+a{margin-left:0;margin-top:.3rem;padding-left:0;border-left:0}.project-card--system{min-height:132px}}
+.project-card h2,.project-card h3{margin:0;color:var(--text);font-family:var(--font-sans);letter-spacing:-.03em;text-wrap:balance}
+.project-card--featured h2{margin-top:.58rem;font-size:clamp(1.75rem,2vw,2.15rem);font-weight:780;line-height:1.02}
+.project-card--primary h3{margin-top:.52rem;font-size:clamp(1.08rem,1.25vw,1.28rem);font-weight:730;line-height:1.1}
+.project-card--secondary h3{margin-top:.42rem;font-size:.97rem;font-weight:690;line-height:1.12}
+
+.card-desc{margin:.42rem 0 0;color:var(--text-muted);line-height:1.46}
+.project-card--featured .card-desc{font-size:.84rem;max-width:90%}
+.project-card--primary .card-desc{font-size:.76rem}
+.project-card--secondary .card-desc{font-size:.7rem;line-height:1.42}
+
+.card-result{margin-top:auto;padding-top:.7rem}
+.featured-metric{margin:0;color:var(--accent);font-size:clamp(2.25rem,3vw,3rem);font-weight:820;letter-spacing:-.055em;line-height:.95;font-variant-numeric:tabular-nums}
+.featured-proof{margin:.3rem 0 0;color:var(--text-muted);font-size:.7rem;line-height:1.4}
+.featured-proof strong{color:var(--text);font-weight:720}
+.primary-result{margin:0;color:var(--text);font-size:clamp(1.45rem,1.85vw,1.85rem);font-weight:770;letter-spacing:-.045em;line-height:1.02}
+.primary-result .accent{color:var(--accent)}
+.primary-proof{margin:.28rem 0 0;color:var(--text-muted);font-size:.66rem;line-height:1.38}
+.secondary-key{margin:auto 0 0;padding-top:.55rem;color:var(--text);font-size:.74rem;font-weight:650;line-height:1.35}
+.secondary-key .accent{color:var(--accent)}
+
+.card-tech{margin-top:.62rem;padding-top:.52rem;border-top:1px solid var(--border);color:var(--text-subtle);font-size:.63rem;font-weight:520;line-height:1.35}
+.project-card--secondary .card-tech{display:none}
+
+.more-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:.08rem}
+.more-index{display:flex;align-items:center;gap:.78rem;min-width:0;flex-wrap:wrap}
+.more-label{color:var(--text-subtle);font-family:var(--font-mono);font-size:.54rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.more-index a,.more-all{color:var(--text-muted);font-size:.69rem;font-weight:590;text-decoration:none;white-space:nowrap}
+.more-index a+a{padding-left:.78rem;border-left:1px solid var(--border)}
+.more-index a:hover,.more-all:hover{color:var(--accent)}
+.more-all{color:var(--text);font-weight:700}
+
+@media(min-width:1180px) and (min-height:760px){
+  body.no-sidebar{overflow:hidden}
+  .home-shell{height:100svh;min-height:0}
+}
+@media(max-width:1180px){
+  .project-bento{grid-template-rows:auto;}
+  .project-card--featured{grid-column:span 12;min-height:250px}
+  .project-card--primary{grid-column:span 6;min-height:210px}
+  .project-card--secondary{grid-column:span 6;min-height:150px}
+}
+@media(max-width:760px){
+  .home-topbar{align-items:flex-start;flex-direction:column;gap:.55rem}
+  .home-nav{gap:.75rem}
+  .home-intro{align-items:flex-start;flex-direction:column;gap:.35rem}
+  .home-intro-note{display:none}
+  .project-card--featured,.project-card--primary,.project-card--secondary{grid-column:span 12;min-height:auto}
+  .project-card--featured{min-height:250px}
+  .more-row{align-items:flex-start;flex-direction:column}
+  .more-index a+a{padding-left:0;border-left:0}
+}
 </style>
 
 <div class="home-shell" aria-label="Benjamin Daoson AI portfolio">
   <header class="home-topbar">
     <div class="home-brand">
       <p class="home-name">Benjamin Daoson</p>
-      <span class="home-role">
+      <p class="home-role">
         <span class="i18n i18n-zh">多模态算法工程师 · Agent算法工程师</span>
         <span class="i18n i18n-en">Multimodal Algorithm Engineer · Agent Algorithm Engineer</span>
-        <span class="home-role-meta"> · Georgia Tech</span>
-      </span>
+        <span class="school"> · Georgia Tech</span>
+      </p>
     </div>
-    <div class="home-meta">
-      <nav class="home-nav" aria-label="Homepage navigation">
-        <a href="{{ '/projects/' | relative_url }}"><span class="i18n i18n-zh">项目</span><span class="i18n i18n-en">Work</span></a>
-        <a href="{{ '/projects/#representative-work-heading' | relative_url }}"><span class="i18n i18n-zh">研究</span><span class="i18n i18n-en">Research</span></a>
-        <a href="{{ '/writing/' | relative_url }}"><span class="i18n i18n-zh">文章</span><span class="i18n i18n-en">Writing</span></a>
-        <a href="{{ '/about/' | relative_url }}"><span class="i18n i18n-zh">关于</span><span class="i18n i18n-en">About</span></a>
-        <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub ↗</a>
-      </nav>
-    </div>
+    <nav class="home-nav" aria-label="Homepage navigation">
+      <a href="{{ '/projects/' | relative_url }}"><span class="i18n i18n-zh">项目</span><span class="i18n i18n-en">Work</span></a>
+      <a href="{{ '/projects/#representative-work-heading' | relative_url }}"><span class="i18n i18n-zh">研究</span><span class="i18n i18n-en">Research</span></a>
+      <a href="{{ '/writing/' | relative_url }}"><span class="i18n i18n-zh">文章</span><span class="i18n i18n-en">Writing</span></a>
+      <a href="{{ '/about/' | relative_url }}"><span class="i18n i18n-zh">关于</span><span class="i18n i18n-en">About</span></a>
+      <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub ↗</a>
+    </nav>
   </header>
 
-  <section class="home-hero" aria-labelledby="home-title">
-    <p class="home-kicker">Research × Engineering × Real-World Systems</p>
-    <h1 class="home-title" id="home-title">
-      <span class="i18n i18n-zh">大语言模型 <span class="arrow">→</span> 多模态大模型 <span class="arrow">→</span> 物理 AI</span>
-      <span class="i18n i18n-en">LLMs <span class="arrow">→</span> Multimodal LLMs <span class="arrow">→</span> Physical AI</span>
-    </h1>
-    <p class="home-subtitle">
-      <span class="i18n i18n-zh">从<strong>模型学习与对齐</strong>，到<strong>视觉与物理 grounding</strong>，再到<strong>真实世界智能系统</strong>。</span>
-      <span class="i18n i18n-en">From <strong>model learning and alignment</strong>, to <strong>visual and physical grounding</strong>, to <strong>real-world intelligent systems</strong>.</span>
-    </p>
+  <section class="home-intro" aria-labelledby="home-route">
+    <div>
+      <h1 class="home-route" id="home-route">
+        <span class="i18n i18n-zh">大语言模型 · 多模态大模型 · 物理 AI</span>
+        <span class="i18n i18n-en">LLM · Multimodal LLM · Physical AI</span>
+      </h1>
+      <p class="home-subtitle">
+        <span class="i18n i18n-zh">从<strong>模型学习与对齐</strong>，到<strong>视觉与物理 grounding</strong>，再到<strong>真实世界智能系统</strong>。</span>
+        <span class="i18n i18n-en">From <strong>model learning and alignment</strong>, to <strong>visual and physical grounding</strong>, to <strong>real-world intelligent systems</strong>.</span>
+      </p>
+    </div>
+    <p class="home-intro-note">Research × Engineering × Real-World Systems</p>
   </section>
 
-  <main class="project-wall" aria-label="Selected projects">
-    <section class="featured-grid" aria-label="Core trajectory projects">
-      <a class="project-card project-card--hero" href="https://github.com/Benjamindaoson/reward-modeling-lab" target="_blank" rel="noopener">
-        <div class="card-head"><span class="card-tag"><span class="order">01</span> · LLM POST-TRAINING</span><span class="card-arrow">↗</span></div>
-        <h2>Reward Modeling Lab</h2>
-        <p class="card-desc"><span class="i18n i18n-zh">8B Reward Model 后训练、偏好学习与 benchmark shortcut 审计。</span><span class="i18n i18n-en">8B reward-model post-training, preference learning, and benchmark shortcut auditing.</span></p>
-        <div class="card-proof">
-          <p class="card-metric">50.42 <span class="accent">→</span> 91.35%</p>
-          <p class="card-proofline"><strong>94.61%</strong> length heuristic exposed the shortcut.</p>
-        </div>
-        <div class="card-tech">8B RM · QLoRA · Ranking Audit · Robust Evaluation</div>
-      </a>
-
-      <a class="project-card project-card--hero project-card--focus" href="https://github.com/Benjamindaoson/RewardLens" target="_blank" rel="noopener">
-        <div class="card-head"><span class="card-tag"><span class="order">02</span> · MULTIMODAL LLM</span><span class="card-focus">Research Focus</span><span class="card-arrow">↗</span></div>
-        <h2>RewardLens</h2>
-        <p class="card-desc"><span class="i18n i18n-zh">审计多模态奖励模型是否真正依赖应该使用的视觉证据。</span><span class="i18n i18n-en">Audit whether multimodal reward models truly depend on the intended visual evidence.</span></p>
-        <div class="card-proof">
-          <p class="card-metric"><span class="accent">29.0 pt</span></p>
-          <p class="card-proofline">PFC gap with only <strong>1.30 pt</strong> static-accuracy difference.</p>
-        </div>
-        <div class="card-tech">Controlled Intervention · PFC / PSC · Multimodal Evaluation</div>
-      </a>
-
-      <a class="project-card project-card--hero project-card--physical" href="https://github.com/Benjamindaoson/FitGround" target="_blank" rel="noopener">
-        <div class="card-head"><span class="card-tag"><span class="order">03</span> · PHYSICAL AI</span><span class="card-arrow">↗</span></div>
-        <h2>FitGround</h2>
-        <p class="card-desc"><span class="i18n i18n-zh">让多模态模型把视觉、人体/服装测量与物理约束连接到下一版样衣修正。</span><span class="i18n i18n-en">Ground multimodal models in vision, body/garment measurements, and physical constraints for next-sample correction.</span></p>
-        <div class="card-proof">
-          <p class="card-concept">Counterfactual <span class="accent">Fit Correction</span></p>
-          <p class="card-proofline">Visual × Measurement × Physics · Physics Verification</p>
-        </div>
-        <div class="card-tech">VLM · Measurement Grounding · Counterfactuals · Physical Reasoning</div>
-      </a>
-    </section>
-
-    <div class="section-row">
-      <p class="section-label">Systems &amp; Applied AI</p>
-      <p class="section-note"><span class="i18n i18n-zh">把模型能力放进真实工作流</span><span class="i18n i18n-en">Turning model capability into working systems</span></p>
-    </div>
-
-    <section class="system-grid" aria-label="Systems and applied AI projects">
-      <a class="project-card project-card--system" href="https://github.com/Benjamindaoson/enterprise-data-agent" target="_blank" rel="noopener">
-        <div class="card-head"><span class="card-tag">Agent Systems</span><span class="card-arrow">↗</span></div>
-        <h3>Enterprise Intelligence</h3>
-        <p class="card-desc"><span class="i18n i18n-zh">企业数据分析与证据驱动决策工作台。</span><span class="i18n i18n-en">Enterprise analytics and evidence-grounded decision workspace.</span></p>
-        <div class="card-tech">Governed Data · Stateful Claims · Evidence Lineage</div>
-      </a>
-
-      <a class="project-card project-card--system" href="https://github.com/Benjamindaoson/ai-investment-research-assistant" target="_blank" rel="noopener">
-        <div class="card-head"><span class="card-tag">Research Agent</span><span class="card-arrow">↗</span></div>
-        <h3>AI Research Assistant</h3>
-        <p class="card-desc"><span class="i18n i18n-zh">Evidence-first 的行业与投资研究工作流。</span><span class="i18n i18n-en">Evidence-first workflow for industry and investment research.</span></p>
-        <div class="card-tech">Research Case · Evidence · Findings · Thesis</div>
-      </a>
-
-      <a class="project-card project-card--system" href="https://github.com/Benjamindaoson/SalesBoost" target="_blank" rel="noopener">
-        <div class="card-head"><span class="card-tag">Applied Agents</span><span class="card-arrow">↗</span></div>
-        <h3>SalesBoost</h3>
-        <p class="card-desc"><span class="i18n i18n-zh">销售训练、实时辅助与多智能体协同平台。</span><span class="i18n i18n-en">Sales training, live assist, and multi-agent orchestration platform.</span></p>
-        <div class="card-tech">LangGraph · Hybrid RAG · Memory · LLM-as-Judge</div>
-      </a>
-
-      <a class="project-card project-card--system" href="https://github.com/Benjamindaoson/api-test-platform" target="_blank" rel="noopener">
-        <div class="card-head"><span class="card-tag">Agentic SE</span><span class="card-arrow">↗</span></div>
-        <h3>API Test Platform</h3>
-        <p class="card-desc"><span class="i18n i18n-zh">面向软件变更的 Agent 辅助 API 测试与契约验证。</span><span class="i18n i18n-en">Agent-assisted API testing and contract validation for software changes.</span></p>
-        <div class="card-tech">Change Impact · OpenAPI · Contract Validation</div>
-      </a>
-    </section>
-
-    <aside class="more-strip" aria-label="More projects">
-      <span class="more-label">MORE BUILDS</span>
-      <div class="more-links">
-        <a href="https://github.com/Benjamindaoson/ai-agent-engineering-lab" target="_blank" rel="noopener">AI Agent Engineering Lab ↗</a>
-        <a href="https://github.com/Benjamindaoson/AIEduRAG" target="_blank" rel="noopener">AIEduRAG ↗</a>
-        <a href="https://github.com/Benjamindaoson/SmartOrderingAgent" target="_blank" rel="noopener">SmartOrderingAgent ↗</a>
+  <main class="project-bento" aria-label="Selected projects">
+    <a class="project-card project-card--featured" href="https://github.com/Benjamindaoson/RewardLens" target="_blank" rel="noopener">
+      <div class="card-top">
+        <span class="card-tag"><span class="focus">Featured Research</span> · Multimodal LLM</span>
+        <span class="card-arrow">↗</span>
       </div>
-      <a class="more-all" href="{{ '/projects/' | relative_url }}"><span class="i18n i18n-zh">全部项目 →</span><span class="i18n i18n-en">All projects →</span></a>
-    </aside>
+      <h2>RewardLens</h2>
+      <p class="card-desc">
+        <span class="i18n i18n-zh">审计多模态奖励模型是否真正依赖应该使用的视觉证据，而不是只在静态 benchmark 上给出正确答案。</span>
+        <span class="i18n i18n-en">Audit whether multimodal reward models truly rely on intended visual evidence rather than merely scoring well on static benchmarks.</span>
+      </p>
+      <div class="card-result">
+        <p class="featured-metric">29.0 pt</p>
+        <p class="featured-proof">PFC gap with only <strong>1.30 pt</strong> static-accuracy difference.</p>
+      </div>
+      <div class="card-tech">Controlled Intervention · PFC / PSC · Multimodal Reward Models</div>
+    </a>
+
+    <a class="project-card project-card--primary" href="https://github.com/Benjamindaoson/reward-modeling-lab" target="_blank" rel="noopener">
+      <div class="card-top"><span class="card-tag">LLM Post-Training</span><span class="card-arrow">↗</span></div>
+      <h3>Reward Modeling Lab</h3>
+      <p class="card-desc"><span class="i18n i18n-zh">8B Reward Model 后训练、偏好学习与 benchmark shortcut 审计。</span><span class="i18n i18n-en">8B reward-model post-training, preference learning, and shortcut auditing.</span></p>
+      <div class="card-result">
+        <p class="primary-result">50.42 <span class="accent">→</span> 91.35%</p>
+        <p class="primary-proof"><strong>94.61%</strong> length shortcut baseline.</p>
+      </div>
+      <div class="card-tech">8B RM · QLoRA · Ranking Audit · Robust Evaluation</div>
+    </a>
+
+    <a class="project-card project-card--primary" href="https://github.com/Benjamindaoson/FitGround" target="_blank" rel="noopener">
+      <div class="card-top"><span class="card-tag">Physical AI</span><span class="card-arrow">↗</span></div>
+      <h3>FitGround</h3>
+      <p class="card-desc"><span class="i18n i18n-zh">把视觉、人体/服装测量与物理约束连接到下一版样衣修正。</span><span class="i18n i18n-en">Connect vision, body/garment measurements, and physical constraints to next-sample correction.</span></p>
+      <div class="card-result">
+        <p class="primary-result">Counterfactual <span class="accent">Fit Correction</span></p>
+        <p class="primary-proof">Visual × Measurement × Physics</p>
+      </div>
+      <div class="card-tech">Measurement Grounding · Counterfactuals · Physics Verification</div>
+    </a>
+
+    <a class="project-card project-card--secondary" href="https://github.com/Benjamindaoson/enterprise-data-agent" target="_blank" rel="noopener">
+      <div class="card-top"><span class="card-tag">Agent Systems</span><span class="card-arrow">↗</span></div>
+      <h3>Enterprise Intelligence</h3>
+      <p class="card-desc"><span class="i18n i18n-zh">面向企业分析与证据驱动决策的智能工作台。</span><span class="i18n i18n-en">Evidence-grounded workspace for enterprise analysis and decision support.</span></p>
+      <p class="secondary-key">Evidence <span class="accent">→</span> Decision · Stateful Claims</p>
+    </a>
+
+    <a class="project-card project-card--secondary" href="https://github.com/Benjamindaoson/ai-investment-research-assistant" target="_blank" rel="noopener">
+      <div class="card-top"><span class="card-tag">Research Agent</span><span class="card-arrow">↗</span></div>
+      <h3>AI Research Assistant</h3>
+      <p class="card-desc"><span class="i18n i18n-zh">Evidence-first 的行业与投资研究工作流。</span><span class="i18n i18n-en">Evidence-first workflow for industry and investment research.</span></p>
+      <p class="secondary-key">Research Case · Evidence · Thesis</p>
+    </a>
+
+    <a class="project-card project-card--secondary" href="https://github.com/Benjamindaoson/SalesBoost" target="_blank" rel="noopener">
+      <div class="card-top"><span class="card-tag">Applied Agents</span><span class="card-arrow">↗</span></div>
+      <h3>SalesBoost</h3>
+      <p class="card-desc"><span class="i18n i18n-zh">销售训练、实时辅助与多智能体协同系统。</span><span class="i18n i18n-en">Sales training, live assist, and multi-agent collaboration system.</span></p>
+      <p class="secondary-key">Hybrid RAG · Memory · LLM-as-Judge</p>
+    </a>
+
+    <a class="project-card project-card--secondary" href="https://github.com/Benjamindaoson/api-test-platform" target="_blank" rel="noopener">
+      <div class="card-top"><span class="card-tag">Agentic SE</span><span class="card-arrow">↗</span></div>
+      <h3>API Test Platform</h3>
+      <p class="card-desc"><span class="i18n i18n-zh">面向软件变更的 Agent 辅助 API 测试与契约验证。</span><span class="i18n i18n-en">Agent-assisted API testing and contract validation for software changes.</span></p>
+      <p class="secondary-key">Change Impact · OpenAPI · Validation</p>
+    </a>
   </main>
+
+  <div class="more-row">
+    <div class="more-index">
+      <span class="more-label">More Projects</span>
+      <a href="https://github.com/Benjamindaoson/ai-agent-engineering-lab" target="_blank" rel="noopener">AI Agent Engineering Lab ↗</a>
+      <a href="https://github.com/Benjamindaoson/AIEduRAG" target="_blank" rel="noopener">AIEduRAG ↗</a>
+      <a href="https://github.com/Benjamindaoson/SmartOrderingAgent" target="_blank" rel="noopener">SmartOrderingAgent ↗</a>
+    </div>
+    <a class="more-all" href="{{ '/projects/' | relative_url }}"><span class="i18n i18n-zh">全部项目 →</span><span class="i18n i18n-en">All projects →</span></a>
+  </div>
 </div>
