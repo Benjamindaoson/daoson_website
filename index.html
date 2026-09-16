@@ -10,8 +10,7 @@ hide_footer: true
 body.no-sidebar .site-layout{display:block}
 body.no-sidebar .site-main{min-height:100svh;padding:0;background:#f7f6f2}
 body.no-sidebar .site-main-inner{width:100%;max-width:none;margin:0}
-
-.home-shell{width:min(1580px,100%);margin:0 auto;padding:clamp(.7rem,1.1vw,.95rem) clamp(1rem,2.2vw,2rem) 1rem}
+.home-shell{width:min(1380px,100%);margin:0 auto;padding:clamp(.7rem,1.1vw,.95rem) clamp(1rem,2.4vw,2.2rem) 1.1rem}
 .home-shell a{background-image:none!important;border-bottom:0!important;box-shadow:none!important;text-decoration:none!important}
 .home-topbar{display:flex;align-items:center;justify-content:space-between;gap:1.4rem;padding-bottom:.58rem;border-bottom:1px solid #d8d8d2}
 .home-brand{display:flex;align-items:baseline;gap:.72rem;min-width:0;flex-wrap:wrap}
@@ -21,106 +20,49 @@ body.no-sidebar .site-main-inner{width:100%;max-width:none;margin:0}
 .home-nav{display:flex;align-items:center;gap:.95rem;flex-wrap:wrap}
 .home-nav a{color:#111827;font-size:.77rem;font-weight:670}
 .home-nav a:hover{color:#2f62f1}
-
-.home-intro{display:flex;align-items:flex-end;justify-content:space-between;gap:1.4rem;padding:.68rem 0 .72rem}
-.home-route{margin:0;color:#111827;font-family:var(--font-sans);font-size:clamp(1.28rem,1.68vw,1.66rem);font-weight:760;letter-spacing:-.035em;line-height:1.08}
+.home-intro{padding:.72rem 0 .92rem}
+.home-route{margin:0;color:#111827;font-family:var(--font-sans);font-size:clamp(1.2rem,1.55vw,1.52rem);font-weight:760;letter-spacing:-.03em;line-height:1.12}
 .home-route .arrow{color:#2f62f1;font-weight:560;padding:0 .08em}
-.home-subtitle{margin:.24rem 0 0;color:#667085;font-size:clamp(.8rem,.86vw,.89rem);line-height:1.45}
+.home-subtitle{margin:.25rem 0 0;color:#667085;font-size:clamp(.79rem,.84vw,.87rem);line-height:1.45}
 .home-subtitle strong{color:#1f2937;font-weight:680}
 
-.projects-stage{background:#070909;overflow:hidden;color:#fff;border:1px solid #121719}
-.projects-head{display:flex;align-items:center;justify-content:space-between;gap:1.2rem;padding:.66rem .9rem .58rem;border-bottom:1px solid #202629}
-.projects-title{margin:0;color:#fff;font-family:var(--font-sans);font-size:1.38rem;font-weight:780;letter-spacing:-.03em}
-.project-filters{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap}
-.filter-btn{appearance:none;border:0;background:transparent;color:#798187;font:inherit;font-size:.72rem;font-weight:620;padding:.12rem 0;cursor:pointer;transition:color .15s ease}
-.filter-btn:hover,.filter-btn.is-active{color:#fff}
+.selected-work{padding-top:.15rem}
+.selected-work-head{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:.7rem}
+.selected-work-title{margin:0;color:#111827;font-size:1.2rem;font-weight:800;letter-spacing:.03em}
+.selected-work-copy{margin:.2rem 0 0;color:#667085;font-size:.78rem;line-height:1.4}
+.selected-work-all{color:#475467!important;font-size:.73rem;font-weight:650;white-space:nowrap}
+.selected-work-all:hover{color:#2f62f1!important}
 
-.projects-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:205px;border-left:1px solid #202629}
-.project-tile{position:relative;display:flex;min-width:0;min-height:205px;overflow:hidden;border-right:1px solid #202629;border-bottom:1px solid #202629;color:#0b1320;isolation:isolate;transition:opacity .18s ease,transform .18s ease,box-shadow .18s ease}
-.project-tile:hover{transform:translateY(-2px);z-index:2;box-shadow:0 8px 24px rgba(0,0,0,.12)}
-.project-tile.is-hidden{display:none}
-.tile-cover{position:absolute;inset:0;z-index:-3;transition:transform .35s ease,filter .35s ease}
-.project-tile:hover .tile-cover{transform:scale(1.018)}
-.tile-shade{position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.07));opacity:0;transition:opacity .2s ease}
-.project-tile:hover .tile-shade{opacity:1}
-.tile-body{position:relative;z-index:2;display:flex;width:100%;min-height:100%;flex-direction:column;justify-content:space-between;padding:.92rem 1.08rem .86rem}
-.tile-eyebrow{margin:0;font-family:var(--font-mono);font-size:.59rem;font-weight:720;letter-spacing:.08em;text-transform:uppercase;opacity:.72}
-.tile-title{margin:.22rem 0 0;font-family:var(--font-mono);font-size:clamp(1.28rem,1.55vw,1.62rem);font-weight:760;letter-spacing:-.045em;line-height:1.02}
-.tile-copy{margin:.36rem 0 0;max-width:62%;font-family:var(--font-sans);font-size:.81rem;font-weight:590;line-height:1.42;opacity:.88}
-.tile-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-top:1rem}
-.tile-result{margin:0;font-family:var(--font-mono);font-size:clamp(1.22rem,1.5vw,1.56rem);font-weight:780;letter-spacing:-.045em;line-height:1}
-.tile-meta{margin:0;text-align:right;font-size:.69rem;font-weight:650;line-height:1.35;opacity:.76}
-.tile-arrow{position:absolute;right:.85rem;top:.7rem;font-size:.86rem;font-weight:760;opacity:0;transform:translate(-4px,4px);transition:opacity .15s ease,transform .15s ease}
-.project-tile:hover .tile-arrow{opacity:.85;transform:none}
+.work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem 1rem}
+.work-card{display:block;min-width:0;color:#111827!important}
+.work-figure{position:relative;overflow:hidden;aspect-ratio:16/9;background:#e9ecef;border:1px solid #d6d9dd}
+.work-figure img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .24s ease,filter .24s ease}
+.work-card:hover .work-figure img{transform:scale(1.018);filter:saturate(1.03)}
+.work-figure::after{content:"↗";position:absolute;right:.7rem;top:.55rem;display:grid;place-items:center;width:1.65rem;height:1.65rem;border-radius:50%;background:rgba(255,255,255,.88);color:#172033;font-size:.72rem;font-weight:800;opacity:0;transform:translateY(4px);transition:opacity .16s ease,transform .16s ease}
+.work-card:hover .work-figure::after{opacity:1;transform:none}
+.work-caption{display:flex;align-items:flex-start;justify-content:space-between;gap:.8rem;padding:.5rem .05rem .05rem}
+.work-name{margin:0;color:#111827;font-size:.88rem;font-weight:760;letter-spacing:-.02em;line-height:1.2}
+.work-meta{margin:.18rem 0 0;color:#7b8493;font-size:.66rem;line-height:1.35}
+.work-key{margin:0;color:#475467;font-family:var(--font-mono);font-size:.62rem;font-weight:650;line-height:1.35;text-align:right;white-space:nowrap}
+.featured-badge{display:inline-block;margin-left:.35rem;padding:.08rem .3rem;border:1px solid #9eb4ef;border-radius:999px;color:#315cc9;font-size:.5rem;font-weight:760;letter-spacing:.06em;vertical-align:middle}
 
-/* Project-specific technical visuals */
-.tile-viz{position:absolute;right:1.05rem;top:51%;width:40%;height:82px;z-index:1;transform:translateY(-50%);opacity:.42;pointer-events:none;transition:opacity .2s ease,transform .2s ease;color:#17223b}
-.project-tile:hover .tile-viz{opacity:.58;transform:translateY(-50%) scale(1.02)}
-.tile-viz span{box-sizing:border-box}
+.more-work{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap;margin-top:.85rem;padding-top:.68rem;border-top:1px solid #d8d8d2;color:#7b8493;font-size:.68rem}
+.more-work-label{font-family:var(--font-mono);font-size:.55rem;font-weight:720;letter-spacing:.08em;text-transform:uppercase;color:#98a2b3;margin-right:.1rem}
+.more-work a{color:#475467!important;font-weight:600}
+.more-work a:hover{color:#2f62f1!important}
+.more-work .sep{color:#c1c5cc}
 
-.viz-rewardlens .node{position:absolute;padding:.2rem .34rem;border:1px solid rgba(37,73,157,.48);border-radius:4px;background:rgba(255,255,255,.38);font:700 .48rem/1 var(--font-mono);letter-spacing:.04em;color:#24478f}
-.viz-rewardlens .base{left:0;top:31px}.viz-rewardlens .relevant{right:0;top:4px}.viz-rewardlens .irrelevant{right:0;bottom:4px}
-.viz-rewardlens .line{position:absolute;left:27%;top:42px;width:47%;height:1px;background:rgba(37,73,157,.45);transform-origin:left center}
-.viz-rewardlens .line-a{transform:rotate(-21deg)}.viz-rewardlens .line-b{transform:rotate(21deg)}
-.viz-rewardlens .dot{position:absolute;left:25.5%;top:39px;width:6px;height:6px;border-radius:50%;background:#2f62f1}
-
-.viz-rm .bar{position:absolute;left:0;height:8px;border-radius:999px;background:rgba(17,93,92,.32);border:1px solid rgba(17,93,92,.18)}
-.viz-rm .b1{top:7px;width:82%}.viz-rm .b2{top:26px;width:64%}.viz-rm .b3{top:45px;width:47%}.viz-rm .b4{top:64px;width:29%}
-.viz-rm::after{content:"ranked preferences";position:absolute;right:0;bottom:-1px;font:700 .46rem/1 var(--font-mono);letter-spacing:.05em;color:rgba(17,93,92,.62)}
-
-.viz-fit .garment{position:absolute;left:38%;top:7px;width:46px;height:64px;border:2px solid rgba(126,92,22,.38);border-radius:13px 13px 7px 7px;background:rgba(255,255,255,.16)}
-.viz-fit .mline{position:absolute;background:rgba(126,92,22,.45)}
-.viz-fit .h1{left:22%;right:5%;top:28px;height:1px}.viz-fit .h2{left:28%;right:10%;top:52px;height:1px}.viz-fit .v1{left:49%;top:0;bottom:0;width:1px}
-.viz-fit .delta{position:absolute;right:0;top:9px;padding:.18rem .26rem;border:1px solid rgba(126,92,22,.36);background:rgba(255,255,255,.24);font:700 .46rem/1 var(--font-mono);color:#7f611e}
-
-.viz-enterprise .node{position:absolute;width:13px;height:13px;border:2px solid rgba(37,70,117,.42);border-radius:50%;background:rgba(255,255,255,.26)}
-.viz-enterprise .n1{left:8%;top:34px}.viz-enterprise .n2{left:43%;top:5px}.viz-enterprise .n3{left:47%;bottom:3px}.viz-enterprise .n4{right:4%;top:33px}
-.viz-enterprise .edge{position:absolute;height:1px;background:rgba(37,70,117,.38);transform-origin:left center}
-.viz-enterprise .e1{left:17%;top:39px;width:35%;transform:rotate(-27deg)}.viz-enterprise .e2{left:17%;top:45px;width:36%;transform:rotate(26deg)}.viz-enterprise .e3{left:53%;top:13px;width:39%;transform:rotate(26deg)}.viz-enterprise .e4{left:55%;top:69px;width:37%;transform:rotate(-26deg)}
-
-.viz-research{display:flex;align-items:center;justify-content:space-between;gap:6px;height:82px}
-.viz-research .step{display:grid;place-items:center;width:31px;height:31px;border:1px solid rgba(77,67,119,.42);background:rgba(255,255,255,.22);font:760 .54rem/1 var(--font-mono);color:#514a73}
-.viz-research .arr{width:12px;height:1px;background:rgba(77,67,119,.42);position:relative}.viz-research .arr::after{content:"";position:absolute;right:-1px;top:-3px;width:6px;height:6px;border-top:1px solid rgba(77,67,119,.42);border-right:1px solid rgba(77,67,119,.42);transform:rotate(45deg)}
-
-.viz-sales .agent{position:absolute;top:4px;width:28px;height:28px;border:1px solid rgba(132,72,32,.42);border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.2);font:760 .48rem/1 var(--font-mono);color:#85502c}
-.viz-sales .a1{left:8%}.viz-sales .a2{left:42%}.viz-sales .a3{right:8%}
-.viz-sales .rag{position:absolute;left:25%;right:25%;bottom:4px;height:23px;border:1px solid rgba(132,72,32,.42);border-radius:999px;display:grid;place-items:center;background:rgba(255,255,255,.22);font:760 .48rem/1 var(--font-mono);color:#85502c}
-.viz-sales .sline{position:absolute;width:1px;height:23px;background:rgba(132,72,32,.36);top:31px}.viz-sales .s1{left:22%}.viz-sales .s2{left:50%}.viz-sales .s3{right:22%}
-
-/* Three restrained color families */
-.tile-rewardlens{border-top:4px solid #2f62f1;box-shadow:inset 0 0 0 1px rgba(47,98,241,.18)}
-.tile-rewardlens .tile-cover{background:radial-gradient(circle at 82% 20%,rgba(255,255,255,.72),transparent 25%),linear-gradient(135deg,#b9ccff 0%,#dce6ff 52%,#e9e2f7 100%)}
-.tile-rewardlens .tile-title{font-size:clamp(1.42rem,1.72vw,1.8rem)}
-.tile-rewardlens .tile-result{color:#234fd3}
-.tile-rewardlens .tile-viz{width:44%;opacity:.56}
-.tile-rewardmodel .tile-cover{background:radial-gradient(circle at 82% 22%,rgba(255,255,255,.66),transparent 24%),linear-gradient(135deg,#a7e1d4 0%,#ccebe3 48%,#dbe8f6 100%)}
-.tile-fitground .tile-cover{background:radial-gradient(circle at 82% 22%,rgba(255,255,255,.54),transparent 24%),linear-gradient(135deg,#ecd79e 0%,#f1e4bb 50%,#dce5c9 100%)}
-.tile-enterprise{color:#17223b}.tile-enterprise .tile-cover{background:radial-gradient(circle at 80% 22%,rgba(255,255,255,.48),transparent 25%),linear-gradient(135deg,#b9c9e6 0%,#cbd5e4 52%,#d8dfe8 100%)}
-.tile-research{color:#211d35}.tile-research .tile-cover{background:radial-gradient(circle at 82% 20%,rgba(255,255,255,.42),transparent 25%),linear-gradient(135deg,#c5c4df 0%,#d1c4db 48%,#ded3dc 100%)}
-.tile-sales{color:#2a1a14}.tile-sales .tile-cover{background:radial-gradient(circle at 80% 20%,rgba(255,255,255,.46),transparent 24%),linear-gradient(135deg,#efad86 0%,#f3bd94 48%,#efd1a5 100%)}
-
-.projects-more{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.58rem .9rem;color:#a8b0b5;background:#111517}
-.projects-more-list{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;font-size:.69rem}
-.projects-more-label{font-family:var(--font-mono);font-size:.56rem;font-weight:720;letter-spacing:.08em;text-transform:uppercase;color:#707980;margin-right:.2rem}
-.projects-more a{color:#b3bbc0!important;font-weight:580}
-.projects-more a:hover{color:#fff!important}
-.projects-more .sep{color:#465056}
-.projects-all{white-space:nowrap;color:#fff!important;font-weight:720!important}
-
-@media(max-width:1120px){
-  .home-intro{align-items:flex-start;flex-direction:column}
-  .projects-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:220px}
+@media(max-width:980px){
+  .work-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-@media(max-width:720px){
+@media(max-width:680px){
   .home-topbar{align-items:flex-start;flex-direction:column;gap:.5rem}
   .home-role{white-space:normal}
   .home-nav{gap:.72rem}
-  .projects-head{align-items:flex-start;flex-direction:column}
-  .projects-grid{grid-template-columns:1fr;grid-auto-rows:230px}
-  .project-tile{min-height:230px}
-  .tile-copy{max-width:68%}
-  .tile-viz{width:36%;right:.8rem}
-  .projects-more{align-items:flex-start;flex-direction:column}
+  .selected-work-head{align-items:flex-start;flex-direction:column}
+  .work-grid{grid-template-columns:1fr}
+  .work-figure{aspect-ratio:16/10}
+  .work-figure::after{opacity:1;transform:none}
 }
 </style>
 
@@ -144,112 +86,63 @@ body.no-sidebar .site-main-inner{width:100%;max-width:none;margin:0}
   </header>
 
   <section class="home-intro" aria-labelledby="home-route">
-    <div>
-      <h1 class="home-route" id="home-route">
-        <span class="i18n i18n-zh">大语言模型 <span class="arrow">→</span> 多模态大模型 <span class="arrow">→</span> 物理 AI</span>
-        <span class="i18n i18n-en">LLM <span class="arrow">→</span> Multimodal LLM <span class="arrow">→</span> Physical AI</span>
-      </h1>
-      <p class="home-subtitle">
-        <span class="i18n i18n-zh">从<strong>模型学习与对齐</strong>，到<strong>多模态理解与物理 grounding</strong>，再到<strong>真实世界智能系统</strong>。</span>
-        <span class="i18n i18n-en">From <strong>model learning and alignment</strong>, to <strong>multimodal understanding and physical grounding</strong>, to <strong>real-world intelligent systems</strong>.</span>
-      </p>
-    </div>
+    <h1 class="home-route" id="home-route">
+      <span class="i18n i18n-zh">大语言模型 <span class="arrow">→</span> 多模态大模型 <span class="arrow">→</span> 物理 AI</span>
+      <span class="i18n i18n-en">LLM <span class="arrow">→</span> Multimodal LLM <span class="arrow">→</span> Physical AI</span>
+    </h1>
+    <p class="home-subtitle">
+      <span class="i18n i18n-zh">从<strong>模型学习与对齐</strong>，到<strong>多模态理解与物理 grounding</strong>，再到<strong>真实世界智能系统</strong>。</span>
+      <span class="i18n i18n-en">From <strong>model learning and alignment</strong>, to <strong>multimodal understanding and physical grounding</strong>, to <strong>real-world intelligent systems</strong>.</span>
+    </p>
   </section>
 
-  <section class="projects-stage" aria-labelledby="projects-heading">
-    <div class="projects-head">
-      <h2 class="projects-title" id="projects-heading">Projects</h2>
-      <div class="project-filters" role="group" aria-label="Project filters">
-        <button class="filter-btn is-active" type="button" data-filter="all">All</button>
-        <button class="filter-btn" type="button" data-filter="llm">LLM</button>
-        <button class="filter-btn" type="button" data-filter="multimodal">Multimodal</button>
-        <button class="filter-btn" type="button" data-filter="agent">Agent</button>
-        <button class="filter-btn" type="button" data-filter="physical">Physical AI</button>
+  <section class="selected-work" aria-labelledby="selected-work-heading">
+    <div class="selected-work-head">
+      <div>
+        <h2 class="selected-work-title" id="selected-work-heading">SELECTED WORK</h2>
+        <p class="selected-work-copy"><span class="i18n i18n-zh">最值得看的研究与工程项目。</span><span class="i18n i18n-en">Selected research and engineering projects.</span></p>
       </div>
+      <a class="selected-work-all" href="{{ '/projects/' | relative_url }}"><span class="i18n i18n-zh">全部项目 →</span><span class="i18n i18n-en">All projects →</span></a>
     </div>
 
-    <div class="projects-grid">
-      <a class="project-tile tile-rewardlens" data-category="multimodal llm" href="https://github.com/Benjamindaoson/RewardLens" target="_blank" rel="noopener">
-        <span class="tile-cover"></span><span class="tile-shade"></span><span class="tile-arrow">↗</span>
-        <div class="tile-viz viz-rewardlens" aria-hidden="true"><span class="node base">BASE</span><span class="node relevant">RELEVANT</span><span class="node irrelevant">IRRELEVANT</span><span class="line line-a"></span><span class="line line-b"></span><span class="dot"></span></div>
-        <div class="tile-body">
-          <div><p class="tile-eyebrow">Featured Research · Multimodal LLM</p><h3 class="tile-title">RewardLens</h3><p class="tile-copy"><span class="i18n i18n-zh">受控视觉干预审计：模型是否真正使用视觉证据。</span><span class="i18n i18n-en">Controlled visual interventions for auditing evidence dependence.</span></p></div>
-          <div class="tile-foot"><p class="tile-result">29.0 pt PFC gap</p><p class="tile-meta">1.30 pt<br>static gap</p></div>
-        </div>
+    <div class="work-grid">
+      <a class="work-card" href="https://github.com/Benjamindaoson/RewardLens" target="_blank" rel="noopener">
+        <div class="work-figure"><img src="{{ '/assets/images/projects/rewardlens-cover.svg' | relative_url }}" alt="RewardLens controlled visual intervention audit"></div>
+        <div class="work-caption"><div><h3 class="work-name">RewardLens <span class="featured-badge">FEATURED</span></h3><p class="work-meta">Multimodal LLM · Controlled visual intervention audit</p></div><p class="work-key">29.0 pt PFC gap</p></div>
       </a>
 
-      <a class="project-tile tile-rewardmodel" data-category="llm" href="https://github.com/Benjamindaoson/reward-modeling-lab" target="_blank" rel="noopener">
-        <span class="tile-cover"></span><span class="tile-shade"></span><span class="tile-arrow">↗</span>
-        <div class="tile-viz viz-rm" aria-hidden="true"><span class="bar b1"></span><span class="bar b2"></span><span class="bar b3"></span><span class="bar b4"></span></div>
-        <div class="tile-body">
-          <div><p class="tile-eyebrow">LLM Post-Training</p><h3 class="tile-title">Reward Modeling Lab</h3><p class="tile-copy"><span class="i18n i18n-zh">8B Reward Model 后训练、偏好学习与 shortcut 审计。</span><span class="i18n i18n-en">8B reward-model post-training and shortcut auditing.</span></p></div>
-          <div class="tile-foot"><p class="tile-result">50.42 → 91.35%</p><p class="tile-meta">94.61%<br>shortcut baseline</p></div>
-        </div>
+      <a class="work-card" href="https://github.com/Benjamindaoson/reward-modeling-lab" target="_blank" rel="noopener">
+        <div class="work-figure"><img src="{{ '/assets/images/projects/reward-modeling-lab-cover.svg' | relative_url }}" alt="Reward Modeling Lab preference ranking audit"></div>
+        <div class="work-caption"><div><h3 class="work-name">Reward Modeling Lab</h3><p class="work-meta">LLM Post-Training · Preference learning · Shortcut audit</p></div><p class="work-key">50.42 → 91.35%</p></div>
       </a>
 
-      <a class="project-tile tile-fitground" data-category="multimodal physical" href="https://github.com/Benjamindaoson/FitGround" target="_blank" rel="noopener">
-        <span class="tile-cover"></span><span class="tile-shade"></span><span class="tile-arrow">↗</span>
-        <div class="tile-viz viz-fit" aria-hidden="true"><span class="garment"></span><span class="mline h1"></span><span class="mline h2"></span><span class="mline v1"></span><span class="delta">+Δ fit</span></div>
-        <div class="tile-body">
-          <div><p class="tile-eyebrow">Physical AI</p><h3 class="tile-title">FitGround</h3><p class="tile-copy"><span class="i18n i18n-zh">视觉 × 测量 × 物理约束，连接到下一版样衣修正。</span><span class="i18n i18n-en">Vision × measurement × physics for next-sample correction.</span></p></div>
-          <div class="tile-foot"><p class="tile-result">Fit Correction</p><p class="tile-meta">Measurement<br>Grounding</p></div>
-        </div>
+      <a class="work-card" href="https://github.com/Benjamindaoson/FitGround" target="_blank" rel="noopener">
+        <div class="work-figure"><img src="{{ '/assets/images/projects/fitground-cover.svg' | relative_url }}" alt="FitGround measurement-grounded fit correction"></div>
+        <div class="work-caption"><div><h3 class="work-name">FitGround</h3><p class="work-meta">Physical AI · Vision × Measurement × Physics</p></div><p class="work-key">Fit Correction</p></div>
       </a>
 
-      <a class="project-tile tile-enterprise" data-category="agent" href="https://github.com/Benjamindaoson/enterprise-data-agent" target="_blank" rel="noopener">
-        <span class="tile-cover"></span><span class="tile-shade"></span><span class="tile-arrow">↗</span>
-        <div class="tile-viz viz-enterprise" aria-hidden="true"><span class="node n1"></span><span class="node n2"></span><span class="node n3"></span><span class="node n4"></span><span class="edge e1"></span><span class="edge e2"></span><span class="edge e3"></span><span class="edge e4"></span></div>
-        <div class="tile-body">
-          <div><p class="tile-eyebrow">Agent Systems</p><h3 class="tile-title">Enterprise Intelligence</h3><p class="tile-copy"><span class="i18n i18n-zh">企业分析与证据驱动决策工作台。</span><span class="i18n i18n-en">Evidence-grounded enterprise analysis and decision workspace.</span></p></div>
-          <div class="tile-foot"><p class="tile-result">Evidence → Decision</p><p class="tile-meta">Stateful Claims<br>Evidence Lineage</p></div>
-        </div>
+      <a class="work-card" href="https://github.com/Benjamindaoson/enterprise-data-agent" target="_blank" rel="noopener">
+        <div class="work-figure"><img src="{{ '/assets/images/projects/enterprise-intelligence-cover.svg' | relative_url }}" alt="Enterprise Intelligence evidence lineage graph"></div>
+        <div class="work-caption"><div><h3 class="work-name">Enterprise Intelligence</h3><p class="work-meta">Agent Systems · Evidence-grounded enterprise analysis</p></div><p class="work-key">Evidence → Decision</p></div>
       </a>
 
-      <a class="project-tile tile-research" data-category="agent" href="https://github.com/Benjamindaoson/ai-investment-research-assistant" target="_blank" rel="noopener">
-        <span class="tile-cover"></span><span class="tile-shade"></span><span class="tile-arrow">↗</span>
-        <div class="tile-viz viz-research" aria-hidden="true"><span class="step">Q</span><span class="arr"></span><span class="step">E</span><span class="arr"></span><span class="step">F</span><span class="arr"></span><span class="step">T</span></div>
-        <div class="tile-body">
-          <div><p class="tile-eyebrow">Research Agent</p><h3 class="tile-title">AI Research Assistant</h3><p class="tile-copy"><span class="i18n i18n-zh">Evidence-first 行业与投资研究工作流。</span><span class="i18n i18n-en">Evidence-first industry and investment research workflow.</span></p></div>
-          <div class="tile-foot"><p class="tile-result">Research Case</p><p class="tile-meta">Evidence<br>Findings · Thesis</p></div>
-        </div>
+      <a class="work-card" href="https://github.com/Benjamindaoson/ai-investment-research-assistant" target="_blank" rel="noopener">
+        <div class="work-figure"><img src="{{ '/assets/images/projects/ai-research-assistant-cover.svg' | relative_url }}" alt="AI Research Assistant evidence-first workflow"></div>
+        <div class="work-caption"><div><h3 class="work-name">AI Research Assistant</h3><p class="work-meta">Research Agent · Evidence → Findings → Thesis</p></div><p class="work-key">Research Case</p></div>
       </a>
 
-      <a class="project-tile tile-sales" data-category="agent" href="https://github.com/Benjamindaoson/SalesBoost" target="_blank" rel="noopener">
-        <span class="tile-cover"></span><span class="tile-shade"></span><span class="tile-arrow">↗</span>
-        <div class="tile-viz viz-sales" aria-hidden="true"><span class="agent a1">A1</span><span class="agent a2">A2</span><span class="agent a3">A3</span><span class="sline s1"></span><span class="sline s2"></span><span class="sline s3"></span><span class="rag">RAG</span></div>
-        <div class="tile-body">
-          <div><p class="tile-eyebrow">Applied Agents</p><h3 class="tile-title">SalesBoost</h3><p class="tile-copy"><span class="i18n i18n-zh">销售训练、实时辅助与多智能体协同。</span><span class="i18n i18n-en">Sales training, live assist, and multi-agent collaboration.</span></p></div>
-          <div class="tile-foot"><p class="tile-result">Hybrid RAG</p><p class="tile-meta">Memory<br>LLM-as-Judge</p></div>
-        </div>
+      <a class="work-card" href="https://github.com/Benjamindaoson/SalesBoost" target="_blank" rel="noopener">
+        <div class="work-figure"><img src="{{ '/assets/images/projects/salesboost-cover.svg' | relative_url }}" alt="SalesBoost multi-agent hybrid RAG system"></div>
+        <div class="work-caption"><div><h3 class="work-name">SalesBoost</h3><p class="work-meta">Applied Agents · Multi-agent sales intelligence</p></div><p class="work-key">Hybrid RAG</p></div>
       </a>
     </div>
 
-    <div class="projects-more">
-      <div class="projects-more-list">
-        <span class="projects-more-label">More Work</span>
-        <a href="https://github.com/Benjamindaoson/api-test-platform" target="_blank" rel="noopener">API Test Platform</a><span class="sep">·</span>
-        <a href="https://github.com/Benjamindaoson/ai-agent-engineering-lab" target="_blank" rel="noopener">AI Agent Engineering Lab</a><span class="sep">·</span>
-        <a href="https://github.com/Benjamindaoson/AIEduRAG" target="_blank" rel="noopener">AIEduRAG</a><span class="sep">·</span>
-        <a href="https://github.com/Benjamindaoson/SmartOrderingAgent" target="_blank" rel="noopener">SmartOrderingAgent</a>
-      </div>
-      <a class="projects-all" href="{{ '/projects/' | relative_url }}"><span class="i18n i18n-zh">全部项目 →</span><span class="i18n i18n-en">All projects →</span></a>
+    <div class="more-work">
+      <span class="more-work-label">More Work</span>
+      <a href="https://github.com/Benjamindaoson/api-test-platform" target="_blank" rel="noopener">API Test Platform</a><span class="sep">·</span>
+      <a href="https://github.com/Benjamindaoson/ai-agent-engineering-lab" target="_blank" rel="noopener">AI Agent Engineering Lab</a><span class="sep">·</span>
+      <a href="https://github.com/Benjamindaoson/AIEduRAG" target="_blank" rel="noopener">AIEduRAG</a><span class="sep">·</span>
+      <a href="https://github.com/Benjamindaoson/SmartOrderingAgent" target="_blank" rel="noopener">SmartOrderingAgent</a>
     </div>
   </section>
 </div>
-
-<script>
-(() => {
-  const buttons = document.querySelectorAll('.filter-btn');
-  const tiles = document.querySelectorAll('.project-tile');
-  buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const filter = button.dataset.filter;
-      buttons.forEach((item) => item.classList.toggle('is-active', item === button));
-      tiles.forEach((tile) => {
-        const categories = (tile.dataset.category || '').split(/\s+/);
-        tile.classList.toggle('is-hidden', filter !== 'all' && !categories.includes(filter));
-      });
-    });
-  });
-})();
-</script>
