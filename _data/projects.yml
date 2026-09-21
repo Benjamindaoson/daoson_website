@@ -56,6 +56,20 @@
   public_boundary_zh: "只以公开代码与可核验的系统边界说明能力，不把原型称为通用生产服务。"
   public_boundary_en: "Capabilities are described only through public code and verifiable system boundaries, not as a general production service."
 
+- name_zh: "多模态内容生产智能体"
+  name_en: "Multimodal Content Creation Agent"
+  description_zh: "面向脚本、分镜、图像、语音与视频生成的可恢复智能体运行时，包含质量门、人工审核与发布反馈。"
+  description_en: "A recoverable agent runtime for script, storyboard, image, speech, and video production with quality gates, human approval, and publishing feedback."
+  icon: "◈"
+  status: active
+  portfolio_group: flagship
+  category: ai
+  url: "https://github.com/Benjamindaoson/multimodal-content-creation-agent"
+  lang: "Python · FastAPI · Multimodal AI"
+  year: 2026
+  public_boundary_zh: "公开代码已通过确定性测试；外部供应商凭据驱动的端到端验证仍属于部署环境步骤。"
+  public_boundary_en: "The public code is deterministically tested; credentialed end-to-end validation with external providers remains deployment-specific."
+
 - name_zh: "API Test Platform"
   name_en: "API Test Platform"
   description_zh: "结合变更影响分析、OpenAPI 生成、契约校验与报告的 Agent 辅助 API 测试系统。"
