@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "个人主站与知识库整合架构",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/Benjamindaoson/daoson_website",
+      "revision": "2142d2c4153474e2ebe55f4eac5b27dc7ca4963d"
+    }
+  },
+  "components": [
+    {
+      "id": "reader",
+      "type": "external",
+      "label": "访客",
+      "sublabel": "GitHub / 浏览器",
+      "pos": [40, 270],
+      "size": [135, 64]
+    },
+    {
+      "id": "github-pages",
+      "type": "cloud",
+      "label": "GitHub Pages",
+      "sublabel": "唯一公开站点",
+      "pos": [280, 270],
+      "size": [150, 64],
+      "sources": [{ "path": ".github/workflows/deploy.yml", "label": "现有部署" }]
+    },
+    {
+      "id": "main-site",
+      "type": "frontend",
+      "label": "个人主站",
+      "sublabel": "Jekyll：项目、文章、Now",
+      "tag": "/daoson_website/",
+      "pos": [550, 165],
+      "size": [200, 76],
+      "sources": [{ "path": "_config.yml", "line": 1, "label": "站点配置" }, { "path": "projects.html", "line": 1, "label": "项目入口" }]
+    },
+    {
+      "id": "knowledge-site",
+      "type": "frontend",
+      "label": "知识库栏目",
+      "sublabel": "嵌入式 VitePress 构建产物",
+      "tag": "/daoson_website/knowledge/",
+      "pos": [550, 385],
+      "size": [200, 76]
+    },
+    {
+      "id": "knowledge-content",
+      "type": "database",
+      "label": "知识库内容",
+      "sublabel": "Markdown、图片、元数据、双链",
+      "pos": [845, 385],
+      "size": [195, 76]
+    },
+    {
+      "id": "admin-import",
+      "type": "backend",
+      "label": "本地笔记管理台",
+      "sublabel": "导入、校验、草稿、发布",
+      "pos": [845, 505],
+      "size": [195, 76]
+    },
+    {
+      "id": "build-workflow",
+      "type": "backend",
+      "label": "统一构建工作流",
+      "sublabel": "Jekyll + VitePress → _site",
+      "pos": [280, 465],
+      "size": [150, 76],
+      "sources": [{ "path": ".github/workflows/deploy.yml", "label": "待扩展工作流" }]
+    }
+  ],
+  "connections": [
+    { "from": "reader", "to": "github-pages", "label": "HTTPS", "variant": "emphasis" },
+    { "from": "github-pages", "to": "main-site", "label": "首页与项目入口" },
+    { "from": "github-pages", "to": "knowledge-site", "label": "知识库栏目" },
+    { "from": "knowledge-content", "to": "knowledge-site", "label": "构建内容" },
+    { "from": "admin-import", "to": "knowledge-content", "label": "写入草稿或发布内容" },
+    { "from": "build-workflow", "to": "github-pages", "label": "部署 _site" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "一个公开入口",
+      "items": ["主站与知识库由同一个 Pages 产物提供", "旧笔记 URL 只保留迁移跳转"]
+    },
+    {
+      "dot": "emerald",
+      "title": "内容边界",
+      "items": ["项目、研究判断和作品证据留在 Jekyll 主站", "教程、概念、学习路径和双链笔记留在知识库"]
+    },
+    {
+      "dot": "violet",
+      "title": "保留已有能力",
+      "items": ["不重写 VitePress 导入、校验与管理台", "统一工作流只负责把两类静态产物发布到一个站点"]
+    }
+  ]
+}
