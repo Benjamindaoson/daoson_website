@@ -2,13 +2,13 @@
 layout: null
 ---
 {
-  "name": "本杰铭个人网站",
-  "short_name": "本杰铭",
-  "description": "本杰铭的个人技术网站和长期数字花园。",
+  "name": "Benjamin Taoson · 本杰铭",
+  "short_name": "Benjamin Taoson",
+  "description": "AI engineering, model evaluation, and robot learning. Projects and research by Benjamin Taoson.",
   "start_url": "{{ '/' | relative_url }}",
   "display": "standalone",
-  "background_color": "#0d1117",
-  "theme_color": "#0d1117",
+  "background_color": "#faf9f3",
+  "theme_color": "#faf9f3",
   "icons": [
     {
       "src": "{{ '/assets/favicon.svg' | relative_url }}",

@@ -2,6 +2,10 @@
 
 - name_zh: "Reward Modeling Lab"
   name_en: "Reward Modeling Lab"
+  domain: digital
+  display_status_zh: "研究实验"
+  display_status_en: "Research experiment"
+  home_featured: false
   id: reward-modeling-lab
   featured: true
   featured_order: 2
@@ -14,6 +18,8 @@
   metric_label_en: "Single-GPU training and shortcut audits"
   metric_value: "8B · QLoRA"
   image: /assets/images/projects/reward-modeling-lab-cover.svg
+  image_alt_zh: "8B 奖励模型 QLoRA 训练与长度捷径审计的概念示意图。"
+  image_alt_en: "Concept diagram of 8B reward-model QLoRA training and length-shortcut audits."
   description_zh: "8B 奖励模型后训练与评估：从冻结测试集增益，继续追踪长度偏差、整体排序和检查点选择。"
   description_en: "8B reward-model post-training and evaluation, from held-out gains to length bias, global ranking, and checkpoint selection."
   icon: "λ"
@@ -28,6 +34,10 @@
 
 - name_zh: "FitGround"
   name_en: "FitGround"
+  domain: digital
+  display_status_zh: "研究原型"
+  display_status_en: "Research prototype"
+  home_featured: false
   description_zh: "以人体与服装测量约束检验多模态模型是否真正理解合身度，而非依赖视觉或数据集捷径。"
   description_en: "A measurement-grounded study of whether multimodal models understand garment fit rather than visual or dataset shortcuts."
   icon: "◫"
@@ -42,6 +52,11 @@
 
 - name_zh: "RewardLens"
   name_en: "RewardLens"
+  domain: digital
+  display_status_zh: "多模态研究"
+  display_status_en: "Multimodal research"
+  home_featured: true
+  home_order: 2
   id: rewardlens
   featured: true
   featured_order: 3
@@ -53,7 +68,10 @@
   metric_label_zh: "Attribute 静态平分下的 RA 差异"
   metric_label_en: "RA gap at an exact Attribute static tie"
   metric_value: "15.1 pp"
-  image: /assets/images/projects/rewardlens-cover.svg
+  image: /assets/images/projects/rewardlens-evidence.svg
+  image_compact: /assets/images/projects/rewardlens-evidence-compact.svg
+  image_alt_zh: "Attribute 条件下，两模型独立静态准确率均为 80.5%；Phi-3.5-Vision 的 RA 为 84.95%，LLaVA-OneVision-7B 为 100%。RA 使用各模型自己的原图正确子集。"
+  image_alt_en: "On Attribute, both judges have 80.5% independent static accuracy; RA is 84.95% for Phi-3.5-Vision and 100% for LLaVA-OneVision-7B, using each model’s base-correct subset."
   description_zh: "多模态评判模型的受控视觉审计：区分相关变化后的适应能力与无关变化下的稳定性。"
   description_en: "A controlled visual audit that separates adaptation to relevant changes from invariance to irrelevant changes."
   icon: "◎"
@@ -68,6 +86,11 @@
 
 - name_zh: "Enterprise Data Agent"
   name_en: "Enterprise Data Agent"
+  domain: digital
+  display_status_zh: "工程案例"
+  display_status_en: "Engineering case study"
+  home_featured: true
+  home_order: 1
   id: enterprise-data-agent
   featured: true
   featured_order: 1
@@ -76,10 +99,13 @@
   eyebrow_en: "Business analysis agent"
   summary_zh: "围绕 147 万条公开交易明细，将业务语义、多智能体调查、确定性分析与经营报告串成完整工作流。"
   summary_en: "Connect business semantics, multi-agent investigation, deterministic analysis, and reports over 1.47 million public transaction rows."
-  metric_label_zh: "驱动召回率 · 同输出消融"
-  metric_label_en: "Driver recall · same-output ablation"
+  metric_label_zh: "驱动召回率 · 同输出、10 案例消融"
+  metric_label_en: "Driver recall · same outputs, 10 cases"
   metric_value: "+10 pp"
-  image: /assets/images/projects/enterprise-intelligence-cover.svg
+  image: /assets/images/projects/enterprise-data-agent-evidence.svg
+  image_compact: /assets/images/projects/enterprise-data-agent-evidence-compact.svg
+  image_alt_zh: "10 个内部基准案例、同一批分析输出：Driver Recall@K 从 90% 到 100%，比较固有评分与查询感知选择。"
+  image_alt_en: "Ten internal benchmark cases with the same workstream outputs: Driver Recall@K is 90% for intrinsic scoring and 100% for query-aware selection."
   description_zh: "从业务提问到多维调查、驱动分析和证据报告，覆盖门店、商品、促销与客群分析。"
   description_en: "From business questions to investigation, driver discovery, and evidence-linked reports across stores, products, promotions, and customers."
   icon: "↔"
@@ -94,6 +120,10 @@
 
 - name_zh: "多模态内容生产智能体"
   name_en: "Multimodal Content Creation Agent"
+  domain: digital
+  display_status_zh: "工程项目"
+  display_status_en: "Engineering project"
+  home_featured: false
   description_zh: "面向脚本、分镜、图像、语音与视频生成的可恢复智能体运行时，包含质量门、人工审核与发布反馈。"
   description_en: "A recoverable agent runtime for script, storyboard, image, speech, and video production with quality gates, human approval, and publishing feedback."
   icon: "◈"
@@ -108,6 +138,10 @@
 
 - name_zh: "API Test Platform"
   name_en: "API Test Platform"
+  domain: digital
+  display_status_zh: "工程原型"
+  display_status_en: "Engineering prototype"
+  home_featured: false
   description_zh: "结合变更影响分析、OpenAPI 生成、契约校验与报告的 Agent 辅助 API 测试系统。"
   description_en: "Agent-assisted API testing with change-impact analysis, OpenAPI generation, contract validation, and reporting."
   icon: "{}"
@@ -122,6 +156,10 @@
 
 - name_zh: "AI Agent Engineering Lab"
   name_en: "AI Agent Engineering Lab"
+  domain: digital
+  display_status_zh: "学习材料"
+  display_status_en: "Learning material"
+  home_featured: false
   description_zh: "以可运行项目和闯关检查构成的 Agent 工程学习路径。"
   description_en: "An Agent-engineering learning path built from runnable projects and gated checks."
   icon: "⌁"
@@ -136,6 +174,10 @@
 
 - name_zh: "Financial Asset QA System"
   name_en: "Financial Asset QA System"
+  domain: digital
+  display_status_zh: "历史原型"
+  display_status_en: "Archived prototype"
+  home_featured: false
   description_zh: "早期金融问答原型，保留为架构与边界复盘材料。"
   description_en: "An earlier financial-QA prototype retained for architecture and boundary retrospectives."
   icon: "⌁"
@@ -150,6 +192,10 @@
 
 - name_zh: "SalesBoost"
   name_en: "SalesBoost"
+  domain: digital
+  display_status_zh: "工程案例"
+  display_status_en: "Engineering case study"
+  home_featured: false
   id: salesboost
   description_zh: "销售赋能案例，结合客户对话模拟、教练反馈、商机管理、混合检索与会话评估。"
   description_en: "A sales-enablement case study combining customer simulations, coaching, pipeline management, hybrid retrieval, and session evaluation."
@@ -165,6 +211,10 @@
 
 - name_zh: "Atlas Research Workspace"
   name_en: "Atlas Research Workspace"
+  domain: digital
+  display_status_zh: "前端原型"
+  display_status_en: "Frontend prototype"
+  home_featured: false
   id: ai-research-assistant
   description_zh: "AI 与机器人产业研究工作台的前端原型，组织证据、反证、研究判断和人工审核后的版本化简报。"
   description_en: "A frontend prototype for AI and robotics research, organizing evidence, counter-evidence, theses, and human-reviewed living briefs."
@@ -180,6 +230,10 @@
 
 - name_zh: "AI Engineering Project OS"
   name_en: "AI Engineering Project OS"
+  domain: digital
+  display_status_zh: "工程项目"
+  display_status_en: "Engineering project"
+  home_featured: false
   id: ai-engineering-project-os
   description_zh: "面向代码仓库的工程任务系统，连接项目审计、任务规划、受控执行、验证、失败恢复与再次审计。"
   description_en: "A repository-level engineering system connecting audits, planning, controlled execution, verification, recovery, and re-audit."
@@ -192,3 +246,38 @@
   year: 2026
   public_boundary_zh: "以公开实现和验证记录说明工程任务闭环，不将尚未执行的模型路径计为已完成结果。"
   public_boundary_en: "Described through public implementation and verification records; unexecuted model paths are not counted as completed results."
+
+
+- name_zh: "StartShift-VLA"
+  name_en: "StartShift-VLA"
+  id: startshift-vla
+  domain: physical
+  display_status_zh: "研究归档 · 方法未验证"
+  display_status_en: "Research archive · method unvalidated"
+  featured: true
+  featured_order: 4
+  home_featured: true
+  home_order: 3
+  case_url: /projects/startshift-vla/
+  eyebrow_zh: "机器人策略可靠性"
+  eyebrow_en: "Robot-policy reliability"
+  summary_zh: "研究 SmolVLA 的初始化敏感性，保留 920 条历史仿真评估记录。两组任务未配对，改进方法尚未验证。"
+  summary_en: "Study SmolVLA initialization sensitivity through 920 saved simulation records. Task selections are unpaired; mitigation remains unvalidated."
+  metric_label_zh: "已保存的仿真记录 · 120 ID + 800 RobotInit"
+  metric_label_en: "Saved simulation records · 120 ID + 800 RobotInit"
+  metric_value: "920"
+  image: /assets/images/projects/startshift-vla-evidence.svg
+  image_compact: /assets/images/projects/startshift-vla-evidence-compact.svg
+  image_alt_zh: "历史 SmolVLA 仿真基线：ID 为 86/120 次成功（71.67%），RobotInit 为 36/800（4.50%）；任务与场景未配对，不构成初始化变化的因果效应。"
+  image_alt_en: "Historical SmolVLA simulation baselines: ID succeeds in 86/120 episodes (71.67%); RobotInit in 36/800 (4.50%). Tasks and scenes are unpaired; this is not a reset-only causal estimate."
+  description_zh: "关于 VLA 策略初始化敏感性的研究归档，保留仿真基线、证据复核工具和未完成部分。"
+  description_en: "A research archive on VLA initialization sensitivity, preserving simulation baselines, evidence checks, and unfinished work."
+  icon: "◌"
+  status: archived
+  portfolio_group: research
+  category: ai
+  url: "https://github.com/Benjamindaoson/StartShift-VLA"
+  lang: "Python · SmolVLA · LIBERO"
+  year: 2026
+  public_boundary_zh: "保存记录仅覆盖一个策略与一套种子安排；无配对因果结论、已验证的 RISE 收益、真机结果或论文录用声明。"
+  public_boundary_en: "Saved records cover one policy and seed schedule; no paired causal estimate, validated RISE benefit, physical-robot result, or publication acceptance is claimed."

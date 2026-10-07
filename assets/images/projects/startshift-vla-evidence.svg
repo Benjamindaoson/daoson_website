@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="864pt" height="547.2pt" viewBox="0 0 864 547.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <title>Historical success rates</title>
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>Historical success rates</dc:title>
+    <dc:description>SmolVLA · saved simulation records; Unpaired tasks and scenes · no reset-only causal estimate; Source: StartShift-VLA / summary.json · 8fb03bb</dc:description>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 547.2 
+L 864 547.2 
+L 864 0 
+L 0 0 
+z
+" style="fill: #f7f5ed"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 319.68 388.512 
+L 794.88 388.512 
+L 794.88 186.048 
+L 319.68 186.048 
+z
+" style="fill: #f7f5ed"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 319.68 388.512 
+L 319.68 186.048 
+" clip-path="url(#pb28b20904a)" style="fill: none; stroke: #dce2d6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2"/>
+     <g id="text_1">
+      <text style="font-size: 18px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #536454" x="319.68" y="414.189188" transform="rotate(-0 319.68 414.189188)">0%</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 557.28 388.512 
+L 557.28 186.048 
+" clip-path="url(#pb28b20904a)" style="fill: none; stroke: #dce2d6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4"/>
+     <g id="text_2">
+      <text style="font-size: 18px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #536454" x="557.28" y="414.189188" transform="rotate(-0 557.28 414.189188)">50%</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 794.88 388.512 
+L 794.88 186.048 
+" clip-path="url(#pb28b20904a)" style="fill: none; stroke: #dce2d6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6"/>
+     <g id="text_3">
+      <text style="font-size: 18px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #536454" x="794.88" y="414.189188" transform="rotate(-0 794.88 414.189188)">100%</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2"/>
+   <g id="patch_3">
+    <path d="M 319.68 258.290836 
+L 794.88 258.290836 
+L 794.88 224.240073 
+L 319.68 224.240073 
+z
+" clip-path="url(#pb28b20904a)" style="fill: #e6ebdf"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 319.68 258.290836 
+L 660.24 258.290836 
+L 660.24 224.240073 
+L 319.68 224.240073 
+z
+" clip-path="url(#pb28b20904a)" style="fill: #92ab90"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 319.68 350.319927 
+L 794.88 350.319927 
+L 794.88 316.269164 
+L 319.68 316.269164 
+z
+" clip-path="url(#pb28b20904a)" style="fill: #e6ebdf"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 319.68 350.319927 
+L 341.064 350.319927 
+L 341.064 316.269164 
+L 319.68 316.269164 
+z
+" clip-path="url(#pb28b20904a)" style="fill: #3c6048"/>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 500; font-size: 30px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #213b2c" x="319.68" y="206.497374" transform="rotate(-0 319.68 206.497374)">71.67%</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 500; font-size: 30px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #213b2c" x="319.68" y="298.526465" transform="rotate(-0 319.68 298.526465)">4.50%</text>
+   </g>
+  </g>
+  <g id="text_6">
+   <text style="font-weight: 500; font-size: 31px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #213b2c" x="51.84" y="72.803156" transform="rotate(-0 51.84 72.803156)">Historical success rates</text>
+  </g>
+  <g id="text_7">
+   <text style="font-size: 21px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #536454" x="51.84" y="114.452719" transform="rotate(-0 51.84 114.452719)">SmolVLA · saved simulation records</text>
+  </g>
+  <g id="text_8">
+   <text style="font-size: 24px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #213b2c" x="51.84" y="234.207955" transform="rotate(-0 51.84 234.207955)">ID / LIBERO</text>
+  </g>
+  <g id="text_9">
+   <text style="font-size: 20px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #536454" x="51.84" y="269.766605" transform="rotate(-0 51.84 269.766605)">86 / 120 episodes</text>
+  </g>
+  <g id="text_10">
+   <text style="font-size: 24px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #213b2c" x="51.84" y="326.237045" transform="rotate(-0 51.84 326.237045)">RobotInit</text>
+  </g>
+  <g id="text_11">
+   <text style="font-size: 20px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #536454" x="51.84" y="361.795695" transform="rotate(-0 51.84 361.795695)">36 / 800 episodes</text>
+  </g>
+  <g id="text_12">
+   <text style="font-size: 20px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #294331" x="51.84" y="474.844875" transform="rotate(-0 51.84 474.844875)">Unpaired tasks and scenes · no reset-only causal estimate</text>
+  </g>
+  <g id="text_13">
+   <text style="font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #536454" x="51.84" y="513.7765" transform="rotate(-0 51.84 513.7765)">Source: StartShift-VLA / summary.json · 8fb03bb</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pb28b20904a">
+   <rect x="319.68" y="186.048" width="475.2" height="202.464"/>
+  </clipPath>
+ </defs>
+</svg>

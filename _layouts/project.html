@@ -11,7 +11,7 @@ layout: default
   </header>
 
   {% assign case_project = site.data.projects | where: "case_url", page.url | first %}
-  {% if case_project.image %}<figure class="case-cover"><img src="{{ case_project.image | relative_url }}" alt="{{ case_project.name_en | escape }}" width="1200" height="760"></figure>{% endif %}
+  {% if case_project.image %}<figure class="case-cover{% if case_project.image_compact %} has-compact-evidence{% endif %}"><picture>{% if case_project.image_compact %}<source media="(max-width: 640px)" srcset="{{ case_project.image_compact | relative_url }}" width="420" height="330">{% endif %}<img src="{{ case_project.image | relative_url }}" alt="{{ case_project.image_alt_zh | default: case_project.name_zh | escape }}" data-alt-zh="{{ case_project.image_alt_zh | default: case_project.name_zh | escape }}" data-alt-en="{{ case_project.image_alt_en | default: case_project.name_en | escape }}" width="1200" height="760"></picture></figure>{% endif %}
   {% if case_project.url %}<p class="case-source"><a href="{{ case_project.url }}" target="_blank" rel="noopener"><span class="i18n i18n-zh">查看源码与项目资料 ↗</span><span class="i18n i18n-en">Source code and project materials ↗</span></a></p>{% endif %}
 
   <div class="post-content">

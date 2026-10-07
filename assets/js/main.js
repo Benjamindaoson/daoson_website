@@ -43,6 +43,9 @@
       const txt = el.getAttribute('data-placeholder-' + l);
       if (txt) el.setAttribute('placeholder', txt);
     });
+    document.querySelectorAll('[data-alt-zh][data-alt-en]').forEach(el => {
+      el.setAttribute('alt', el.getAttribute('data-alt-' + l));
+    });
 
     // 真双语：按 data-post-lang 过滤所有文章/笔记列表项
     // 当前语言匹配 → 显示；不匹配 → 隐藏（用 .lang-hidden 类，搜索过滤可叠加）
@@ -192,6 +195,41 @@
       if (e.key === 'Escape' && sidebar.classList.contains('is-open')) close();
     });
     window.addEventListener('resize', syncSidebarA11y);
+  }
+
+  // ---------- 个人网站顶部导航与公开简历 ----------
+  function setupPortfolioControls() {
+    const header = document.querySelector('[data-portfolio-header]');
+    const toggle = header?.querySelector('[data-portfolio-menu]');
+    const navigation = document.getElementById('portfolio-navigation');
+    if (header && toggle && navigation) {
+      const mobile = window.matchMedia('(max-width: 900px)');
+      let expanded = false;
+      const sync = () => {
+        const collapsed = mobile.matches && !expanded;
+        toggle.setAttribute('aria-expanded', String(expanded));
+        navigation.setAttribute('aria-hidden', String(collapsed));
+        navigation.inert = collapsed;
+      };
+      header.classList.add('nav-ready');
+      toggle.hidden = false;
+      toggle.addEventListener('click', () => { expanded = !expanded; sync(); });
+      navigation.querySelectorAll('a[href]').forEach(link => {
+        link.addEventListener('click', () => { expanded = false; sync(); });
+      });
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && expanded) {
+          expanded = false;
+          sync();
+          toggle.focus();
+        }
+      });
+      mobile.addEventListener('change', () => { expanded = false; sync(); });
+      sync();
+    }
+    document.querySelectorAll('[data-print-resume]').forEach(button => {
+      button.addEventListener('click', () => window.print());
+    });
   }
 
   // ---------- 标签筛选 ----------
@@ -658,6 +696,7 @@
     setupLangToggle();
     highlightNav();
     setupSidebarToggle();
+    setupPortfolioControls();
     setupTagFilter();
     setupSearch();
     setupTypewriter();
