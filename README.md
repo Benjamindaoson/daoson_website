@@ -4,6 +4,16 @@
 
 这个站点不是通用博客模板。它的长期目标是清晰、克制、可信地记录 AI、编程、产品思考、个人系统和真实构建过程。
 
+## 官网与独立笔记站
+
+- 本仓库维护个人官网、项目案例、技术文章与职业联系入口。
+- 个人笔记站继续在 [`gitpagewebnote`](https://github.com/Benjamindaoson/gitpagewebnote) 独立维护和发布；官网通过 `_config.yml` 的 `notes_url` 链接过去。
+- 官网旧 `/knowledge/` 地址保留跳转兼容；本仓库的 `knowledge/` 源码作为历史材料保留，不参与官网构建。新笔记写入独立笔记仓库。
+- 首页、项目列表、三篇核心案例、关于和联系支持中英文切换；历史文章保留自己的内容语言。
+- 首页和项目列表共同读取 `_data/projects.yml`，精选案例使用 `featured: true` 和 `featured_order` 排序。
+
+当前维护关系见 [网站归属记录](docs/repository-consolidation-2026-09.md)。
+
 ## 项目结构
 
 ```text

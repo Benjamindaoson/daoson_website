@@ -1,5 +1,5 @@
 {%- assign project = include.project -%}
-{%- assign project_href = project.url | default: "/projects/" -%}
+{%- assign project_href = project.case_url | default: project.url | default: "/projects/" -%}
 <a href="{% if project_href contains 'http' %}{{ project_href }}{% else %}{{ project_href | relative_url }}{% endif %}"
    class="project-card {{ include.class }}"
    data-tags="{{ project.category }}"

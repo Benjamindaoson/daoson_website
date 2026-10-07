@@ -7,7 +7,7 @@
 
   // ---------- i18n 语言切换 ----------
   function normalizeLang(lang) {
-    return 'zh';
+    return lang === 'en' ? 'en' : 'zh';
   }
 
   function getCurrentLang() {
@@ -15,16 +15,28 @@
   }
 
   function getStoredLang() {
-    return 'zh';
+    const root = document.documentElement;
+    if (root.dataset.bilingual !== 'true') return normalizeLang(root.dataset.pageLang);
+    const requested = new URLSearchParams(location.search).get('lang');
+    if (requested === 'zh' || requested === 'en') return requested;
+    try { return normalizeLang(localStorage.getItem('portfolio-language')); }
+    catch (_) { return 'zh'; }
   }
 
   function setStoredLang(lang) {
-    return;
+    try { localStorage.setItem('portfolio-language', normalizeLang(lang)); }
+    catch (_) { /* Language selection still works when storage is unavailable. */ }
   }
 
   function applyLang(lang) {
     const l = normalizeLang(lang);
     document.documentElement.dataset.uiLang = l;
+    if (document.documentElement.dataset.bilingual === 'true') {
+      document.documentElement.lang = l;
+    }
+    document.querySelectorAll('[data-lang]').forEach(button => {
+      button.setAttribute('aria-pressed', String(button.dataset.lang === l));
+    });
 
     // 处理 input/textarea placeholder（不能用 CSS）
     document.querySelectorAll('[data-placeholder-zh], [data-placeholder-en]').forEach(el => {
@@ -90,7 +102,16 @@
   }
 
   function setupLangToggle() {
-    return;
+    document.querySelectorAll('button[data-lang]').forEach(button => {
+      button.addEventListener('click', () => {
+        const language = normalizeLang(button.dataset.lang);
+        setStoredLang(language);
+        applyLang(language);
+        const url = new URL(location.href);
+        url.searchParams.set('lang', language);
+        history.replaceState(null, '', url);
+      });
+    });
   }
 
   // ---------- 高亮当前导航 ----------
@@ -132,8 +153,9 @@
     if (!toggle || !sidebar || !sidebarContent) return;
 
     function syncSidebarA11y() {
-      const shouldHide = window.innerWidth < 900 && !sidebar.classList.contains('is-open');
+      const shouldHide = window.innerWidth <= 900 && !sidebar.classList.contains('is-open');
       sidebarContent.setAttribute('aria-hidden', String(shouldHide));
+      sidebarContent.inert = shouldHide;
     }
     syncSidebarA11y();
 
@@ -142,6 +164,7 @@
       if (backdrop) backdrop.classList.add('is-shown');
       toggle.setAttribute('aria-expanded', 'true');
       sidebarContent.setAttribute('aria-hidden', 'false');
+      sidebarContent.inert = false;
       document.body.style.overflow = 'hidden';
     }
     function close() {
@@ -161,7 +184,7 @@
 
     sidebar.querySelectorAll('.sidebar-nav-link, .sidebar-post-list a').forEach(link => {
       link.addEventListener('click', () => {
-        if (window.innerWidth < 900) close();
+        if (window.innerWidth <= 900) close();
       });
     });
 
@@ -204,6 +227,8 @@
     if (!modal || !mount) return;
 
     let inited = false;
+    let searchUI = null;
+    let initializedLanguage = null;
     let unavailableShown = false;
     let previousFocus = null;
     const focusableSelector = [
@@ -226,32 +251,39 @@
       modal.hidden = false;
       modal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      if (inited && initializedLanguage !== getCurrentLang()) {
+        searchUI.destroy();
+        searchUI = null;
+        inited = false;
+      }
       if (!inited && window.PagefindUI) {
-        new window.PagefindUI({
+        searchUI = new window.PagefindUI({
           element: '#pagefind-search',
           showImages: false,
           showSubResults: true,
           excerptLength: 25,
           resetStyles: false,
+          processResult(result) {
+            const { title_zh, title_en, ...meta } = result.meta;
+            meta.title = (getCurrentLang() === 'en' ? title_en : title_zh) || meta.title;
+            return { ...result, meta };
+          },
           translations: (getCurrentLang() === 'en') ? {
-            placeholder: 'Search posts, notes, TILs...',
+            placeholder: 'Search projects and writing...',
             zero_results: 'No results for "[SEARCH_TERM]"'
           } : {
-            placeholder: '搜索博客 / 笔记 / TIL...',
+            placeholder: '搜索项目和文章…',
             zero_results: '没有匹配 "[SEARCH_TERM]" 的内容'
           }
         });
+        initializedLanguage = getCurrentLang();
         inited = true;
       } else if (!inited && !window.PagefindUI && !unavailableShown) {
         const isEn = getCurrentLang() === 'en';
         mount.innerHTML = '<div class="pagefind-unavailable" role="status">'
-          + '<span class="mono small subtle">// pagefind index unavailable</span>'
           + '<p>' + (isEn
-            ? 'Search is not available in this local preview because the Pagefind index has not been generated yet.'
-            : '当前本地预览尚未生成 Pagefind 搜索索引，因此全站搜索暂不可用。') + '</p>'
-          + '<p class="mono small subtle">' + (isEn
-            ? 'Run: powershell -ExecutionPolicy Bypass -File scripts/build_pagefind.ps1'
-            : '请运行：powershell -ExecutionPolicy Bypass -File scripts/build_pagefind.ps1') + '</p>'
+            ? 'Search is temporarily unavailable. Please try again later, or use the navigation to browse projects and writing.'
+            : '搜索暂时无法加载，请稍后重试。你也可以从导航栏继续浏览项目和文章。') + '</p>'
           + '</div>';
         unavailableShown = true;
       }

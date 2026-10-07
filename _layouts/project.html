@@ -3,14 +3,19 @@ layout: default
 ---
 
 <article class="post">
+  <nav class="case-breadcrumb" aria-label="Breadcrumb"><a href="{{ '/projects/' | relative_url }}"><span class="i18n i18n-zh">← 全部项目</span><span class="i18n i18n-en">← All projects</span></a></nav>
   <header class="post-header">
-    <span class="prompt">~/projects $ open {{ page.slug }}</span>
-    <h1>{{ page.title }}</h1>
-    {% if page.description %}<p class="post-description">{{ page.description }}</p>{% endif %}
+    <span class="prompt">~/projects/{{ page.slug }}</span>
+    <h1>{% if page.title_en %}<span class="i18n i18n-zh">{{ page.title }}</span><span class="i18n i18n-en">{{ page.title_en }}</span>{% else %}{{ page.title }}{% endif %}</h1>
+    {% if page.description %}<p class="post-description">{% if page.description_en %}<span class="i18n i18n-zh">{{ page.description }}</span><span class="i18n i18n-en">{{ page.description_en }}</span>{% else %}{{ page.description }}{% endif %}</p>{% endif %}
   </header>
+
+  {% assign case_project = site.data.projects | where: "case_url", page.url | first %}
+  {% if case_project.image %}<figure class="case-cover"><img src="{{ case_project.image | relative_url }}" alt="{{ case_project.name_en | escape }}" width="1200" height="760"></figure>{% endif %}
+  {% if case_project.url %}<p class="case-source"><a href="{{ case_project.url }}" target="_blank" rel="noopener"><span class="i18n i18n-zh">查看源码与项目资料 ↗</span><span class="i18n i18n-en">Source code and project materials ↗</span></a></p>{% endif %}
 
   <div class="post-content">
     {{ content }}
   </div>
+  {% if page.bilingual %}<aside class="case-contact"><h2><span class="i18n i18n-zh">交流项目与工程实践</span><span class="i18n i18n-en">Discuss the work</span></h2><p><span class="i18n i18n-zh">欢迎围绕系统设计、实验方法或相关岗位交流。</span><span class="i18n i18n-en">Get in touch about system design, experimental methods, or relevant roles.</span></p><a class="btn" href="{{ '/contact/' | relative_url }}"><span class="i18n i18n-zh">联系我</span><span class="i18n i18n-en">Contact me</span></a></aside>{% endif %}
 </article>
-

@@ -1,3 +1,24 @@
+# Website ownership and navigation
+
+## Current decision — 2026-10-07
+
+The owner has explicitly confirmed two maintained websites:
+
+- `Benjamindaoson/daoson_website`: personal website, project case studies, longer writing, and professional contact.
+- `Benjamindaoson/gitpagewebnote`: independent technical-notes website, with its own VitePress build, content workflow, and GitHub Pages deployment.
+
+The personal website links to `https://benjamindaoson.github.io/gitpagewebnote/`. The notes website links back to the personal website. Notes development belongs in `gitpagewebnote` and must not be treated as retired merely because it was previously archived.
+
+The personal site's old `/knowledge/` entry remains a compatibility redirect. The copied `knowledge/` source is retained as historical material and excluded from the personal site's build; it is not a second active notes publishing path.
+
+`Benjamindaoson/Benjamindaoson` remains the GitHub profile; `TIAI_website` remains the separate institutional site; `Benjamindaoson_website` remains the earlier personal-site archive.
+
+This owner-confirmed decision supersedes the consolidation and notes-archive policy below. Repository archive status and live publishing are checked separately during release.
+
+---
+
+## Historical consolidation record — September 2026
+
 # Website Repository Consolidation
 
 This document records the canonical ownership of Benjamin Daoson's public website and notes.

@@ -1,51 +1,134 @@
 import assert from 'node:assert/strict'
-import { access, readFile } from 'node:fs/promises'
-import { resolve } from 'node:path'
+import { execFileSync } from 'node:child_process'
+import { access, readFile, stat } from 'node:fs/promises'
+import { dirname, extname, join, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import test from 'node:test'
 
-test('uses one canonical knowledge-hub entry point', async () => {
-  const [sidebar, home] = await Promise.all([
-    readFile(resolve('_includes/sidebar.html'), 'utf8'),
-    readFile(resolve('index.html'), 'utf8')
-  ])
+// These checks use the real Jekyll output. Run them after the production build
+// and Pagefind indexing, as the deployment workflow does.
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
+const output = resolve(root, process.env.SITE_OUTPUT_DIR || '_site')
+const yamlToJson = "require 'yaml'; require 'json'; require 'date'; puts JSON.generate(YAML.safe_load_file(ARGV[0], permitted_classes: [Date, Time], aliases: true))"
+const readYaml = path => JSON.parse(execFileSync(process.env.SITE_QA_RUBY || 'ruby', [
+  '-e', yamlToJson, join(root, path)
+], { encoding: 'utf8' }))
 
-  assert.equal((sidebar.match(/data-nav="knowledge"/g) || []).length, 1)
-  assert.ok(sidebar.includes("'/knowledge/' | relative_url"))
-  assert.ok(home.includes("'/knowledge/' | relative_url"))
-  assert.ok(!sidebar.includes('gitpagewebnote'))
-  assert.ok(!home.includes('gitpagewebnote'))
+const config = readYaml('_config.yml')
+const projects = readYaml('_data/projects.yml')
+const featured = projects.filter(project => project.featured === true)
+  .sort((a, b) => a.featured_order - b.featured_order)
+const base = String(config.baseurl || '').replace(/\/$/, '')
+const origin = new URL(config.url).origin
+const notesUrl = new URL(config.notes_url)
+const publicPages = ['index.html', 'projects/index.html', 'about/index.html', 'contact/index.html']
+const pageUrl = page => new URL(`${base}/${page.replace(/index\.html$/, '')}`, origin)
+const built = page => readFile(join(output, page), 'utf8')
+
+function tags(html, name) {
+  return [...html.matchAll(new RegExp(`<${name}\\b([^>]*)>`, 'gi'))].map(match =>
+    Object.fromEntries([...match[1].matchAll(/([\w:-]+)\s*=\s*(["'])(.*?)\2/gs)]
+      .map(([, key, , value]) => [key.toLowerCase(), value.replaceAll('&amp;', '&')])))
+}
+
+function localTarget(href, currentPage) {
+  const url = new URL(href, pageUrl(currentPage))
+  if (!['http:', 'https:'].includes(url.protocol) || url.origin !== origin) return null
+  // The notes site is a separate project on the same GitHub Pages origin.
+  if (url.origin === notesUrl.origin && url.pathname.startsWith(notesUrl.pathname)) return null
+  assert.ok(!base || url.pathname === base || url.pathname.startsWith(`${base}/`),
+    `${currentPage}: ${href} bypasses the configured Pages baseurl`)
+  let path = decodeURIComponent(url.pathname.slice(base.length)).replace(/^\/+/, '')
+  if (!path || path.endsWith('/')) path += 'index.html'
+  return { path, hash: decodeURIComponent(url.hash.slice(1)) }
+}
+
+async function featuredPages() {
+  const cards = tags(await built('index.html'), 'a').filter(tag => tag['data-project-id'])
+  return cards.map(card => {
+    assert.ok(card.href, `Featured project ${card['data-project-id']} needs a case-study link`)
+    const target = localTarget(card.href, 'index.html')
+    assert.ok(target, `Featured project ${card['data-project-id']} must open a local case study`)
+    return target.path
+  })
+}
+
+test('home and project index render the same three featured projects from project data', async () => {
+  assert.equal(featured.length, 3, 'The hiring portfolio should have three featured case studies')
+  const ids = featured.map(project => project.id)
+  assert.ok(ids.every(id => typeof id === 'string' && id.length > 0), 'Featured projects need stable IDs')
+  assert.equal(new Set(ids).size, ids.length, 'Featured project IDs must be unique')
+
+  const include = await readFile(join(root, '_includes/featured-projects.html'), 'utf8')
+  assert.match(include, /site\.data\.projects/, 'The shared cards must use the project data source')
+  for (const page of ['index.html', 'projects/index.html']) {
+    const html = await built(page)
+    assert.match(html, /\bdata-featured-projects\b/)
+    const cards = tags(html, 'a').filter(tag => tag['data-project-id'])
+    assert.deepEqual(cards.map(card => card['data-project-id']), ids, `${page}: featured cards drifted from project data`)
+    for (const card of cards) assert.ok(localTarget(card.href, page), `${page}: the card must open its case study`)
+  }
+  for (const path of await featuredPages()) await access(join(output, path))
 })
 
-test('keeps mobile main content padded beside the navigation toggle', async () => {
-  const styles = await readFile(resolve('assets/css/style.css'), 'utf8')
-  assert.match(styles, /body\.has-sidebar \.site-main \{\s*padding: 4rem var\(--page-gutter\) 1\.25rem;/)
+test('public navigation reaches projects, contact, and the independent notes site', async () => {
+  assert.equal(notesUrl.href, 'https://benjamindaoson.github.io/gitpagewebnote/')
+  for (const page of publicPages) {
+    const links = tags(await built(page), 'a').map(tag => tag.href).filter(Boolean)
+    for (const target of [`${base}/projects/`, `${base}/contact/`, notesUrl.href]) {
+      assert.ok(links.includes(target), `${page}: missing navigation to ${target}`)
+    }
+    assert.ok(!links.includes(`${base}/knowledge/`), `${page}: primary navigation must use the independent notes site`)
+  }
+  const contactLinks = tags(await built('contact/index.html'), 'a')
+  assert.ok(contactLinks.some(tag => tag.href?.split('?')[0] === `mailto:${config.email}`),
+    'The contact page must provide the configured email address')
 })
 
-test('keeps the evidence-first hero visually anchored and route-safe', async () => {
-  const [home, styles] = await Promise.all([
-    readFile(resolve('index.html'), 'utf8'),
-    readFile(resolve('assets/css/portfolio-refresh.css'), 'utf8')
-  ])
-
-  await access(resolve('assets/img/research-terrain.png'))
-  assert.match(home, /class="home-hero__visual"/)
-  assert.match(home, /'\/projects\/' \| relative_url/)
-  assert.match(home, /'\/knowledge\/' \| relative_url/)
-  assert.match(home, /招聘与技术合作/)
-  assert.match(home, /AI 学习与培训/)
-  assert.match(home, /学术与机构合作/)
-  assert.match(styles, /--accent: #155eef;/)
-  assert.match(styles, /--bg: #f8f7f3;/)
-  assert.match(styles, /@media \(prefers-reduced-motion: reduce\)/)
+test('bilingual portfolio pages expose both language controls and translated content', async () => {
+  for (const page of [...publicPages, ...await featuredPages()]) {
+    const html = await built(page)
+    assert.equal(tags(html, 'html')[0]?.['data-bilingual'], 'true', `${page}: bilingual page metadata is missing`)
+    const controls = tags(html, 'button').filter(tag => tag['data-lang'])
+    for (const lang of ['zh', 'en']) {
+      const button = controls.find(tag => tag['data-lang'] === lang)
+      assert.ok(button, `${page}: missing ${lang} language control`)
+      assert.ok(['true', 'false'].includes(button['aria-pressed']), `${page}: language control must expose its state`)
+      assert.match(html, new RegExp(`class=["'][^"']*\\bi18n-${lang}\\b`), `${page}: missing ${lang} content`)
+    }
+    const selected = new Set(controls.filter(tag => tag['aria-pressed'] === 'true').map(tag => tag['data-lang']))
+    assert.deepEqual([...selected], [tags(html, 'html')[0]['data-ui-lang'] || config.default_language],
+      `${page}: language controls must agree with the initial UI language`)
+  }
 })
 
-test('uses the portfolio visual language in the knowledge hub', async () => {
-  const [config, styles] = await Promise.all([
-    readFile(resolve('knowledge/site/.vitepress/config.mts'), 'utf8'),
-    readFile(resolve('knowledge/site/.vitepress/theme/custom.css'), 'utf8')
-  ])
+test('rendered portfolio links, anchors, and assets resolve under the Pages baseurl', async () => {
+  for (const page of [...publicPages, ...await featuredPages()]) {
+    const html = await built(page)
+    for (const tag of tags(html, '(?:a|link|script|img)')) {
+      const href = tag.href || tag.src
+      if (!href) continue
+      assert.notEqual(href.trim(), '#', `${page}: remove placeholder links`)
+      const target = localTarget(href, page)
+      if (!target) continue
+      let file = join(output, target.path)
+      let info
+      try { info = await stat(file) } catch { assert.fail(`${page}: ${href} does not exist in the build`) }
+      if (info.isDirectory()) {
+        file = join(file, 'index.html')
+        await access(file)
+      }
+      if (target.hash && extname(file) === '.html') {
+        const targetHtml = await readFile(file, 'utf8')
+        const ids = tags(targetHtml, '[a-z][\\w:-]*').map(tag => tag.id).filter(Boolean)
+        assert.ok(ids.includes(target.hash), `${page}: ${href} points to a missing section`)
+      }
+    }
+  }
+})
 
-  assert.match(config, /appearance: false/)
-  assert.match(styles, /--vp-c-brand-1: #155eef;/)
-  assert.match(styles, /--vp-c-bg: #f8f7f3;/)
+test('published search includes the Pagefind runtime and UI assets', async () => {
+  for (const path of ['pagefind/pagefind.js', 'pagefind/pagefind-ui.js', 'pagefind/pagefind-ui.css']) {
+    await access(join(output, path))
+  }
 })

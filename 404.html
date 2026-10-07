@@ -69,3 +69,16 @@ description: 这里没有你要找的页面。
   </nav>
 
 </div>
+
+<script>
+  // Preserve bookmarks from the former embedded notes site.
+  (function () {
+    var prefix = {{ '/knowledge/' | relative_url | jsonify }};
+    if (location.pathname.indexOf(prefix) !== 0) return;
+    var destination = new URL({{ site.notes_url | jsonify }});
+    destination.pathname += location.pathname.slice(prefix.length);
+    destination.search = location.search;
+    destination.hash = location.hash;
+    location.replace(destination.href);
+  }());
+</script>

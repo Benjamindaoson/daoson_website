@@ -2,8 +2,20 @@
 
 - name_zh: "Reward Modeling Lab"
   name_en: "Reward Modeling Lab"
-  description_zh: "面向奖励模型后训练的可审计实验系统，覆盖 QLoRA、鲁棒评估、捷径审计与检查点分析。"
-  description_en: "An auditable reward-model post-training system covering QLoRA, robust evaluation, shortcut auditing, and checkpoint analysis."
+  id: reward-modeling-lab
+  featured: true
+  featured_order: 2
+  case_url: /projects/reward-modeling-lab/
+  eyebrow_zh: "大模型后训练"
+  eyebrow_en: "LLM post-training"
+  summary_zh: "在单张 A10 上完成 8B 奖励模型 QLoRA 训练，再用长度匹配、反长度挑战与排序评估检验高分来自哪里。"
+  summary_en: "Train an 8B reward model on one A10, then test its gains with length-controlled challenges and ranking audits."
+  metric_label_zh: "单卡训练与长度捷径审计"
+  metric_label_en: "Single-GPU training and shortcut audits"
+  metric_value: "8B · QLoRA"
+  image: /assets/images/projects/reward-modeling-lab-cover.svg
+  description_zh: "8B 奖励模型后训练与评估：从冻结测试集增益，继续追踪长度偏差、整体排序和检查点选择。"
+  description_en: "8B reward-model post-training and evaluation, from held-out gains to length bias, global ranking, and checkpoint selection."
   icon: "λ"
   status: active
   portfolio_group: flagship
@@ -30,8 +42,20 @@
 
 - name_zh: "RewardLens"
   name_en: "RewardLens"
-  description_zh: "用于奖励模型分析与评估的证据优先工作台。"
-  description_en: "An evidence-first workspace for reward-model analysis and evaluation."
+  id: rewardlens
+  featured: true
+  featured_order: 3
+  case_url: /projects/rewardlens/
+  eyebrow_zh: "多模态模型评估"
+  eyebrow_en: "Multimodal evaluation"
+  summary_zh: "固定问题和候选回答，只改变视觉证据；用 8 个模型、4 类因素检验静态分数相近时的干预行为差异。"
+  summary_en: "Hold questions and responses fixed, edit visual evidence, and compare intervention behavior across eight judges and four factors."
+  metric_label_zh: "Attribute 静态平分下的 RA 差异"
+  metric_label_en: "RA gap at an exact Attribute static tie"
+  metric_value: "15.1 pp"
+  image: /assets/images/projects/rewardlens-cover.svg
+  description_zh: "多模态评判模型的受控视觉审计：区分相关变化后的适应能力与无关变化下的稳定性。"
+  description_en: "A controlled visual audit that separates adaptation to relevant changes from invariance to irrelevant changes."
   icon: "◎"
   status: prototype
   portfolio_group: research
@@ -39,13 +63,25 @@
   url: "https://github.com/Benjamindaoson/RewardLens"
   lang: "Python"
   year: 2026
-  public_boundary_zh: "当前公开仓库是分析与评估工作区，不替代完整训练结论。"
-  public_boundary_en: "The public repository is an analysis and evaluation workspace, not a substitute for complete training conclusions."
+  public_boundary_zh: "公开论文、实验代码与结果工件；结论限于冻结的评估设置，不表示会议录用或通用模型排名。"
+  public_boundary_en: "Public manuscript, code, and result artifacts; findings apply to the frozen evaluation setting, not a universal model ranking."
 
 - name_zh: "Enterprise Data Agent"
   name_en: "Enterprise Data Agent"
-  description_zh: "面向企业数据探索、根因分析、BI 生成与业务报告的自主分析智能体。"
-  description_en: "An autonomous AI analyst for enterprise data exploration, root-cause analysis, BI generation, and business reporting."
+  id: enterprise-data-agent
+  featured: true
+  featured_order: 1
+  case_url: /projects/enterprise-data-agent/
+  eyebrow_zh: "商业分析智能体"
+  eyebrow_en: "Business analysis agent"
+  summary_zh: "围绕 147 万条公开交易明细，将业务语义、多智能体调查、确定性分析与经营报告串成完整工作流。"
+  summary_en: "Connect business semantics, multi-agent investigation, deterministic analysis, and reports over 1.47 million public transaction rows."
+  metric_label_zh: "驱动召回率 · 同输出消融"
+  metric_label_en: "Driver recall · same-output ablation"
+  metric_value: "+10 pp"
+  image: /assets/images/projects/enterprise-intelligence-cover.svg
+  description_zh: "从业务提问到多维调查、驱动分析和证据报告，覆盖门店、商品、促销与客群分析。"
+  description_en: "From business questions to investigation, driver discovery, and evidence-linked reports across stores, products, promotions, and customers."
   icon: "↔"
   status: active
   portfolio_group: product
@@ -111,3 +147,48 @@
   year: 2026
   public_boundary_zh: "已归档；不构成金融建议或线上服务声明。"
   public_boundary_en: "Archived; it is neither financial advice nor a claim of an operating service."
+
+- name_zh: "SalesBoost"
+  name_en: "SalesBoost"
+  id: salesboost
+  description_zh: "销售赋能案例，结合客户对话模拟、教练反馈、商机管理、混合检索与会话评估。"
+  description_en: "A sales-enablement case study combining customer simulations, coaching, pipeline management, hybrid retrieval, and session evaluation."
+  icon: "↗"
+  status: active
+  portfolio_group: secondary
+  category: ai
+  url: "https://github.com/Benjamindaoson/SalesBoost"
+  lang: "Python · FastAPI · React"
+  year: 2026
+  public_boundary_zh: "按公开代码与功能文档展示销售辅助系统，不报告未经验证的成交提升。"
+  public_boundary_en: "Presented through public code and feature documentation, without unmeasured sales-conversion claims."
+
+- name_zh: "Atlas Research Workspace"
+  name_en: "Atlas Research Workspace"
+  id: ai-research-assistant
+  description_zh: "AI 与机器人产业研究工作台的前端原型，组织证据、反证、研究判断和人工审核后的版本化简报。"
+  description_en: "A frontend prototype for AI and robotics research, organizing evidence, counter-evidence, theses, and human-reviewed living briefs."
+  icon: "◎"
+  status: prototype
+  portfolio_group: secondary
+  category: ai
+  url: "https://github.com/Benjamindaoson/ai-investment-research-assistant"
+  lang: "Next.js · TypeScript"
+  year: 2026
+  public_boundary_zh: "当前使用明确的模拟数据和服务边界；后端、RAG 与 Agent 运行时尚待实现。"
+  public_boundary_en: "Currently uses explicit mock and service boundaries; backend, RAG, and agent-runtime implementation is deferred."
+
+- name_zh: "AI Engineering Project OS"
+  name_en: "AI Engineering Project OS"
+  id: ai-engineering-project-os
+  description_zh: "面向代码仓库的工程任务系统，连接项目审计、任务规划、受控执行、验证、失败恢复与再次审计。"
+  description_en: "A repository-level engineering system connecting audits, planning, controlled execution, verification, recovery, and re-audit."
+  icon: "{}"
+  status: active
+  portfolio_group: secondary
+  category: tool
+  url: "https://github.com/Benjamindaoson/ai-engineering-project-os"
+  lang: "Agent Harness · Engineering Tools"
+  year: 2026
+  public_boundary_zh: "以公开实现和验证记录说明工程任务闭环，不将尚未执行的模型路径计为已完成结果。"
+  public_boundary_en: "Described through public implementation and verification records; unexecuted model paths are not counted as completed results."

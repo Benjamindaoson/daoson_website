@@ -1,148 +1,61 @@
 ---
 layout: default
 title: 首页
-description: Benjamin Daoson 的 AI 工程作品集：大语言模型、多模态大模型、Agent 系统与物理 AI。
+title_en: Portfolio
+description: 本杰铭的 AI 工程作品集，展示企业分析 Agent、大模型后训练与多模态评估，以及个人技术笔记。
+bilingual: true
 hide_sidebar: true
 hide_footer: true
 ---
 
-<style>
-body.no-sidebar .site-layout{display:block}
-body.no-sidebar .site-main{min-height:100svh;padding:0;background:#f7f6f2}
-body.no-sidebar .site-main-inner{width:100%;max-width:none;margin:0}
-.home-shell{width:min(1380px,100%);margin:0 auto;padding:clamp(.7rem,1.1vw,.95rem) clamp(1rem,2.4vw,2.2rem) 1.1rem}
-.home-shell a{background-image:none!important;border-bottom:0!important;box-shadow:none!important;text-decoration:none!important}
-.home-topbar{display:flex;align-items:center;justify-content:space-between;gap:1.4rem;padding-bottom:.58rem;border-bottom:1px solid #d8d8d2}
-.home-brand{display:flex;align-items:baseline;gap:.72rem;min-width:0;flex-wrap:wrap}
-.home-name{margin:0;color:#111827;font-size:1rem;font-weight:800;letter-spacing:-.02em;white-space:nowrap}
-.home-role{margin:0;color:#667085;font-size:.78rem;font-weight:600;white-space:nowrap}
-.home-role .school{color:#98a2b3;font-weight:560}
-.home-nav{display:flex;align-items:center;gap:.95rem;flex-wrap:wrap}
-.home-nav a{color:#111827;font-size:.77rem;font-weight:670}
-.home-nav a:hover{color:#2f62f1}
-.home-intro{padding:.72rem 0 .92rem}
-.home-route{margin:0;color:#111827;font-family:var(--font-sans);font-size:clamp(1.2rem,1.55vw,1.52rem);font-weight:760;letter-spacing:-.03em;line-height:1.12}
-.home-route .arrow{color:#2f62f1;font-weight:560;padding:0 .08em}
-.home-subtitle{margin:.25rem 0 0;color:#667085;font-size:clamp(.79rem,.84vw,.87rem);line-height:1.45}
-.home-subtitle strong{color:#1f2937;font-weight:680}
-
-.selected-work{padding-top:.15rem}
-.selected-work-head{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:.7rem}
-.selected-work-title{margin:0;color:#111827;font-size:1.2rem;font-weight:800;letter-spacing:.03em}
-.selected-work-copy{margin:.2rem 0 0;color:#667085;font-size:.78rem;line-height:1.4}
-.selected-work-all{color:#475467!important;font-size:.73rem;font-weight:650;white-space:nowrap}
-.selected-work-all:hover{color:#2f62f1!important}
-
-.work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem 1rem}
-.work-card{display:block;min-width:0;color:#111827!important}
-.work-figure{position:relative;overflow:hidden;aspect-ratio:16/9;background:#e9ecef;border:1px solid #d6d9dd}
-.work-figure img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .24s ease,filter .24s ease}
-.work-card:hover .work-figure img{transform:scale(1.018);filter:saturate(1.03)}
-.work-figure::after{content:"↗";position:absolute;right:.7rem;top:.55rem;display:grid;place-items:center;width:1.65rem;height:1.65rem;border-radius:50%;background:rgba(255,255,255,.88);color:#172033;font-size:.72rem;font-weight:800;opacity:0;transform:translateY(4px);transition:opacity .16s ease,transform .16s ease}
-.work-card:hover .work-figure::after{opacity:1;transform:none}
-.work-caption{display:flex;align-items:flex-start;justify-content:space-between;gap:.8rem;padding:.5rem .05rem .05rem}
-.work-name{margin:0;color:#111827;font-size:.88rem;font-weight:760;letter-spacing:-.02em;line-height:1.2}
-.work-meta{margin:.18rem 0 0;color:#7b8493;font-size:.66rem;line-height:1.35}
-.work-key{margin:0;color:#475467;font-family:var(--font-mono);font-size:.62rem;font-weight:650;line-height:1.35;text-align:right;white-space:nowrap}
-.featured-badge{display:inline-block;margin-left:.35rem;padding:.08rem .3rem;border:1px solid #9eb4ef;border-radius:999px;color:#315cc9;font-size:.5rem;font-weight:760;letter-spacing:.06em;vertical-align:middle}
-
-.more-work{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap;margin-top:.85rem;padding-top:.68rem;border-top:1px solid #d8d8d2;color:#7b8493;font-size:.68rem}
-.more-work-label{font-family:var(--font-mono);font-size:.55rem;font-weight:720;letter-spacing:.08em;text-transform:uppercase;color:#98a2b3;margin-right:.1rem}
-.more-work a{color:#475467!important;font-weight:600}
-.more-work a:hover{color:#2f62f1!important}
-.more-work .sep{color:#c1c5cc}
-
-@media(max-width:980px){
-  .work-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(max-width:680px){
-  .home-topbar{align-items:flex-start;flex-direction:column;gap:.5rem}
-  .home-role{white-space:normal}
-  .home-nav{gap:.72rem}
-  .selected-work-head{align-items:flex-start;flex-direction:column}
-  .work-grid{grid-template-columns:1fr}
-  .work-figure{aspect-ratio:16/10}
-  .work-figure::after{opacity:1;transform:none}
-}
-</style>
-
-<div class="home-shell" aria-label="Benjamin Daoson AI portfolio">
+<div class="home-shell">
   <header class="home-topbar">
-    <div class="home-brand">
-      <p class="home-name">Benjamin Daoson</p>
-      <p class="home-role">
-        <span class="i18n i18n-zh">多模态算法工程师 · Agent算法工程师</span>
-        <span class="i18n i18n-en">Multimodal Algorithm Engineer · Agent Algorithm Engineer</span>
-        <span class="school"> · Georgia Tech</span>
-      </p>
-    </div>
-    <nav class="home-nav" aria-label="Homepage navigation">
+    <a class="home-brand" href="{{ '/' | relative_url }}"><strong>本杰铭</strong><span>Benjamin Daoson</span></a>
+    <nav class="home-nav" aria-label="Main navigation">
       <a href="{{ '/projects/' | relative_url }}"><span class="i18n i18n-zh">项目</span><span class="i18n i18n-en">Work</span></a>
-      <a href="{{ '/projects/#representative-work-heading' | relative_url }}"><span class="i18n i18n-zh">研究</span><span class="i18n i18n-en">Research</span></a>
-      <a href="{{ '/writing/' | relative_url }}"><span class="i18n i18n-zh">文章</span><span class="i18n i18n-en">Writing</span></a>
+      <a href="{{ site.notes_url }}"><span class="i18n i18n-zh">笔记 ↗</span><span class="i18n i18n-en">Notes ↗</span></a>
       <a href="{{ '/about/' | relative_url }}"><span class="i18n i18n-zh">关于</span><span class="i18n i18n-en">About</span></a>
-      <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="{{ '/contact/' | relative_url }}"><span class="i18n i18n-zh">联系</span><span class="i18n i18n-en">Contact</span></a>
+      {% include language-switch.html %}
     </nav>
   </header>
 
-  <section class="home-intro" aria-labelledby="home-route">
-    <h1 class="home-route" id="home-route">
-      <span class="i18n i18n-zh">大语言模型 <span class="arrow">→</span> 多模态大模型 <span class="arrow">→</span> 物理 AI</span>
-      <span class="i18n i18n-en">LLM <span class="arrow">→</span> Multimodal LLM <span class="arrow">→</span> Physical AI</span>
-    </h1>
-    <p class="home-subtitle">
-      <span class="i18n i18n-zh">从<strong>模型学习与对齐</strong>，到<strong>多模态理解与物理 grounding</strong>，再到<strong>真实世界智能系统</strong>。</span>
-      <span class="i18n i18n-en">From <strong>model learning and alignment</strong>, to <strong>multimodal understanding and physical grounding</strong>, to <strong>real-world intelligent systems</strong>.</span>
-    </p>
+  <section class="home-intro" aria-labelledby="home-title">
+    <p class="home-eyebrow"><span class="i18n i18n-zh">AI 工程 · 模型研究</span><span class="i18n i18n-en">AI ENGINEERING · MODEL RESEARCH</span></p>
+    <h1 id="home-title"><span class="i18n i18n-zh">构建可靠的 Agent 系统，<br>理解模型的真实行为。</span><span class="i18n i18n-en">Building reliable agents.<br>Understanding model behavior.</span></h1>
+    <p class="home-lead"><span class="i18n i18n-zh">专注企业分析智能体、大模型后训练与多模态评估。在这里记录系统如何工作、设计如何取舍，以及实验告诉了我们什么。</span><span class="i18n i18n-en">I work on business-analysis agents, LLM post-training, and multimodal evaluation. These case studies explain how the systems work, the design decisions behind them, and what the experiments reveal.</span></p>
+    <div class="home-actions">
+      <a class="btn" href="#selected-work"><span class="i18n i18n-zh">查看精选项目</span><span class="i18n i18n-en">Explore the work</span><span aria-hidden="true">↓</span></a>
+      <a class="btn secondary" href="{{ '/contact/' | relative_url }}"><span class="i18n i18n-zh">联系与简历</span><span class="i18n i18n-en">Contact & résumé</span><span aria-hidden="true">→</span></a>
+    </div>
   </section>
 
-  <section class="selected-work" aria-labelledby="selected-work-heading">
+  <section class="selected-work" id="selected-work" aria-labelledby="selected-work-heading">
     <div class="selected-work-head">
-      <div>
-        <h2 class="selected-work-title" id="selected-work-heading">SELECTED WORK</h2>
-        <p class="selected-work-copy"><span class="i18n i18n-zh">最值得看的研究与工程项目。</span><span class="i18n i18n-en">Selected research and engineering projects.</span></p>
-      </div>
-      <a class="selected-work-all" href="{{ '/projects/' | relative_url }}"><span class="i18n i18n-zh">全部项目 →</span><span class="i18n i18n-en">All projects →</span></a>
+      <div><p class="section-label">01 / <span class="i18n i18n-zh">作品</span><span class="i18n i18n-en">WORK</span></p><h2 id="selected-work-heading"><span class="i18n i18n-zh">精选项目</span><span class="i18n i18n-en">Selected work</span></h2></div>
+      <a class="text-link" href="{{ '/projects/' | relative_url }}"><span class="i18n i18n-zh">全部项目</span><span class="i18n i18n-en">All projects</span> →</a>
     </div>
+    {% include featured-projects.html %}
+    <p class="more-work"><span class="i18n i18n-zh">更多探索：</span><span class="i18n i18n-en">More work:</span>{% for project in site.data.projects %}{% if project.featured != true and project.status != 'archived' and project.status != 'learning' %}<a href="{{ project.url }}" target="_blank" rel="noopener"><span class="i18n i18n-zh">{{ project.name_zh }}</span><span class="i18n i18n-en">{{ project.name_en }}</span> ↗</a>{% endif %}{% endfor %}</p>
+  </section>
 
-    <div class="work-grid">
-      <a class="work-card" href="https://github.com/Benjamindaoson/RewardLens" target="_blank" rel="noopener">
-        <div class="work-figure"><img src="{{ '/assets/images/projects/rewardlens-cover.svg' | relative_url }}" alt="RewardLens controlled visual intervention audit"></div>
-        <div class="work-caption"><div><h3 class="work-name">RewardLens <span class="featured-badge">FEATURED</span></h3><p class="work-meta">Multimodal LLM · Controlled visual intervention audit</p></div><p class="work-key">29.0 pt PFC gap</p></div>
-      </a>
-
-      <a class="work-card" href="https://github.com/Benjamindaoson/reward-modeling-lab" target="_blank" rel="noopener">
-        <div class="work-figure"><img src="{{ '/assets/images/projects/reward-modeling-lab-cover.svg' | relative_url }}" alt="Reward Modeling Lab preference ranking audit"></div>
-        <div class="work-caption"><div><h3 class="work-name">Reward Modeling Lab</h3><p class="work-meta">LLM Post-Training · Preference learning · Shortcut audit</p></div><p class="work-key">50.42 → 91.35%</p></div>
-      </a>
-
-      <a class="work-card" href="https://github.com/Benjamindaoson/FitGround" target="_blank" rel="noopener">
-        <div class="work-figure"><img src="{{ '/assets/images/projects/fitground-cover.svg' | relative_url }}" alt="FitGround measurement-grounded fit correction"></div>
-        <div class="work-caption"><div><h3 class="work-name">FitGround</h3><p class="work-meta">Physical AI · Vision × Measurement × Physics</p></div><p class="work-key">Fit Correction</p></div>
-      </a>
-
-      <a class="work-card" href="https://github.com/Benjamindaoson/enterprise-data-agent" target="_blank" rel="noopener">
-        <div class="work-figure"><img src="{{ '/assets/images/projects/enterprise-intelligence-cover.svg' | relative_url }}" alt="Enterprise Intelligence evidence lineage graph"></div>
-        <div class="work-caption"><div><h3 class="work-name">Enterprise Intelligence</h3><p class="work-meta">Agent Systems · Evidence-grounded enterprise analysis</p></div><p class="work-key">Evidence → Decision</p></div>
-      </a>
-
-      <a class="work-card" href="https://github.com/Benjamindaoson/ai-investment-research-assistant" target="_blank" rel="noopener">
-        <div class="work-figure"><img src="{{ '/assets/images/projects/ai-research-assistant-cover.svg' | relative_url }}" alt="AI Research Assistant evidence-first workflow"></div>
-        <div class="work-caption"><div><h3 class="work-name">AI Research Assistant</h3><p class="work-meta">Research Agent · Evidence → Findings → Thesis</p></div><p class="work-key">Research Case</p></div>
-      </a>
-
-      <a class="work-card" href="https://github.com/Benjamindaoson/SalesBoost" target="_blank" rel="noopener">
-        <div class="work-figure"><img src="{{ '/assets/images/projects/salesboost-cover.svg' | relative_url }}" alt="SalesBoost multi-agent hybrid RAG system"></div>
-        <div class="work-caption"><div><h3 class="work-name">SalesBoost</h3><p class="work-meta">Applied Agents · Multi-agent sales intelligence</p></div><p class="work-key">Hybrid RAG</p></div>
-      </a>
+  <section class="home-notes" aria-labelledby="notes-heading">
+    <div>
+      <p class="section-label">02 / <span class="i18n i18n-zh">技术笔记</span><span class="i18n i18n-en">NOTES</span></p>
+      <h2 id="notes-heading"><span class="i18n i18n-zh">把学习过程写清楚。</span><span class="i18n i18n-en">Notes from the work.</span></h2>
+      <p><span class="i18n i18n-zh">笔记站记录概念理解、源码阅读和工程实践。沿着一个问题继续读，也可以搜索需要的知识。</span><span class="i18n i18n-en">My separate notes site collects concepts, source-code reading, and engineering practice. Follow a learning path or search for a specific question. Notes are primarily in Chinese.</span></p>
+      <a class="text-link" href="{{ site.notes_url }}"><span class="i18n i18n-zh">打开个人笔记网站</span><span class="i18n i18n-en">Open the notes site</span> ↗</a>
     </div>
-
-    <div class="more-work">
-      <span class="more-work-label">More Work</span>
-      <a href="https://github.com/Benjamindaoson/api-test-platform" target="_blank" rel="noopener">API Test Platform</a><span class="sep">·</span>
-      <a href="https://github.com/Benjamindaoson/ai-agent-engineering-lab" target="_blank" rel="noopener">AI Agent Engineering Lab</a><span class="sep">·</span>
-      <a href="https://github.com/Benjamindaoson/AIEduRAG" target="_blank" rel="noopener">AIEduRAG</a><span class="sep">·</span>
-      <a href="https://github.com/Benjamindaoson/SmartOrderingAgent" target="_blank" rel="noopener">SmartOrderingAgent</a>
+    <div class="home-note-links">
+      <a href="{{ site.notes_url }}openclaw/01-readme-system-map.html"><span class="note-number">01</span><div><strong><span class="i18n i18n-zh">OpenClaw 源码陪读</span><span class="i18n i18n-en">Reading OpenClaw</span></strong><p><span class="i18n i18n-zh">从 README 建立系统地图</span><span class="i18n i18n-en">Building a system map from the README</span></p></div><span aria-hidden="true">↗</span></a>
+      <a href="{{ site.notes_url }}langgraph/"><span class="note-number">02</span><div><strong><span class="i18n i18n-zh">LangGraph 入门笔记</span><span class="i18n i18n-en">Learning LangGraph</span></strong><p><span class="i18n i18n-zh">环境、状态、节点与控制流</span><span class="i18n i18n-en">Environment, state, nodes, and control flow</span></p></div><span aria-hidden="true">↗</span></a>
     </div>
   </section>
+
+  <section class="home-connect" aria-labelledby="connect-heading">
+    <div><p class="section-label">03 / <span class="i18n i18n-zh">联系</span><span class="i18n i18n-en">CONTACT</span></p><h2 id="connect-heading"><span class="i18n i18n-zh">聊聊正在解决的问题。</span><span class="i18n i18n-en">Let’s talk about the work.</span></h2><p><span class="i18n i18n-zh">欢迎交流 AI Agent、大模型算法岗位，以及相关工程与研究合作。</span><span class="i18n i18n-en">For AI Agent and LLM engineering roles, or related engineering and research collaboration.</span></p></div>
+    <a class="btn" href="mailto:{{ site.email }}"><span class="i18n i18n-zh">发邮件联系</span><span class="i18n i18n-en">Email me</span> ↗</a>
+  </section>
+
+  <footer class="home-footer"><span>© {{ 'now' | date: '%Y' }} 本杰铭 · Benjamin Daoson</span><div><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub ↗</a><a href="{{ '/writing/' | relative_url }}"><span class="i18n i18n-zh">文章</span><span class="i18n i18n-en">Writing</span></a><button type="button" data-open-search><span class="i18n i18n-zh">搜索</span><span class="i18n i18n-en">Search</span></button></div></footer>
 </div>
