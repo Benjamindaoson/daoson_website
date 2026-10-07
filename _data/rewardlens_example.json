@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "id": "attr_000000",
+  "factor": "attribute",
+  "title_zh": "只改一处，答案该不该变？",
+  "title_en": "Change one detail. Should the answer change?",
+  "intro_zh": "问题与候选答案始终不变。切换三张已保存的实验图，比较正确答案与模型当时的输出。",
+  "intro_en": "The question and candidate answers stay fixed. Compare three saved experiment images, their expected answers, and the model’s recorded outputs.",
+  "question_zh": "立方体是什么颜色？",
+  "question_en": "What color is the cube?",
+  "candidates": [
+    {
+      "id": "A",
+      "text_zh": "蓝色",
+      "text_en": "blue"
+    },
+    {
+      "id": "B",
+      "text_zh": "红色",
+      "text_en": "red"
+    }
+  ],
+  "model": {
+    "id": "molmo_7b_d_0924",
+    "name": "Molmo-7B-D",
+    "mode": "saved_offline_judgment"
+  },
+  "source": {
+    "repository": "Benjamindaoson/RewardLens",
+    "commit": "d0f355a9e3926eb25ab46fd5a9797034fb4c7394",
+    "montage": {
+      "path": "paper/figures/representative_triplets.png",
+      "url": "https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/figures/representative_triplets.png",
+      "git_blob_sha1": "85a325cd5580f975bccb961bbc9ddd3ecba16788",
+      "sha256": "eedf861cf2e8ee550cc40f667f8e400c965d029bd0a9c7c3a936ecbe63fb90be",
+      "width": 2189,
+      "height": 2070
+    },
+    "montage_builder_url": "https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/figures/build_representative_triplets.py",
+    "manifest_url": "https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/manifests/factors/attribute/manifest.jsonl",
+    "judgments_url": "https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/reports/final_data_forensics/source/audit_judgments/molmo_7b_d_0924.jsonl",
+    "correctness_url": "https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/results/paper_analysis/eight_model_raii/triplet_correctness.json",
+    "license_url": "https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/LICENSE",
+    "extraction": "Lossless pixel crops of the published Attribute row; no resizing, recoloring, or generated replacement. The upstream montage itself displays retained frozen renders at 2x scale.",
+    "crop_coordinates": "[left, top, right, bottom], right and bottom exclusive",
+    "seed": 741845864,
+    "qc_status": "PASS",
+    "public_scope": "The original standalone render files are not in the public repository. These image cells are extracted from its saved public appendix montage and matched by triplet_id to the frozen manifest and judgments."
+  },
+  "variants": [
+    {
+      "id": "base",
+      "item_id": "attr_000000:base",
+      "title_zh": "原图",
+      "title_en": "Original",
+      "description_zh": "立方体是红色。先看模型能否回答原始问题。",
+      "description_en": "The cube is red. First, check the model’s answer to the original question.",
+      "image": "/assets/examples/rewardlens/attr-000000-base.png",
+      "image_width": 640,
+      "image_height": 480,
+      "alt_zh": "仿真场景：红色立方体、红色圆柱体、红色小球和绿色金属球。",
+      "alt_en": "A rendered scene with a red cube, a red cylinder, a small red sphere, and a green metallic sphere.",
+      "image_sha256": "ddbb2b29ea4fed90a0b512eface74937a50729573b57b26a01ca94fb110796c0",
+      "image_bytes": 226926,
+      "source_crop_box": [
+        221,
+        582,
+        861,
+        1062
+      ],
+      "expected_preference": "B",
+      "expected_answer_zh": "红色",
+      "expected_answer_en": "red",
+      "recorded_output": "B",
+      "parsed_preference": "B",
+      "recorded_answer_zh": "红色",
+      "recorded_answer_en": "red",
+      "output_status": "ok",
+      "matches_expected": true,
+      "status_zh": "与预期一致",
+      "status_en": "Matches the expected answer"
+    },
+    {
+      "id": "relevant",
+      "item_id": "attr_000000:relevant",
+      "title_zh": "改立方体",
+      "title_en": "Edit the cube",
+      "description_zh": "只把立方体从红色改成蓝色。正确答案应该随证据改变。",
+      "description_en": "Only the cube changes from red to blue. The correct answer should change with the evidence.",
+      "image": "/assets/examples/rewardlens/attr-000000-relevant.png",
+      "image_width": 640,
+      "image_height": 480,
+      "alt_zh": "同一仿真场景，只有立方体由红色变为蓝色。",
+      "alt_en": "The same rendered scene, with only the cube changed from red to blue.",
+      "image_sha256": "5e01a711487789561a69d134fe8bef599141c34232f1be51f7d575bf3b364c50",
+      "image_bytes": 227138,
+      "source_crop_box": [
+        877,
+        582,
+        1517,
+        1062
+      ],
+      "expected_preference": "A",
+      "expected_answer_zh": "蓝色",
+      "expected_answer_en": "blue",
+      "recorded_output": "A",
+      "parsed_preference": "A",
+      "recorded_answer_zh": "蓝色",
+      "recorded_answer_en": "blue",
+      "output_status": "ok",
+      "matches_expected": true,
+      "status_zh": "与预期一致",
+      "status_en": "Matches the expected answer"
+    },
+    {
+      "id": "irrelevant",
+      "item_id": "attr_000000:irrelevant",
+      "title_zh": "改旁边的球",
+      "title_en": "Edit the sphere",
+      "description_zh": "只把右侧球体从红色改成蓝色，立方体仍是红色。正确答案应该保持不变。",
+      "description_en": "Only the sphere on the right changes from red to blue; the cube stays red. The correct answer should stay the same.",
+      "image": "/assets/examples/rewardlens/attr-000000-irrelevant.png",
+      "image_width": 640,
+      "image_height": 480,
+      "alt_zh": "同一仿真场景，只有右侧小球由红色变为蓝色，立方体仍为红色。",
+      "alt_en": "The same rendered scene, with only the small sphere on the right changed from red to blue; the cube remains red.",
+      "image_sha256": "bcee2b006efd7324a2f9f20bc3ebd67437fdf95ea715ad3f26a6baf0fabc06c6",
+      "image_bytes": 227459,
+      "source_crop_box": [
+        1533,
+        582,
+        2173,
+        1062
+      ],
+      "expected_preference": "B",
+      "expected_answer_zh": "红色",
+      "expected_answer_en": "red",
+      "recorded_output": "A",
+      "parsed_preference": "A",
+      "recorded_answer_zh": "蓝色",
+      "recorded_answer_en": "blue",
+      "output_status": "ok",
+      "matches_expected": false,
+      "status_zh": "与预期不符",
+      "status_en": "Does not match the expected answer"
+    }
+  ],
+  "takeaway_zh": "这个例子里，模型跟随了立方体的颜色变化，却也被与问题无关的球体颜色变化带偏。RewardLens 分别检查这两种行为。",
+  "takeaway_en": "In this example, the model follows the cube’s color change, but also changes its answer when only an irrelevant sphere changes. RewardLens checks these two behaviors separately.",
+  "boundary_zh": "这是一个已保存的仿真实验样例及离线模型输出，不是实时推理，也不代表模型的总体准确率。模型接收的原始问题与候选均为英文；中文是页面释义。",
+  "boundary_en": "These are saved simulation images and offline model outputs, not live inference or an estimate of overall model accuracy. The original question and candidates were in English; Chinese text is a page translation."
+}

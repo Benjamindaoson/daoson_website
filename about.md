@@ -27,8 +27,13 @@ bilingual: true
     <ul class="profile-principles">
       <li><strong><span class="i18n i18n-zh">先明确问题与边界。</span><span class="i18n i18n-en">Define the problem and its boundaries.</span></strong> <span class="i18n i18n-zh">把业务语义、数据来源和工具权限说明白，再决定哪些部分交给模型，哪些部分使用确定性计算。</span><span class="i18n i18n-en">Clarify business meaning, data sources, and tool permissions before deciding what belongs to a model and what needs deterministic computation.</span></li>
       <li><strong><span class="i18n i18n-zh">把验证放进实现。</span><span class="i18n i18n-en">Build verification into the implementation.</span></strong> <span class="i18n i18n-zh">我会追踪任务状态、保留计算依据，并检查异常输入、缺失信息和工具失败。案例中展示的结论，应当能回到代码或实验记录。</span><span class="i18n i18n-en">I track task state, preserve the basis for calculations, and examine invalid inputs, missing information, and tool failures. A claim in a case study should lead back to code or an experiment record.</span></li>
-      <li><strong><span class="i18n i18n-zh">继续追问指标的含义。</span><span class="i18n i18n-en">Examine what a metric actually measures.</span></strong> <span class="i18n i18n-zh">模型得到高分后，我仍关心它是否利用了长度、格式或数据分布中的捷径，以及条件改变后行为是否可靠。</span><span class="i18n i18n-en">After a model scores well, I still ask whether it relies on length, format, or distribution shortcuts, and whether its behavior holds when conditions change.</span></li>
     </ul>
+  </section>
+
+  <section class="content-section">
+    <h2><span class="i18n i18n-zh">高分之后，检查模型靠什么得分</span><span class="i18n i18n-en">After a high score, examine what earns it</span></h2>
+    <p><span class="i18n i18n-zh">Reward Modeling Lab 的公开记录提供了一个具体例子：微调后的奖励模型在冻结测试集上得到较高准确率，但“总选更长回答”的简单规则得分更高。只报告原始准确率，无法区分偏好判断能力与数据中的长度捷径。</span><span class="i18n i18n-en">The public Reward Modeling Lab records provide a concrete example: the fine-tuned reward model scored well on a frozen test set, yet a simple rule that always picked the longer answer scored higher. Original accuracy alone could not separate preference judgment from a length shortcut in the data.</span></p>
+    <p><span class="i18n i18n-zh">记录中的后续检查加入了长度匹配与反长度挑战，并结合整体排序来解释结果。这让讨论从“分数涨了多少”转向“哪些条件下仍能判断正确”。已完成的实验与尚未运行的改进方案也分别列明。<a href="{{ '/projects/reward-modeling-lab/' | relative_url }}">阅读案例与实验依据 →</a></span><span class="i18n i18n-en">The follow-up checks used length-matched and reversed-length challenges, alongside global ranking, to interpret the result. That shifts the question from how much a score rose to the conditions under which judgments remain correct. Completed experiments and unrun improvements are documented separately. <a href="{{ '/projects/reward-modeling-lab/' | relative_url }}">Read the case study and experiment evidence →</a></span></p>
   </section>
 
   <section class="content-section">

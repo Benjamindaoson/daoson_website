@@ -16,6 +16,8 @@ bilingual: true
     <p class="page-lead"><span class="i18n i18n-zh">AI 算法工程 · 大模型 · Agent 系统</span><span class="i18n i18n-en">AI engineering · Language models · Agent systems</span></p>
     <p class="resume-contact"><a href="mailto:{{ site.email }}">{{ site.email }}</a> <span aria-hidden="true">·</span> <a href="https://github.com/{{ site.github_username }}">github.com/{{ site.github_username }}</a></p>
     <div class="resume-actions page-actions">
+      <a class="btn secondary resume-download" href="{{ '/assets/resume/benjamin-taoson-resume-zh.pdf' | relative_url }}" download="benjamin-taoson-resume-zh.pdf" type="application/pdf" hreflang="zh">中文 PDF</a>
+      <a class="btn secondary resume-download" href="{{ '/assets/resume/benjamin-taoson-resume-en.pdf' | relative_url }}" download="benjamin-taoson-resume-en.pdf" type="application/pdf" hreflang="en">English PDF</a>
       <button class="btn" type="button" data-print-resume><span class="i18n i18n-zh">打印 / 保存 PDF</span><span class="i18n i18n-en">Print / Save as PDF</span></button>
       <a class="btn secondary" href="mailto:{{ site.email }}?subject=Resume%20request%20%E2%80%94%20Benjamin%20Taoson"><span class="i18n i18n-zh">索取完整履历</span><span class="i18n i18n-en">Request full résumé</span></a>
     </div>
@@ -59,13 +61,14 @@ bilingual: true
 
   <section class="resume-section">
     <h2><span class="i18n i18n-zh">相关能力</span><span class="i18n i18n-en">Technical skills</span></h2>
+    <p class="resume-note"><span class="i18n i18n-zh">以下链接对应可阅读的公开技术材料，供了解相关能力；它们与前述企业经历分别呈现。</span><span class="i18n i18n-en">The links below provide public technical material relevant to these skills, presented separately from the enterprise experience above.</span></p>
     <dl class="resume-skills">
       <dt><span class="i18n i18n-zh">模型与训练</span><span class="i18n i18n-en">Models and training</span></dt>
-      <dd><span class="i18n i18n-zh">Python、PyTorch、BERT 系列模型、LoRA / QLoRA、DeepSpeed；文本分类、信息抽取、偏好建模与模型后训练。</span><span class="i18n i18n-en">Python, PyTorch, BERT-family models, LoRA / QLoRA, and DeepSpeed; classification, information extraction, preference modeling, and post-training.</span></dd>
+      <dd><span class="i18n i18n-zh">Python、PyTorch、BERT 系列模型、LoRA / QLoRA、DeepSpeed；文本分类、信息抽取、偏好建模与模型后训练。</span><span class="i18n i18n-en">Python, PyTorch, BERT-family models, LoRA / QLoRA, and DeepSpeed; classification, information extraction, preference modeling, and post-training.</span> <span class="resume-skill-evidence"><a href="{{ '/projects/reward-modeling-lab/' | relative_url }}">Reward Modeling Lab — <span class="i18n i18n-zh">训练与奖励评估</span><span class="i18n i18n-en">Training and reward evaluation</span> →</a></span></dd>
       <dt><span class="i18n i18n-zh">Agent 与数据系统</span><span class="i18n i18n-en">Agents and data systems</span></dt>
-      <dd><span class="i18n i18n-zh">LangGraph、RAG、工具调用、任务状态与上下文管理、SQL、PostgreSQL、API 集成与 vLLM 推理服务。</span><span class="i18n i18n-en">LangGraph, RAG, tool calling, task state and context management, SQL, PostgreSQL, API integration, and vLLM serving.</span></dd>
+      <dd><span class="i18n i18n-zh">LangGraph、RAG、工具调用、任务状态与上下文管理、SQL、PostgreSQL、API 集成与 vLLM 推理服务。</span><span class="i18n i18n-en">LangGraph, RAG, tool calling, task state and context management, SQL, PostgreSQL, API integration, and vLLM serving.</span> <span class="resume-skill-evidence"><a href="{{ '/projects/enterprise-data-agent/' | relative_url }}">Enterprise Data Agent — <span class="i18n i18n-zh">语义约束与任务编排</span><span class="i18n i18n-en">Semantic constraints and task orchestration</span> →</a></span></dd>
       <dt><span class="i18n i18n-zh">评估与工程验证</span><span class="i18n i18n-en">Evaluation and verification</span></dt>
-      <dd><span class="i18n i18n-zh">数据隔离、偏好与排序评估、长度捷径审计、多模态受控干预、失败分析、pytest 与接口契约验证。</span><span class="i18n i18n-en">Data separation, preference and ranking evaluation, length-shortcut audits, controlled multimodal interventions, failure analysis, pytest, and API contract validation.</span></dd>
+      <dd><span class="i18n i18n-zh">数据隔离、偏好与排序评估、长度捷径审计、多模态受控干预、失败分析、pytest 与接口契约验证。</span><span class="i18n i18n-en">Data separation, preference and ranking evaluation, length-shortcut audits, controlled multimodal interventions, failure analysis, pytest, and API contract validation.</span> <span class="resume-skill-evidence"><a href="{{ '/projects/rewardlens/' | relative_url }}">RewardLens — <span class="i18n i18n-zh">受控视觉干预</span><span class="i18n i18n-en">Controlled visual interventions</span> →</a></span></dd>
     </dl>
   </section>
 

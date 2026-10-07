@@ -11,11 +11,12 @@ layout: default
   </header>
 
   {% assign case_project = site.data.projects | where: "case_url", page.url | first %}
-  {% if case_project.image %}<figure class="case-cover{% if case_project.image_compact %} has-compact-evidence{% endif %}"><picture>{% if case_project.image_compact %}<source media="(max-width: 640px)" srcset="{{ case_project.image_compact | relative_url }}" width="420" height="330">{% endif %}<img src="{{ case_project.image | relative_url }}" alt="{{ case_project.image_alt_zh | default: case_project.name_zh | escape }}" data-alt-zh="{{ case_project.image_alt_zh | default: case_project.name_zh | escape }}" data-alt-en="{{ case_project.image_alt_en | default: case_project.name_en | escape }}" width="1200" height="760"></picture></figure>{% endif %}
+  {% include case-summary.html project_id=case_project.id %}
   {% if case_project.url %}<p class="case-source"><a href="{{ case_project.url }}" target="_blank" rel="noopener"><span class="i18n i18n-zh">查看源码与项目资料 ↗</span><span class="i18n i18n-en">Source code and project materials ↗</span></a></p>{% endif %}
+  {% if case_project.id != 'enterprise-data-agent' and case_project.id != 'rewardlens' %}{% include project-evidence.html project_id=case_project.id %}{% endif %}
 
   <div class="post-content">
     {{ content }}
   </div>
-  {% if page.bilingual %}<aside class="case-contact"><h2><span class="i18n i18n-zh">交流项目与工程实践</span><span class="i18n i18n-en">Discuss the work</span></h2><p><span class="i18n i18n-zh">欢迎围绕系统设计、实验方法或相关岗位交流。</span><span class="i18n i18n-en">Get in touch about system design, experimental methods, or relevant roles.</span></p><a class="btn" href="{{ '/contact/' | relative_url }}"><span class="i18n i18n-zh">联系我</span><span class="i18n i18n-en">Contact me</span></a></aside>{% endif %}
+  {% if page.bilingual %}{% assign project_subject = 'Project discussion: ' | append: case_project.name_en | url_encode | replace: '+', '%20' %}<aside class="case-contact"><h2><span class="i18n i18n-zh">交流项目与工程实践</span><span class="i18n i18n-en">Discuss the work</span></h2><p><span class="i18n i18n-zh">从这个项目中的一个设计取舍、实验观察或应用场景开始。</span><span class="i18n i18n-en">Start with a design decision, an experimental observation, or a use case from this project.</span></p><div class="page-actions"><a class="btn" href="mailto:{{ site.email }}?subject={{ project_subject }}"><span class="i18n i18n-zh">写信讨论这个项目</span><span class="i18n i18n-en">Email about this project</span></a><a class="text-link" href="{{ '/contact/' | relative_url }}"><span class="i18n i18n-zh">其他合作与联系</span><span class="i18n i18n-en">Other ways to connect</span> →</a></div></aside>{% endif %}
 </article>

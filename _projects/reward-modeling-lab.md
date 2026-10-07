@@ -14,15 +14,9 @@ bilingual: true
 
 <div class="i18n i18n-zh" markdown="1">
 
-奖励模型需要给较好的回答更高分，但回答长度、格式和数据生成方式也可能与偏好标签相关。这个项目把训练与审计放在同一条实验链路中：完成后训练，检查冻结测试集，再用受控挑战和多候选排序分析模型学到了什么。
+奖励模型需要给较好的回答更高分，但回答长度、格式和数据生成方式也可能与偏好标签相关。这个项目围绕 Skywork Reward Llama 3.1 8B，把训练与审计放在同一条实验链路中：完成后训练，检查冻结测试集，再用受控挑战和多候选排序分析模型学到了什么。
 
-## 训练与实验设计
-
-基础模型为 Skywork Reward Llama 3.1 8B。正式实验在单张 NVIDIA A10 23GB 上使用 4-bit NF4 QLoRA 与 BF16 计算，运行 1,000 个优化步骤。可用训练数据包含 35,990 对偏好样本，这次固定步数实验实际处理约 8,000 个样本对实例。[冻结配置](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/configs/training/formal_gpu_qlora_1000_final.json) · [实验记录](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/docs/results/data/results_summary.json)
-
-训练目标优化 chosen 与 rejected 回答的奖励差；LoRA 覆盖注意力和前馈层，并保存奖励 score head。评测同时观察成对准确率、五候选排序、长度相关性和检查点差异。[训练实现](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/src/financial_reward_rl/train.py)
-
-## 高分之后继续检验
+## 关键决策：高分需要通过捷径审计
 
 冻结测试集包含 451 个问题、4,510 对比较。微调后准确率达到 91.35%，但“总选更长回答”的规则达到 94.61%。因此，原始分数需要结合长度控制实验一起解释。[结果与挑战集口径](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/docs/results/data/shortcut_audit_summary.json)
 
@@ -33,6 +27,12 @@ bilingual: true
 | 反长度挑战 | 47.70% | 74.90% | 239 对；较优回答更短 |
 
 模型在长度匹配和反长度样本上仍优于基础模型，原始分布的高分也明显受到长度相关性的影响。这促使后续评估同时追踪偏好区分能力和捷径依赖。
+
+## 训练与实验设计
+
+基础模型为 Skywork Reward Llama 3.1 8B。正式实验在单张 NVIDIA A10 23GB 上使用 4-bit NF4 QLoRA 与 BF16 计算，运行 1,000 个优化步骤。可用训练数据包含 35,990 对偏好样本，这次固定步数实验实际处理约 8,000 个样本对实例。[冻结配置](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/configs/training/formal_gpu_qlora_1000_final.json) · [实验记录](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/docs/results/data/results_summary.json)
+
+训练目标优化 chosen 与 rejected 回答的奖励差；LoRA 覆盖注意力和前馈层，并保存奖励 score head。评测同时观察成对准确率、五候选排序、长度相关性和检查点差异。[训练实现](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/src/financial_reward_rl/train.py)
 
 ## 排序与检查点
 
@@ -50,15 +50,9 @@ V1 是单随机种子的金融问答偏好实验，原始偏好数据不随公�
 
 <div class="i18n i18n-en" markdown="1">
 
-A reward model should give better answers higher scores, yet response length, format, and data-generation choices may correlate with preference labels. This project connects training and auditing: fine-tune the model, evaluate a frozen test set, then examine controlled challenges and multi-candidate ranking.
+A reward model should give better answers higher scores, yet response length, format, and data-generation choices may correlate with preference labels. This project connects training and auditing around Skywork Reward Llama 3.1 8B: fine-tune the model, evaluate a frozen test set, then examine controlled challenges and multi-candidate ranking.
 
-## Training and experiment design
-
-The base model is Skywork Reward Llama 3.1 8B. The formal run used 4-bit NF4 QLoRA with BF16 compute on one NVIDIA A10 23GB for 1,000 optimizer steps. The training pool contained 35,990 preference pairs; the fixed-step run processed approximately 8,000 pair instances. [Frozen configuration](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/configs/training/formal_gpu_qlora_1000_final.json) · [Experiment record](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/docs/results/data/results_summary.json)
-
-The objective optimizes the reward difference between chosen and rejected responses. LoRA targets attention and feed-forward layers, and the reward score head is saved with the adapter. Evaluation covers pairwise accuracy, five-way ranking, length correlations, and checkpoint differences. [Training implementation](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/src/financial_reward_rl/train.py)
-
-## Inspecting the high score
+## Key decision: audit the shortcut behind a high score
 
 The frozen test set contains 451 questions and 4,510 comparisons. Fine-tuned accuracy reached 91.35%, while a rule that always chooses the longer response reached 94.61%. The original score therefore needs to be read alongside length-controlled evaluations. [Results and challenge definitions](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/docs/results/data/shortcut_audit_summary.json)
 
@@ -69,6 +63,12 @@ The frozen test set contains 451 questions and 4,510 comparisons. Fine-tuned acc
 | Reversed-length challenge | 47.70% | 74.90% | 239 pairs; the preferred answer is shorter |
 
 The fine-tuned model retains gains over the base model on both challenges, while the original high score is also affected by length correlation. This motivated an evaluation process that tracks preference discrimination and shortcut dependence together.
+
+## Training and experiment design
+
+The base model is Skywork Reward Llama 3.1 8B. The formal run used 4-bit NF4 QLoRA with BF16 compute on one NVIDIA A10 23GB for 1,000 optimizer steps. The training pool contained 35,990 preference pairs; the fixed-step run processed approximately 8,000 pair instances. [Frozen configuration](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/configs/training/formal_gpu_qlora_1000_final.json) · [Experiment record](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/docs/results/data/results_summary.json)
+
+The objective optimizes the reward difference between chosen and rejected responses. LoRA targets attention and feed-forward layers, and the reward score head is saved with the adapter. Evaluation covers pairwise accuracy, five-way ranking, length correlations, and checkpoint differences. [Training implementation](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/src/financial_reward_rl/train.py)
 
 ## Ranking and checkpoint selection
 

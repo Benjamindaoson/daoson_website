@@ -1,0 +1,40 @@
+RewardLens Attribute example: attr_000000
+
+Source repository: https://github.com/Benjamindaoson/RewardLens
+Pinned commit: d0f355a9e3926eb25ab46fd5a9797034fb4c7394
+Original public figure: https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/figures/representative_triplets.png
+Extraction coordinates and SHA-256 hashes: _data/rewardlens_example.json
+
+These three PNG files are exact pixel crops of the Attribute row in the
+published appendix montage. They have not been generated, retouched,
+recolored, or resized for this website. The upstream montage was built
+from retained frozen PASS simulation renders at 2x scale.
+
+The question, A/B candidates, expected preferences, and saved Molmo-7B-D
+outputs are linked to the same attr_000000 item IDs in the frozen manifest
+and public judgment file. This is one illustrative case, not an aggregate
+performance estimate.
+
+The upstream repository license follows, copied without modification:
+
+MIT License
+
+Copyright (c) 2026 Benjamin Daoson
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

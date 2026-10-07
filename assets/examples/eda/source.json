@@ -1,0 +1,43 @@
+{
+  "repository": "https://github.com/Benjamindaoson/enterprise-data-agent",
+  "run_id": 36437826206,
+  "artifact_id": 10976531496,
+  "run_url": "https://github.com/Benjamindaoson/enterprise-data-agent/actions/runs/36437826206",
+  "run_commit": "444c5453b9715793185cf5d6b0f50cddf17f76c1",
+  "artifact_created_at": "2026-09-28T14:42:58Z",
+  "artifact_sha256": "fe25ffa2de160bc32902487ceb3743fe58c90aa5f4825df29c96547223525f4e",
+  "source_trace_sha256": "4431195d262d9116b710028fe833956bc64334bb4056fd3df248f699f6058191",
+  "source_request_sha256": "80194b43d1a3ac04a73b324a4a5113fac6388365965196829b95bde35d724899",
+  "source_sse_sha256": "b0b14248ee354abbbcaea220d1c4fb6174d922f06d347a8bf433a132ddbf161c",
+  "files": [
+    {
+      "path": "ba-agent-real-data.png",
+      "source_path": "artifacts/ba-demo/ba-agent-real-data.png",
+      "sha256": "4fd272b582ed0adab19a87e3ec6abfc47aec17bb62c0ee201d452120c252070b",
+      "bytes": 456575,
+      "transformation": "none"
+    },
+    {
+      "path": "executive-report.pdf",
+      "source_path": "artifacts/ba-demo/ba-agent-executive-report.pdf",
+      "sha256": "c316774e408ba655ede4bd3e1d830fb791042f70f56e8ddce267c544da20ddfe",
+      "bytes": 206363,
+      "transformation": "none"
+    },
+    {
+      "path": "executive-report.html.txt",
+      "source_path": "artifacts/ba-demo/ba-agent-executive-report.html",
+      "sha256": "412127d1e94f439f733fd8fcb8102032261dd74073fb3dc16b2b7796ecb7a35e",
+      "bytes": 14473,
+      "transformation": "none"
+    },
+    {
+      "path": "analysis-excerpt.json",
+      "sha256": "d359561b42fe29b29469fee72fa56bacc2ba5a479e3ccf5a8a2b55fe62ed9c1f",
+      "transformation": "Selected fields from the saved SSE result; no values recomputed except website display rounding."
+    }
+  ],
+  "conditions": "Public CC0 Complete Journey data. Weeks 52–53 versus 50–51. Saved events identify deterministic planning and specialist policies. Suggestions are report output, not executed interventions or measured business impact.",
+  "translations": "Website English question and Chinese finding/action text are editorial translations. Original question, English report output, and numeric evidence are preserved in analysis-excerpt.json.",
+  "html_note": "The original HTML bytes are retained as .html.txt for source inspection without loading the report’s external chart script. The original PDF remains directly viewable."
+}

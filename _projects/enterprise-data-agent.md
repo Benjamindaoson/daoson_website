@@ -12,11 +12,15 @@ lang: zh
 bilingual: true
 ---
 
+{% include eda-example.html id="eda-case" %}
+
 <div class="i18n i18n-zh" markdown="1">
 
 企业经营分析常常需要反复取数、下钻和对齐指标口径。这个项目将一次业务提问推进为完整调查：识别分析目标，安排门店、商品、促销和客群工作流，根据结果继续下钻，最后生成带证据的经营报告。
 
-## 系统如何工作
+## 关键决策：规划与计算各自承担什么
+
+核心取舍是把调查规划与数值计算分开：工作流负责决定看哪些业务维度，确定性算子负责计算，语义层负责口径与访问边界。这使核心结果能够按输入、公式与数据来源复核，也要求新增分析能力扩展相应的语义规则和算子。
 
 **先明确业务含义。** 语义层把问题解析为指标、维度、时间、实体、约束与意图，集中管理公式、关联关系和业务规则。分析结果携带语义包版本与内容哈希，使同一个指标的定义能够被追溯。[语义实现](https://github.com/Benjamindaoson/enterprise-data-agent/blob/a82133b35b7215a1b163f5c3afdcc241e9c4381f/src/eiw/retail/semantics.py)
 
@@ -28,6 +32,8 @@ bilingual: true
 
 零售参考产品使用固定版本的公开 CC0 Complete Journey 数据。下列结果来自仓库保留的内部评测记录，采用可复现的确定性规划路径。[数据与评测报告](https://github.com/Benjamindaoson/enterprise-data-agent/blob/a82133b35b7215a1b163f5c3afdcc241e9c4381f/docs/BA_AGENT_REAL_DATA_RESULTS.md)
 
+{% include project-evidence.html project_id="enterprise-data-agent" %}
+
 | 检查内容 | 结果与条件 |
 |---|---|
 | 数据基础 | 1,469,307 条交易明细、92,331 条商品记录；导入保存来源、哈希和行数 |
@@ -36,7 +42,7 @@ bilingual: true
 | 动态调查 | 10 个案例中，有 8 个在初轮分析后追加专家工作流 |
 | 异常与对抗输入 | 开发集通过 164 / 168；独立冻结集通过 42 / 42，保留 4 个缺失数据措辞案例的问题 |
 
-这些结果说明了语义约束、调查编排和结果选择在指定工作负载中的作用。实时模型策略已经有接口，外部模型服务的效果与延迟没有计入以上结果；公开数据中的促销和销售关系按相关性解释。
+这些记录描述了指定工作负载中的行为；同输出消融隔离了查询相关结果选择的贡献。实时模型策略已经有接口，外部模型服务的效果与延迟没有计入以上结果；公开数据中的促销和销售关系按相关性解释。
 
 ## 当前重点
 
@@ -50,7 +56,9 @@ bilingual: true
 
 Business analysis often requires repeated queries, drill-downs, and agreement on metric definitions. This project turns one question into an investigation: identify the analytical goal, dispatch store, product, promotion, and customer workstreams, follow the findings, and deliver an evidence-linked report.
 
-## How the system works
+## Key decision: separate planning from calculation
+
+The design separates investigation planning from numerical execution. Workflows choose which business dimensions to inspect; deterministic operators calculate the results; the semantic layer defines meaning and access boundaries. This makes core results traceable to inputs, formulas, and sources, while new analytical capabilities require explicit semantic rules and operators.
 
 **Resolve business meaning first.** A semantic layer maps each question to metrics, dimensions, time, entities, constraints, and intent. It owns formulas, joins, and business rules. Results carry the semantic package version and content hash so a reported metric can be traced to its definition. [Semantic implementation](https://github.com/Benjamindaoson/enterprise-data-agent/blob/a82133b35b7215a1b163f5c3afdcc241e9c4381f/src/eiw/retail/semantics.py)
 
@@ -61,6 +69,8 @@ Business analysis often requires repeated queries, drill-downs, and agreement on
 ## Recorded results
 
 The retail reference product uses a pinned public CC0 Complete Journey dataset. These are repository-recorded internal evaluations using a reproducible deterministic planning policy. [Data and evaluation report](https://github.com/Benjamindaoson/enterprise-data-agent/blob/a82133b35b7215a1b163f5c3afdcc241e9c4381f/docs/BA_AGENT_REAL_DATA_RESULTS.md)
+
+{% include project-evidence.html project_id="enterprise-data-agent" %}
 
 | Evaluation | Result and scope |
 |---|---|

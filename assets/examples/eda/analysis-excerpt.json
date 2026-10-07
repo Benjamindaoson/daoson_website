@@ -1,0 +1,107 @@
+{
+  "source_type": "Subset of a saved CI response; no new analysis was run.",
+  "request": {
+    "question": "分析最近一期经营表现，找出最值得管理层关注的问题和机会，解释原因，并告诉我下一步应该做什么。",
+    "parent_task_id": null,
+    "focus": {}
+  },
+  "task_id": "retail-602b0bef3a19",
+  "status": "COMPLETED",
+  "current_weeks": [
+    52,
+    53
+  ],
+  "previous_weeks": [
+    50,
+    51
+  ],
+  "dataset": {
+    "label": "complete-journey:retail",
+    "transaction_rows": 1469307,
+    "source_repo": "bradleyboehmke/completejourney",
+    "source_commit": "5b5d06192b9856edd04e4d405787af2f2e4a1fef",
+    "license": "CC0"
+  },
+  "finding": {
+    "insight_id": "e4f37fd5a14b",
+    "kind": "cross_dimension_driver",
+    "title": "Store 429 × COUPON/MISC ITEMS concentrates a high-impact decline",
+    "finding": "The store × commodity slice moved -377.3 in sales versus the comparison window.",
+    "driver": "Cross-dimensional store and commodity movement",
+    "business_impact": "10% of the absolute scanned store × commodity movement.",
+    "recommended_action": "Inspect product, promotion and availability proxies for store 429 within COUPON/MISC ITEMS before applying a broad intervention.",
+    "score": 0.4775764185837056,
+    "support": 0.95,
+    "dimensions": {
+      "store": "429",
+      "commodity": "COUPON/MISC ITEMS"
+    },
+    "evidence": [
+      {
+        "store_id": 429,
+        "commodity": "COUPON/MISC ITEMS",
+        "current_sales": 524.1200000000001,
+        "previous_sales": 901.4100000000001,
+        "current_units": 229879.0,
+        "previous_units": 396673.0,
+        "sales_delta": -377.28999999999996
+      }
+    ]
+  },
+  "recommended_action": {
+    "priority": "P0",
+    "action": "Inspect product, promotion and availability proxies for store 429 within COUPON/MISC ITEMS before applying a broad intervention.",
+    "target": "store=429, commodity=COUPON/MISC ITEMS",
+    "rationale": "10% of the absolute scanned store × commodity movement.",
+    "monitor_kpi": "Sales / units / conversion proxy / availability proxy"
+  },
+  "policy_events": [
+    {
+      "event_type": "plan_ready",
+      "workstream": null,
+      "source": "deterministic"
+    },
+    {
+      "event_type": "workstream_completed",
+      "workstream": "overview",
+      "source": "deterministic"
+    },
+    {
+      "event_type": "workstream_completed",
+      "workstream": "store",
+      "source": "deterministic"
+    },
+    {
+      "event_type": "workstream_completed",
+      "workstream": "product",
+      "source": "deterministic"
+    },
+    {
+      "event_type": "replan_ready",
+      "workstream": null,
+      "source": "deterministic"
+    },
+    {
+      "event_type": "workstream_completed",
+      "workstream": "promotion",
+      "source": "deterministic"
+    },
+    {
+      "event_type": "workstream_completed",
+      "workstream": "customer",
+      "source": "deterministic"
+    }
+  ],
+  "extraction": {
+    "result_resource": "resources/350e64a9908589b5b49ce0ce1d8b1f8c54fc9761.dat",
+    "source_fields": [
+      "result.payload.question",
+      "result.payload.insights[0]",
+      "result.payload.report.actions[0]",
+      "result.payload.current_weeks",
+      "result.payload.previous_weeks",
+      "result.payload.events (policy sources only)"
+    ],
+    "omitted": "Other findings, charts, runtime timings, and machine-local dataset manifest path."
+  }
+}

@@ -2,17 +2,30 @@
 <div class="selected-projects" data-featured-projects>
   {% for project in home_projects %}
   <article class="selected-project{% if forloop.first %} selected-project-lead{% endif %}">
-    <figure class="selected-project-image{% if project.image_compact %} has-compact-evidence{% endif %}">
-      <picture>
-      {% if project.image_compact %}<source media="(max-width: 900px)" srcset="{{ project.image_compact | relative_url }}" width="420" height="330">{% endif %}
-      <img src="{{ project.image | relative_url }}" alt="{{ project.image_alt_zh | default: project.name_zh | escape }}" data-alt-zh="{{ project.image_alt_zh | default: project.name_zh | escape }}" data-alt-en="{{ project.image_alt_en | default: project.name_en | escape }}" width="1200" height="760" loading="lazy">
-      </picture>
-    </figure>
     <div class="selected-project-copy">
       <p class="project-category">{% if project.domain == 'physical' %}PHYSICAL AI{% else %}DIGITAL AI{% endif %}<span aria-hidden="true"> / </span><span class="i18n i18n-zh">{{ project.display_status_zh }}</span><span class="i18n i18n-en">{{ project.display_status_en }}</span></p>
       <h3><a href="{{ project.case_url | relative_url }}" data-project-id="{{ project.id }}"><span class="i18n i18n-zh">{{ project.name_zh }}</span><span class="i18n i18n-en">{{ project.name_en }}</span><span class="project-link-arrow" aria-hidden="true">↗</span></a></h3>
-      <p class="selected-project-summary"><span class="i18n i18n-zh">{{ project.summary_zh }}</span><span class="i18n i18n-en">{{ project.summary_en }}</span></p>
+      <p class="selected-project-summary"><span class="i18n i18n-zh">{{ project.home_purpose_zh | default: project.summary_zh }}</span><span class="i18n i18n-en">{{ project.home_purpose_en | default: project.summary_en }}</span></p>
+    </div>
+    <div class="selected-project-visual">
+      {% if project.id == 'enterprise-data-agent' %}
+        {% include eda-example.html compact=true id="eda-home" %}
+      {% elsif project.id == 'rewardlens' %}
+        {% include rewardlens-example.html compact=true id="rewardlens-home" %}
+      {% else %}
+      <figure class="selected-project-image{% if project.image_compact %} has-compact-evidence{% endif %}">
+        <picture>
+        {% if project.image_compact %}<source media="(max-width: 900px)" srcset="{{ project.image_compact | relative_url }}" width="420" height="330">{% endif %}
+        <img src="{{ project.image | relative_url }}" alt="{{ project.image_alt_zh | default: project.name_zh | escape }}" data-alt-zh="{{ project.image_alt_zh | default: project.name_zh | escape }}" data-alt-en="{{ project.image_alt_en | default: project.name_en | escape }}" width="1200" height="760" loading="lazy">
+        </picture>
+        <figcaption><span class="i18n i18n-zh">两组任务与场景未配对；差异不能归因为初始化变化，改进方法尚未验证。</span><span class="i18n i18n-en">Tasks and scenes are unpaired. The difference cannot be attributed to initialization alone; mitigation remains unvalidated.</span></figcaption>
+      </figure>
+      {% endif %}
+    </div>
+    <div class="selected-project-details">
+      <p class="evidence-kind"><span class="i18n i18n-zh">{{ project.evidence_kind_zh }}</span><span class="i18n i18n-en">{{ project.evidence_kind_en }}</span></p>
       <div class="selected-project-evidence"><strong>{{ project.metric_value }}</strong><span><span class="i18n i18n-zh">{{ project.metric_label_zh }}</span><span class="i18n i18n-en">{{ project.metric_label_en }}</span></span></div>
+      {% if project.metric_context_zh %}<p class="evidence-context"><span class="i18n i18n-zh">{{ project.metric_context_zh }}</span><span class="i18n i18n-en">{{ project.metric_context_en }}</span></p>{% endif %}
       <div class="selected-project-links"><a class="text-link" href="{{ project.case_url | relative_url }}"><span class="i18n i18n-zh">阅读项目案例</span><span class="i18n i18n-en">Read the case study</span> →</a><a href="{{ project.url }}" target="_blank" rel="noopener">GitHub ↗</a></div>
     </div>
   </article>

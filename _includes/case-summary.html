@@ -1,0 +1,12 @@
+{% assign detail = site.data.case_details[include.project_id] %}
+{% if detail %}
+<section class="case-summary" aria-label="项目概览 / Project overview">
+  <dl>
+    {% if detail.contribution_zh and detail.contribution_en %}<div><dt><span class="i18n i18n-zh">我的贡献</span><span class="i18n i18n-en">My contribution</span></dt><dd><span class="i18n i18n-zh">{{ detail.contribution_zh }}</span><span class="i18n i18n-en">{{ detail.contribution_en }}</span></dd></div>{% endif %}
+    <div><dt><span class="i18n i18n-zh">项目范围</span><span class="i18n i18n-en">Scope</span></dt><dd><span class="i18n i18n-zh">{{ detail.scope_zh }}</span><span class="i18n i18n-en">{{ detail.scope_en }}</span></dd></div>
+    <div><dt><span class="i18n i18n-zh">关键取舍</span><span class="i18n i18n-en">Key decision</span></dt><dd><span class="i18n i18n-zh">{{ detail.decision_zh }}</span><span class="i18n i18n-en">{{ detail.decision_en }}</span></dd></div>
+    <div><dt><span class="i18n i18n-zh">已完成的产物</span><span class="i18n i18n-en">Available artifacts</span></dt><dd><span class="i18n i18n-zh">{{ detail.artifacts_zh }}</span><span class="i18n i18n-en">{{ detail.artifacts_en }}</span></dd></div>
+    <div><dt><span class="i18n i18n-zh">验证与边界</span><span class="i18n i18n-en">Validation &amp; limits</span></dt><dd><span class="i18n i18n-zh">{{ detail.verified_zh }}</span><span class="i18n i18n-en">{{ detail.verified_en }}</span> <a href="{{ detail.evidence_url }}"><span class="i18n i18n-zh">核查记录 ↗</span><span class="i18n i18n-en">Evidence ↗</span></a></dd></div>
+  </dl>
+</section>
+{% endif %}

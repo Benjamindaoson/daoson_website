@@ -1,0 +1,44 @@
+# Public project scope and evidence. Personal attribution is omitted until supported.
+enterprise-data-agent:
+  scope_zh: "零售分析参考实现：业务语义、调查编排、确定性分析、受控数据访问与证据报告。"
+  scope_en: "A retail-analysis reference implementation covering business semantics, investigation orchestration, deterministic analysis, governed data access, and evidence-linked reports."
+  decision_zh: "把核心计算交给确定性算子；模型策略只做受限选择。结果按问题相关性筛选，保留可追溯的数据与计算。"
+  decision_en: "Keep core calculations deterministic and model choices bounded. Select findings for the question while preserving traceable data and calculations."
+  artifacts_zh: "运行时与语义包、只读 PostgreSQL 连接器、分析界面、HTML/PDF 报告，以及固定版本的评测记录。"
+  artifacts_en: "Runtime and semantic package, a read-only PostgreSQL connector, an analysis interface, HTML/PDF reports, and versioned evaluation records."
+  verified_zh: "公开 Complete Journey 数据上的确定性路径已有 CI 结果与真实导出报告；实时模型策略的效果、生产容量和客户业务收益未验证。"
+  verified_en: "The deterministic path has CI results and saved reports on public Complete Journey data. Live-model quality, production capacity, and customer business impact are not established."
+  evidence_url: "https://github.com/Benjamindaoson/enterprise-data-agent/blob/a82133b35b7215a1b163f5c3afdcc241e9c4381f/docs/RESUME_EVIDENCE.md"
+
+reward-modeling-lab:
+  scope_zh: "8B 奖励模型的单卡 QLoRA 后训练，以及冻结测试、长度挑战、整体排序和检查点审计。"
+  scope_en: "Single-GPU QLoRA post-training of an 8B reward model, with frozen tests, length challenges, ranking evaluation, and checkpoint audits."
+  decision_zh: "将高准确率与长度启发式一起检查，用长度匹配和反长度挑战区分偏好能力与捷径依赖。"
+  decision_en: "Audit high accuracy against a length heuristic, using length-matched and reversed-length challenges to separate preference discrimination from shortcut reliance."
+  artifacts_zh: "训练与评估代码、冻结配置、结果 JSON、排序和检查点对照，以及 V2 实验协议；原始偏好数据不随仓库公开。"
+  artifacts_en: "Training and evaluation code, frozen configuration, result JSON, ranking and checkpoint comparisons, and a V2 protocol. Raw preference data is not distributed."
+  verified_zh: "V1 已在单张 A10 上完成 1,000 步训练与单种子评估；V2 已实现协议与代码，但 GPU 训练尚未执行，无 V2 性能结论。"
+  verified_en: "V1 completed 1,000 training steps and single-seed evaluation on one A10. V2 protocol and code exist, but GPU training has not run and no V2 performance is reported."
+  evidence_url: "https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/docs/results/README.md"
+
+rewardlens:
+  scope_zh: "多模态评判模型的受控视觉审计：固定问题与候选回答，检验视觉事实变化后的适应与不变性。"
+  scope_en: "A controlled visual audit of multimodal judges: fix the question and candidate responses, then measure adaptation and invariance under image edits."
+  decision_zh: "把独立静态准确率与干预行为分开测量；相关编辑改变正确选项，无关编辑保留正确选项。"
+  decision_en: "Measure independent static accuracy separately from intervention behavior: relevant edits change the correct answer, while irrelevant edits preserve it."
+  artifacts_zh: "公开论文稿、样本构造和评估代码、受控三元组示例，以及完整匹配比较和统计结果。"
+  artifacts_en: "A public manuscript, construction and evaluation code, controlled-triplet examples, and matched-comparison and statistical results."
+  verified_zh: "已有 8 个模型、4 类视觉因素的冻结评估；RA 按各模型的原图正确子集计算。结论不构成通用模型排名或部署安全验证。"
+  verified_en: "Frozen evaluations cover eight judges and four visual factors. RA uses each judge’s base-correct subset. Findings do not establish a universal ranking or deployment safety."
+  evidence_url: "https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/sections/06_results.tex"
+
+startshift-vla:
+  scope_zh: "SmolVLA 初始化敏感性的研究归档：保留历史仿真基线、分析工具和未完成的方法原型。"
+  scope_en: "A research archive on SmolVLA initialization sensitivity, preserving historical simulation baselines, analysis tools, and unfinished method prototypes."
+  decision_zh: "数据来源核验未能确认 episode 与 RobotInit 变体的对应关系时，不启动 GPU 训练；保留未配对比较和证据缺口。"
+  decision_en: "Do not start GPU training when episode-to-RobotInit-variant provenance cannot be certified. Preserve the unpaired comparison and its evidence gaps."
+  artifacts_zh: "920 条主要评估记录、冻结分组、保存文件哈希、离线复核脚本，以及研究限制和复盘。"
+  artifacts_en: "920 principal evaluation records, frozen groups, saved-file hashes, an offline verifier, and documented limitations and reflection."
+  verified_zh: "可复核保存记录；单策略、一套种子安排，任务和场景未配对。RISE 收益、模拟器重放与真机结果未验证；方法开发已停止。"
+  verified_en: "Saved records are verifiable: one policy and seed schedule, with unpaired tasks and scenes. RISE benefits, simulator replay, and physical-robot results remain unvalidated; method development has stopped."
+  evidence_url: "https://github.com/Benjamindaoson/StartShift-VLA/blob/8fb03bbaa6982115a54aaa7c4945375a6139a056/docs/verification.md"
