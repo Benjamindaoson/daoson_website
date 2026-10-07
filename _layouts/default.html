@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {%- assign page_lang = page.lang | default: site.default_language | default: 'zh' -%}
-<html lang="{{ page_lang }}" data-page-lang="{{ page_lang }}" data-ui-lang="{{ site.default_language | default: 'zh' }}">
+<html lang="{{ page_lang }}" data-page-lang="{{ page_lang }}" data-ui-lang="{{ page_lang }}" data-bilingual="{{ page.bilingual | default: false }}">
 <head>
   {% include head.html %}
 </head>

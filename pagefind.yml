@@ -1,0 +1,3 @@
+# Core portfolio pages contain both Chinese and English on the same URL.
+# Keep one shared index so switching the UI language cannot hide case studies.
+force_language: zh

@@ -1,21 +1,18 @@
-name: Build & Deploy Jekyll to GitHub Pages
+name: Check & Deploy Personal Website
 
-# 触发：push 到 main / master，或手动触发
+# PR 只做校验；默认分支推送或手动触发才发布。
 on:
+  pull_request:
   push:
     branches: ["main", "master"]
   workflow_dispatch:
 
-# Pages 部署需要的权限
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
-# 同一时刻只跑一个 deploy，避免并发互相覆盖
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: "personal-site-${{ github.event.pull_request.number || github.ref }}"
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
@@ -30,42 +27,22 @@ jobs:
           ruby-version: "3.2"
           bundler-cache: true   # 自动 bundle install + 缓存
 
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
-
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: npm
-          cache-dependency-path: knowledge/package-lock.json
 
-      - name: Validate and test knowledge hub
-        working-directory: knowledge
+      - name: Validate website code and content
         run: |
-          npm ci
-          npm run content:check
-          npm test -- --test-concurrency=1
+          node --check assets/js/main.js
+          ruby scripts/check_content_schema.rb
+          python3 scripts/validate_content.py
+          git diff --check
 
-      - name: Build knowledge hub
-        working-directory: knowledge
-        run: npm run docs:build
-
-      - name: Build site
+      - name: Build personal website
         env:
           JEKYLL_ENV: production
-        run: |
-          bundle exec jekyll build \
-            --baseurl "${{ steps.pages.outputs.base_path }}" \
-            --destination _site
-
-      - name: Add knowledge hub to Pages artifact
-        run: |
-          mkdir -p _site/knowledge
-          cp -R knowledge/site/.vitepress/dist/. _site/knowledge/
-          test -f _site/index.html
-          test -f _site/knowledge/index.html
+        run: bundle exec jekyll build --destination _site
 
       - name: Install rsvg-convert (for OG card PNG conversion)
         run: |
@@ -78,7 +55,7 @@ jobs:
           for f in _site/assets/og-cards/*.svg; do
             [ -e "$f" ] || continue
             name=$(basename "$f" .svg)
-            rsvg-convert -w 1200 -h 630 -o "_site/assets/og-cards-png/${name}.png" "$f" || true
+            rsvg-convert -w 1200 -h 630 -o "_site/assets/og-cards-png/${name}.png" "$f"
           done
           echo "Generated $(ls _site/assets/og-cards-png/*.png 2>/dev/null | wc -l) PNG OG cards"
 
@@ -88,18 +65,37 @@ jobs:
           test -f _site/pagefind/pagefind-ui.js
           test -f _site/pagefind/pagefind-ui.css
 
-      - name: Upload artifact
+      - name: Check rendered routes, project links, and publishing boundaries
+        run: node --test tests/*.test.mjs
+
+      - name: Upload verified Pages artifact
+        if: >-
+          (github.event_name == 'push' || github.event_name == 'workflow_dispatch') &&
+          (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
 
   deploy:
     needs: build
+    if: >-
+      (github.event_name == 'push' || github.event_name == 'workflow_dispatch') &&
+      (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages-production
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

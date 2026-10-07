@@ -4,7 +4,7 @@
 
 # 站点信息
 title: "本杰铭"
-description: "本杰铭的中文技术网站，记录 Agent 系统、评估、可靠 AI 应用工程、技术写作和长期知识积累。"
+description: "本杰铭的个人 AI 工程作品集，展示 Agent 系统、模型训练与评估的项目案例，并提供职业联系与简历索取入口。"
 author: "本杰铭"
 email: "benjamindaoson@gmail.com"
 
@@ -13,6 +13,7 @@ email: "benjamindaoson@gmail.com"
 # 如果用 项目仓库（如 blog）   → url 填 https://用户名.github.io ，baseurl 填 "/blog"
 url: "https://Benjamindaoson.github.io"
 baseurl: "/daoson_website"
+notes_url: "https://benjamindaoson.github.io/gitpagewebnote/"
 
 # 社交链接（在页脚、关于页用）
 github_username: "Benjamindaoson"
@@ -53,7 +54,6 @@ plugins:
   - jekyll-feed         # 自动生成 RSS
   - jekyll-seo-tag      # 自动生成 SEO meta 标签
   - jekyll-sitemap      # 生成 sitemap.xml
-  - jekyll-paginate     # 首页分页
 
 # ============================================
 # Collections —— 博客 + 笔记两套内容
@@ -70,10 +70,6 @@ collections:
     output: true
     permalink: /til/:path/
     sort_by: date
-
-# 首页分页（仅针对 posts，不影响 notes）
-paginate: 8
-paginate_path: "/page:num/"
 
 # 默认 front matter
 defaults:
@@ -119,6 +115,9 @@ kramdown:
 
 # 排除文件
 exclude:
+  - knowledge
+  - tests
+  - pagefind.yml
   - Gemfile
   - Gemfile.lock
   - AGENTS.md

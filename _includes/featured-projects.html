@@ -1,0 +1,18 @@
+{% assign featured_projects = site.data.projects | where: "featured", true | sort: "featured_order" %}
+<div class="work-grid" data-featured-projects>
+  {% for project in featured_projects %}
+  <a class="work-card" href="{{ project.case_url | relative_url }}" data-project-id="{{ project.id }}">
+    <div class="work-figure">
+      <img src="{{ project.image | relative_url }}" alt="{{ project.name_en | escape }}" width="1200" height="760" loading="lazy">
+      <span class="work-open" aria-hidden="true">↗</span>
+    </div>
+    <div class="work-caption">
+      <p class="work-eyebrow"><span class="i18n i18n-zh">{{ project.eyebrow_zh }}</span><span class="i18n i18n-en">{{ project.eyebrow_en }}</span></p>
+      <h3 class="work-name"><span class="i18n i18n-zh">{{ project.name_zh }}</span><span class="i18n i18n-en">{{ project.name_en }}</span></h3>
+      <p class="work-summary"><span class="i18n i18n-zh">{{ project.summary_zh }}</span><span class="i18n i18n-en">{{ project.summary_en }}</span></p>
+      <div class="work-evidence"><strong>{{ project.metric_value }}</strong><span><span class="i18n i18n-zh">{{ project.metric_label_zh }}</span><span class="i18n i18n-en">{{ project.metric_label_en }}</span></span></div>
+      <span class="work-read"><span class="i18n i18n-zh">查看项目案例</span><span class="i18n i18n-en">Read the case study</span> <span aria-hidden="true">→</span></span>
+    </div>
+  </a>
+  {% endfor %}
+</div>
