@@ -10,7 +10,7 @@ bilingual: true
 <section class="hero">
   <p class="section-label"><span class="i18n i18n-zh">关于我</span><span class="i18n i18n-en">ABOUT</span></p>
   <h1>本杰铭 <span class="about-english-name">Benjamin Daoson</span></h1>
-  <p><span class="i18n i18n-zh">我构建 AI Agent 系统，研究大模型后训练与多模态评估，并通过项目和技术笔记记录实践。</span><span class="i18n i18n-en">I build AI Agent systems, study LLM post-training and multimodal evaluation, and document the work through projects and technical notes.</span></p>
+  <p><span class="i18n i18n-zh">我构建 AI Agent 系统，研究大模型后训练与多模态评估，并将工程实现与实验结果整理为可核验的项目案例。</span><span class="i18n i18n-en">I build AI Agent systems, study LLM post-training and multimodal evaluation, and present the engineering work and experimental results through verifiable case studies.</span></p>
 </section>
 
 <div class="post-content">
@@ -29,10 +29,6 @@ bilingual: true
 一个 Agent 在工具超时、信息不足或任务中断后，应该如何继续工作？一次分析中的业务口径和结论，能否追溯到具体数据？模型指标上升后，增益来自目标能力，还是数据中的捷径？
 
 这些问题决定了系统的状态设计、工具边界、评测样本和验证方式。我会在案例中说明具体做法、结果与限制，也保留源码和实验资料供进一步讨论。
-
-## 技术笔记
-
-我的[个人笔记网站]({{ site.notes_url }})持续记录概念理解、源码阅读和学习路径。官网呈现项目与较完整的文章，笔记站承接日常的技术积累。
 
 ## 职业与技术交流
 
@@ -54,10 +50,6 @@ bilingual: true
 How should an Agent continue after a tool timeout, missing information, or an interrupted task? Can the business definitions and conclusions in an analysis be traced to specific data? When a model metric improves, does the gain come from the intended capability or a shortcut in the data?
 
 These questions shape task state, tool boundaries, evaluation cases, and verification. The case studies describe concrete design decisions, results, and limitations, with links to source code and experiment materials.
-
-## Technical notes
-
-My [separate notes site]({{ site.notes_url }}) collects concepts, source-code reading, and learning paths, primarily in Chinese. This website presents projects and longer essays; the notes site supports ongoing technical learning.
 
 ## Roles and collaboration
 

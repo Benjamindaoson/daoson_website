@@ -4,10 +4,10 @@
 
 The owner has explicitly confirmed two maintained websites:
 
-- `Benjamindaoson/daoson_website`: personal website, project case studies, longer writing, and professional contact.
-- `Benjamindaoson/gitpagewebnote`: independent technical-notes website, with its own VitePress build, content workflow, and GitHub Pages deployment.
+- `Benjamindaoson/daoson_website`: personal portfolio, career-focused project case studies, résumé requests, and professional contact.
+- `Benjamindaoson/gitpagewebnote`: independent public knowledge space for technical blogs, papers, and future published video, audio, ebooks, and external media links; it has its own VitePress build and Pages deployment.
 
-The personal website links to `https://benjamindaoson.github.io/gitpagewebnote/`. The notes website links back to the personal website. Notes development belongs in `gitpagewebnote` and must not be treated as retired merely because it was previously archived.
+The personal website links to `https://benjamindaoson.github.io/gitpagewebnote/`. The knowledge site has a simple return link to the personal website, with no résumé or career sections. The portfolio exposes this site as “知识星球 / Knowledge Hub” in navigation. Notes development belongs in `gitpagewebnote` and must not be treated as retired merely because it was previously archived.
 
 The personal site's old `/knowledge/` entry remains a compatibility redirect. The copied `knowledge/` source is retained as historical material and excluded from the personal site's build; it is not a second active notes publishing path.
 

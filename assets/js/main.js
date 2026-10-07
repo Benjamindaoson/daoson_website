@@ -269,10 +269,10 @@
             return { ...result, meta };
           },
           translations: (getCurrentLang() === 'en') ? {
-            placeholder: 'Search projects and writing...',
+            placeholder: 'Search this site...',
             zero_results: 'No results for "[SEARCH_TERM]"'
           } : {
-            placeholder: '搜索项目和文章…',
+            placeholder: '站内搜索…',
             zero_results: '没有匹配 "[SEARCH_TERM]" 的内容'
           }
         });
