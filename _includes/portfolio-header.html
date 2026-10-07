@@ -1,0 +1,24 @@
+{%- assign current_url = page.url | default: '/' -%}
+<header class="portfolio-header" data-portfolio-header data-pagefind-ignore>
+  <div class="portfolio-header-inner">
+    <a class="portfolio-brand" href="{{ '/' | relative_url }}" aria-label="Benjamin Taoson · 本杰铭 — Home">
+      <span class="taoson-mark" aria-hidden="true"></span>
+      <span class="portfolio-wordmark"><strong>Benjamin Taoson</strong><span>本杰铭</span></span>
+    </a>
+    <button class="portfolio-menu-toggle" type="button" data-portfolio-menu aria-controls="portfolio-navigation" aria-expanded="false" hidden>
+      <span class="menu-label-open"><span class="i18n i18n-zh">菜单</span><span class="i18n i18n-en">Menu</span></span>
+      <span class="menu-label-close"><span class="i18n i18n-zh">关闭</span><span class="i18n i18n-en">Close</span></span>
+      <span class="menu-lines" aria-hidden="true"></span>
+    </button>
+    <div class="portfolio-navigation" id="portfolio-navigation">
+      <nav class="portfolio-nav" aria-label="主导航 / Main navigation">
+        <a href="{{ '/projects/' | relative_url }}"{% if current_url contains '/projects/' %} aria-current="page"{% endif %}><span class="i18n i18n-zh">作品与研究</span><span class="i18n i18n-en">Work &amp; Research</span></a>
+        <a href="{{ '/about/' | relative_url }}"{% if current_url contains '/about/' %} aria-current="page"{% endif %}><span class="i18n i18n-zh">关于我</span><span class="i18n i18n-en">About</span></a>
+        <a href="{{ '/resume/' | relative_url }}"{% if current_url contains '/resume/' %} aria-current="page"{% endif %}><span class="i18n i18n-zh">简历</span><span class="i18n i18n-en">Résumé</span></a>
+        <a href="{{ site.notes_url }}"><span class="i18n i18n-zh">知识星球</span><span class="i18n i18n-en">Knowledge Hub</span><span class="nav-external" aria-hidden="true">↗</span></a>
+        <a class="portfolio-contact-link" href="{{ '/contact/' | relative_url }}"{% if current_url contains '/contact/' %} aria-current="page"{% endif %}><span class="i18n i18n-zh">联系</span><span class="i18n i18n-en">Contact</span></a>
+      </nav>
+      {% if page.bilingual %}{% include language-switch.html %}{% endif %}
+    </div>
+  </div>
+</header>

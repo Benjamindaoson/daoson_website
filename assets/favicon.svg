@@ -1,5 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#0d1117"/>
-  <text x="14" y="44" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="32" font-weight="700" fill="#3fb950">$</text>
-  <rect x="36" y="36" width="14" height="4" fill="#58a6ff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#faf9f3"/>
+  <circle cx="32" cy="32" r="24" fill="#507557"/>
+  <path d="M32 8a24 24 0 0 0 0 48V8Z" fill="#e5eee1"/>
+  <circle cx="32" cy="20" r="12" fill="#507557"/>
+  <circle cx="32" cy="44" r="12" fill="#e5eee1"/>
+  <circle cx="32" cy="20" r="3.8" fill="#e5eee1"/>
+  <circle cx="32" cy="44" r="3.8" fill="#507557"/>
 </svg>

@@ -1,0 +1,42 @@
+{
+  "startshift-vla": {
+    "repository": "https://github.com/Benjamindaoson/StartShift-VLA",
+    "commit": "8fb03bbaa6982115a54aaa7c4945375a6139a056",
+    "source": "results/analysis/summary.json",
+    "id": {
+      "episodes": 120,
+      "successes": 86,
+      "success_rate": 0.7166666666666667
+    },
+    "robotinit": {
+      "episodes": 800,
+      "successes": 36,
+      "success_rate": 0.045
+    },
+    "conditions": "Historical saved simulation records; one SmolVLA policy and recorded seed schedule; task/scene selections unpaired; no validated mitigation or physical-robot result."
+  },
+  "rewardlens": {
+    "repository": "https://github.com/Benjamindaoson/RewardLens",
+    "commit": "d0f355a9e3926eb25ab46fd5a9797034fb4c7394",
+    "source": "results/paper_analysis/eight_model_raii/matched_1pp.json",
+    "factor": "attribute",
+    "phi": {
+      "static_accuracy": 0.805,
+      "ra": 0.8494623655913979
+    },
+    "llava": {
+      "static_accuracy": 0.805,
+      "ra": 1
+    },
+    "conditions": "Independent static scores; RA uses each judge's own base-correct audit subset; frozen Attribute setting."
+  },
+  "enterprise-data-agent": {
+    "repository": "https://github.com/Benjamindaoson/enterprise-data-agent",
+    "commit": "a82133b35b7215a1b163f5c3afdcc241e9c4381f",
+    "source": "docs/BA_AGENT_REAL_DATA_RESULTS.md#harness-ablation",
+    "cases": 10,
+    "intrinsic_score_driver_recall": 0.9,
+    "query_aware_driver_recall": 1,
+    "conditions": "Internal RetailHarnessAblation-v1; same typed workstream outputs and underlying analytical operators/data; Complete Journey CC0 dataset."
+  }
+}

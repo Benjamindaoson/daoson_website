@@ -1,61 +1,45 @@
 ---
 layout: default
-title: 关于
+title: 关于我
 title_en: About
 permalink: /about/
-description: 本杰铭的 AI 工程方向、模型研究与项目实践。
+description: 本杰铭 Benjamin Taoson 的工程背景、研究兴趣与工作方法。
+description_en: Benjamin Taoson's engineering background, research interests, and approach to work.
+portfolio_shell: true
 bilingual: true
 ---
 
-<section class="hero">
-  <p class="section-label"><span class="i18n i18n-zh">关于我</span><span class="i18n i18n-en">ABOUT</span></p>
-  <h1>本杰铭 <span class="about-english-name">Benjamin Daoson</span></h1>
-  <p><span class="i18n i18n-zh">我构建 AI Agent 系统，研究大模型后训练与多模态评估，并将工程实现与实验结果整理为可核验的项目案例。</span><span class="i18n i18n-en">I build AI Agent systems, study LLM post-training and multimodal evaluation, and present the engineering work and experimental results through verifiable case studies.</span></p>
-</section>
+<article class="portfolio-page profile-page">
+  <header class="portfolio-page-header">
+    <p class="page-kicker"><span class="i18n i18n-zh">关于我</span><span class="i18n i18n-en">ABOUT</span></p>
+    <h1>Benjamin Taoson <span class="about-english-name">本杰铭</span></h1>
+    <p class="page-lead"><span class="i18n i18n-zh">我做 AI 工程，也研究模型如何学习、判断与行动。大模型与智能体是我的工程主线，机器人学习与具身智能是我持续关注的研究方向。</span><span class="i18n i18n-en">I build AI systems and study how models learn, judge, and act. Language models and agents are the core of my engineering work; robot learning and embodied intelligence are ongoing research interests.</span></p>
+  </header>
 
-<div class="post-content">
-<div class="i18n i18n-zh" markdown="1">
+  <section class="content-section">
+    <h2><span class="i18n i18n-zh">从业务问题走到模型与系统</span><span class="i18n i18n-en">From business problems to models and systems</span></h2>
+    <p><span class="i18n i18n-zh">我的工作从企业数字化项目开始，涉及需求梳理、数据与 API 集成、系统联调和上线验证。随后，我转向 NLP 分类、信息抽取与语义匹配，再进入大模型、知识检索和 Agent 系统的研发。</span><span class="i18n i18n-en">I started with enterprise digitalization projects: understanding requirements, integrating data and APIs, connecting systems, and validating releases. I then moved into NLP classification, information extraction, and semantic matching, followed by language models, retrieval, and agent systems.</span></p>
+    <p><span class="i18n i18n-zh">这段经历让我习惯把模型放回实际任务中思考：输入从哪里来，工具可以做什么，结果由谁验证，失败以后如何继续。一个系统是否有用，最终要落实到这些具体问题。</span><span class="i18n i18n-en">That path taught me to consider a model within the task around it: where inputs come from, what tools can do, who verifies the result, and how the system continues after a failure. Those concrete questions shape whether a system is useful.</span></p>
+  </section>
 
-## 当前的工作主线
+  <section class="content-section">
+    <h2><span class="i18n i18n-zh">我怎样做项目</span><span class="i18n i18n-en">How I approach the work</span></h2>
+    <ul class="profile-principles">
+      <li><strong><span class="i18n i18n-zh">先明确问题与边界。</span><span class="i18n i18n-en">Define the problem and its boundaries.</span></strong> <span class="i18n i18n-zh">把业务语义、数据来源和工具权限说明白，再决定哪些部分交给模型，哪些部分使用确定性计算。</span><span class="i18n i18n-en">Clarify business meaning, data sources, and tool permissions before deciding what belongs to a model and what needs deterministic computation.</span></li>
+      <li><strong><span class="i18n i18n-zh">把验证放进实现。</span><span class="i18n i18n-en">Build verification into the implementation.</span></strong> <span class="i18n i18n-zh">我会追踪任务状态、保留计算依据，并检查异常输入、缺失信息和工具失败。案例中展示的结论，应当能回到代码或实验记录。</span><span class="i18n i18n-en">I track task state, preserve the basis for calculations, and examine invalid inputs, missing information, and tool failures. A claim in a case study should lead back to code or an experiment record.</span></li>
+      <li><strong><span class="i18n i18n-zh">继续追问指标的含义。</span><span class="i18n i18n-en">Examine what a metric actually measures.</span></strong> <span class="i18n i18n-zh">模型得到高分后，我仍关心它是否利用了长度、格式或数据分布中的捷径，以及条件改变后行为是否可靠。</span><span class="i18n i18n-en">After a model scores well, I still ask whether it relies on length, format, or distribution shortcuts, and whether its behavior holds when conditions change.</span></li>
+    </ul>
+  </section>
 
-**企业分析 Agent。** 把业务问题组织成可以执行的调查，围绕业务语义、工具权限、任务状态和证据验证设计系统。企业级商业分析智能体是这条主线的代表项目。[阅读案例]({{ '/projects/enterprise-data-agent/' | relative_url }})。
+  <section class="content-section">
+    <h2><span class="i18n i18n-zh">数字 AI 与物理 AI</span><span class="i18n i18n-en">Digital AI and Physical AI</span></h2>
+    <p><span class="i18n i18n-zh">在数字 AI 中，我构建业务分析智能体，研究大模型后训练与多模态评估。你可以从 <a href="{{ '/projects/enterprise-data-agent/' | relative_url }}">Enterprise Data Agent</a>、<a href="{{ '/projects/reward-modeling-lab/' | relative_url }}">Reward Modeling Lab</a> 和 <a href="{{ '/projects/rewardlens/' | relative_url }}">RewardLens</a> 了解具体实现与实验边界。</span><span class="i18n i18n-en">In Digital AI, I build business-analysis agents and investigate post-training and multimodal evaluation. <a href="{{ '/projects/enterprise-data-agent/' | relative_url }}">Enterprise Data Agent</a>, <a href="{{ '/projects/reward-modeling-lab/' | relative_url }}">Reward Modeling Lab</a>, and <a href="{{ '/projects/rewardlens/' | relative_url }}">RewardLens</a> show the implementation choices and scope of the experiments.</span></p>
+    <p><span class="i18n i18n-zh">在物理 AI 中，我关注机器人学习、视觉语言行动模型（VLA）和仿真评估。我想进一步理解：当环境、起始条件或感知发生变化时，学到的策略怎样保持可靠行动。<a href="{{ '/projects/startshift-vla/' | relative_url }}">StartShift-VLA</a> 保留了一份相关的仿真研究记录。</span><span class="i18n i18n-en">In Physical AI, I am interested in robot learning, vision-language-action models, and simulation evaluation. I want to understand how learned policies can act reliably when environments, initial conditions, or perception change. <a href="{{ '/projects/startshift-vla/' | relative_url }}">StartShift-VLA</a> preserves a related simulation research record.</span></p>
+  </section>
 
-**模型训练与评估。** 关注训练后的模型学到了什么，以及指标是否反映预期能力。Reward Modeling Lab 通过训练、排序评估和长度捷径审计研究这一问题。[阅读案例]({{ '/projects/reward-modeling-lab/' | relative_url }})。
-
-**多模态模型行为。** 通过控制图像中的变化，观察评判模型如何使用视觉证据。RewardLens 将静态偏好准确率与干预后的行为分别测量。[阅读案例]({{ '/projects/rewardlens/' | relative_url }})。
-
-## 我关心的工程问题
-
-一个 Agent 在工具超时、信息不足或任务中断后，应该如何继续工作？一次分析中的业务口径和结论，能否追溯到具体数据？模型指标上升后，增益来自目标能力，还是数据中的捷径？
-
-这些问题决定了系统的状态设计、工具边界、评测样本和验证方式。我会在案例中说明具体做法、结果与限制，也保留源码和实验资料供进一步讨论。
-
-## 职业与技术交流
-
-欢迎围绕 AI Agent、大模型算法、应用 AI 工程岗位，以及相关项目或研究合作交流。完整简历可以通过职业邮箱索取。
-
-</div>
-<div class="i18n i18n-en" markdown="1">
-
-## Current work
-
-**Business-analysis agents.** I work on turning business questions into executable investigations, with business semantics, tool permissions, task state, and evidence verification. The business-analysis Agent is the representative project in this direction. [Read the case study]({{ '/projects/enterprise-data-agent/' | relative_url }}).
-
-**Model training and evaluation.** I study what a trained model learns and whether its metrics reflect the intended capability. Reward Modeling Lab examines this through reward-model training, ranking evaluation, and length-shortcut audits. [Read the case study]({{ '/projects/reward-modeling-lab/' | relative_url }}).
-
-**Multimodal model behavior.** Controlled changes to images reveal how judges use visual evidence. RewardLens measures static preference accuracy and intervention behavior separately. [Read the case study]({{ '/projects/rewardlens/' | relative_url }}).
-
-## Engineering questions
-
-How should an Agent continue after a tool timeout, missing information, or an interrupted task? Can the business definitions and conclusions in an analysis be traced to specific data? When a model metric improves, does the gain come from the intended capability or a shortcut in the data?
-
-These questions shape task state, tool boundaries, evaluation cases, and verification. The case studies describe concrete design decisions, results, and limitations, with links to source code and experiment materials.
-
-## Roles and collaboration
-
-Get in touch about AI Agent, LLM, and applied AI engineering roles, or related projects and research. A full résumé is available by email.
-
-</div>
-</div>
-
-<div class="home-actions"><a class="btn" href="{{ '/contact/' | relative_url }}"><span class="i18n i18n-zh">联系我</span><span class="i18n i18n-en">Get in touch</span></a><a class="btn secondary" href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub ↗</a></div>
+  <section class="content-section">
+    <h2><span class="i18n i18n-zh">写作与交流</span><span class="i18n i18n-en">Writing and conversation</span></h2>
+    <p><span class="i18n i18n-zh">我的公开笔记放在独立的<a href="{{ site.notes_url }}">知识网站 ↗</a>，用于整理概念、源码阅读和学习过程。如果你想讨论工程问题、研究思路、授课邀请或职业机会，欢迎写信给我。</span><span class="i18n i18n-en">My public notes live on a separate <a href="{{ site.notes_url }}">knowledge site ↗</a>, where I organize concepts, source-code reading, and learning notes. I welcome conversations about engineering, research, teaching invitations, and career opportunities.</span></p>
+    <div class="page-actions"><a class="btn" href="{{ '/contact/' | relative_url }}"><span class="i18n i18n-zh">联系我</span><span class="i18n i18n-en">Get in touch</span></a><a class="btn secondary" href="{{ '/resume/' | relative_url }}"><span class="i18n i18n-zh">查看公开简历</span><span class="i18n i18n-en">View public résumé</span></a></div>
+  </section>
+</article>

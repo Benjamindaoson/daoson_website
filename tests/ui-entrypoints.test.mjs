@@ -18,10 +18,12 @@ const config = readYaml('_config.yml')
 const projects = readYaml('_data/projects.yml')
 const featured = projects.filter(project => project.featured === true)
   .sort((a, b) => a.featured_order - b.featured_order)
+const homeFeatured = projects.filter(project => project.home_featured === true)
+  .sort((a, b) => a.home_order - b.home_order)
 const base = String(config.baseurl || '').replace(/\/$/, '')
 const origin = new URL(config.url).origin
 const notesUrl = new URL(config.notes_url)
-const publicPages = ['index.html', 'projects/index.html', 'about/index.html', 'contact/index.html']
+const publicPages = ['index.html', 'projects/index.html', 'about/index.html', 'contact/index.html', 'resume/index.html']
 const pageUrl = page => new URL(`${base}/${page.replace(/index\.html$/, '')}`, origin)
 const built = page => readFile(join(output, page), 'utf8')
 
@@ -44,7 +46,7 @@ function localTarget(href, currentPage) {
 }
 
 async function featuredPages() {
-  const cards = tags(await built('index.html'), 'a').filter(tag => tag['data-project-id'])
+  const cards = tags(await built('projects/index.html'), 'a').filter(tag => tag['data-project-id'])
   return cards.map(card => {
     assert.ok(card.href, `Featured project ${card['data-project-id']} needs a case-study link`)
     const target = localTarget(card.href, 'index.html')
@@ -53,19 +55,21 @@ async function featuredPages() {
   })
 }
 
-test('home and project index render the same three featured projects from project data', async () => {
-  assert.equal(featured.length, 3, 'The hiring portfolio should have three featured case studies')
+test('home selections and the project index link to real case studies across both AI directions', async () => {
+  assert.equal(homeFeatured.length, 3, 'The home page should keep a concise selection of three case studies')
+  assert.deepEqual(new Set(homeFeatured.map(project => project.domain)), new Set(['digital', 'physical']),
+    'The home selection should represent both Digital AI and Physical AI')
   const ids = featured.map(project => project.id)
   assert.ok(ids.every(id => typeof id === 'string' && id.length > 0), 'Featured projects need stable IDs')
   assert.equal(new Set(ids).size, ids.length, 'Featured project IDs must be unique')
 
-  const include = await readFile(join(root, '_includes/featured-projects.html'), 'utf8')
-  assert.match(include, /site\.data\.projects/, 'The shared cards must use the project data source')
+  const include = await readFile(join(root, '_includes/selected-work.html'), 'utf8')
+  assert.match(include, /site\.data\.projects/, 'The home selection must use the project data source')
   for (const page of ['index.html', 'projects/index.html']) {
     const html = await built(page)
-    assert.match(html, /\bdata-featured-projects\b/)
     const cards = tags(html, 'a').filter(tag => tag['data-project-id'])
-    assert.deepEqual(cards.map(card => card['data-project-id']), ids, `${page}: featured cards drifted from project data`)
+    const expected = page === 'index.html' ? homeFeatured.map(project => project.id) : ids
+    assert.deepEqual(cards.map(card => card['data-project-id']), expected, `${page}: case studies drifted from project data`)
     for (const card of cards) assert.ok(localTarget(card.href, page), `${page}: the card must open its case study`)
   }
   for (const path of await featuredPages()) await access(join(output, path))
@@ -75,7 +79,7 @@ test('public navigation reaches projects, contact, and the independent notes sit
   assert.equal(notesUrl.href, 'https://benjamindaoson.github.io/gitpagewebnote/')
   for (const page of publicPages) {
     const links = tags(await built(page), 'a').map(tag => tag.href).filter(Boolean)
-    for (const target of [`${base}/projects/`, `${base}/contact/`, notesUrl.href]) {
+    for (const target of [`${base}/projects/`, `${base}/resume/`, `${base}/contact/`, notesUrl.href]) {
       assert.ok(links.includes(target), `${page}: missing navigation to ${target}`)
     }
     assert.ok(!links.includes(`${base}/knowledge/`), `${page}: primary navigation must use the independent notes site`)

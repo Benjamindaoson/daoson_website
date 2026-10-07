@@ -1,26 +1,67 @@
 ---
 layout: default
-title: 项目
-title_en: Projects
+portfolio_shell: true
+title: 作品与研究
+title_en: Work & research
 permalink: /projects/
-description: 本杰铭的 AI 工程与研究项目，覆盖企业分析 Agent、奖励模型训练和多模态评估。
+description: 本杰铭的 Digital AI 与 Physical AI 项目：智能体工程、奖励模型、多模态评估和机器人策略研究记录。
+description_en: Digital AI and Physical AI work by Benjamin Taoson, spanning agents, reward modeling, multimodal evaluation, and robot-policy research records.
 bilingual: true
 ---
 
 <section class="hero labs-hero">
-  <p class="section-label"><span class="i18n i18n-zh">AI 工程与研究</span><span class="i18n i18n-en">AI ENGINEERING & RESEARCH</span></p>
-  <h1><span class="i18n i18n-zh">项目与实践</span><span class="i18n i18n-en">Projects & practice</span></h1>
-  <p><span class="i18n i18n-zh">从业务分析系统到模型实验，记录问题、关键设计和验证结果。</span><span class="i18n i18n-en">Business-analysis systems and model experiments: the problems, design decisions, and measured results.</span></p>
+  <p class="section-label">DIGITAL AI · PHYSICAL AI</p>
+  <h1><span class="i18n i18n-zh">作品与研究</span><span class="i18n i18n-en">Work & research</span></h1>
+  <p><span class="i18n i18n-zh">从数字任务到机器人行动，用具体问题、实现过程和可核查的结果说明工作。</span><span class="i18n i18n-en">From digital tasks to robot action: the questions, implementations, and evidence behind the work.</span></p>
+  <div class="hero-actions">
+    <a class="btn btn-ghost" href="#digital-ai">Digital AI <span aria-hidden="true">↓</span></a>
+    <a class="btn btn-ghost" href="#physical-ai">Physical AI <span aria-hidden="true">↓</span></a>
+  </div>
 </section>
 
-<section class="labs-section" aria-labelledby="representative-work-heading">
-  <div class="selected-work-head"><h2 id="representative-work-heading"><span class="i18n i18n-zh">精选案例</span><span class="i18n i18n-en">Selected case studies</span></h2></div>
-  {% include featured-projects.html %}
-</section>
+{% assign domains = "digital,physical" | split: "," %}
+{% for domain in domains %}
+{% assign domain_projects = site.data.projects | where: "domain", domain %}
+{% assign case_projects = domain_projects | where: "featured", true | sort: "featured_order" %}
+<section class="labs-section project-domain" id="{{ domain }}-ai" aria-labelledby="{{ domain }}-heading">
+  <div class="selected-work-head">
+    <div>
+      <p class="section-label">{% if domain == "digital" %}DIGITAL AI{% else %}PHYSICAL AI{% endif %}</p>
+      <h2 id="{{ domain }}-heading">{% if domain == "digital" %}<span class="i18n i18n-zh">数字 AI</span><span class="i18n i18n-en">Digital AI</span>{% else %}<span class="i18n i18n-zh">物理 AI</span><span class="i18n i18n-en">Physical AI</span>{% endif %}</h2>
+    </div>
+  </div>
+  <p class="project-domain-intro">{% if domain == "digital" %}<span class="i18n i18n-zh">智能体工程、大模型后训练与多模态评估。每个案例都保留问题、方法、测量条件与当前边界。</span><span class="i18n i18n-en">Agent engineering, LLM post-training, and multimodal evaluation. Each case connects a question to its method, measurement conditions, and current limits.</span>{% else %}<span class="i18n i18n-zh">机器人策略与可靠性。当前公开一份初始化敏感性研究归档，保留仿真基线、未完成部分与复核入口。</span><span class="i18n i18n-en">Robot policies and reliability. The current public record is an initialization-sensitivity research archive with simulation baselines, unfinished work, and verification sources.</span>{% endif %}</p>
+  <div class="work-grid">
+    {% for project in case_projects %}
+    <article class="work-card">
+      <a class="work-figure{% if project.image_compact %} work-figure-compact{% endif %}" href="{{ project.case_url | relative_url }}" aria-label="{{ project.name_en | escape }}">
+        {% assign card_image = project.image_compact | default: project.image %}
+        <img class="i18n i18n-zh" src="{{ card_image | relative_url }}" alt="{{ project.image_alt_zh | default: project.name_zh | escape }}" width="420" height="330" loading="lazy">
+        <img class="i18n i18n-en" src="{{ card_image | relative_url }}" alt="{{ project.image_alt_en | default: project.name_en | escape }}" width="420" height="330" loading="lazy">
+        <span class="work-open" aria-hidden="true">↗</span>
+      </a>
+      <div class="work-caption">
+        <p class="work-eyebrow"><span class="i18n i18n-zh">{{ project.eyebrow_zh }}</span><span class="i18n i18n-en">{{ project.eyebrow_en }}</span></p>
+        <p class="project-state"><span class="i18n i18n-zh">{{ project.display_status_zh }}</span><span class="i18n i18n-en">{{ project.display_status_en }}</span></p>
+        <h3 class="work-name"><a href="{{ project.case_url | relative_url }}" data-project-id="{{ project.id }}"><span class="i18n i18n-zh">{{ project.name_zh }}</span><span class="i18n i18n-en">{{ project.name_en }}</span></a></h3>
+        <p class="work-summary"><span class="i18n i18n-zh">{{ project.summary_zh }}</span><span class="i18n i18n-en">{{ project.summary_en }}</span></p>
+        <div class="work-evidence"><strong>{{ project.metric_value }}</strong><span><span class="i18n i18n-zh">{{ project.metric_label_zh }}</span><span class="i18n i18n-en">{{ project.metric_label_en }}</span></span></div>
+        <p class="project-links"><a class="work-read" href="{{ project.case_url | relative_url }}"><span class="i18n i18n-zh">{% if domain == "physical" %}查看研究记录{% else %}查看项目案例{% endif %}</span><span class="i18n i18n-en">{% if domain == "physical" %}Read the research record{% else %}Read the case study{% endif %}</span> <span aria-hidden="true">→</span></a><a href="{{ project.url }}" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
 
-<section class="labs-section" aria-labelledby="more-projects-heading">
-  <div class="labs-section-header"><p class="section-label"><span class="i18n i18n-zh">持续探索</span><span class="i18n i18n-en">MORE WORK</span></p><h2 id="more-projects-heading"><span class="i18n i18n-zh">更多项目</span><span class="i18n i18n-en">Further projects</span></h2><p><span class="i18n i18n-zh">涵盖 Agent 运行框架、多模态应用、工具与教学材料。各项目的实现范围和当前状态见仓库说明。</span><span class="i18n i18n-en">Agent runtimes, multimodal applications, tools, and teaching materials. Each repository explains its implementation scope and current status.</span></p></div>
+</section>
+{% endfor %}
+
+<section class="labs-section" aria-label="More work">
+  <div class="labs-section-header">
+    <h3><span class="i18n i18n-zh">更多工程与研究</span><span class="i18n i18n-en">Further work</span></h3>
+    <p><span class="i18n i18n-zh">智能体运行框架、多模态应用、工具与学习材料。仓库中保留各项目的实现范围和当前状态。</span><span class="i18n i18n-en">Agent runtimes, multimodal applications, tools, and learning materials. Each repository documents its implementation scope and current status.</span></p>
+  </div>
   <div class="labs-grid">{% for project in site.data.projects %}{% unless project.featured %}{% include project-card.html project=project class="labs-card" %}{% endunless %}{% endfor %}</div>
+
 </section>
 
-<section class="case-contact"><h2><span class="i18n i18n-zh">讨论设计与实现</span><span class="i18n i18n-en">Discuss design and implementation</span></h2><p><span class="i18n i18n-zh">可以从你关心的项目、技术问题或岗位开始交流。</span><span class="i18n i18n-en">Start with a project, a technical question, or a relevant role.</span></p><a class="btn" href="{{ '/contact/' | relative_url }}"><span class="i18n i18n-zh">联系我</span><span class="i18n i18n-en">Contact me</span></a></section>
+<section class="case-contact"><h2><span class="i18n i18n-zh">从具体问题开始交流</span><span class="i18n i18n-en">Start with a concrete question</span></h2><p><span class="i18n i18n-zh">欢迎讨论工程合作、研究方法、授课邀请与职业机会。</span><span class="i18n i18n-en">Get in touch about engineering collaboration, research methods, teaching invitations, or career opportunities.</span></p><a class="btn" href="{{ '/contact/' | relative_url }}"><span class="i18n i18n-zh">联系我</span><span class="i18n i18n-en">Contact me</span></a></section>

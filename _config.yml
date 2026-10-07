@@ -3,9 +3,9 @@
 # ============================================
 
 # 站点信息
-title: "本杰铭"
-description: "本杰铭的个人 AI 工程作品集，展示 Agent 系统、模型训练与评估的项目案例，并提供职业联系与简历索取入口。"
-author: "本杰铭"
+title: "Benjamin Taoson · 本杰铭"
+description: "Benjamin Taoson（本杰铭）的个人网站。探索大模型、智能体与机器人学习，展示工程项目、研究记录与公开履历，连接技术交流、合作与教学。"
+author: "Benjamin Taoson"
 email: "benjamindaoson@gmail.com"
 
 # 部署地址
@@ -98,6 +98,7 @@ defaults:
     values:
       layout: "project"
       lang: "zh"
+      portfolio_shell: true
   - scope:
       path: ""
       type: "pages"
