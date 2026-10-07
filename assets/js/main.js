@@ -46,6 +46,9 @@
     document.querySelectorAll('[data-alt-zh][data-alt-en]').forEach(el => {
       el.setAttribute('alt', el.getAttribute('data-alt-' + l));
     });
+    document.querySelectorAll('[data-copy-email-status][data-copy-state]').forEach(status => {
+      setCopyEmailStatus(status, status.dataset.copyState);
+    });
 
     // 真双语：按 data-post-lang 过滤所有文章/笔记列表项
     // 当前语言匹配 → 显示；不匹配 → 隐藏（用 .lang-hidden 类，搜索过滤可叠加）
@@ -229,6 +232,75 @@
     }
     document.querySelectorAll('[data-print-resume]').forEach(button => {
       button.addEventListener('click', () => window.print());
+    });
+  }
+
+  // Saved RewardLens examples: local panels, with all evidence readable without JS.
+  function setupRewardLensExamples() {
+    document.querySelectorAll('[data-rewardlens-example]').forEach(example => {
+      const controls = example.querySelector('[data-example-controls]');
+      const tabs = [...example.querySelectorAll('[data-example-tab]')];
+      const panels = [...example.querySelectorAll('[data-example-panel]')];
+      if (!controls || !tabs.length || tabs.some(tab => !panels.some(panel => panel.dataset.examplePanel === tab.dataset.exampleTab))) return;
+      const select = (tab, focus = false) => {
+        tabs.forEach(item => {
+          const active = item === tab;
+          item.setAttribute('aria-selected', String(active));
+          item.tabIndex = active ? 0 : -1;
+        });
+        panels.forEach(panel => { panel.hidden = panel.dataset.examplePanel !== tab.dataset.exampleTab; });
+        if (focus) tab.focus();
+      };
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => select(tab));
+        tab.addEventListener('keydown', event => {
+          let next;
+          if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+          if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+          if (event.key === 'Home') next = 0;
+          if (event.key === 'End') next = tabs.length - 1;
+          if (next === undefined) return;
+          event.preventDefault();
+          select(tabs[next], true);
+        });
+      });
+      select(tabs[0]);
+      controls.hidden = false;
+    });
+  }
+
+  function setCopyEmailStatus(status, state) {
+    const messages = {
+      copied: { zh: '邮箱已复制，可以粘贴到你的邮件应用。', en: 'Email address copied. Paste it into your email app.' },
+      manual: { zh: '浏览器未允许自动复制，请选中上方邮箱后手动复制。', en: 'Your browser did not allow copying. Select the email address above and copy it manually.' }
+    };
+    if (!messages[state]) return;
+    status.dataset.copyState = state;
+    status.textContent = messages[state][getCurrentLang()];
+  }
+
+  function setupCopyEmail() {
+    document.querySelectorAll('[data-copy-email]').forEach(button => {
+      const panel = button.closest('.contact-panel');
+      const status = panel?.querySelector('[data-copy-email-status]');
+      if (!status) return;
+      button.addEventListener('click', async () => {
+        try {
+          if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+          await navigator.clipboard.writeText(button.dataset.copyEmail);
+          setCopyEmailStatus(status, 'copied');
+        } catch (_) {
+          const address = panel.querySelector('.contact-email');
+          const selection = window.getSelection();
+          if (address && selection) {
+            const range = document.createRange();
+            range.selectNodeContents(address);
+            selection.removeAllRanges();
+            selection.addRange(range);
+          }
+          setCopyEmailStatus(status, 'manual');
+        }
+      });
     });
   }
 
@@ -697,6 +769,8 @@
     highlightNav();
     setupSidebarToggle();
     setupPortfolioControls();
+    setupRewardLensExamples();
+    setupCopyEmail();
     setupTagFilter();
     setupSearch();
     setupTypewriter();

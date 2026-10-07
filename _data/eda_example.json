@@ -1,0 +1,49 @@
+{
+  "id": "eda-real-data-20260928",
+  "task_id": "retail-602b0bef3a19",
+  "title_zh": "一次真实保存的分析：从提问到报告",
+  "title_en": "A saved analysis: from question to report",
+  "source_type_zh": "CI 保存结果摘录",
+  "source_type_en": "Saved CI result excerpt",
+  "question_zh": "分析最近一期经营表现，找出最值得管理层关注的问题和机会，解释原因，并告诉我下一步应该做什么。",
+  "question_en": "Analyze the latest business performance, identify the issues and opportunities management should prioritize, explain why, and recommend the next action.",
+  "finding_zh": "门店 429 × COUPON/MISC ITEMS 的销售额减少 $377.29。",
+  "finding_en": "Store 429 × COUPON/MISC ITEMS: sales decreased by $377.29.",
+  "action_zh": "先检查该门店与品类的商品、促销和供给代理指标，再决定是否采取大范围调整。",
+  "action_en": "Inspect product, promotion and availability proxies for store 429 within COUPON/MISC ITEMS before applying a broad intervention.",
+  "metrics": [
+    {
+      "label_zh": "本期销售额",
+      "label_en": "Current sales",
+      "value": "$524.12"
+    },
+    {
+      "label_zh": "对比期销售额",
+      "label_en": "Prior sales",
+      "value": "$901.41"
+    },
+    {
+      "label_zh": "销售额变化",
+      "label_en": "Sales change",
+      "value": "−$377.29"
+    }
+  ],
+  "period_zh": "第 52–53 周，对比第 50–51 周",
+  "period_en": "Weeks 52–53 versus weeks 50–51",
+  "dataset_zh": "Complete Journey · 1,469,307 条交易明细 · CC0",
+  "dataset_en": "Complete Journey · 1,469,307 transaction rows · CC0",
+  "conditions_zh": "公开数据上的确定性规划与分析；报告建议尚未执行，实际业务效果未评估。",
+  "conditions_en": "Deterministic planning and analysis on public data. Report recommendations were not executed; business impact was not evaluated.",
+  "translation_note_zh": "中文发现与建议为保存结果的翻译，数值按两位小数显示；原始请求和输出可下载核对。",
+  "translation_note_en": "The question is translated from Chinese; values are displayed to two decimals. The original request and output are available for inspection.",
+  "source_url": "https://github.com/Benjamindaoson/enterprise-data-agent/actions/runs/36437826206",
+  "source_commit": "444c5453b9715793185cf5d6b0f50cddf17f76c1",
+  "source_date": "2026-09-28",
+  "screenshot_url": "/assets/examples/eda/ba-agent-real-data.png",
+  "screenshot_alt_zh": "真实 CI 浏览器截图：Complete Journey 数据状态、分析任务、门店与商品图表，以及生成的经营报告。",
+  "screenshot_alt_en": "Saved CI browser capture showing Complete Journey data status, analysis workstreams, store and product charts, and the generated business report.",
+  "pdf_url": "/assets/examples/eda/executive-report.pdf",
+  "json_url": "/assets/examples/eda/analysis-excerpt.json",
+  "html_source_url": "/assets/examples/eda/executive-report.html.txt",
+  "provenance_url": "/assets/examples/eda/source.json"
+}

@@ -12,11 +12,13 @@ lang: zh
 bilingual: true
 ---
 
+{% include rewardlens-example.html id="rewardlens-case" %}
+
 <div class="i18n i18n-zh" markdown="1">
 
 两个多模态评判模型取得相同的静态偏好准确率，是否意味着它们都会正确响应视觉证据的变化？RewardLens 用独立静态评测和受控图像干预，测量这个分数背后仍可能存在的行为差异。[论文](https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/REWARDLENS_RelatedWork_Original.pdf)
 
-## 评估如何设计
+## 关键决策：固定语言输入，改变视觉证据
 
 每组审计样本包含原图、相关编辑图和无关编辑图。问题、候选回答及候选顺序保持固定；相关编辑被构造成改变正确选项，无关编辑则保持正确选项。程序在渲染后重新检查场景事实与标签关系。[构造与验证](https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/sections/04_audit_construction.tex)
 
@@ -38,6 +40,8 @@ bilingual: true
 | Phi-3.5-Vision | 80.5% | 84.95% |
 | LLaVA-OneVision-7B | 80.5% | 100.00% |
 
+{% include project-evidence.html project_id="rewardlens" %}
+
 RA 相差 **15.05 个百分点**，配对 bootstrap 的 95% 区间为 10.21–20.43 个百分点。按同一因素内静态分数差不超过 1 个百分点的规则，全部 7 组比较的 RA 差异中位数同样为 15.05 个百分点。[匹配比较数据](https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/results/paper_analysis/eight_model_raii/matched_1pp.json)
 
 另一例来自 Qwen3-VL-4B 的 Count 审计：200 个原图正确案例中，166 个在相关编辑后仍保留原选择，因正确选项已改变而变成错误。这说明在该分支中，保持不变也可能是失败。[对应结果](https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/sections/06_results.tex)
@@ -56,7 +60,7 @@ RA 相差 **15.05 个百分点**，配对 bootstrap 的 95% 区间为 10.21–20
 
 If two multimodal judges have the same static preference accuracy, will they respond equally well when visual evidence changes? RewardLens combines an independent static evaluation with controlled image interventions to measure behavioral differences that a shared score can leave unresolved. [Paper](https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/REWARDLENS_RelatedWork_Original.pdf)
 
-## Evaluation design
+## Key decision: fix the language inputs and edit visual evidence
 
 Each audit triplet contains a base image, a relevant edit, and an irrelevant edit. The question, candidate responses, and candidate order stay fixed. Relevant edits are constructed to change the correct choice; irrelevant edits preserve it. Post-render programmatic checks verify the scene facts and label relationships. [Construction and validation](https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/sections/04_audit_construction.tex)
 
@@ -77,6 +81,8 @@ On Attribute, two judges both achieve 80.5% measured static accuracy, yet differ
 |---|---:|---:|
 | Phi-3.5-Vision | 80.5% | 84.95% |
 | LLaVA-OneVision-7B | 80.5% | 100.00% |
+
+{% include project-evidence.html project_id="rewardlens" %}
 
 The RA gap is **15.05 percentage points**, with a paired-bootstrap 95% interval of 10.21–20.43 points. Across all seven within-factor comparisons whose measured static scores differ by at most one percentage point, the median RA gap is also 15.05 points. [Matched comparison data](https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/results/paper_analysis/eight_model_raii/matched_1pp.json)
 

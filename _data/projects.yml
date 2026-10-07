@@ -58,6 +58,12 @@
   home_featured: true
   home_order: 2
   id: rewardlens
+  home_purpose_zh: "模型真的在看图吗？固定问题和答案选项，只改变画面中的一个因素，检查模型是否跟随了正确的变化。"
+  home_purpose_en: "Is the model reading the image? Keep the question and answer choices fixed, change one visual factor, and check whether its response changes for the right reason."
+  evidence_kind_zh: "静态同分下的行为差异"
+  evidence_kind_en: "Behavior at a static-accuracy tie"
+  metric_context_zh: "Attribute：两模型静态准确率均为 80.5%；RA 分别按各自原图正确子集计算。此汇总对比与上面的 Molmo 单例使用不同模型。"
+  metric_context_en: "Attribute: both judges score 80.5% static accuracy; RA uses each judge’s own base-correct subset. This aggregate comparison uses different models from the Molmo example above."
   featured: true
   featured_order: 3
   case_url: /projects/rewardlens/
@@ -92,6 +98,12 @@
   home_featured: true
   home_order: 1
   id: enterprise-data-agent
+  home_purpose_zh: "把业务提问变成能追溯到数据的分析报告：从门店销售中定位驱动因素，给出发现、依据与下一步建议。"
+  home_purpose_en: "Turn a business question into a report you can trace to the data: investigate store sales, identify drivers, and connect findings to evidence and next steps."
+  evidence_kind_zh: "选择策略消融实验"
+  evidence_kind_en: "Finding-selection ablation"
+  metric_context_zh: "Driver Recall@K 从 90% 到 100%；只比较同一批分析结果的选择策略，不能解释为营收提升。"
+  metric_context_en: "Driver Recall@K rises from 90% to 100% when selecting from the same analysis outputs. This is a selection-policy comparison, not a revenue increase."
   featured: true
   featured_order: 1
   case_url: /projects/enterprise-data-agent/
@@ -251,6 +263,10 @@
 - name_zh: "StartShift-VLA"
   name_en: "StartShift-VLA"
   id: startshift-vla
+  home_purpose_zh: "机器人换一个起始状态，策略还可靠吗？整理 SmolVLA 的历史仿真结果，并记录哪些比较可以成立、哪些仍缺证据。"
+  home_purpose_en: "Does a robot policy remain reliable from a different starting state? Inspect saved SmolVLA simulations and document which comparisons the evidence can support."
+  evidence_kind_zh: "已保存的仿真样本量"
+  evidence_kind_en: "Saved simulation sample count"
   domain: physical
   display_status_zh: "研究归档 · 方法未验证"
   display_status_en: "Research archive · method unvalidated"

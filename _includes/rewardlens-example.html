@@ -1,0 +1,53 @@
+{% assign example = site.data.rewardlens_example %}
+{% assign example_id = include.id | default: 'rewardlens-example' %}
+{% if include.compact %}{% assign example_heading = 'h4' %}{% assign variant_heading = 'h5' %}{% else %}{% assign example_heading = 'h2' %}{% assign variant_heading = 'h3' %}{% endif %}
+<section class="rewardlens-example{% if include.compact %} rewardlens-example-compact{% endif %}" data-rewardlens-example aria-labelledby="{{ example_id }}-title">
+  <div class="rewardlens-example-heading">
+    <p class="page-kicker"><span class="i18n i18n-zh">RewardLens · 实验样例</span><span class="i18n i18n-en">RewardLens · Experiment example</span></p>
+    <{{ example_heading }} id="{{ example_id }}-title"><span class="i18n i18n-zh">{{ example.title_zh }}</span><span class="i18n i18n-en">{{ example.title_en }}</span></{{ example_heading }}>
+    <p><span class="i18n i18n-zh">{{ example.intro_zh }}</span><span class="i18n i18n-en">{{ example.intro_en }}</span></p>
+  </div>
+
+  <div class="rewardlens-example-question">
+    <p><strong><span class="i18n i18n-zh">固定问题：</span><span class="i18n i18n-en">Fixed question: </span></strong><span class="i18n i18n-zh">{{ example.question_zh }}</span><span class="i18n i18n-en">{{ example.question_en }}</span></p>
+    <p class="rewardlens-example-candidates"><span class="i18n i18n-zh">固定候选：</span><span class="i18n i18n-en">Fixed candidates: </span>{% for candidate in example.candidates %}<span class="rewardlens-example-candidate"><strong>{{ candidate.id }}</strong> · <span class="i18n i18n-zh">{{ candidate.text_zh }}（{{ candidate.text_en }}）</span><span class="i18n i18n-en">{{ candidate.text_en }}</span></span>{% unless forloop.last %}<span aria-hidden="true"> / </span>{% endunless %}{% endfor %}</p>
+  </div>
+
+  {% comment %}Progressive enhancement: controls are revealed only after JS wires the tabs. All three panels remain readable without JS.{% endcomment %}
+  <div class="rewardlens-example-tabs" data-example-controls role="tablist" aria-label="RewardLens — 图像条件 / Image condition" hidden>
+    {% for variant in example.variants %}
+    <button type="button" id="{{ example_id }}-tab-{{ variant.id }}" role="tab" data-example-tab="{{ variant.id }}" aria-controls="{{ example_id }}-panel-{{ variant.id }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"><span class="i18n i18n-zh">{{ variant.title_zh }}</span><span class="i18n i18n-en">{{ variant.title_en }}</span></button>
+    {% endfor %}
+  </div>
+
+  <div class="rewardlens-example-panels">
+    {% for variant in example.variants %}
+    <figure class="rewardlens-example-panel" id="{{ example_id }}-panel-{{ variant.id }}" data-example-panel="{{ variant.id }}" role="tabpanel" aria-labelledby="{{ example_id }}-tab-{{ variant.id }}" tabindex="0">
+      <img src="{{ variant.image | relative_url }}" width="{{ variant.image_width }}" height="{{ variant.image_height }}" alt="{{ variant.alt_zh | escape }}" data-alt-zh="{{ variant.alt_zh | escape }}" data-alt-en="{{ variant.alt_en | escape }}" loading="lazy">
+      <figcaption>
+        <{{ variant_heading }}><span class="i18n i18n-zh">{{ variant.title_zh }}</span><span class="i18n i18n-en">{{ variant.title_en }}</span></{{ variant_heading }}>
+        <p class="rewardlens-example-change"><span class="i18n i18n-zh">{{ variant.description_zh }}</span><span class="i18n i18n-en">{{ variant.description_en }}</span></p>
+        <dl class="rewardlens-example-answers">
+          <div><dt><span class="i18n i18n-zh">预期答案</span><span class="i18n i18n-en">Expected answer</span></dt><dd><strong>{{ variant.expected_preference }}</strong> · <span class="i18n i18n-zh">{{ variant.expected_answer_zh }}</span><span class="i18n i18n-en">{{ variant.expected_answer_en }}</span></dd></div>
+          <div><dt>{{ example.model.name }} <span class="i18n i18n-zh">已保存的输出</span><span class="i18n i18n-en">recorded output</span></dt><dd><strong>{{ variant.recorded_output }}</strong> · <span class="i18n i18n-zh">{{ variant.recorded_answer_zh }}</span><span class="i18n i18n-en">{{ variant.recorded_answer_en }}</span></dd></div>
+        </dl>
+        <p class="rewardlens-example-result{% if variant.matches_expected %} is-correct{% else %} is-incorrect{% endif %}"><span class="i18n i18n-zh">{{ variant.status_zh }}</span><span class="i18n i18n-en">{{ variant.status_en }}</span></p>
+      </figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+
+  <p class="rewardlens-example-takeaway"><span class="i18n i18n-zh">{{ example.takeaway_zh }}</span><span class="i18n i18n-en">{{ example.takeaway_en }}</span></p>
+  <p class="example-caption"><span class="i18n i18n-zh">一个已保存的仿真样例 · 离线输出，不代表总体准确率。</span><span class="i18n i18n-en">One saved simulation example · Offline outputs, not overall accuracy.</span></p>
+  <details class="rewardlens-example-provenance">
+    <summary><span class="i18n i18n-zh">来源与适用范围</span><span class="i18n i18n-en">Sources and scope</span></summary>
+    <p><span class="i18n i18n-zh">{{ example.boundary_zh }}</span><span class="i18n i18n-en">{{ example.boundary_en }}</span></p>
+    <p><span class="i18n i18n-zh">样例 {{ example.id }}；三幅图由公开附录拼图按原像素提取，与同一条目编号的标签及输出对应。</span><span class="i18n i18n-en">Example {{ example.id }}. The three images are exact pixel crops from the public appendix montage, matched to labels and outputs with the same item IDs.</span></p>
+    <ul>
+      <li><a href="{{ example.source.montage.url }}"><span class="i18n i18n-zh">原始公开拼图</span><span class="i18n i18n-en">Published source montage</span></a></li>
+      <li><a href="{{ example.source.manifest_url }}"><span class="i18n i18n-zh">问题、候选与预期标签</span><span class="i18n i18n-en">Question, candidates, and expected labels</span></a></li>
+      <li><a href="{{ example.source.judgments_url }}"><span class="i18n i18n-zh">Molmo-7B-D 已保存的原始输出</span><span class="i18n i18n-en">Saved Molmo-7B-D raw outputs</span></a></li>
+      <li><a href="{{ '/assets/examples/rewardlens/ATTRIBUTION.txt' | relative_url }}"><span class="i18n i18n-zh">图像来源与许可说明</span><span class="i18n i18n-en">Image attribution and license</span></a></li>
+    </ul>
+  </details>
+</section>

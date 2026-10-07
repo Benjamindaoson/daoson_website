@@ -34,17 +34,20 @@ bilingual: true
   <div class="work-grid">
     {% for project in case_projects %}
     <article class="work-card">
+
+      <div class="work-caption work-card-intro">
+        <p class="work-eyebrow"><span class="i18n i18n-zh">{{ project.eyebrow_zh }}</span><span class="i18n i18n-en">{{ project.eyebrow_en }}</span></p>
+        <p class="project-state"><span class="i18n i18n-zh">{{ project.display_status_zh }}</span><span class="i18n i18n-en">{{ project.display_status_en }}</span></p>
+        <h3 class="work-name"><a href="{{ project.case_url | relative_url }}" data-project-id="{{ project.id }}"><span class="i18n i18n-zh">{{ project.name_zh }}</span><span class="i18n i18n-en">{{ project.name_en }}</span></a></h3>
+        <p class="work-summary"><span class="i18n i18n-zh">{{ project.summary_zh }}</span><span class="i18n i18n-en">{{ project.summary_en }}</span></p>
+      </div>
       <a class="work-figure{% if project.image_compact %} work-figure-compact{% endif %}" href="{{ project.case_url | relative_url }}" aria-label="{{ project.name_en | escape }}">
         {% assign card_image = project.image_compact | default: project.image %}
         <img class="i18n i18n-zh" src="{{ card_image | relative_url }}" alt="{{ project.image_alt_zh | default: project.name_zh | escape }}" width="420" height="330" loading="lazy">
         <img class="i18n i18n-en" src="{{ card_image | relative_url }}" alt="{{ project.image_alt_en | default: project.name_en | escape }}" width="420" height="330" loading="lazy">
         <span class="work-open" aria-hidden="true">↗</span>
       </a>
-      <div class="work-caption">
-        <p class="work-eyebrow"><span class="i18n i18n-zh">{{ project.eyebrow_zh }}</span><span class="i18n i18n-en">{{ project.eyebrow_en }}</span></p>
-        <p class="project-state"><span class="i18n i18n-zh">{{ project.display_status_zh }}</span><span class="i18n i18n-en">{{ project.display_status_en }}</span></p>
-        <h3 class="work-name"><a href="{{ project.case_url | relative_url }}" data-project-id="{{ project.id }}"><span class="i18n i18n-zh">{{ project.name_zh }}</span><span class="i18n i18n-en">{{ project.name_en }}</span></a></h3>
-        <p class="work-summary"><span class="i18n i18n-zh">{{ project.summary_zh }}</span><span class="i18n i18n-en">{{ project.summary_en }}</span></p>
+      <div class="work-caption work-card-details">
         <div class="work-evidence"><strong>{{ project.metric_value }}</strong><span><span class="i18n i18n-zh">{{ project.metric_label_zh }}</span><span class="i18n i18n-en">{{ project.metric_label_en }}</span></span></div>
         <p class="project-links"><a class="work-read" href="{{ project.case_url | relative_url }}"><span class="i18n i18n-zh">{% if domain == "physical" %}查看研究记录{% else %}查看项目案例{% endif %}</span><span class="i18n i18n-en">{% if domain == "physical" %}Read the research record{% else %}Read the case study{% endif %}</span> <span aria-hidden="true">→</span></a><a href="{{ project.url }}" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></p>
       </div>
@@ -57,7 +60,7 @@ bilingual: true
 
 <section class="labs-section" aria-label="More work">
   <div class="labs-section-header">
-    <h3><span class="i18n i18n-zh">更多工程与研究</span><span class="i18n i18n-en">Further work</span></h3>
+    <h2><span class="i18n i18n-zh">更多工程与研究</span><span class="i18n i18n-en">Further work</span></h2>
     <p><span class="i18n i18n-zh">智能体运行框架、多模态应用、工具与学习材料。仓库中保留各项目的实现范围和当前状态。</span><span class="i18n i18n-en">Agent runtimes, multimodal applications, tools, and learning materials. Each repository documents its implementation scope and current status.</span></p>
   </div>
   <div class="labs-grid">{% for project in site.data.projects %}{% unless project.featured %}{% include project-card.html project=project class="labs-card" %}{% endunless %}{% endfor %}</div>

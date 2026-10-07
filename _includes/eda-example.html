@@ -1,0 +1,55 @@
+{% assign example = site.data.eda_example %}
+{% assign example_id = include.id | default: "eda-example" %}
+<section class="eda-example{% if include.compact %} eda-example-compact{% endif %}" aria-labelledby="{{ example_id }}-title">
+  {% if include.compact %}
+  <p class="section-label" id="{{ example_id }}-title"><span class="i18n i18n-zh">{{ example.source_type_zh }}</span><span class="i18n i18n-en">{{ example.source_type_en }}</span></p>
+  {% else %}
+  <h2 id="{{ example_id }}-title"><span class="i18n i18n-zh">{{ example.title_zh }}</span><span class="i18n i18n-en">{{ example.title_en }}</span></h2>
+  {% endif %}
+
+  <div class="eda-example-question">
+    <p><strong><span class="i18n i18n-zh">原始问题</span><span class="i18n i18n-en">Original question · translated</span></strong></p>
+    <blockquote><span class="i18n i18n-zh">{{ example.question_zh | escape }}</span><span class="i18n i18n-en">{{ example.question_en | escape }}</span></blockquote>
+  </div>
+
+  <div class="eda-example-result">
+    <p><strong><span class="i18n i18n-zh">报告发现</span><span class="i18n i18n-en">Finding</span></strong></p>
+    <p><span class="i18n i18n-zh">{{ example.finding_zh | escape }}</span><span class="i18n i18n-en">{{ example.finding_en | escape }}</span></p>
+    <p class="eda-example-context"><span class="i18n i18n-zh">{{ example.period_zh }}</span><span class="i18n i18n-en">{{ example.period_en }}</span></p>
+    {% unless include.compact %}
+    <dl class="eda-example-metrics">
+      {% for metric in example.metrics %}
+      <div><dt><span class="i18n i18n-zh">{{ metric.label_zh }}</span><span class="i18n i18n-en">{{ metric.label_en }}</span></dt><dd>{{ metric.value }}</dd></div>
+      {% endfor %}
+    </dl>
+    {% endunless %}
+  </div>
+
+  <div class="eda-example-action">
+    <p><strong><span class="i18n i18n-zh">报告建议的下一步</span><span class="i18n i18n-en">Recommended next step</span></strong></p>
+    <p><span class="i18n i18n-zh">{{ example.action_zh | escape }}</span><span class="i18n i18n-en">{{ example.action_en | escape }}</span></p>
+  </div>
+
+  <p class="eda-example-context"><span class="i18n i18n-zh">{{ example.conditions_zh }}</span><span class="i18n i18n-en">{{ example.conditions_en }}</span></p>
+  {% unless include.compact %}
+  <p class="eda-example-context"><span class="i18n i18n-zh">{{ example.dataset_zh }}。{{ example.translation_note_zh }}</span><span class="i18n i18n-en">{{ example.dataset_en }}. {{ example.translation_note_en }}</span></p>
+  {% endunless %}
+
+  <p class="eda-example-links">
+    <a href="{{ example.pdf_url | relative_url }}" target="_blank" rel="noopener"><span class="i18n i18n-zh">查看原始报告 PDF</span><span class="i18n i18n-en">Original report PDF</span> ↗</a>
+    <a href="{{ example.source_url }}" target="_blank" rel="noopener"><span class="i18n i18n-zh">来源执行记录</span><span class="i18n i18n-en">Source run</span> ↗</a>
+    {% unless include.compact %}
+    <a href="{{ example.json_url | relative_url }}"><span class="i18n i18n-zh">请求与结果 JSON</span><span class="i18n i18n-en">Request and result JSON</span></a>
+    <a href="{{ example.html_source_url | relative_url }}" download><span class="i18n i18n-zh">原始 HTML 源码</span><span class="i18n i18n-en">Original HTML source</span></a>
+    <a href="{{ example.provenance_url | relative_url }}"><span class="i18n i18n-zh">来源与文件哈希</span><span class="i18n i18n-en">Provenance and hashes</span></a>
+    {% endunless %}
+  </p>
+
+  {% unless include.compact %}
+  <p class="eda-example-context"><span class="i18n i18n-zh">保存于</span><span class="i18n i18n-en">Saved on</span> {{ example.source_date }} · commit <code>{{ example.source_commit | slice: 0, 7 }}</code> · <code>{{ example.task_id }}</code></p>
+  <details class="eda-example-capture">
+    <summary><span class="i18n i18n-zh">查看同次执行保存的界面截图</span><span class="i18n i18n-en">View the browser capture from the same run</span></summary>
+    <img src="{{ example.screenshot_url | relative_url }}" alt="{{ example.screenshot_alt_zh | escape }}" data-alt-zh="{{ example.screenshot_alt_zh | escape }}" data-alt-en="{{ example.screenshot_alt_en | escape }}" width="1720" height="3053" loading="lazy">
+  </details>
+  {% endunless %}
+</section>

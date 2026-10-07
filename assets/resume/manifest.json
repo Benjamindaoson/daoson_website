@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-07T22:48:32.724Z",
+  "public_url": "https://benjamindaoson.github.io/daoson_website/resume/",
+  "paper": "A4",
+  "browser": "153.0.8010.0",
+  "source_sha256": "c614274c51e932e08fea36627634efd286c6977d0b2be8dac85d62dbdb9a7139",
+  "sources": [
+    {
+      "path": "_config.yml",
+      "sha256": "7f7f2158ddab2cd06635c534d52b9bb124287cecc9703ecdbf1f39fd75b0a6c9"
+    },
+    {
+      "path": "_includes/head.html",
+      "sha256": "f48a8004978b39b392fe49ee4e80c6baf68d67d66e05de515654e652be416fb3"
+    },
+    {
+      "path": "_includes/language-switch.html",
+      "sha256": "fbf4c2f872f6de15c118e475ceb546c6b384c91f3c56257ed6f78aa88335c8c7"
+    },
+    {
+      "path": "_includes/portfolio-footer.html",
+      "sha256": "fa5aeb4956d10565212951d4c4a986a09f04c24cf1e2ebc4e858f749262cc04e"
+    },
+    {
+      "path": "_includes/portfolio-header.html",
+      "sha256": "f972b0bf4e6772098a52c5c05ecdeee8294b84ec536e901a119e1c75485af1fe"
+    },
+    {
+      "path": "_layouts/default.html",
+      "sha256": "8f9e2274b6a7319023715e65360bf10c92b24d5eedf42623580f37ac15b58ab0"
+    },
+    {
+      "path": "assets/css/portfolio-refresh.css",
+      "sha256": "f0f44512b407530f1c14d8c0422e437014aefb1baba5cc0500b7e5ef45c2e51e"
+    },
+    {
+      "path": "assets/css/style.css",
+      "sha256": "b78ad11aa688382882a4fe10236de3747f1551e61b83c33887ed9af7889a76fa"
+    },
+    {
+      "path": "assets/css/taoson-portfolio.css",
+      "sha256": "41593bffdf93a87868c814a32703ff8eacaa4505084d37c4da315f87f35ec4bf"
+    },
+    {
+      "path": "assets/js/main.js",
+      "sha256": "41376996a3b88571eaf034ded5e563a5f118867192b0885254b364b9645ec72c"
+    },
+    {
+      "path": "resume.html",
+      "sha256": "dca6b68c57928a146d2dffcdb8dd6aed351bc3ff913b7148237f9c8ed8111a5a"
+    },
+    {
+      "path": "scripts/export_resume_pdf.mjs",
+      "sha256": "b3d85b0d35feb7ac414573ee55c3298ecb2b490eaca4afd115c909a377c5fc24"
+    }
+  ],
+  "built_html_sha256": "ef4f10b1bb456c011e88eda185c82fec1fafe7ff583a1bcd4fa80989a8be4713",
+  "pdfs": [
+    {
+      "language": "zh",
+      "path": "assets/resume/benjamin-taoson-resume-zh.pdf",
+      "sha256": "4f2fc11dc862a3dc4ccaa15b9805c802c467754288ebe3d5c8dfe055774fc9f7"
+    },
+    {
+      "language": "en",
+      "path": "assets/resume/benjamin-taoson-resume-en.pdf",
+      "sha256": "db541994a55f4e8f3fa3bc8138bcf7ae91327e3e0d98b51974bcbecc2678a368"
+    }
+  ]
+}
