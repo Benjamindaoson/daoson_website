@@ -1,0 +1,20 @@
+{% assign share_url = site.url | downcase | append: site.baseurl | append: page.url %}
+{% assign share_qr_base = '/assets/qr/projects/' | append: include.project.id | relative_url %}
+<aside class="case-share" data-case-share data-case-url="{{ share_url | escape }}" data-case-qr-base="{{ share_qr_base | escape }}" aria-label="分享此案例 / Share this case" data-pagefind-ignore>
+  <button class="case-share-copy" type="button" data-case-share-copy hidden><span class="i18n i18n-zh">复制案例链接</span><span class="i18n i18n-en">Copy case link</span></button>
+  <details class="case-share-details">
+    <summary><span class="i18n i18n-zh">链接与二维码</span><span class="i18n i18n-en">Link &amp; QR code</span></summary>
+    <div class="case-share-panel">
+      <div class="case-share-address">
+        <label for="case-share-url-{{ include.project.id }}"><span class="i18n i18n-zh">直达这个项目的完整案例</span><span class="i18n i18n-en">A direct link to the full case study</span></label>
+        <textarea id="case-share-url-{{ include.project.id }}" class="case-share-url" data-case-share-url readonly rows="3" spellcheck="false" autocapitalize="none">{{ share_url | escape }}?lang=zh</textarea>
+        <p><span class="i18n i18n-zh">可放在简历或分享给别人；链接与二维码使用当前页面语言。</span><span class="i18n i18n-en">Use it in a résumé or share it with someone. The link and QR code use this page’s language.</span></p>
+      </div>
+      <div class="case-share-qr">
+        <img src="{{ share_qr_base }}-zh.png" data-case-share-qr width="164" height="164" loading="lazy" alt="扫描二维码打开这个项目的完整案例" data-alt-zh="扫描二维码打开这个项目的完整案例" data-alt-en="Scan to open this project’s full case study">
+        <a href="{{ share_qr_base }}-zh.png" data-case-share-download download="{{ include.project.id }}-zh-qr.png"><span class="i18n i18n-zh">下载二维码 PNG</span><span class="i18n i18n-en">Download QR · PNG</span></a>
+      </div>
+    </div>
+  </details>
+  <p class="case-share-status" data-case-share-status role="status" aria-live="polite" aria-atomic="true"></p>
+</aside>

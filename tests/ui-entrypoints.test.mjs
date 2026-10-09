@@ -75,13 +75,14 @@ test('home selections and the project index link to real case studies across bot
   for (const path of await featuredPages()) await access(join(output, path))
 })
 
-test('public navigation reaches projects, contact, and the independent notes site', async () => {
+test('public navigation reaches projects, about, contact, and the independent notes site', async () => {
   assert.equal(notesUrl.href, 'https://benjamindaoson.github.io/gitpagewebnote/')
   for (const page of publicPages) {
     const links = tags(await built(page), 'a').map(tag => tag.href).filter(Boolean)
-    for (const target of [`${base}/projects/`, `${base}/resume/`, `${base}/contact/`, notesUrl.href]) {
+    for (const target of [`${base}/projects/`, `${base}/about/`, `${base}/contact/`, notesUrl.href]) {
       assert.ok(links.includes(target), `${page}: missing navigation to ${target}`)
     }
+    assert.ok(!links.includes(`${base}/resume/`), `${page}: the retired résumé must not remain a navigation entry`)
     assert.ok(!links.includes(`${base}/knowledge/`), `${page}: primary navigation must use the independent notes site`)
   }
   const contactLinks = tags(await built('contact/index.html'), 'a')
