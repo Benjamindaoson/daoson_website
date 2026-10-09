@@ -1,0 +1,119 @@
+{
+  "format": "PNG",
+  "error_correction": "M",
+  "quiet_zone_modules": 4,
+  "links": [
+    {
+      "project": "reward-modeling-lab",
+      "language": "zh",
+      "url": "https://benjamindaoson.github.io/daoson_website/projects/reward-modeling-lab/?lang=zh",
+      "file": "reward-modeling-lab-zh.png",
+      "sha256": "6a5b6d2767b77e3716654ff965f80820b7928f1c5af8a17cac3af0df8e621c1c"
+    },
+    {
+      "project": "reward-modeling-lab",
+      "language": "en",
+      "url": "https://benjamindaoson.github.io/daoson_website/projects/reward-modeling-lab/?lang=en",
+      "file": "reward-modeling-lab-en.png",
+      "sha256": "999bab9a72e845269574dde1e9f0a008d4300346ca27f89665cda9333e78d2e3"
+    },
+    {
+      "project": "rewardlens",
+      "language": "zh",
+      "url": "https://benjamindaoson.github.io/daoson_website/projects/rewardlens/?lang=zh",
+      "file": "rewardlens-zh.png",
+      "sha256": "55946b64bd7d75704b0058682fe93069612e0878291b790b2518d2084ac2c884"
+    },
+    {
+      "project": "rewardlens",
+      "language": "en",
+      "url": "https://benjamindaoson.github.io/daoson_website/projects/rewardlens/?lang=en",
+      "file": "rewardlens-en.png",
+      "sha256": "b6424a228034f415d0df706c41793b53995fc76d94e5409d68cdfe870b85ef03"
+    },
+    {
+      "project": "enterprise-data-agent",
+      "language": "zh",
+      "url": "https://benjamindaoson.github.io/daoson_website/projects/enterprise-data-agent/?lang=zh",
+      "file": "enterprise-data-agent-zh.png",
+      "sha256": "b1f068d2523789f66948fb6e659c4d98dcf70fab7f73e9f130994d16b8c27bc4"
+    },
+    {
+      "project": "enterprise-data-agent",
+      "language": "en",
+      "url": "https://benjamindaoson.github.io/daoson_website/projects/enterprise-data-agent/?lang=en",
+      "file": "enterprise-data-agent-en.png",
+      "sha256": "e28f0699e7b5c1440f99936da75b573f3337087521385a4915c3e41d855db7d3"
+    },
+    {
+      "project": "multimodal-content-creation-agent",
+      "language": "zh",
+      "url": "https://benjamindaoson.github.io/daoson_website/projects/multimodal-content-creation-agent/?lang=zh",
+      "file": "multimodal-content-creation-agent-zh.png",
+      "sha256": "3936bcfdfdfcc7ee17ad837919fa22a66b260632ba9cd88a18846f1d8ef3b1e5"
+    },
+    {
+      "project": "multimodal-content-creation-agent",
+      "language": "en",
+      "url": "https://benjamindaoson.github.io/daoson_website/projects/multimodal-content-creation-agent/?lang=en",
+      "file": "multimodal-content-creation-agent-en.png",
+      "sha256": "12bd5aa3523b78da2050935215af3c360029bf8f87f9343ed7fda401e920b290"
+    },
+    {
+      "project": "startshift-vla",
+      "language": "zh",
+      "url": "https://benjamindaoson.github.io/daoson_website/projects/startshift-vla/?lang=zh",
+      "file": "startshift-vla-zh.png",
+      "sha256": "b4032cc9d8b832d94d773a41ca59678a3f492a095313a9b56d5478036d8304c5"
+    },
+    {
+      "project": "startshift-vla",
+      "language": "en",
+      "url": "https://benjamindaoson.github.io/daoson_website/projects/startshift-vla/?lang=en",
+      "file": "startshift-vla-en.png",
+      "sha256": "c3e4a40bfea2bb6617229c81d2ce477f2ea39bb0e046473044fa9b9f4c29613b"
+    },
+    {
+      "project": "spatialmind",
+      "language": "zh",
+      "url": "https://benjamindaoson.github.io/daoson_website/projects/spatialmind/?lang=zh",
+      "file": "spatialmind-zh.png",
+      "sha256": "f897982f7c67539bb84620676538c5a872ea12aca960ee86bac0dc42a6a55f50"
+    },
+    {
+      "project": "spatialmind",
+      "language": "en",
+      "url": "https://benjamindaoson.github.io/daoson_website/projects/spatialmind/?lang=en",
+      "file": "spatialmind-en.png",
+      "sha256": "bc408a2cad3fe91c99316812f0b86ead4d1739610e3d6e7d18c173da9b1592b2"
+    },
+    {
+      "project": "llm-fine-tuning",
+      "language": "zh",
+      "url": "https://benjamindaoson.github.io/daoson_website/projects/llm-fine-tuning/?lang=zh",
+      "file": "llm-fine-tuning-zh.png",
+      "sha256": "c79aafb58a29945e4977721dea354a05f6d26be6a73e9c068df4ea967dbd130e"
+    },
+    {
+      "project": "llm-fine-tuning",
+      "language": "en",
+      "url": "https://benjamindaoson.github.io/daoson_website/projects/llm-fine-tuning/?lang=en",
+      "file": "llm-fine-tuning-en.png",
+      "sha256": "eb39106025669a428fed6de66f48c080b30f912f22fcf8576aaa650cb34c388f"
+    },
+    {
+      "project": "agentic-rl",
+      "language": "zh",
+      "url": "https://benjamindaoson.github.io/daoson_website/projects/agentic-rl/?lang=zh",
+      "file": "agentic-rl-zh.png",
+      "sha256": "66c6673e600fc7725fba707a0d290a1927bd4e4773696e51bea41d1c02b7f3b6"
+    },
+    {
+      "project": "agentic-rl",
+      "language": "en",
+      "url": "https://benjamindaoson.github.io/daoson_website/projects/agentic-rl/?lang=en",
+      "file": "agentic-rl-en.png",
+      "sha256": "832a1651a72844387dfb62393da4f561e7b4404cf53ecde00cc8fb7edb7a141c"
+    }
+  ]
+}

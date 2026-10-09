@@ -14,7 +14,6 @@
       <nav class="portfolio-nav" aria-label="主导航 / Main navigation">
         <a href="{{ '/projects/' | relative_url }}"{% if current_url contains '/projects/' %} aria-current="page"{% endif %}><span class="i18n i18n-zh">作品与研究</span><span class="i18n i18n-en">Work &amp; Research</span></a>
         <a href="{{ '/about/' | relative_url }}"{% if current_url contains '/about/' %} aria-current="page"{% endif %}><span class="i18n i18n-zh">关于我</span><span class="i18n i18n-en">About</span></a>
-        <a href="{{ '/resume/' | relative_url }}"{% if current_url contains '/resume/' %} aria-current="page"{% endif %}><span class="i18n i18n-zh">简历</span><span class="i18n i18n-en">Résumé</span></a>
         <a href="{{ site.notes_url }}"><span class="i18n i18n-zh">知识星球</span><span class="i18n i18n-en">Knowledge Hub</span><span class="nav-external" aria-hidden="true">↗</span></a>
         <a class="portfolio-contact-link" href="{{ '/contact/' | relative_url }}"{% if current_url contains '/contact/' %} aria-current="page"{% endif %}><span class="i18n i18n-zh">联系</span><span class="i18n i18n-en">Contact</span></a>
       </nav>

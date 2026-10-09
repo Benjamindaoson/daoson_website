@@ -49,6 +49,7 @@
     document.querySelectorAll('[data-copy-email-status][data-copy-state]').forEach(status => {
       setCopyEmailStatus(status, status.dataset.copyState);
     });
+    document.querySelectorAll('[data-case-share]').forEach(syncCaseShare);
 
     // 真双语：按 data-post-lang 过滤所有文章/笔记列表项
     // 当前语言匹配 → 显示；不匹配 → 隐藏（用 .lang-hidden 类，搜索过滤可叠加）
@@ -200,7 +201,7 @@
     window.addEventListener('resize', syncSidebarA11y);
   }
 
-  // ---------- 个人网站顶部导航与公开简历 ----------
+  // ---------- 个人网站顶部导航 ----------
   function setupPortfolioControls() {
     const header = document.querySelector('[data-portfolio-header]');
     const toggle = header?.querySelector('[data-portfolio-menu]');
@@ -230,9 +231,6 @@
       mobile.addEventListener('change', () => { expanded = false; sync(); });
       sync();
     }
-    document.querySelectorAll('[data-print-resume]').forEach(button => {
-      button.addEventListener('click', () => window.print());
-    });
   }
 
   // Saved RewardLens examples: local panels, with all evidence readable without JS.
@@ -301,6 +299,67 @@
           setCopyEmailStatus(status, 'manual');
         }
       });
+    });
+  }
+
+  // Case links always use the configured public origin, without incoming query
+  // parameters. Static QR files encode the same URL and the selected language.
+  function setCaseShareStatus(status, state) {
+    const messages = {
+      copied: { zh: '案例链接已复制。', en: 'Case link copied.' },
+      manual: { zh: '自动复制未成功，链接已选中，请手动复制。', en: 'Automatic copying failed. The link is selected; copy it manually.' }
+    };
+    if (!messages[state]) return;
+    status.dataset.copyState = state;
+    status.textContent = messages[state][getCurrentLang()];
+  }
+
+  function syncCaseShare(panel) {
+    const address = panel.querySelector('[data-case-share-url]');
+    const image = panel.querySelector('[data-case-share-qr]');
+    const download = panel.querySelector('[data-case-share-download]');
+    const status = panel.querySelector('[data-case-share-status]');
+    if (!address || !image || !download || !panel.dataset.caseUrl || !panel.dataset.caseQrBase) return false;
+    const lang = getCurrentLang();
+    let url;
+    try { url = new URL(panel.dataset.caseUrl); }
+    catch (_) { return false; }
+    if (url.protocol !== 'https:') return false;
+    url.searchParams.set('lang', lang);
+    if (address.value !== url.href && status) {
+      delete status.dataset.copyState;
+      status.textContent = '';
+    }
+    address.value = url.href;
+    const qrPath = panel.dataset.caseQrBase + '-' + lang + '.png';
+    if (image.getAttribute('src') !== qrPath) image.src = qrPath;
+    download.href = qrPath;
+    download.download = panel.dataset.caseQrBase.split('/').pop() + '-' + lang + '-qr.png';
+    if (status?.dataset.copyState) setCaseShareStatus(status, status.dataset.copyState);
+    return true;
+  }
+
+  function setupCaseShare() {
+    document.querySelectorAll('[data-case-share]').forEach(panel => {
+      const button = panel.querySelector('[data-case-share-copy]');
+      const address = panel.querySelector('[data-case-share-url]');
+      const details = panel.querySelector('details');
+      const status = panel.querySelector('[data-case-share-status]');
+      if (!button || !address || !details || !status) return;
+      if (!syncCaseShare(panel)) return;
+      button.addEventListener('click', async () => {
+        try {
+          if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+          await navigator.clipboard.writeText(address.value);
+          setCaseShareStatus(status, 'copied');
+        } catch (_) {
+          details.open = true;
+          address.focus();
+          address.select();
+          setCaseShareStatus(status, 'manual');
+        }
+      });
+      button.hidden = false;
     });
   }
 
@@ -771,6 +830,7 @@
     setupPortfolioControls();
     setupRewardLensExamples();
     setupCopyEmail();
+    setupCaseShare();
     setupTagFilter();
     setupSearch();
     setupTypewriter();

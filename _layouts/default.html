@@ -4,7 +4,7 @@
 <head>
   {% include head.html %}
 </head>
-<body class="{% if page.hide_sidebar or page.portfolio_shell %}no-sidebar{% else %}has-sidebar{% endif %}{% if page.portfolio_shell %} portfolio-site{% endif %}">
+<body class="{% if page.hide_sidebar or page.portfolio_shell %}no-sidebar{% else %}has-sidebar{% endif %}{% if page.portfolio_shell %} portfolio-site{% endif %}"{% if page.search_exclude %} data-pagefind-ignore="all"{% endif %}>
   <a class="skip-link" href="#main-content">
     <span class="i18n i18n-zh">跳到正文</span>
     <span class="i18n i18n-en">Skip to content</span>

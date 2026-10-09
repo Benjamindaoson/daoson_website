@@ -11,6 +11,7 @@ layout: default
   </header>
 
   {% assign case_project = site.data.projects | where: "case_url", page.url | first %}
+  {% if case_project %}{% include case-share.html project=case_project %}{% endif %}
   {% include case-summary.html project_id=case_project.id %}
   {% if case_project.url %}<p class="case-source"><a href="{{ case_project.url }}" target="_blank" rel="noopener"><span class="i18n i18n-zh">查看源码与项目资料 ↗</span><span class="i18n i18n-en">Source code and project materials ↗</span></a></p>{% endif %}
   {% if case_project.id != 'enterprise-data-agent' and case_project.id != 'rewardlens' %}{% include project-evidence.html project_id=case_project.id %}{% endif %}

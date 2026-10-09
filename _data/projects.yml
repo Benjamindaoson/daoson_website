@@ -31,10 +31,6 @@
   year: 2026
   public_boundary_zh: 公开仓库呈现训练与评估工件；不把研究原型表述为线上模型服务。
   public_boundary_en: The public repository contains training and evaluation artifacts; it is not presented as a production model service.
-  resume_featured: true
-  resume_order: 5
-  resume_summary_zh: 在单张 A10 上完成 8B 奖励模型 QLoRA 训练；冻结测试偏好准确率由 50.42% 提升至 91.35%，NDCG@5 为 0.947。进一步识别 94.61% 长度基线，补充长度匹配与反长度挑战。
-  resume_summary_en: "Trained an 8B QLoRA reward model on one A10: frozen accuracy 50.42% to 91.35%, NDCG@5 0.947. Audited the stronger 94.61% length heuristic with controlled challenges."
 
 - name_zh: "FitGround"
   name_en: "FitGround"
@@ -133,10 +129,6 @@
   year: 2026
   public_boundary_zh: 只以公开代码与可核验的系统边界说明能力，不把原型称为通用生产服务。
   public_boundary_en: Capabilities are described only through public code and verifiable system boundaries, not as a general production service.
-  resume_featured: true
-  resume_order: 1
-  resume_summary_zh: 从 0 到 1 构建经营分析系统，连接主智能体、5 类分析专家与 12 项 Skill；基于 147 万条交易数据验证。210 项内部对抗测试通过 206 项，其中冻结测试集 42/42 通过。
-  resume_summary_en: "Built a supervisor and five specialists with 12 versioned skills on 1.47 million transaction rows. Passed 206/210 internal adversarial cases, including all 42 frozen cases."
 
 - name_zh: 多模态内容生产智能体
   name_en: Multimodal Content Creation Agent
@@ -168,10 +160,6 @@
   metric_label_en: Multimodal-slice CI · includes real FFmpeg media checks
   metric_context_zh: 媒体测试使用本地生成样例，ASR 与规划使用固定替身；不是实际模型质量或业务收益的验证。
   metric_context_en: Media tests use generated fixtures with recorded ASR/planner doubles; they do not establish model quality or business impact.
-  resume_featured: true
-  resume_order: 2
-  resume_summary_zh: 研发面向产品讲解与知识直播的内容再生产工作流，连接转写证据、时间戳、质量门、人工审核、FFmpeg 导出与断点恢复；公开 CI 含真实媒体处理测试。
-  resume_summary_en: "Built evidence-based video repurposing with timestamps, quality gates, review, FFmpeg export, and recovery for product and educational content. CI includes real media tests."
 
 - name_zh: "API Test Platform"
   name_en: "API Test Platform"
@@ -369,10 +357,6 @@
   public_boundary_en: Evidence covers software tests, Python simulation, and ROS2 build/startup checks; physical-robot closed-loop behavior, open-world perception, and safety are not established.
   home_caption_zh: 让历史记忆指导搜索，再用当前观察确认目标。图示为固定场景的三种子对照实验。
   home_caption_en: Use memory to guide search and current observations to confirm the target. The chart compares three seeds in one fixed scenario.
-  resume_featured: true
-  resume_order: 3
-  resume_summary_zh: 独立设计持久空间记忆、主动感知与自主纠错系统。在历史位置线索场景的三种子二维网格对照中，平均导航步数由 56.3 降至 19.3（−65.7%）；更广泛仿真与基线结果见案例。
-  resume_summary_en: "Independently built spatial memory, perception, and recovery. A three-seed, remembered-location 2D grid comparison reduced mean steps from 56.3 to 19.3 (−65.7%); broader baseline results are documented."
 
 - id: llm-fine-tuning
   name_zh: 金融大模型微调
@@ -402,10 +386,6 @@
   public_boundary_zh: 公开工程代码与汇总评测快照；训练日志、权重和逐样本评审未公开，快照不表述为独立复现。
   public_boundary_en: Public engineering code and an aggregate evaluation snapshot. Training logs, weights, and per-example judgments are not published; the snapshot is not an independent reproduction.
   featured_order: 4
-  resume_featured: true
-  resume_order: 4
-  resume_summary_zh: 构建金融数据治理、源级隔离、两阶段 LoRA + DeepSpeed SFT、数值与事实评测，以及 vLLM 双版本部署流程；案例保留公开汇总指标及其评测条件。
-  resume_summary_en: "Built source-isolated financial data generation, two-stage LoRA / DeepSpeed SFT, numerical/factual evaluation, and dual-version vLLM serving. Published aggregate scores are documented with their evaluation conditions."
 
 - id: agentic-rl
   name_zh: Agentic-RL
@@ -435,7 +415,3 @@
   public_boundary_zh: CPU 逻辑、框架配置与泄漏审计已验证；参考准确率表不是本项目实测，Qwen GPU 策略更新和对照评测尚未完成。
   public_boundary_en: CPU logic, framework configuration, and leakage audits are verified. The reference accuracy table is not a measured project result; Qwen GPU updates and controlled evaluation are pending.
   featured_order: 5
-  resume_featured: true
-  resume_order: 6
-  resume_summary_zh: 实现 Text-to-SQL 执行环境、答案与策略隔离、Agent Lightning / veRL GRPO 接口，以及固定预算对照和权重变化检查；工程与 CPU 验证已完成，GPU 策略训练结果待验证。
-  resume_summary_en: "Built a Text-to-SQL environment, answer isolation, Agent Lightning / veRL GRPO integration, and weight/budget controls. CPU checks pass; GPU policy-training results await validation."

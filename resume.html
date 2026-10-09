@@ -1,60 +1,21 @@
 ---
 layout: default
-title: 公开简历
-title_en: Public résumé
+title: 查看作品与研究
+title_en: Explore the work
 permalink: /resume/
-description: 赖建铭 Benjamin Taoson 的公开简历：企业 AI 工程、智能体系统、大模型后训练、研究与教育经历。
-description_en: "Benjamin Taoson's public résumé: enterprise AI engineering, agent systems, LLM post-training, research, and education."
+description: 查看 Benjamin Taoson 的项目案例与技术思考，或联系交流。
+description_en: Explore Benjamin Taoson's project case studies and technical thinking, or get in touch.
 portfolio_shell: true
 bilingual: true
+robots: noindex, nofollow
+sitemap: false
+search_exclude: true
 ---
-{% assign profile = site.data.profile %}
-<article class="portfolio-page resume-page">
-  <header class="portfolio-page-header resume-header">
-    <p class="page-kicker"><span class="i18n i18n-zh">公开简历</span><span class="i18n i18n-en">PUBLIC RÉSUMÉ</span></p>
-    <h1>{{ profile.display_name }} <span class="about-english-name">{{ profile.name_zh }}</span></h1>
-    <p class="resume-role"><span class="i18n i18n-zh">{{ profile.role_zh }}</span><span class="i18n i18n-en">{{ profile.role_en }}</span></p>
-    <p class="page-lead"><span class="i18n i18n-zh">{{ profile.headline_zh }}</span><span class="i18n i18n-en">{{ profile.headline_en }}</span></p>
-    <p class="resume-contact"><a href="mailto:{{ site.email }}">{{ site.email }}</a><span aria-hidden="true">·</span><a href="https://github.com/{{ site.github_username }}">github.com/{{ site.github_username }}</a></p>
-    <div class="resume-actions page-actions">
-      <a class="btn secondary resume-download" href="{{ '/assets/resume/benjamin-taoson-resume-zh.pdf' | relative_url }}" download="benjamin-taoson-resume-zh.pdf" type="application/pdf" hreflang="zh">中文 PDF</a>
-      <a class="btn secondary resume-download" href="{{ '/assets/resume/benjamin-taoson-resume-en.pdf' | relative_url }}" download="benjamin-taoson-resume-en.pdf" type="application/pdf" hreflang="en">English PDF</a>
-      <button class="btn" type="button" data-print-resume><span class="i18n i18n-zh">打印 / 保存 PDF</span><span class="i18n i18n-en">Print / Save as PDF</span></button>
-      <a class="btn secondary" href="mailto:{{ site.email }}?subject=Resume%20request%20%E2%80%94%20Benjamin%20Taoson"><span class="i18n i18n-zh">交流完整履历</span><span class="i18n i18n-en">Discuss my full résumé</span></a>
-    </div>
+<article class="portfolio-page" data-pagefind-ignore="all">
+  <header class="portfolio-page-header">
+    <p class="page-kicker">BENJAMIN TAOSON</p>
+    <h1><span class="i18n i18n-zh">从作品了解我。</span><span class="i18n i18n-en">Get to know me through the work.</span></h1>
+    <p class="page-lead"><span class="i18n i18n-zh">项目案例中记录了问题、设计过程、实验结果与技术思考。欢迎从一个感兴趣的项目开始。</span><span class="i18n i18n-en">The case studies document the problems, design decisions, experiments, and reflections behind my projects. Start with one that interests you.</span></p>
+    <div class="page-actions"><a class="btn" href="{{ '/projects/' | relative_url }}"><span class="i18n i18n-zh">查看作品与研究</span><span class="i18n i18n-en">Explore the work</span></a><a class="text-link" href="{{ '/contact/' | relative_url }}"><span class="i18n i18n-zh">联系交流</span><span class="i18n i18n-en">Get in touch</span> →</a></div>
   </header>
-  <section class="resume-section resume-summary">
-    <h2><span class="i18n i18n-zh">专业概述</span><span class="i18n i18n-en">Profile</span></h2>
-    <p><span class="i18n i18n-zh">{{ profile.summary_zh }}</span><span class="i18n i18n-en">{{ profile.summary_en }}</span></p>
-    <dl class="resume-skills">{% for strength in profile.strengths %}<dt><span class="i18n i18n-zh">{{ strength.title_zh }}</span><span class="i18n i18n-en">{{ strength.title_en }}</span></dt><dd><span class="i18n i18n-zh">{{ strength.text_zh }}</span><span class="i18n i18n-en">{{ strength.text_en }}</span></dd>{% endfor %}</dl>
-  </section>
-  <section class="resume-section" id="experience">
-    <h2><span class="i18n i18n-zh">工作经历</span><span class="i18n i18n-en">Experience</span></h2>
-    {% include profile-career.html %}
-  </section>
-  <section class="resume-section" id="selected-projects">
-    <h2><span class="i18n i18n-zh">精选项目</span><span class="i18n i18n-en">Selected projects</span></h2>
-    {% assign resume_projects = site.data.projects | where: 'resume_featured', true | sort: 'resume_order' %}
-    {% for project in resume_projects %}
-    <article class="resume-entry resume-project">
-      <h3><a href="{{ project.case_url | relative_url }}"><span class="i18n i18n-zh">{{ project.name_zh }}</span><span class="i18n i18n-en">{{ project.name_en }}</span></a></h3>
-      <p><span class="i18n i18n-zh">{{ project.resume_summary_zh }}</span><span class="i18n i18n-en">{{ project.resume_summary_en }}</span></p>
-    </article>
-    {% endfor %}
-  </section>
-  <section class="resume-section" id="research">
-    <h2><span class="i18n i18n-zh">研究</span><span class="i18n i18n-en">Research</span></h2>
-    <article class="resume-entry">
-      <h3><a href="{{ profile.research.case_url | relative_url }}">{{ profile.research.name }}</a> · <span class="i18n i18n-zh">{{ profile.research.role_zh }}</span><span class="i18n i18n-en">{{ profile.research.role_en }}</span></h3>
-      <p class="research-status"><span class="i18n i18n-zh">{{ profile.research.status_zh }}</span><span class="i18n i18n-en">{{ profile.research.status_en }}</span> · <a href="{{ profile.research.review_url }}">OpenReview ↗</a></p>
-      <p><span class="i18n i18n-zh">{{ profile.research.summary_zh }}</span><span class="i18n i18n-en">{{ profile.research.summary_en }}</span></p>
-    </article>
-  </section>
-  <section class="resume-section" id="education">
-    <h2><span class="i18n i18n-zh">教育</span><span class="i18n i18n-en">Education</span></h2>
-    {% include profile-education.html show_focus=true %}
-    <p class="resume-languages"><span class="i18n i18n-zh">{{ profile.languages_zh }}</span><span class="i18n i18n-en">{{ profile.languages_en }}</span></p>
-    <p class="resume-certifications"><strong><span class="i18n i18n-zh">认证：</span><span class="i18n i18n-en">Certifications: </span></strong>{{ profile.certifications | join: ' · ' }}</p>
-  </section>
-  <p class="resume-updated"><span class="i18n i18n-zh">公开版更新：</span><span class="i18n i18n-en">Public version updated: </span>{{ profile.updated }}</p>
 </article>
