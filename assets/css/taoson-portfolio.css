@@ -243,6 +243,7 @@ body.portfolio-site .site-main-inner { width: 100%; max-width: var(--portfolio-w
 .portfolio-site .work-read { font-size: .9rem; }
 .portfolio-site .work-evidence > strong { font-weight: 600; }
 .portfolio-site .work-grid .work-card-text { display: flex; flex-direction: column; }
+.portfolio-site .work-card-text { align-self: start; }
 .portfolio-site .work-card-text .work-card-intro, .portfolio-site .work-card-text .work-card-details { flex: 0 0 auto; }
 .portfolio-site .work-card-text .work-card-details { margin-top: auto; }
 .portfolio-site .work-grid .work-card.work-card-text:only-child { display: flex; }
