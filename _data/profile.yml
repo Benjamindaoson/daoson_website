@@ -1,0 +1,122 @@
+# Public profile supplied for this website on 2026-10-09.
+# Private contact channels are intentionally outside the public content model.
+name_zh: 赖建铭
+display_name: Benjamin Taoson
+updated: '2026-10-09'
+role_zh: 高级 AI 算法工程师
+role_en: Senior AI Algorithm Engineer
+headline_zh: 大模型后训练 · 智能体系统 · 研究与工程落地
+headline_en: LLM post-training · Agent systems · Research & delivery
+home_lead_zh: 我是赖建铭，AI 算法工程师。我构建大模型与智能体系统，研究模型可靠性与机器人学习，并把技术带进真实业务。
+home_lead_en: I build LLM and agent systems, study model reliability and robot learning, and bring AI into real business workflows.
+home_background_zh: 8 年以上企业研发与交付 · 佐治亚理工计算机硕士在读
+home_background_en: 8+ years in enterprise engineering · M.S. CS student at Georgia Tech
+summary_zh: 拥有 8 年以上企业数字化与技术研发经验，2021 年起从事 AI 研发，2023 年起聚焦大模型与智能体系统。工作覆盖业务分析、系统架构、核心研发、上线交付与持续迭代；研究兴趣集中在大模型后训练、VLA 与世界模型。
+summary_en: Over eight years in enterprise technology and delivery, working in AI since 2021 and LLM and agent systems since 2023. My work spans business analysis, architecture, core development, deployment, and iteration. Research interests include LLM post-training, VLA policies, and world models.
+strengths:
+  - title_zh: 智能体系统
+    title_en: Agent systems
+    text_zh: 运行框架、上下文工程、多智能体协作、状态与记忆、工具治理、任务恢复及轨迹评测。
+    text_en: Runtimes, context engineering, multi-agent coordination, state and memory, governed tools, recovery, and trace evaluation.
+    url: /projects/enterprise-data-agent/
+  - title_zh: 大模型后训练
+    title_en: LLM post-training
+    text_zh: SFT、LoRA / QLoRA、奖励建模、GRPO 训练工程、数据治理、偏差诊断与推理部署。
+    text_en: SFT, LoRA / QLoRA, reward modeling, GRPO training infrastructure, data governance, bias audits, and serving.
+    url: /projects/reward-modeling-lab/
+  - title_zh: 研究与客户交付
+    title_en: Research and delivery
+    text_zh: 受控实验、模型可靠性与失效分析；需求共创、架构设计和跨职能项目交付。
+    text_en: Controlled experiments, model reliability, and failure analysis; customer discovery, architecture, and cross-functional delivery.
+    url: /projects/rewardlens/
+experience:
+  - id: yaowu
+    employer_zh: 要务科技（深圳）有限公司
+    employer_en: Yaowu Technology (Shenzhen) Co., Ltd.
+    role_zh: 高级 AI 算法工程师
+    role_en: Senior AI Algorithm Engineer
+    period_zh: 2023.01–至今
+    period_en: Jan 2023–Present
+    context_zh: 三一全球官网 · 售前解决方案智能体
+    context_en: SANY global websites · Pre-sales solution agent
+    summary_zh: 主导复杂设备选型智能体从 0 到 1 的架构与落地，连接需求理解、知识检索、业务工具和可恢复的多轮任务。
+    summary_en: Led the architecture and delivery of an equipment-selection agent, connecting requirements, retrieval, business tools, and recoverable multi-turn tasks.
+    highlights:
+      - title_zh: 运行时与委派
+        title_en: Runtime and delegation
+        text_zh: 基于 DeepAgents / LangGraph 构建主智能体与 4 类专业子智能体，按需求完整度与任务依赖选择工具直调或并行委派，用独立上下文、专属工具集和结构化输出控制协作边界。
+        text_en: "Built a DeepAgents / LangGraph supervisor with four specialist types. Routed direct calls or delegation by requirement completeness and dependencies, using isolated contexts, scoped tools, and structured outputs."
+      - title_zh: 状态与需求变化
+        title_en: State and changing requirements
+        text_zh: 以 Pydantic 管理工况、吨位、预算等 6 类字段，采用差量合并与依赖失效传播触发局部重算；离线型号识别与消歧准确率由 80%+ 提升至 90%+。
+        text_en: "Modeled six requirement groups in Pydantic. Delta merges and dependency invalidation enable local recomputation; offline equipment-model identification and disambiguation rose from over 80% to over 90%."
+      - title_zh: 检索与约束校验
+        title_en: Retrieval and constraints
+        text_zh: 面向约 4 万条产品及技术资料，结合硬约束过滤、BM25、Qwen3-Embedding-4B、RRF 与 Qwen3-Reranker-4B；离线 Top-5 候选召回率由约 75% 提升至 90%+。
+        text_en: "Combined hard filters, BM25, Qwen3 embeddings, RRF, and Qwen3 reranking over roughly 40,000 records. Offline Top-5 candidate recall improved from about 75% to over 90%."
+      - title_zh: 工具执行与恢复
+        title_en: Governed tools and recovery
+        text_zh: 封装产品查询、设备比选、经销商匹配和 CRM 登记四类工具；用 Checkpoint、分类重试、业务唯一键与写入去重恢复任务，避免重复登记线索。
+        text_en: "Wrapped four tools for product queries, comparison, dealer matching, and CRM. Checkpoints, classified retries, business keys, and deduplication enable recovery without duplicate leads."
+      - title_zh: 轨迹评测与回归
+        title_en: Trace evaluation and regression
+        text_zh: 在 100+ 多轮售前任务上，结合 LangSmith / Langfuse、规则断言和选型结果定位首次关键失败；同一冻结任务集回归后，端到端成功率由 70%+ 提升至约 85%。
+        text_en: "Evaluated over 100 multi-turn tasks with LangSmith / Langfuse traces, rule checks, and failure attribution. Success on a frozen regression set rose from over 70% to about 85%."
+  - id: zhiguang-ai
+    employer_zh: 智光电气
+    employer_en: Zhiguang Electric
+    role_zh: AI 工程师（NLP 方向）
+    role_en: AI Engineer · NLP
+    period_zh: 2021.01–2022.12
+    period_en: Jan 2021–Dec 2022
+    summary_zh: 从企业数字化进入 NLP 研发，将文档解析、条款抽取与知识检索用于智能招投标，同时参与集团 SAP 系统集成。
+    summary_en: "Applied NLP to tender preparation and supported SAP integration across enterprise workflows."
+    highlights:
+      - text_zh: 基于 OCR、BERT / ERNIE、NER 与 Elasticsearch / BM25，解析招标文件、提取资格与技术要求，支持条款匹配、符合性检查和历史材料检索。
+        text_en: "Used OCR, BERT / ERNIE, NER, and Elasticsearch / BM25 for tender parsing, requirement extraction, clause matching, compliance checks, and prior-material retrieval."
+      - text_zh: 负责 SAP 采购、生产、库存和财务流程的需求分析、数据映射、接口集成与联调测试，推进跨系统数据协同。
+        text_en: "Handled SAP requirements, data mapping, API integration, and testing across procurement, production, inventory, and finance."
+  - id: zhiguang-delivery
+    employer_zh: 智光电气
+    employer_en: Zhiguang Electric
+    role_zh: 数字化解决方案工程师 / 技术项目经理
+    role_en: Digital Solutions Engineer / Technical Project Manager
+    period_zh: 2018.08–2020.12
+    period_en: Aug 2018–Dec 2020
+    summary_zh: 面向制造业 ERP / CRM，负责业务调研、流程设计、系统集成与上线交付，参与 30+ 人规模的跨职能项目协同。
+    summary_en: "Delivered manufacturing ERP / CRM discovery, process design, integration, and launch within cross-functional projects involving over 30 people."
+    highlights:
+      - text_zh: 覆盖销售、采购、生产与库存核心流程，将业务需求转为系统方案，推进跨职能协作与上线验收。
+        text_en: "Translated sales, procurement, production, and inventory needs into system designs and supported release acceptance."
+education:
+  - school_zh: 佐治亚理工学院
+    school_en: Georgia Institute of Technology
+    degree_zh: 计算机科学硕士 · 在读
+    degree_en: M.S. in Computer Science · In progress
+    focus_zh: 计算感知与机器人方向；研究兴趣为 VLA、世界模型与后训练。
+    focus_en: Computational Perception & Robotics; interests in VLA, world models, and post-training.
+    period_zh: 2026.08 入学 · 预计 2027.12 完成
+    period_en: Aug 2026–Dec 2027 expected
+  - school_zh: 南开大学
+    school_en: Nankai University
+    degree_zh: 国际经济与贸易 · 学士
+    degree_en: Bachelor's degree · International Economics and Trade
+    period_zh: 2014.09–2018.06
+    period_en: Sep 2014–Jun 2018
+languages_zh: 粤语、普通话（母语）；英语（工作语言，TOEFL 110）。
+languages_en: Native Cantonese and Mandarin; professional working English, TOEFL 110.
+certifications:
+  - AWS Certified Solutions Architect – Professional
+  - AWS Certified Machine Learning – Specialty
+research:
+  name: RewardLens
+  title_zh: 多模态评判模型的视觉证据与行为可靠性
+  title_en: Visual evidence and behavioral reliability in multimodal judges
+  role_zh: 第一作者
+  role_en: First author
+  status_zh: ICLR 2027 投稿审稿中
+  status_en: Submitted to ICLR 2027 · Under review
+  case_url: /projects/rewardlens/
+  review_url: https://openreview.net/forum?id=FQ0c7oaccp
+  summary_zh: 提出 Behavioral Resolution（行为分辨率）评测，通过受控视觉干预检验模型能否依据关键证据调整判断。评测覆盖 8 个模型、4 类因素、800 组三元组与 2,400 张图像；在空间关系审计原图均答对的五个模型中，相关干预响应差异达 43.5pp。
+  summary_en: Proposed Behavioral Resolution, testing whether multimodal judges respond to relevant evidence through controlled image edits. Evaluated eight judges, four factors, 800 triplets, and 2,400 images. Five judges with perfect Spatial audit-base accuracy differed by 43.5pp in relevant-edit adaptation.

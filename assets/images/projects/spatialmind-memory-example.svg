@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="380" viewBox="0 0 600 380" role="img" aria-labelledby="title desc">
+<title id="title">SpatialMind: remembered-location search scenario</title>
+<desc id="desc">In memory_hint_toolbox across three seeds, No-Memory took 44, 81, and 44 grid steps; Full took 21, 20, and 17. Mean steps decrease from 56.3 to 19.3, a 65.7% reduction. This is one scenario in 2D grid simulation, not overall or physical-robot performance. Source: Core CI 37789657766.</desc>
+<rect width="600" height="380" rx="16" fill="#f7f4ec"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#213b2c">
+<text x="28" y="41" font-size="28" font-weight="700">Memory-guided search</text>
+<text x="28" y="79" font-size="32">65.7% fewer mean steps</text>
+<text x="28" y="124" font-size="26">No-Memory</text>
+<rect x="28" y="137" width="400" height="35" rx="5" fill="#aabda7"/>
+<text x="448" y="168" font-size="40" font-weight="700">56.3</text>
+<text x="28" y="210" font-size="26">Full Agent</text>
+<rect x="28" y="223" width="137.27810650887574" height="35" rx="5" fill="#42634a"/>
+<text x="190" y="254" font-size="40" font-weight="700">19.3</text>
+<text x="28" y="302" font-size="26">memory_hint_toolbox</text>
+<text x="28" y="336" font-size="27">3 seeds · 2D grid simulation</text>
+<text x="28" y="368" font-size="24">Single scenario, not an overall gain.</text>
+</g></svg>

@@ -1,0 +1,10 @@
+<div class="profile-education">
+  {% for study in site.data.profile.education %}
+  <div class="education-entry">
+    <h3><span class="i18n i18n-zh">{{ study.school_zh }}</span><span class="i18n i18n-en">{{ study.school_en }}</span></h3>
+    <p><strong><span class="i18n i18n-zh">{{ study.degree_zh }}</span><span class="i18n i18n-en">{{ study.degree_en }}</span></strong></p>
+    <p class="resume-period"><span class="i18n i18n-zh">{{ study.period_zh }}</span><span class="i18n i18n-en">{{ study.period_en }}</span></p>
+    {% if study.focus_zh and include.show_focus %}<p><span class="i18n i18n-zh">{{ study.focus_zh }}</span><span class="i18n i18n-en">{{ study.focus_en }}</span></p>{% endif %}
+  </div>
+  {% endfor %}
+</div>

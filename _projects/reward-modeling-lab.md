@@ -30,7 +30,7 @@ bilingual: true
 
 ## 训练与实验设计
 
-基础模型为 Skywork Reward Llama 3.1 8B。正式实验在单张 NVIDIA A10 23GB 上使用 4-bit NF4 QLoRA 与 BF16 计算，运行 1,000 个优化步骤。可用训练数据包含 35,990 对偏好样本，这次固定步数实验实际处理约 8,000 个样本对实例。[冻结配置](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/configs/training/formal_gpu_qlora_1000_final.json) · [实验记录](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/docs/results/data/results_summary.json)
+基础模型为 Skywork Reward Llama 3.1 8B。正式实验在单张 NVIDIA A10 23GB 上使用 4-bit NF4 QLoRA 与 BF16 计算，运行 1,000 个优化步骤，耗时约 3 小时 18 分钟。训练池包含 3,599 个问题、35,990 对偏好样本；这次固定步数实验实际处理约 8,000 个样本对实例，未遍历全部可用训练对。[数据规模](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/README.md) · [冻结配置](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/configs/training/formal_gpu_qlora_1000_final.json) · [实验记录](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/docs/results/data/results_summary.json)
 
 训练目标优化 chosen 与 rejected 回答的奖励差；LoRA 覆盖注意力和前馈层，并保存奖励 score head。评测同时观察成对准确率、五候选排序、长度相关性和检查点差异。[训练实现](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/src/financial_reward_rl/train.py)
 
@@ -42,7 +42,7 @@ bilingual: true
 
 ## 当前进展
 
-V1 是单随机种子的金融问答偏好实验，原始偏好数据不随公开仓库分发。V2 已实现长度平衡采样、反长度样本增曝和 1,024-token 上下文配置；真实 GPU 训练尚未执行，因此没有 V2 性能结论。[V2 实验协议](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/docs/V2_SHORTCUT_ROBUSTNESS.md)
+V1 是单随机种子的金融问答偏好实验，原始偏好数据不随公开仓库分发。V2 已实现长度平衡采样、反长度样本增曝和 1,024-token 上下文配置，并将原始分布、长度匹配与反长度挑战纳入同一晋级协议；真实 GPU 训练尚未执行，因此没有 V2 性能结论。[V2 实验协议](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/docs/V2_SHORTCUT_ROBUSTNESS.md)
 
 [查看源码与复现实验入口](https://github.com/Benjamindaoson/reward-modeling-lab) · [完整结果工件](https://github.com/Benjamindaoson/reward-modeling-lab/tree/bead1bb8b084166beede3f5101d7613a9ff3f7ee/docs/results)
 
@@ -66,7 +66,7 @@ The fine-tuned model retains gains over the base model on both challenges, while
 
 ## Training and experiment design
 
-The base model is Skywork Reward Llama 3.1 8B. The formal run used 4-bit NF4 QLoRA with BF16 compute on one NVIDIA A10 23GB for 1,000 optimizer steps. The training pool contained 35,990 preference pairs; the fixed-step run processed approximately 8,000 pair instances. [Frozen configuration](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/configs/training/formal_gpu_qlora_1000_final.json) · [Experiment record](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/docs/results/data/results_summary.json)
+The base model is Skywork Reward Llama 3.1 8B. The formal run used 4-bit NF4 QLoRA with BF16 compute on one NVIDIA A10 23GB for 1,000 optimizer steps, taking approximately 3 hours 18 minutes. The training pool contained 3,599 questions and 35,990 preference pairs; the fixed-step run processed approximately 8,000 pair instances, rather than traversing the full pool. [Data scope](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/README.md) · [Frozen configuration](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/configs/training/formal_gpu_qlora_1000_final.json) · [Experiment record](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/docs/results/data/results_summary.json)
 
 The objective optimizes the reward difference between chosen and rejected responses. LoRA targets attention and feed-forward layers, and the reward score head is saved with the adapter. Evaluation covers pairwise accuracy, five-way ranking, length correlations, and checkpoint differences. [Training implementation](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/src/financial_reward_rl/train.py)
 
@@ -78,7 +78,7 @@ The checkpoint with the lowest validation loss did not lead on every downstream 
 
 ## Current progress
 
-V1 is a single-seed financial-QA preference experiment; raw preference data is not distributed with the public repository. V2 implements length-balanced sampling, greater exposure to natural reversed-length pairs, and a 1,024-token configuration. Its GPU training has not run, so no V2 performance result is reported. [V2 protocol](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/docs/V2_SHORTCUT_ROBUSTNESS.md)
+V1 is a single-seed financial-QA preference experiment; raw preference data is not distributed with the public repository. V2 implements length-balanced sampling, greater exposure to natural reversed-length pairs, and a 1,024-token configuration, with a joint promotion protocol for IID, length-matched, and reversed-length evaluations. Its GPU training has not run, so no V2 performance result is reported. [V2 protocol](https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/docs/V2_SHORTCUT_ROBUSTNESS.md)
 
 [Source and experiment entry points](https://github.com/Benjamindaoson/reward-modeling-lab) · [Result artifacts](https://github.com/Benjamindaoson/reward-modeling-lab/tree/bead1bb8b084166beede3f5101d7613a9ff3f7ee/docs/results)
 

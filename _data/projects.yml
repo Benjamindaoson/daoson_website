@@ -1,36 +1,40 @@
 # 公开项目清单：只收录能对应到公开代码、验证材料或明确边界的工作。
 
-- name_zh: "Reward Modeling Lab"
-  name_en: "Reward Modeling Lab"
+- name_zh: Reward Modeling Lab
+  name_en: Reward Modeling Lab
   domain: digital
-  display_status_zh: "研究实验"
-  display_status_en: "Research experiment"
+  display_status_zh: 研究实验
+  display_status_en: Research experiment
   home_featured: false
   id: reward-modeling-lab
   featured: true
   featured_order: 2
   case_url: /projects/reward-modeling-lab/
-  eyebrow_zh: "大模型后训练"
-  eyebrow_en: "LLM post-training"
-  summary_zh: "在单张 A10 上完成 8B 奖励模型 QLoRA 训练，再用长度匹配、反长度挑战与排序评估检验高分来自哪里。"
-  summary_en: "Train an 8B reward model on one A10, then test its gains with length-controlled challenges and ranking audits."
-  metric_label_zh: "单卡训练与长度捷径审计"
-  metric_label_en: "Single-GPU training and shortcut audits"
-  metric_value: "8B · QLoRA"
+  eyebrow_zh: 大模型后训练
+  eyebrow_en: LLM post-training
+  summary_zh: 在单张 A10 上完成 8B 奖励模型 QLoRA 训练，再用长度匹配、反长度挑战与排序评估检验高分来自哪里。
+  summary_en: Train an 8B reward model on one A10, then test its gains with length-controlled challenges and ranking audits.
+  metric_label_zh: 单卡训练与长度捷径审计
+  metric_label_en: Single-GPU training and shortcut audits
+  metric_value: 8B · QLoRA
   image: /assets/images/projects/reward-modeling-lab-cover.svg
-  image_alt_zh: "8B 奖励模型 QLoRA 训练与长度捷径审计的概念示意图。"
-  image_alt_en: "Concept diagram of 8B reward-model QLoRA training and length-shortcut audits."
-  description_zh: "8B 奖励模型后训练与评估：从冻结测试集增益，继续追踪长度偏差、整体排序和检查点选择。"
-  description_en: "8B reward-model post-training and evaluation, from held-out gains to length bias, global ranking, and checkpoint selection."
-  icon: "λ"
+  image_alt_zh: 8B 奖励模型 QLoRA 训练与长度捷径审计的概念示意图。
+  image_alt_en: Concept diagram of 8B reward-model QLoRA training and length-shortcut audits.
+  description_zh: 8B 奖励模型后训练与评估：从冻结测试集增益，继续追踪长度偏差、整体排序和检查点选择。
+  description_en: 8B reward-model post-training and evaluation, from held-out gains to length bias, global ranking, and checkpoint selection.
+  icon: λ
   status: active
   portfolio_group: flagship
   category: ai
-  url: "https://github.com/Benjamindaoson/reward-modeling-lab"
-  lang: "Python · QLoRA"
+  url: https://github.com/Benjamindaoson/reward-modeling-lab
+  lang: Python · QLoRA
   year: 2026
-  public_boundary_zh: "公开仓库呈现训练与评估工件；不把研究原型表述为线上模型服务。"
-  public_boundary_en: "The public repository contains training and evaluation artifacts; it is not presented as a production model service."
+  public_boundary_zh: 公开仓库呈现训练与评估工件；不把研究原型表述为线上模型服务。
+  public_boundary_en: The public repository contains training and evaluation artifacts; it is not presented as a production model service.
+  resume_featured: true
+  resume_order: 5
+  resume_summary_zh: 在单张 A10 上完成 8B 奖励模型 QLoRA 训练；冻结测试偏好准确率由 50.42% 提升至 91.35%，NDCG@5 为 0.947。进一步识别 94.61% 长度基线，补充长度匹配与反长度挑战。
+  resume_summary_en: "Trained an 8B QLoRA reward model on one A10: frozen accuracy 50.42% to 91.35%, NDCG@5 0.947. Audited the stronger 94.61% length heuristic with controlled challenges."
 
 - name_zh: "FitGround"
   name_en: "FitGround"
@@ -50,103 +54,124 @@
   public_boundary_zh: "公开的是研究问题、数据约束与代码边界；结论以仓库中的可复现证据为准。"
   public_boundary_en: "The public boundary is the research question, measurement constraints, and code; conclusions remain tied to reproducible repository evidence."
 
-- name_zh: "RewardLens"
-  name_en: "RewardLens"
+- name_zh: RewardLens
+  name_en: RewardLens
   domain: digital
-  display_status_zh: "多模态研究"
-  display_status_en: "Multimodal research"
+  display_status_zh: 多模态研究
+  display_status_en: Multimodal research
   home_featured: true
   home_order: 2
   id: rewardlens
-  home_purpose_zh: "模型真的在看图吗？固定问题和答案选项，只改变画面中的一个因素，检查模型是否跟随了正确的变化。"
-  home_purpose_en: "Is the model reading the image? Keep the question and answer choices fixed, change one visual factor, and check whether its response changes for the right reason."
-  evidence_kind_zh: "静态同分下的行为差异"
-  evidence_kind_en: "Behavior at a static-accuracy tie"
-  metric_context_zh: "Attribute：两模型静态准确率均为 80.5%；RA 分别按各自原图正确子集计算。此汇总对比与上面的 Molmo 单例使用不同模型。"
-  metric_context_en: "Attribute: both judges score 80.5% static accuracy; RA uses each judge’s own base-correct subset. This aggregate comparison uses different models from the Molmo example above."
+  home_purpose_zh: 模型真的在看图吗？固定问题和答案选项，只改变画面中的一个因素，检查模型是否跟随了正确的变化。
+  home_purpose_en: Is the model reading the image? Keep the question and answer choices fixed, change one visual factor, and check whether its response changes for the right reason.
+  evidence_kind_zh: 静态同分下的行为差异
+  evidence_kind_en: Behavior at a static-accuracy tie
+  metric_context_zh: Attribute：两模型静态准确率均为 80.5%；RA 分别按各自原图正确子集计算。此汇总对比与上面的 Molmo 单例使用不同模型。
+  metric_context_en: 'Attribute: both judges score 80.5% static accuracy; RA uses each judge’s own base-correct subset. This aggregate comparison uses different models from the Molmo example above.'
   featured: true
-  featured_order: 3
+  featured_order: 6
   case_url: /projects/rewardlens/
-  eyebrow_zh: "多模态模型评估"
-  eyebrow_en: "Multimodal evaluation"
-  summary_zh: "固定问题和候选回答，只改变视觉证据；用 8 个模型、4 类因素检验静态分数相近时的干预行为差异。"
-  summary_en: "Hold questions and responses fixed, edit visual evidence, and compare intervention behavior across eight judges and four factors."
-  metric_label_zh: "Attribute 静态平分下的 RA 差异"
-  metric_label_en: "RA gap at an exact Attribute static tie"
-  metric_value: "15.1 pp"
+  eyebrow_zh: 多模态模型评估
+  eyebrow_en: Multimodal evaluation
+  summary_zh: 固定问题和候选回答，只改变视觉证据；用 8 个模型、4 类因素检验静态分数相近时的干预行为差异。
+  summary_en: Hold questions and responses fixed, edit visual evidence, and compare intervention behavior across eight judges and four factors.
+  metric_label_zh: Attribute 静态平分下的 RA 差异
+  metric_label_en: RA gap at an exact Attribute static tie
+  metric_value: 15.1 pp
   image: /assets/images/projects/rewardlens-evidence.svg
   image_compact: /assets/images/projects/rewardlens-evidence-compact.svg
-  image_alt_zh: "Attribute 条件下，两模型独立静态准确率均为 80.5%；Phi-3.5-Vision 的 RA 为 84.95%，LLaVA-OneVision-7B 为 100%。RA 使用各模型自己的原图正确子集。"
-  image_alt_en: "On Attribute, both judges have 80.5% independent static accuracy; RA is 84.95% for Phi-3.5-Vision and 100% for LLaVA-OneVision-7B, using each model’s base-correct subset."
-  description_zh: "多模态评判模型的受控视觉审计：区分相关变化后的适应能力与无关变化下的稳定性。"
-  description_en: "A controlled visual audit that separates adaptation to relevant changes from invariance to irrelevant changes."
-  icon: "◎"
+  image_alt_zh: Attribute 条件下，两模型独立静态准确率均为 80.5%；Phi-3.5-Vision 的 RA 为 84.95%，LLaVA-OneVision-7B 为 100%。RA 使用各模型自己的原图正确子集。
+  image_alt_en: On Attribute, both judges have 80.5% independent static accuracy; RA is 84.95% for Phi-3.5-Vision and 100% for LLaVA-OneVision-7B, using each model’s base-correct subset.
+  description_zh: 多模态评判模型的受控视觉审计：区分相关变化后的适应能力与无关变化下的稳定性。
+  description_en: A controlled visual audit that separates adaptation to relevant changes from invariance to irrelevant changes.
+  icon: ◎
   status: prototype
   portfolio_group: research
   category: ai
-  url: "https://github.com/Benjamindaoson/RewardLens"
-  lang: "Python"
+  url: https://github.com/Benjamindaoson/RewardLens
+  lang: Python
   year: 2026
-  public_boundary_zh: "公开论文、实验代码与结果工件；结论限于冻结的评估设置，不表示会议录用或通用模型排名。"
-  public_boundary_en: "Public manuscript, code, and result artifacts; findings apply to the frozen evaluation setting, not a universal model ranking."
+  public_boundary_zh: 公开论文、实验代码与结果工件；结论限于冻结的评估设置，不表示会议录用或通用模型排名。
+  public_boundary_en: Public manuscript, code, and result artifacts; findings apply to the frozen evaluation setting, not a universal model ranking.
 
-- name_zh: "Enterprise Data Agent"
-  name_en: "Enterprise Data Agent"
+- name_zh: AI BA · 企业经营分析
+  name_en: AI BA · Business Analytics
   domain: digital
-  display_status_zh: "工程案例"
-  display_status_en: "Engineering case study"
+  display_status_zh: 工程案例
+  display_status_en: Engineering case study
   home_featured: true
   home_order: 1
   id: enterprise-data-agent
-  home_purpose_zh: "把业务提问变成能追溯到数据的分析报告：从门店销售中定位驱动因素，给出发现、依据与下一步建议。"
-  home_purpose_en: "Turn a business question into a report you can trace to the data: investigate store sales, identify drivers, and connect findings to evidence and next steps."
-  evidence_kind_zh: "选择策略消融实验"
-  evidence_kind_en: "Finding-selection ablation"
-  metric_context_zh: "Driver Recall@K 从 90% 到 100%；只比较同一批分析结果的选择策略，不能解释为营收提升。"
-  metric_context_en: "Driver Recall@K rises from 90% to 100% when selecting from the same analysis outputs. This is a selection-policy comparison, not a revenue increase."
+  home_purpose_zh: 把业务提问变成能追溯到数据的分析报告：从门店销售中定位驱动因素，给出发现、依据与下一步建议。
+  home_purpose_en: 'Turn a business question into a report you can trace to the data: investigate store sales, identify drivers, and connect findings to evidence and next steps.'
+  evidence_kind_zh: 选择策略消融实验
+  evidence_kind_en: Finding-selection ablation
+  metric_context_zh: Driver Recall@K 从 90% 到 100%；只比较同一批分析结果的选择策略，不能解释为营收提升。
+  metric_context_en: Driver Recall@K rises from 90% to 100% when selecting from the same analysis outputs. This is a selection-policy comparison, not a revenue increase.
   featured: true
   featured_order: 1
   case_url: /projects/enterprise-data-agent/
-  eyebrow_zh: "商业分析智能体"
-  eyebrow_en: "Business analysis agent"
-  summary_zh: "围绕 147 万条公开交易明细，将业务语义、多智能体调查、确定性分析与经营报告串成完整工作流。"
-  summary_en: "Connect business semantics, multi-agent investigation, deterministic analysis, and reports over 1.47 million public transaction rows."
-  metric_label_zh: "驱动召回率 · 同输出、10 案例消融"
-  metric_label_en: "Driver recall · same outputs, 10 cases"
-  metric_value: "+10 pp"
+  eyebrow_zh: 商业分析智能体
+  eyebrow_en: Business analysis agent
+  summary_zh: 围绕 147 万条公开交易明细，将业务语义、多智能体调查、确定性分析与经营报告串成完整工作流。
+  summary_en: Connect business semantics, multi-agent investigation, deterministic analysis, and reports over 1.47 million public transaction rows.
+  metric_label_zh: 驱动召回率 · 同输出、10 案例消融
+  metric_label_en: Driver recall · same outputs, 10 cases
+  metric_value: +10 pp
   image: /assets/images/projects/enterprise-data-agent-evidence.svg
   image_compact: /assets/images/projects/enterprise-data-agent-evidence-compact.svg
-  image_alt_zh: "10 个内部基准案例、同一批分析输出：Driver Recall@K 从 90% 到 100%，比较固有评分与查询感知选择。"
-  image_alt_en: "Ten internal benchmark cases with the same workstream outputs: Driver Recall@K is 90% for intrinsic scoring and 100% for query-aware selection."
-  description_zh: "从业务提问到多维调查、驱动分析和证据报告，覆盖门店、商品、促销与客群分析。"
-  description_en: "From business questions to investigation, driver discovery, and evidence-linked reports across stores, products, promotions, and customers."
-  icon: "↔"
+  image_alt_zh: 10 个内部基准案例、同一批分析输出：Driver Recall@K 从 90% 到 100%，比较固有评分与查询感知选择。
+  image_alt_en: 'Ten internal benchmark cases with the same workstream outputs: Driver Recall@K is 90% for intrinsic scoring and 100% for query-aware selection.'
+  description_zh: 从业务提问到多维调查、驱动分析和证据报告，覆盖门店、商品、促销与客群分析。
+  description_en: From business questions to investigation, driver discovery, and evidence-linked reports across stores, products, promotions, and customers.
+  icon: ↔
   status: active
   portfolio_group: product
   category: ai
-  url: "https://github.com/Benjamindaoson/enterprise-data-agent"
-  lang: "Python · Data Systems"
+  url: https://github.com/Benjamindaoson/enterprise-data-agent
+  lang: Python · Data Systems
   year: 2026
-  public_boundary_zh: "只以公开代码与可核验的系统边界说明能力，不把原型称为通用生产服务。"
-  public_boundary_en: "Capabilities are described only through public code and verifiable system boundaries, not as a general production service."
+  public_boundary_zh: 只以公开代码与可核验的系统边界说明能力，不把原型称为通用生产服务。
+  public_boundary_en: Capabilities are described only through public code and verifiable system boundaries, not as a general production service.
+  resume_featured: true
+  resume_order: 1
+  resume_summary_zh: 从 0 到 1 构建经营分析系统，连接主智能体、5 类分析专家与 12 项 Skill；基于 147 万条交易数据验证。210 项内部对抗测试通过 206 项，其中冻结测试集 42/42 通过。
+  resume_summary_en: "Built a supervisor and five specialists with 12 versioned skills on 1.47 million transaction rows. Passed 206/210 internal adversarial cases, including all 42 frozen cases."
 
-- name_zh: "多模态内容生产智能体"
-  name_en: "Multimodal Content Creation Agent"
+- name_zh: 多模态内容生产智能体
+  name_en: Multimodal Content Creation Agent
   domain: digital
-  display_status_zh: "工程项目"
-  display_status_en: "Engineering project"
+  display_status_zh: 内容生产工程原型
+  display_status_en: Media production prototype
   home_featured: false
-  description_zh: "面向脚本、分镜、图像、语音与视频生成的可恢复智能体运行时，包含质量门、人工审核与发布反馈。"
-  description_en: "A recoverable agent runtime for script, storyboard, image, speech, and video production with quality gates, human approval, and publishing feedback."
-  icon: "◈"
+  description_zh: 可恢复的多模态内容生产与长视频切片工程，包含结构化任务、持久化、质量门和人工审核。
+  description_en: Recoverable multimodal production and long-video clipping with structured tasks, persistence, quality gates, and human review.
+  icon: ◈
   status: active
   portfolio_group: flagship
   category: ai
-  url: "https://github.com/Benjamindaoson/multimodal-content-creation-agent"
-  lang: "Python · FastAPI · Multimodal AI"
+  url: https://github.com/Benjamindaoson/multimodal-content-creation-agent
+  lang: Python · FastAPI · PostgreSQL · FFmpeg
   year: 2026
-  public_boundary_zh: "公开代码已通过确定性测试；外部供应商凭据驱动的端到端验证仍属于部署环境步骤。"
-  public_boundary_en: "The public code is deterministically tested; credentialed end-to-end validation with external providers remains deployment-specific."
+  public_boundary_zh: 确定性与部分基础设施验证已有证据；真实供应商 E2E、RAG/关键帧剪辑扩展及反馈学习收益未据此验证。
+  public_boundary_en: Deterministic and some infrastructure checks have evidence; credentialed provider E2E, RAG/keyframe clipping extensions, and feedback-learning gains are not established.
+  id: multimodal-content-creation-agent
+  featured: true
+  featured_order: 3
+  case_url: /projects/multimodal-content-creation-agent/
+  eyebrow_zh: 内容生产与长视频再生产
+  eyebrow_en: Media production and video repurposing
+  summary_zh: 以转写和时间戳为依据筛选长视频片段，连接质量门、人工审核、FFmpeg 导出与阶段恢复；同时保留生成式内容生产链路。
+  summary_en: Ground long-video clips in transcripts and timestamps, then connect quality gates, human review, FFmpeg exports, and recovery alongside a generative media pipeline.
+  metric_value: 53 tests
+  metric_label_zh: 多模态范围 CI · 包含真实 FFmpeg 媒体检查
+  metric_label_en: Multimodal-slice CI · includes real FFmpeg media checks
+  metric_context_zh: 媒体测试使用本地生成样例，ASR 与规划使用固定替身；不是实际模型质量或业务收益的验证。
+  metric_context_en: Media tests use generated fixtures with recorded ASR/planner doubles; they do not establish model quality or business impact.
+  resume_featured: true
+  resume_order: 2
+  resume_summary_zh: 研发面向产品讲解与知识直播的内容再生产工作流，连接转写证据、时间戳、质量门、人工审核、FFmpeg 导出与断点恢复；公开 CI 含真实媒体处理测试。
+  resume_summary_en: "Built evidence-based video repurposing with timestamps, quality gates, review, FFmpeg export, and recovery for product and educational content. CI includes real media tests."
 
 - name_zh: "API Test Platform"
   name_en: "API Test Platform"
@@ -259,41 +284,158 @@
   public_boundary_zh: "以公开实现和验证记录说明工程任务闭环，不将尚未执行的模型路径计为已完成结果。"
   public_boundary_en: "Described through public implementation and verification records; unexecuted model paths are not counted as completed results."
 
-
-- name_zh: "StartShift-VLA"
-  name_en: "StartShift-VLA"
+- name_zh: StartShift-VLA
+  name_en: StartShift-VLA
   id: startshift-vla
-  home_purpose_zh: "机器人换一个起始状态，策略还可靠吗？整理 SmolVLA 的历史仿真结果，并记录哪些比较可以成立、哪些仍缺证据。"
-  home_purpose_en: "Does a robot policy remain reliable from a different starting state? Inspect saved SmolVLA simulations and document which comparisons the evidence can support."
-  evidence_kind_zh: "已保存的仿真样本量"
-  evidence_kind_en: "Saved simulation sample count"
+  home_purpose_zh: 机器人换一个起始状态，策略还可靠吗？整理 SmolVLA 的历史仿真结果，并记录哪些比较可以成立、哪些仍缺证据。
+  home_purpose_en: Does a robot policy remain reliable from a different starting state? Inspect saved SmolVLA simulations and document which comparisons the evidence can support.
+  evidence_kind_zh: 已保存的仿真样本量
+  evidence_kind_en: Saved simulation sample count
   domain: physical
-  display_status_zh: "研究归档 · 方法未验证"
-  display_status_en: "Research archive · method unvalidated"
-  featured: true
-  featured_order: 4
-  home_featured: true
-  home_order: 3
+  display_status_zh: 研究归档 · 方法未验证
+  display_status_en: Research archive · method unvalidated
+  featured: false
+  home_featured: false
   case_url: /projects/startshift-vla/
-  eyebrow_zh: "机器人策略可靠性"
-  eyebrow_en: "Robot-policy reliability"
-  summary_zh: "研究 SmolVLA 的初始化敏感性，保留 920 条历史仿真评估记录。两组任务未配对，改进方法尚未验证。"
-  summary_en: "Study SmolVLA initialization sensitivity through 920 saved simulation records. Task selections are unpaired; mitigation remains unvalidated."
-  metric_label_zh: "已保存的仿真记录 · 120 ID + 800 RobotInit"
-  metric_label_en: "Saved simulation records · 120 ID + 800 RobotInit"
-  metric_value: "920"
+  eyebrow_zh: 机器人策略可靠性
+  eyebrow_en: Robot-policy reliability
+  summary_zh: 研究 SmolVLA 的初始化敏感性，保留 920 条历史仿真评估记录。两组任务未配对，改进方法尚未验证。
+  summary_en: Study SmolVLA initialization sensitivity through 920 saved simulation records. Task selections are unpaired; mitigation remains unvalidated.
+  metric_label_zh: 已保存的仿真记录 · 120 ID + 800 RobotInit
+  metric_label_en: Saved simulation records · 120 ID + 800 RobotInit
+  metric_value: '920'
   image: /assets/images/projects/startshift-vla-evidence.svg
   image_compact: /assets/images/projects/startshift-vla-evidence-compact.svg
-  image_alt_zh: "历史 SmolVLA 仿真基线：ID 为 86/120 次成功（71.67%），RobotInit 为 36/800（4.50%）；任务与场景未配对，不构成初始化变化的因果效应。"
-  image_alt_en: "Historical SmolVLA simulation baselines: ID succeeds in 86/120 episodes (71.67%); RobotInit in 36/800 (4.50%). Tasks and scenes are unpaired; this is not a reset-only causal estimate."
-  description_zh: "关于 VLA 策略初始化敏感性的研究归档，保留仿真基线、证据复核工具和未完成部分。"
-  description_en: "A research archive on VLA initialization sensitivity, preserving simulation baselines, evidence checks, and unfinished work."
-  icon: "◌"
+  image_alt_zh: 历史 SmolVLA 仿真基线：ID 为 86/120 次成功（71.67%），RobotInit 为 36/800（4.50%）；任务与场景未配对，不构成初始化变化的因果效应。
+  image_alt_en: 'Historical SmolVLA simulation baselines: ID succeeds in 86/120 episodes (71.67%); RobotInit in 36/800 (4.50%). Tasks and scenes are unpaired; this is not a reset-only causal estimate.'
+  description_zh: 关于 VLA 策略初始化敏感性的研究归档，保留仿真基线、证据复核工具和未完成部分。
+  description_en: A research archive on VLA initialization sensitivity, preserving simulation baselines, evidence checks, and unfinished work.
+  icon: ◌
   status: archived
   portfolio_group: research
   category: ai
-  url: "https://github.com/Benjamindaoson/StartShift-VLA"
-  lang: "Python · SmolVLA · LIBERO"
+  url: https://github.com/Benjamindaoson/StartShift-VLA
+  lang: Python · SmolVLA · LIBERO
   year: 2026
-  public_boundary_zh: "保存记录仅覆盖一个策略与一套种子安排；无配对因果结论、已验证的 RISE 收益、真机结果或论文录用声明。"
-  public_boundary_en: "Saved records cover one policy and seed schedule; no paired causal estimate, validated RISE benefit, physical-robot result, or publication acceptance is claimed."
+  public_boundary_zh: 保存记录仅覆盖一个策略与一套种子安排；无配对因果结论、已验证的 RISE 收益、真机结果或论文录用声明。
+  public_boundary_en: Saved records cover one policy and seed schedule; no paired causal estimate, validated RISE benefit, physical-robot result, or publication acceptance is claimed.
+
+- id: spatialmind
+  name_zh: SpatialMind
+  name_en: SpatialMind
+  domain: physical
+  display_status_zh: 机器人决策仿真原型
+  display_status_en: Robot-decision simulation prototype
+  home_featured: true
+  home_order: 3
+  featured: true
+  featured_order: 7
+  case_url: /projects/spatialmind/
+  eyebrow_zh: 空间记忆与机器人智能体
+  eyebrow_en: Spatial memory and robot agents
+  home_purpose_zh: 机器人记得目标曾在哪里，也要确认它现在是否仍在那里；通过观察、记忆更新与重规划完成找物任务。
+  home_purpose_en: 'A robot remembers where a target was, then checks whether it is still there: observations, memory updates, and replanning guide the search.'
+  summary_zh: 独立设计融合持久空间记忆、主动感知与自主纠错的机器人决策智能体，在仿真中验证搜索、目标确认和失败恢复。
+  summary_en: Independently designed a robot decision agent with persistent spatial memory, active perception, and recovery, evaluated through search and verification tasks in simulation.
+  description_zh: 把持久空间记忆、主动搜索、执行证据与重规划连接起来，并用有条件的仿真结果检查收益与局限。
+  description_en: Connect persistent spatial memory, active search, execution evidence, and replanning, then test benefits and limits in simulation.
+  metric_value: 336 missions
+  metric_label_zh: 12 种子 × 7 干预 × 4 策略 · 度量仿真
+  metric_label_en: 12 seeds × 7 interventions × 4 policies · metric simulation
+  home_metric_value: 65.7%
+  home_metric_label_zh: 历史位置线索场景的平均步数减少
+  home_metric_label_en: Fewer mean steps in a remembered-location scenario
+  metric_context_zh: 336 次任务、4 个固定拓扑；Nearest-Search 在成功次数和平均路程上优于 Full，不代表真机表现。
+  metric_context_en: 336 missions on four fixed topologies; Nearest-Search beats Full on success count and mean travel. These are not physical-robot results.
+  home_metric_context_zh: memory_hint_toolbox · 3 个种子 · 二维网格仿真：平均 56.3→19.3 步；不是全部场景平均收益。
+  home_metric_context_en: 'memory_hint_toolbox · three seeds · 2D grid simulation: 56.3→19.3 mean steps, not an average gain across all scenarios.'
+  evidence_kind_zh: 空间记忆搜索与消融
+  evidence_kind_en: Memory-guided search and ablation
+  image: /assets/images/projects/spatialmind-evidence.svg
+  image_compact: /assets/images/projects/spatialmind-evidence-compact.svg
+  image_alt_zh: 336 次度量仿真任务：Full 81/84 成功、平均 20.869 仿真米；No-Memory 78/84、20.619；Static-Memory 81/84、20.869；Nearest-Search 82/84、19.167。使用 4 个固定拓扑，不是 Gazebo 或真机结果。
+  image_alt_en: '336 metric-simulation missions: Full 81/84 successes, 20.869 simulated metres; No-Memory 78/84, 20.619; Static-Memory 81/84, 20.869; Nearest-Search 82/84, 19.167. Four fixed topologies; not Gazebo or physical hardware.'
+  home_image: /assets/images/projects/spatialmind-memory-example.svg
+  home_image_alt_zh: memory_hint_toolbox 单场景、3 个种子、二维网格仿真：无记忆平均 56.3 步，完整策略 19.3 步，减少 65.7%；不代表全部任务或真机性能。
+  home_image_alt_en: 'One memory_hint_toolbox scenario, three seeds, 2D grid simulation: No-Memory averages 56.3 steps and Full 19.3, a 65.7% reduction; not overall or physical-robot performance.'
+  icon: ↝
+  status: prototype
+  portfolio_group: flagship
+  category: ai
+  url: https://github.com/Benjamindaoson/SpatialMind
+  lang: Python · SQLite · ROS2 adapters
+  year: 2026
+  public_boundary_zh: 当前证据为软件测试、Python 仿真和 ROS2 静态/启动检查；未证明真实机器人闭环、开放世界感知或安全性。
+  public_boundary_en: Evidence covers software tests, Python simulation, and ROS2 build/startup checks; physical-robot closed-loop behavior, open-world perception, and safety are not established.
+  home_caption_zh: 让历史记忆指导搜索，再用当前观察确认目标。图示为固定场景的三种子对照实验。
+  home_caption_en: Use memory to guide search and current observations to confirm the target. The chart compares three seeds in one fixed scenario.
+  resume_featured: true
+  resume_order: 3
+  resume_summary_zh: 独立设计持久空间记忆、主动感知与自主纠错系统。在历史位置线索场景的三种子二维网格对照中，平均导航步数由 56.3 降至 19.3（−65.7%）；更广泛仿真与基线结果见案例。
+  resume_summary_en: "Independently built spatial memory, perception, and recovery. A three-seed, remembered-location 2D grid comparison reduced mean steps from 56.3 to 19.3 (−65.7%); broader baseline results are documented."
+
+- id: llm-fine-tuning
+  name_zh: 金融大模型微调
+  name_en: Financial LLM Fine-tuning
+  domain: digital
+  display_status_zh: 领域微调工程
+  display_status_en: Domain fine-tuning engineering
+  home_featured: false
+  featured: true
+  case_url: /projects/llm-fine-tuning/
+  eyebrow_zh: 领域 SFT 与 LLMOps
+  eyebrow_en: Domain SFT and LLMOps
+  summary_zh: 连接源级数据隔离、assistant-only 两阶段 LoRA 训练、质量评测和 vLLM 双版本部署。
+  summary_en: Connect source-level data isolation, assistant-only two-stage LoRA training, quality evaluation, and dual-version vLLM serving.
+  description_zh: 金融问答与数值推理的领域微调工程：从可追溯数据生产，到分阶段训练、评测与模型交付。
+  description_en: A financial-domain fine-tuning workflow spanning traceable data production, staged training, evaluation, and model delivery.
+  metric_value: SFT · LoRA
+  metric_label_zh: 源级隔离与两阶段训练链路
+  metric_label_en: Source-level isolation and a two-stage training workflow
+  icon: ∑
+  status: active
+  portfolio_group: training
+  category: ai
+  url: https://github.com/Benjamindaoson/LLM-Fine-tuning
+  lang: Python · PyTorch · DeepSpeed
+  year: 2026
+  public_boundary_zh: 公开工程代码与汇总评测快照；训练日志、权重和逐样本评审未公开，快照不表述为独立复现。
+  public_boundary_en: Public engineering code and an aggregate evaluation snapshot. Training logs, weights, and per-example judgments are not published; the snapshot is not an independent reproduction.
+  featured_order: 4
+  resume_featured: true
+  resume_order: 4
+  resume_summary_zh: 构建金融数据治理、源级隔离、两阶段 LoRA + DeepSpeed SFT、数值与事实评测，以及 vLLM 双版本部署流程；案例保留公开汇总指标及其评测条件。
+  resume_summary_en: "Built source-isolated financial data generation, two-stage LoRA / DeepSpeed SFT, numerical/factual evaluation, and dual-version vLLM serving. Published aggregate scores are documented with their evaluation conditions."
+
+- id: agentic-rl
+  name_zh: Agentic-RL
+  name_en: Agentic-RL
+  domain: digital
+  display_status_zh: RL 工程原型
+  display_status_en: RL engineering prototype
+  home_featured: false
+  featured: true
+  case_url: /projects/agentic-rl/
+  eyebrow_zh: Agent 强化学习
+  eyebrow_en: Agent reinforcement learning
+  summary_zh: 实现无答案泄漏的 SQL 环境、Agent Lightning／veRL GRPO 接口，以及权重变化与固定预算对照验收。
+  summary_en: Implement a Gold-isolated SQL environment, Agent Lightning/veRL GRPO integration, and checks for weight changes and fixed-budget controls.
+  description_zh: 可验证的 Text-to-SQL 强化学习链路：执行奖励、策略与答案隔离、训练接口和严格对照；GPU 实验待验证。
+  description_en: A verifiable Text-to-SQL RL workflow with execution rewards, policy/answer isolation, training integration, and controlled evaluation; GPU experiments await validation.
+  metric_value: GRPO · RLVR
+  metric_label_zh: 工程链路已实现 · GPU 结果待验证
+  metric_label_en: Workflow implemented · GPU results pending
+  icon: ↻
+  status: prototype
+  portfolio_group: training
+  category: ai
+  url: https://github.com/Benjamindaoson/Agentic-RL
+  lang: Python · Agent Lightning · veRL
+  year: 2026
+  public_boundary_zh: CPU 逻辑、框架配置与泄漏审计已验证；参考准确率表不是本项目实测，Qwen GPU 策略更新和对照评测尚未完成。
+  public_boundary_en: CPU logic, framework configuration, and leakage audits are verified. The reference accuracy table is not a measured project result; Qwen GPU updates and controlled evaluation are pending.
+  featured_order: 5
+  resume_featured: true
+  resume_order: 6
+  resume_summary_zh: 实现 Text-to-SQL 执行环境、答案与策略隔离、Agent Lightning / veRL GRPO 接口，以及固定预算对照和权重变化检查；工程与 CPU 验证已完成，GPU 策略训练结果待验证。
+  resume_summary_en: "Built a Text-to-SQL environment, answer isolation, Agent Lightning / veRL GRPO integration, and weight/budget controls. CPU checks pass; GPU policy-training results await validation."

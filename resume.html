@@ -3,89 +3,58 @@ layout: default
 title: 公开简历
 title_en: Public résumé
 permalink: /resume/
-description: 本杰铭 Benjamin Taoson 的公开简历：AI 算法、LLM 与 Agent 工程职责、技术能力和公开项目。
-description_en: Benjamin Taoson's public résumé, covering AI algorithms, LLM and agent engineering, technical skills, and public projects.
+description: 赖建铭 Benjamin Taoson 的公开简历：企业 AI 工程、智能体系统、大模型后训练、研究与教育经历。
+description_en: "Benjamin Taoson's public résumé: enterprise AI engineering, agent systems, LLM post-training, research, and education."
 portfolio_shell: true
 bilingual: true
 ---
-
+{% assign profile = site.data.profile %}
 <article class="portfolio-page resume-page">
   <header class="portfolio-page-header resume-header">
     <p class="page-kicker"><span class="i18n i18n-zh">公开简历</span><span class="i18n i18n-en">PUBLIC RÉSUMÉ</span></p>
-    <h1>Benjamin Taoson <span class="about-english-name">本杰铭</span></h1>
-    <p class="page-lead"><span class="i18n i18n-zh">AI 算法工程 · 大模型 · Agent 系统</span><span class="i18n i18n-en">AI engineering · Language models · Agent systems</span></p>
-    <p class="resume-contact"><a href="mailto:{{ site.email }}">{{ site.email }}</a> <span aria-hidden="true">·</span> <a href="https://github.com/{{ site.github_username }}">github.com/{{ site.github_username }}</a></p>
+    <h1>{{ profile.display_name }} <span class="about-english-name">{{ profile.name_zh }}</span></h1>
+    <p class="resume-role"><span class="i18n i18n-zh">{{ profile.role_zh }}</span><span class="i18n i18n-en">{{ profile.role_en }}</span></p>
+    <p class="page-lead"><span class="i18n i18n-zh">{{ profile.headline_zh }}</span><span class="i18n i18n-en">{{ profile.headline_en }}</span></p>
+    <p class="resume-contact"><a href="mailto:{{ site.email }}">{{ site.email }}</a><span aria-hidden="true">·</span><a href="https://github.com/{{ site.github_username }}">github.com/{{ site.github_username }}</a></p>
     <div class="resume-actions page-actions">
       <a class="btn secondary resume-download" href="{{ '/assets/resume/benjamin-taoson-resume-zh.pdf' | relative_url }}" download="benjamin-taoson-resume-zh.pdf" type="application/pdf" hreflang="zh">中文 PDF</a>
       <a class="btn secondary resume-download" href="{{ '/assets/resume/benjamin-taoson-resume-en.pdf' | relative_url }}" download="benjamin-taoson-resume-en.pdf" type="application/pdf" hreflang="en">English PDF</a>
       <button class="btn" type="button" data-print-resume><span class="i18n i18n-zh">打印 / 保存 PDF</span><span class="i18n i18n-en">Print / Save as PDF</span></button>
-      <a class="btn secondary" href="mailto:{{ site.email }}?subject=Resume%20request%20%E2%80%94%20Benjamin%20Taoson"><span class="i18n i18n-zh">索取完整履历</span><span class="i18n i18n-en">Request full résumé</span></a>
+      <a class="btn secondary" href="mailto:{{ site.email }}?subject=Resume%20request%20%E2%80%94%20Benjamin%20Taoson"><span class="i18n i18n-zh">交流完整履历</span><span class="i18n i18n-en">Discuss my full résumé</span></a>
     </div>
   </header>
-
   <section class="resume-section resume-summary">
     <h2><span class="i18n i18n-zh">专业概述</span><span class="i18n i18n-en">Profile</span></h2>
-    <p><span class="i18n i18n-zh">我的经历覆盖企业系统集成、NLP 算法，以及大模型与 Agent 工程。工作包括需求拆解、数据处理、模型方案、工具与业务接口集成、评测回归和上线验证。我关注如何按任务复杂度、置信度、时延与成本，在小模型、大模型和确定性服务之间安排分工。</span><span class="i18n i18n-en">My experience spans enterprise integration, NLP algorithms, and language-model and agent engineering. I have worked on requirements, data processing, model design, tool and API integration, regression evaluation, and release validation. I focus on assigning work across small models, language models, and deterministic services according to task complexity, confidence, latency, and cost.</span></p>
-    <p class="resume-note"><span class="i18n i18n-zh">本页保留技术职责、能力与公开项目。完整履历及进一步背景资料可通过邮件交流。</span><span class="i18n i18n-en">This public version covers technical responsibilities, skills, and public projects. A full résumé and further background are available by email.</span></p>
+    <p><span class="i18n i18n-zh">{{ profile.summary_zh }}</span><span class="i18n i18n-en">{{ profile.summary_en }}</span></p>
+    <dl class="resume-skills">{% for strength in profile.strengths %}<dt><span class="i18n i18n-zh">{{ strength.title_zh }}</span><span class="i18n i18n-en">{{ strength.title_en }}</span></dt><dd><span class="i18n i18n-zh">{{ strength.text_zh }}</span><span class="i18n i18n-en">{{ strength.text_en }}</span></dd>{% endfor %}</dl>
   </section>
-
-  <section class="resume-section">
-    <h2><span class="i18n i18n-zh">经历摘要</span><span class="i18n i18n-en">Experience</span></h2>
-    <p class="resume-note"><span class="i18n i18n-zh">经历资料更新于 2026 年 9 月。</span><span class="i18n i18n-en">Experience information updated September 2026.</span></p>
-    <article class="resume-entry">
-      <p class="resume-period"><span class="i18n i18n-zh">2023 年起</span><span class="i18n i18n-en">Since 2023</span></p>
-      <h3><span class="i18n i18n-zh">AI 算法工程 · LLM / Agent</span><span class="i18n i18n-en">AI algorithm engineering · LLM / Agent</span></h3>
-      <ul>
-        <li><span class="i18n i18n-zh">面向企业知识问答、产品咨询与选型，参与需求拆解、数据与算法方案、Agent 架构、业务接口联调、上线验证及问题定位。</span><span class="i18n i18n-en">Worked on enterprise knowledge assistance, product questions, and product selection, covering requirements, data and algorithm design, agent architecture, API integration, release validation, and troubleshooting.</span></li>
-        <li><span class="i18n i18n-zh">设计小模型、LLM、Agent 与确定性服务的分层协同，建设智能路由、检索、工具调用、任务状态和上下文管理能力。</span><span class="i18n i18n-en">Designed cooperation between small models, LLMs, agents, and deterministic services, with routing, retrieval, tool calling, task state, and context management.</span></li>
-        <li><span class="i18n i18n-zh">将错误路由、低置信度请求和人工修正整理为评测样本，推进回归测试、失败分析和公共组件复用。</span><span class="i18n i18n-en">Used routing errors, low-confidence requests, and human corrections to develop evaluation cases, regression checks, failure analysis, and reusable components.</span></li>
-      </ul>
+  <section class="resume-section" id="experience">
+    <h2><span class="i18n i18n-zh">工作经历</span><span class="i18n i18n-en">Experience</span></h2>
+    {% include profile-career.html %}
+  </section>
+  <section class="resume-section" id="selected-projects">
+    <h2><span class="i18n i18n-zh">精选项目</span><span class="i18n i18n-en">Selected projects</span></h2>
+    {% assign resume_projects = site.data.projects | where: 'resume_featured', true | sort: 'resume_order' %}
+    {% for project in resume_projects %}
+    <article class="resume-entry resume-project">
+      <h3><a href="{{ project.case_url | relative_url }}"><span class="i18n i18n-zh">{{ project.name_zh }}</span><span class="i18n i18n-en">{{ project.name_en }}</span></a></h3>
+      <p><span class="i18n i18n-zh">{{ project.resume_summary_zh }}</span><span class="i18n i18n-en">{{ project.resume_summary_en }}</span></p>
     </article>
+    {% endfor %}
+  </section>
+  <section class="resume-section" id="research">
+    <h2><span class="i18n i18n-zh">研究</span><span class="i18n i18n-en">Research</span></h2>
     <article class="resume-entry">
-      <p class="resume-period">2021–2022</p>
-      <h3><span class="i18n i18n-zh">NLP 算法工程</span><span class="i18n i18n-en">NLP algorithm engineering</span></h3>
-      <ul>
-        <li><span class="i18n i18n-zh">构建业务文档条款的多标签分类与信息抽取流程，使用 MacBERT / BERT、CRF、困难样本回流及类别阈值调整；按项目隔离训练、验证和测试数据。</span><span class="i18n i18n-en">Built multilabel classification and information-extraction pipelines for business documents using MacBERT / BERT, CRF, hard-case feedback, and class-specific thresholds, with project-level train, validation, and test separation.</span></li>
-        <li><span class="i18n i18n-zh">使用双编码器召回、困难负样本与交叉编码器精排进行材料语义匹配，并对抽取的金额、单位、日期和比较关系做规范化。</span><span class="i18n i18n-en">Worked on semantic matching with bi-encoder retrieval, hard negatives, and cross-encoder reranking, alongside normalization of extracted amounts, units, dates, and comparison relations.</span></li>
-      </ul>
-    </article>
-    <article class="resume-entry">
-      <p class="resume-period">2018–2020</p>
-      <h3><span class="i18n i18n-zh">数字化解决方案工程</span><span class="i18n i18n-en">Digital solutions engineering</span></h3>
-      <ul>
-        <li><span class="i18n i18n-zh">围绕销售、采购、生产、仓储与质量流程，参与需求调研、流程梳理、技术方案、系统联调和上线验收。</span><span class="i18n i18n-en">Worked across sales, procurement, production, warehousing, and quality processes, contributing to requirements, workflow analysis, technical plans, system integration, and release acceptance.</span></li>
-        <li><span class="i18n i18n-zh">完成业务系统的数据与 API 集成，使用 SQL 和 Python 处理业务数据、分析问题并支持跨系统协作。</span><span class="i18n i18n-en">Integrated business-system data and APIs, using SQL and Python for data processing, problem analysis, and coordination across systems.</span></li>
-      </ul>
+      <h3><a href="{{ profile.research.case_url | relative_url }}">{{ profile.research.name }}</a> · <span class="i18n i18n-zh">{{ profile.research.role_zh }}</span><span class="i18n i18n-en">{{ profile.research.role_en }}</span></h3>
+      <p class="research-status"><span class="i18n i18n-zh">{{ profile.research.status_zh }}</span><span class="i18n i18n-en">{{ profile.research.status_en }}</span> · <a href="{{ profile.research.review_url }}">OpenReview ↗</a></p>
+      <p><span class="i18n i18n-zh">{{ profile.research.summary_zh }}</span><span class="i18n i18n-en">{{ profile.research.summary_en }}</span></p>
     </article>
   </section>
-
-  <section class="resume-section">
-    <h2><span class="i18n i18n-zh">相关能力</span><span class="i18n i18n-en">Technical skills</span></h2>
-    <p class="resume-note"><span class="i18n i18n-zh">以下链接对应可阅读的公开技术材料，供了解相关能力；它们与前述企业经历分别呈现。</span><span class="i18n i18n-en">The links below provide public technical material relevant to these skills, presented separately from the enterprise experience above.</span></p>
-    <dl class="resume-skills">
-      <dt><span class="i18n i18n-zh">模型与训练</span><span class="i18n i18n-en">Models and training</span></dt>
-      <dd><span class="i18n i18n-zh">Python、PyTorch、BERT 系列模型、LoRA / QLoRA、DeepSpeed；文本分类、信息抽取、偏好建模与模型后训练。</span><span class="i18n i18n-en">Python, PyTorch, BERT-family models, LoRA / QLoRA, and DeepSpeed; classification, information extraction, preference modeling, and post-training.</span> <span class="resume-skill-evidence"><a href="{{ '/projects/reward-modeling-lab/' | relative_url }}">Reward Modeling Lab — <span class="i18n i18n-zh">训练与奖励评估</span><span class="i18n i18n-en">Training and reward evaluation</span> →</a></span></dd>
-      <dt><span class="i18n i18n-zh">Agent 与数据系统</span><span class="i18n i18n-en">Agents and data systems</span></dt>
-      <dd><span class="i18n i18n-zh">LangGraph、RAG、工具调用、任务状态与上下文管理、SQL、PostgreSQL、API 集成与 vLLM 推理服务。</span><span class="i18n i18n-en">LangGraph, RAG, tool calling, task state and context management, SQL, PostgreSQL, API integration, and vLLM serving.</span> <span class="resume-skill-evidence"><a href="{{ '/projects/enterprise-data-agent/' | relative_url }}">Enterprise Data Agent — <span class="i18n i18n-zh">语义约束与任务编排</span><span class="i18n i18n-en">Semantic constraints and task orchestration</span> →</a></span></dd>
-      <dt><span class="i18n i18n-zh">评估与工程验证</span><span class="i18n i18n-en">Evaluation and verification</span></dt>
-      <dd><span class="i18n i18n-zh">数据隔离、偏好与排序评估、长度捷径审计、多模态受控干预、失败分析、pytest 与接口契约验证。</span><span class="i18n i18n-en">Data separation, preference and ranking evaluation, length-shortcut audits, controlled multimodal interventions, failure analysis, pytest, and API contract validation.</span> <span class="resume-skill-evidence"><a href="{{ '/projects/rewardlens/' | relative_url }}">RewardLens — <span class="i18n i18n-zh">受控视觉干预</span><span class="i18n i18n-en">Controlled visual interventions</span> →</a></span></dd>
-    </dl>
+  <section class="resume-section" id="education">
+    <h2><span class="i18n i18n-zh">教育</span><span class="i18n i18n-en">Education</span></h2>
+    {% include profile-education.html show_focus=true %}
+    <p class="resume-languages"><span class="i18n i18n-zh">{{ profile.languages_zh }}</span><span class="i18n i18n-en">{{ profile.languages_en }}</span></p>
+    <p class="resume-certifications"><strong><span class="i18n i18n-zh">认证：</span><span class="i18n i18n-en">Certifications: </span></strong>{{ profile.certifications | join: ' · ' }}</p>
   </section>
-
-  <section class="resume-section">
-    <h2><span class="i18n i18n-zh">公开项目</span><span class="i18n i18n-en">Public projects</span></h2>
-    <article class="resume-entry">
-      <h3><a href="{{ '/projects/enterprise-data-agent/' | relative_url }}">Enterprise Data Agent</a></h3>
-      <p><span class="i18n i18n-zh">将业务语义、多智能体调查、确定性分析和证据报告连接成工作流。公开案例呈现受控数据查询与可追溯计算，并说明评测使用的规划路径和数据范围。</span><span class="i18n i18n-en">Connects business semantics, multi-agent investigation, deterministic analysis, and evidence-linked reports. The case study covers governed queries and traceable calculations, with the planning policy and data scope used in evaluation.</span></p>
-    </article>
-    <article class="resume-entry">
-      <h3><a href="{{ '/projects/reward-modeling-lab/' | relative_url }}">Reward Modeling Lab</a></h3>
-      <p><span class="i18n i18n-zh">奖励模型 QLoRA 后训练与审计：结合成对偏好、整体排序、长度匹配和反长度挑战，检查高分是否依赖数据捷径。仓库保留已完成实验与后续未运行方案的区别。</span><span class="i18n i18n-en">QLoRA reward-model training and auditing, combining pairwise preferences, global ranking, and length-controlled challenges to investigate shortcuts. The repository distinguishes completed experiments from follow-up configurations that have not been run.</span></p>
-    </article>
-    <article class="resume-entry">
-      <h3><a href="{{ '/projects/rewardlens/' | relative_url }}">RewardLens</a></h3>
-      <p><span class="i18n i18n-zh">固定问题与候选回答，通过受控图像变化检验多模态评判模型的适应与稳定性。公开论文、代码和结果工件，结论限定在已记录的评估设置。</span><span class="i18n i18n-en">Holds questions and candidate answers fixed while editing visual evidence to examine adaptation and invariance in multimodal judges. The public manuscript, code, and result artifacts support findings within the recorded evaluation setting.</span></p>
-    </article>
-    <p><a href="{{ '/projects/' | relative_url }}"><span class="i18n i18n-zh">查看全部作品与研究 →</span><span class="i18n i18n-en">View all work and research →</span></a></p>
-  </section>
+  <p class="resume-updated"><span class="i18n i18n-zh">公开版更新：</span><span class="i18n i18n-en">Public version updated: </span>{{ profile.updated }}</p>
 </article>

@@ -3,7 +3,7 @@ layout: default
 title: 联系
 title_en: Contact
 permalink: /contact/
-description: 联系本杰铭 Benjamin Taoson，讨论工程合作、研究交流、授课邀请与职业机会。
+description: 联系赖建铭 Benjamin Taoson，讨论工程合作、研究交流、授课邀请与职业机会。
 description_en: Contact Benjamin Taoson about engineering, research, teaching invitations, and career opportunities.
 portfolio_shell: true
 bilingual: true

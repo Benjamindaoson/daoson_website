@@ -1,44 +1,94 @@
-# Public project scope and evidence. Personal attribution is omitted until supported.
 enterprise-data-agent:
-  scope_zh: "零售分析参考实现：业务语义、调查编排、确定性分析、受控数据访问与证据报告。"
-  scope_en: "A retail-analysis reference implementation covering business semantics, investigation orchestration, deterministic analysis, governed data access, and evidence-linked reports."
-  decision_zh: "把核心计算交给确定性算子；模型策略只做受限选择。结果按问题相关性筛选，保留可追溯的数据与计算。"
-  decision_en: "Keep core calculations deterministic and model choices bounded. Select findings for the question while preserving traceable data and calculations."
-  artifacts_zh: "运行时与语义包、只读 PostgreSQL 连接器、分析界面、HTML/PDF 报告，以及固定版本的评测记录。"
-  artifacts_en: "Runtime and semantic package, a read-only PostgreSQL connector, an analysis interface, HTML/PDF reports, and versioned evaluation records."
-  verified_zh: "公开 Complete Journey 数据上的确定性路径已有 CI 结果与真实导出报告；实时模型策略的效果、生产容量和客户业务收益未验证。"
-  verified_en: "The deterministic path has CI results and saved reports on public Complete Journey data. Live-model quality, production capacity, and customer business impact are not established."
-  evidence_url: "https://github.com/Benjamindaoson/enterprise-data-agent/blob/a82133b35b7215a1b163f5c3afdcc241e9c4381f/docs/RESUME_EVIDENCE.md"
-
+  scope_zh: 零售分析参考实现：业务语义、调查编排、确定性分析、受控数据访问与证据报告。
+  scope_en: A retail-analysis reference implementation covering business semantics, investigation orchestration, deterministic analysis, governed data access, and evidence-linked reports.
+  decision_zh: 把核心计算交给确定性算子；模型策略只做受限选择。结果按问题相关性筛选，保留可追溯的数据与计算。
+  decision_en: Keep core calculations deterministic and model choices bounded. Select findings for the question while preserving traceable data and calculations.
+  artifacts_zh: 运行时与语义包、只读 PostgreSQL 连接器、分析界面、HTML/PDF 报告，以及固定版本的评测记录。
+  artifacts_en: Runtime and semantic package, a read-only PostgreSQL connector, an analysis interface, HTML/PDF reports, and versioned evaluation records.
+  verified_zh: 公开 Complete Journey 数据上的确定性路径已有 CI 结果与真实导出报告；实时模型策略的效果、生产容量和客户业务收益未验证。
+  verified_en: The deterministic path has CI results and saved reports on public Complete Journey data. Live-model quality, production capacity, and customer business impact are not established.
+  evidence_url: https://github.com/Benjamindaoson/enterprise-data-agent/blob/a82133b35b7215a1b163f5c3afdcc241e9c4381f/docs/RESUME_EVIDENCE.md
+  contribution_zh: 从 0 到 1 构建经营分析系统，设计业务语义层、多智能体调查、确定性计算与评测流程。
+  contribution_en: Built the business-analysis system from the ground up, designing its semantic layer, multi-agent investigation, deterministic computation, and evaluation.
 reward-modeling-lab:
-  scope_zh: "8B 奖励模型的单卡 QLoRA 后训练，以及冻结测试、长度挑战、整体排序和检查点审计。"
-  scope_en: "Single-GPU QLoRA post-training of an 8B reward model, with frozen tests, length challenges, ranking evaluation, and checkpoint audits."
-  decision_zh: "将高准确率与长度启发式一起检查，用长度匹配和反长度挑战区分偏好能力与捷径依赖。"
-  decision_en: "Audit high accuracy against a length heuristic, using length-matched and reversed-length challenges to separate preference discrimination from shortcut reliance."
-  artifacts_zh: "训练与评估代码、冻结配置、结果 JSON、排序和检查点对照，以及 V2 实验协议；原始偏好数据不随仓库公开。"
-  artifacts_en: "Training and evaluation code, frozen configuration, result JSON, ranking and checkpoint comparisons, and a V2 protocol. Raw preference data is not distributed."
-  verified_zh: "V1 已在单张 A10 上完成 1,000 步训练与单种子评估；V2 已实现协议与代码，但 GPU 训练尚未执行，无 V2 性能结论。"
-  verified_en: "V1 completed 1,000 training steps and single-seed evaluation on one A10. V2 protocol and code exist, but GPU training has not run and no V2 performance is reported."
-  evidence_url: "https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/docs/results/README.md"
-
+  scope_zh: 8B 奖励模型的单卡 QLoRA 后训练，以及冻结测试、长度挑战、整体排序和检查点审计。
+  scope_en: Single-GPU QLoRA post-training of an 8B reward model, with frozen tests, length challenges, ranking evaluation, and checkpoint audits.
+  decision_zh: 将高准确率与长度启发式一起检查，用长度匹配和反长度挑战区分偏好能力与捷径依赖。
+  decision_en: Audit high accuracy against a length heuristic, using length-matched and reversed-length challenges to separate preference discrimination from shortcut reliance.
+  artifacts_zh: 训练与评估代码、冻结配置、结果 JSON、排序和检查点对照，以及 V2 实验协议；原始偏好数据不随仓库公开。
+  artifacts_en: Training and evaluation code, frozen configuration, result JSON, ranking and checkpoint comparisons, and a V2 protocol. Raw preference data is not distributed.
+  verified_zh: V1 已在单张 A10 上完成 1,000 步训练与单种子评估；V2 已实现协议与代码，但 GPU 训练尚未执行，无 V2 性能结论。
+  verified_en: V1 completed 1,000 training steps and single-seed evaluation on one A10. V2 protocol and code exist, but GPU training has not run and no V2 performance is reported.
+  evidence_url: https://github.com/Benjamindaoson/reward-modeling-lab/blob/bead1bb8b084166beede3f5101d7613a9ff3f7ee/docs/results/README.md
+  contribution_zh: 构建偏好数据与 QLoRA 训练流程，完成单卡训练、排序评测和长度偏差诊断。
+  contribution_en: Built the preference-data and QLoRA workflow, completing single-GPU training, ranking evaluation, and length-bias analysis.
 rewardlens:
-  scope_zh: "多模态评判模型的受控视觉审计：固定问题与候选回答，检验视觉事实变化后的适应与不变性。"
-  scope_en: "A controlled visual audit of multimodal judges: fix the question and candidate responses, then measure adaptation and invariance under image edits."
-  decision_zh: "把独立静态准确率与干预行为分开测量；相关编辑改变正确选项，无关编辑保留正确选项。"
-  decision_en: "Measure independent static accuracy separately from intervention behavior: relevant edits change the correct answer, while irrelevant edits preserve it."
-  artifacts_zh: "公开论文稿、样本构造和评估代码、受控三元组示例，以及完整匹配比较和统计结果。"
-  artifacts_en: "A public manuscript, construction and evaluation code, controlled-triplet examples, and matched-comparison and statistical results."
-  verified_zh: "已有 8 个模型、4 类视觉因素的冻结评估；RA 按各模型的原图正确子集计算。结论不构成通用模型排名或部署安全验证。"
-  verified_en: "Frozen evaluations cover eight judges and four visual factors. RA uses each judge’s base-correct subset. Findings do not establish a universal ranking or deployment safety."
-  evidence_url: "https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/sections/06_results.tex"
-
+  scope_zh: 多模态评判模型的受控视觉审计：固定问题与候选回答，检验视觉事实变化后的适应与不变性。
+  scope_en: 'A controlled visual audit of multimodal judges: fix the question and candidate responses, then measure adaptation and invariance under image edits.'
+  decision_zh: 把独立静态准确率与干预行为分开测量；相关编辑改变正确选项，无关编辑保留正确选项。
+  decision_en: 'Measure independent static accuracy separately from intervention behavior: relevant edits change the correct answer, while irrelevant edits preserve it.'
+  artifacts_zh: 公开论文稿、样本构造和评估代码、受控三元组示例，以及完整匹配比较和统计结果。
+  artifacts_en: A public manuscript, construction and evaluation code, controlled-triplet examples, and matched-comparison and statistical results.
+  verified_zh: 已有 8 个模型、4 类视觉因素的冻结评估；RA 按各模型的原图正确子集计算。结论不构成通用模型排名或部署安全验证。
+  verified_en: Frozen evaluations cover eight judges and four visual factors. RA uses each judge’s base-correct subset. Findings do not establish a universal ranking or deployment safety.
+  evidence_url: https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/sections/06_results.tex
+  contribution_zh: 第一作者：定义行为分辨率问题，设计受控视觉干预、评测与失效分析，并撰写论文。
+  contribution_en: 'First author: defined behavioral resolution, designed controlled visual interventions and evaluation, analyzed failures, and wrote the manuscript.'
 startshift-vla:
-  scope_zh: "SmolVLA 初始化敏感性的研究归档：保留历史仿真基线、分析工具和未完成的方法原型。"
-  scope_en: "A research archive on SmolVLA initialization sensitivity, preserving historical simulation baselines, analysis tools, and unfinished method prototypes."
-  decision_zh: "数据来源核验未能确认 episode 与 RobotInit 变体的对应关系时，不启动 GPU 训练；保留未配对比较和证据缺口。"
-  decision_en: "Do not start GPU training when episode-to-RobotInit-variant provenance cannot be certified. Preserve the unpaired comparison and its evidence gaps."
-  artifacts_zh: "920 条主要评估记录、冻结分组、保存文件哈希、离线复核脚本，以及研究限制和复盘。"
-  artifacts_en: "920 principal evaluation records, frozen groups, saved-file hashes, an offline verifier, and documented limitations and reflection."
-  verified_zh: "可复核保存记录；单策略、一套种子安排，任务和场景未配对。RISE 收益、模拟器重放与真机结果未验证；方法开发已停止。"
-  verified_en: "Saved records are verifiable: one policy and seed schedule, with unpaired tasks and scenes. RISE benefits, simulator replay, and physical-robot results remain unvalidated; method development has stopped."
-  evidence_url: "https://github.com/Benjamindaoson/StartShift-VLA/blob/8fb03bbaa6982115a54aaa7c4945375a6139a056/docs/verification.md"
+  scope_zh: SmolVLA 初始化敏感性的研究归档：保留历史仿真基线、分析工具和未完成的方法原型。
+  scope_en: A research archive on SmolVLA initialization sensitivity, preserving historical simulation baselines, analysis tools, and unfinished method prototypes.
+  decision_zh: 数据来源核验未能确认 episode 与 RobotInit 变体的对应关系时，不启动 GPU 训练；保留未配对比较和证据缺口。
+  decision_en: Do not start GPU training when episode-to-RobotInit-variant provenance cannot be certified. Preserve the unpaired comparison and its evidence gaps.
+  artifacts_zh: 920 条主要评估记录、冻结分组、保存文件哈希、离线复核脚本，以及研究限制和复盘。
+  artifacts_en: 920 principal evaluation records, frozen groups, saved-file hashes, an offline verifier, and documented limitations and reflection.
+  verified_zh: 可复核保存记录；单策略、一套种子安排，任务和场景未配对。RISE 收益、模拟器重放与真机结果未验证；方法开发已停止。
+  verified_en: 'Saved records are verifiable: one policy and seed schedule, with unpaired tasks and scenes. RISE benefits, simulator replay, and physical-robot results remain unvalidated; method development has stopped.'
+  evidence_url: https://github.com/Benjamindaoson/StartShift-VLA/blob/8fb03bbaa6982115a54aaa7c4945375a6139a056/docs/verification.md
+spatialmind:
+  contribution_zh: 独立设计机器人决策智能体，连接持久空间记忆、主动感知与自主纠错。
+  contribution_en: Independently designed the robot decision agent, connecting persistent spatial memory, active perception, and recovery.
+  scope_zh: 从二维网格到度量仿真的任务决策层：记忆、搜索、目标验证、执行恢复与机器人接口。
+  scope_en: 'A task-decision layer spanning 2D grid and metric simulation: memory, search, verification, recovery, and robot interfaces.'
+  decision_zh: 记忆必须接受当前观察检验；只凭可见区域更新缺失判断，成功绑定证据，同时保留完整策略输给简单基线的结果。
+  decision_en: Check memory against current observations, invalidate only visible historical locations, require evidence for completion, and retain losses to simpler baselines.
+  artifacts_zh: SQLite 记忆、异步运行时、任务面板、轨迹与消融工具、ROS2/Nav2 适配，以及固定 CI 结果。
+  artifacts_en: SQLite memory, an asynchronous runtime, mission controls, traces and ablations, ROS2/Nav2 adapters, and pinned CI results.
+  verified_zh: 当前 65 项软件测试、54 次网格试验与 336 次度量仿真；单场景 65.7% 步数减少不能概括整体。新版 Nearest-Search 整体优于 Full；真机未验证。
+  verified_en: 65 current software tests, 54 grid trials, and 336 metric-simulation missions. A 65.7% step reduction is scenario-specific; Nearest-Search beats Full overall in the newer suite. No physical-robot validation.
+  evidence_url: https://github.com/Benjamindaoson/SpatialMind/actions/runs/37789657766
+multimodal-content-creation-agent:
+  contribution_zh: 研发面向产品讲解与知识直播的内容生产和再生产工作流，关注证据定位、审核与失败恢复。
+  contribution_en: Develop content-production and repurposing workflows for product demonstrations and educational livestreams, focusing on evidence, review, and recovery.
+  scope_zh: 可恢复的生成式内容链路与独立长视频切片端点，覆盖转写、结构化建议、质量门和媒体导出。
+  scope_en: A recoverable generative pipeline and a separate long-video clipping endpoint, covering transcription, structured suggestions, quality gates, and media export.
+  decision_zh: 将时间戳、素材和任务状态显式保存；硬质量门不被模型评分覆盖；审核、发布和恢复保留明确入口。
+  decision_en: Persist timestamps, assets, and task state; keep hard quality gates independent of model scores; make review, publishing, and recovery explicit.
+  artifacts_zh: FastAPI 任务接口、PostgreSQL Checkpoint、FFmpeg 导出/批量 ZIP、供应商适配器、MinIO 恢复与确定性测试。
+  artifacts_en: FastAPI task endpoints, PostgreSQL checkpoints, FFmpeg exports and batch ZIPs, provider adapters, MinIO recovery, and deterministic tests.
+  verified_zh: 当前多模态范围 CI 通过 53 项测试，含真实 FFmpeg 与固定 ASR/规划替身；真实供应商 E2E、反馈学习效果与业务收益未验证。
+  verified_en: 53 current multimodal-slice CI tests pass, including real FFmpeg with recorded ASR/planner doubles. Credentialed provider E2E, feedback-learning gains, and business impact remain unvalidated.
+  evidence_url: https://github.com/Benjamindaoson/multimodal-content-creation-agent/actions/runs/37785137967
+llm-fine-tuning:
+  contribution_zh: 负责金融数据治理、监督数据生成、两阶段 SFT、评测与模型交付链路。
+  contribution_en: Built the financial data governance, supervision generation, two-stage SFT, evaluation, and model-delivery workflow.
+  scope_zh: 围绕金融问答、数值推理和多轮分析，将本地数据生产、LoRA 训练与 LLMOps 连接起来。
+  scope_en: Connect local data production, LoRA training, and LLMOps for financial QA, numerical reasoning, and multi-turn analysis.
+  decision_zh: 先按原始来源切分，再生成监督问答；只训练 assistant 回复，Stage 2 保留其他金融任务回放。
+  decision_en: Split original sources before generating supervision, train only assistant responses, and retain other financial tasks through Stage 2 replay.
+  artifacts_zh: 数据治理与泄漏审计脚本、两阶段 LoRA 训练入口、合并与 vLLM 双版本服务、评审器和汇总快照。
+  artifacts_en: Data-governance and leakage-audit scripts, a two-stage LoRA trainer, model merging and dual-version vLLM serving, a quality judge, and an aggregate snapshot.
+  verified_zh: 固定提交 CPU CI 通过；评测表为公开汇总记录，相关运行日志、权重标识与逐题评审未随仓库发布。
+  verified_en: CPU CI passes at the pinned commit. The evaluation table is a published aggregate record; associated logs, weight identities, and per-example judgments are not distributed.
+  evidence_url: https://github.com/Benjamindaoson/LLM-Fine-tuning/blob/933730feebd9e2fed02cc411c0376b7eb291b9bd/reports/benchmark_snapshot.json
+agentic-rl:
+  contribution_zh: 实现 SQL 执行环境、Gold 与策略隔离、GRPO 训练接口及权重／对照证据检查。
+  contribution_en: Implemented the SQL environment, Gold/policy isolation, GRPO training integration, and weight/control evidence checks.
+  scope_zh: Qwen2.5-Coder-3B 的 Text-to-SQL RLVR／GRPO 工程链路，覆盖 Spider 与 BIRD 数据及盲评测入口。
+  scope_en: A Text-to-SQL RLVR/GRPO engineering workflow for Qwen2.5-Coder-3B, with Spider/BIRD data and blind-evaluation entry points.
+  decision_zh: 轨迹结束后才使用 Gold 评分；在固定观察与预算下设置 No-update 和 reward 消融对照。
+  decision_en: Use Gold for scoring only after a trajectory ends; compare No-update and reward ablations under fixed observations and budgets.
+  artifacts_zh: 只读 SQLite 环境、真实框架配置接口、Checkpoint 导出、张量变化检查、配对统计及证据门禁。
+  artifacts_en: A read-only SQLite environment, upstream-framework configuration integration, checkpoint export, tensor-delta checks, paired statistics, and an evidence gate.
+  verified_zh: CPU CI、框架契约和泄漏审计通过；真实 Qwen GPU 更新、重载及 Base／GRPO 对照评测待完成。
+  verified_en: CPU CI, framework-contract checks, and leakage audits pass. Real Qwen GPU updates, reload, and Base/GRPO evaluation remain pending.
+  evidence_url: https://github.com/Benjamindaoson/Agentic-RL/blob/4c92020acf2bc04f640ae5bb717eb5b8e683365e/docs/WORK_PLAN.md

@@ -35,6 +35,10 @@ if (values.help) {
 
 const sourcePaths = [
   'resume.html',
+  '_data/profile.yml',
+  '_data/projects.yml',
+  '_includes/profile-career.html',
+  '_includes/profile-education.html',
   '_config.yml',
   '_layouts/default.html',
   '_includes/head.html',
@@ -125,12 +129,12 @@ try {
     await page.locator(`button[data-lang="${language}"]`).click()
     await page.waitForFunction(language => document.documentElement.dataset.uiLang === language, language)
     await page.evaluate(language => {
-      document.title = language === 'zh' ? 'Benjamin Taoson · 本杰铭 · 公开简历' : 'Benjamin Taoson · Public résumé'
+      document.title = language === 'zh' ? 'Benjamin Taoson · 赖建铭 · 公开简历' : 'Benjamin Taoson · Public résumé'
     }, language)
     await page.emulateMedia({ media: 'print' })
     await page.waitForFunction(() => getComputedStyle(document.documentElement).backgroundColor === 'rgb(255, 255, 255)' && getComputedStyle(document.body).backgroundColor === 'rgb(255, 255, 255)')
     const filename = `benjamin-taoson-resume-${language}.pdf`
-    await page.pdf({ path: path.join(temporary, filename), format: 'A4', preferCSSPageSize: true, printBackground: true, displayHeaderFooter: false })
+    await page.pdf({ path: path.join(temporary, filename), format: 'A4', preferCSSPageSize: true, printBackground: true, displayHeaderFooter: false, tagged: true })
     pdfs.push({ language, path: `assets/resume/${filename}`, sha256: sha256(await fs.readFile(path.join(temporary, filename))) })
   }
 

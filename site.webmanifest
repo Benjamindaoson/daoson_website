@@ -2,7 +2,7 @@
 layout: null
 ---
 {
-  "name": "Benjamin Taoson · 本杰铭",
+  "name": "Benjamin Taoson · 赖建铭",
   "short_name": "Benjamin Taoson",
   "description": "AI engineering, model evaluation, and robot learning. Projects and research by Benjamin Taoson.",
   "start_url": "{{ '/' | relative_url }}",
