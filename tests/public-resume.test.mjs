@@ -17,6 +17,10 @@ test('public résumé downloads match the current content and rendering sources'
   assert.ok(manifest.sources.length > 0)
   const sources = [...manifest.sources]
   assert.equal(new Set(sources.map(source => source.path)).size, sources.length)
+  for (const dependency of ['_data/profile.yml', '_data/projects.yml', '_includes/profile-career.html', '_includes/profile-education.html']) {
+    assert.ok(sources.some(source => source.path === dependency),
+      `${dependency} must invalidate the PDFs when public résumé content changes`)
+  }
   for (const source of sources) {
     assert.equal(sha256(await readFile(join(root, source.path))), source.sha256,
       `${source.path} changed after PDF export. Rebuild and run scripts/export_resume_pdf.mjs.`)

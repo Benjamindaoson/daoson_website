@@ -2,12 +2,13 @@
 layout: default
 title: AI 工程与研究
 title_en: AI Engineering & Research
-description: Benjamin Taoson（本杰铭）的工程与研究。构建大模型和 Agent 系统，探索模型评估与机器人学习中的可靠性问题。
+description: Benjamin Taoson（赖建铭）的工程与研究。构建大模型和 Agent 系统，探索模型评估与机器人学习中的可靠性问题。
 bilingual: true
 portfolio_shell: true
 hide_sidebar: true
 ---
 
+{% assign profile = site.data.profile %}
 <div class="taoson-home">
   <section class="identity-hero" aria-labelledby="identity-heading">
     <div class="identity-heading">
@@ -16,7 +17,8 @@ hide_sidebar: true
       <p class="identity-tagline"><span class="i18n i18n-zh">从数字世界，到物理世界。</span><span class="i18n i18n-en">From digital worlds to the physical world.</span></p>
     </div>
     <div class="identity-introduction">
-      <p class="identity-lead"><span class="i18n i18n-zh">我是本杰铭。我构建大模型与 Agent 系统，也研究模型评估与机器人学习中的可靠性问题。</span><span class="i18n i18n-en">I build LLM and agent systems, and study reliability in model evaluation and robot learning.</span></p>
+      <p class="identity-lead"><span class="i18n i18n-zh">{{ profile.home_lead_zh }}</span><span class="i18n i18n-en">{{ profile.home_lead_en }}</span></p>
+      <p class="identity-background"><span class="i18n i18n-zh">{{ profile.home_background_zh }}</span><span class="i18n i18n-en">{{ profile.home_background_en }}</span></p>
       <div class="identity-actions">
         <a class="btn" href="#selected-work"><span class="i18n i18n-zh">查看代表作品</span><span class="i18n i18n-en">Explore work</span><span aria-hidden="true">↓</span></a>
         <a class="identity-contact" href="{{ '/contact/' | relative_url }}"><span class="i18n i18n-zh">联系我</span><span class="i18n i18n-en">Get in touch</span><span aria-hidden="true">↗</span></a>
@@ -27,7 +29,7 @@ hide_sidebar: true
   <section class="direction-guide" aria-label="Digital AI and Physical AI">
     <a class="direction-link direction-digital" href="{{ '/projects/#digital-ai' | relative_url }}">
       <div class="direction-title"><h2>Digital AI <span class="i18n i18n-zh">/ 数字 AI</span></h2><span aria-hidden="true">↗</span></div>
-      <p><span class="i18n i18n-zh">大模型 · Agent · 训练与评估</span><span class="i18n i18n-en">LLMs · Agents · Training &amp; evaluation</span></p>
+      <p><span class="i18n i18n-zh">大模型 · 智能体 · 后训练</span><span class="i18n i18n-en">LLMs · Agents · Post-training</span></p>
     </a>
     <a class="direction-link direction-physical" href="{{ '/projects/#physical-ai' | relative_url }}">
       <div class="direction-title"><h2>Physical AI <span class="i18n i18n-zh">/ 物理 AI</span></h2><span aria-hidden="true">↗</span></div>
@@ -41,6 +43,10 @@ hide_sidebar: true
       <a class="text-link" href="{{ '/projects/' | relative_url }}"><span class="i18n i18n-zh">查看全部作品</span><span class="i18n i18n-en">View all work</span><span aria-hidden="true">→</span></a>
     </div>
     {% include selected-work.html %}
+    <div class="home-training-path">
+      <p><span class="i18n i18n-zh">后训练实践</span><span class="i18n i18n-en">Post-training work</span></p>
+      <div><a href="{{ '/projects/llm-fine-tuning/' | relative_url }}">SFT &amp; LLMOps <span aria-hidden="true">↗</span></a><a href="{{ '/projects/reward-modeling-lab/' | relative_url }}"><span class="i18n i18n-zh">奖励建模与偏好学习</span><span class="i18n i18n-en">Reward modeling &amp; preferences</span> <span aria-hidden="true">↗</span></a><a href="{{ '/projects/agentic-rl/' | relative_url }}">GRPO &amp; RLVR <span aria-hidden="true">↗</span></a></div>
+    </div>
   </section>
 
   <section class="home-perspective" aria-labelledby="perspective-heading">
@@ -49,7 +55,7 @@ hide_sidebar: true
       <h2 id="perspective-heading"><span class="i18n i18n-zh">把问题做具体，<br>把结果讲清楚。</span><span class="i18n i18n-en">Make the problem concrete.<br>Make the evidence clear.</span></h2>
     </div>
     <div class="perspective-copy">
-      <p><span class="i18n i18n-zh">数据分析中，先约束业务语义，再让 Agent 调用工具；模型评估中，改变一个条件，观察答案是否合理变化；机器人研究中，先核查数据来源，再判断比较能说明什么。这些具体取舍，构成了我的工程与研究记录。</span><span class="i18n i18n-en">In data analysis, constrain business semantics before an agent calls tools. In evaluation, change one condition and check the response. In robot research, inspect data provenance before interpreting a comparison. These decisions connect the engineering and research documented here.</span></p>
+      <p><span class="i18n i18n-zh">从制造业数字化，到企业智能体，再到模型后训练，我习惯把业务问题拆成可以执行、验证和持续改进的系统。既参与需求与方案设计，也负责核心研发与交付；研究中则用受控实验追问：能力提升来自哪里，什么时候会失效？</span><span class="i18n i18n-en">From manufacturing systems to enterprise agents and model post-training, I turn business problems into systems that can be executed, tested, and improved. I work across customer discovery, architecture, core development, and delivery. In research, controlled experiments help me ask where gains come from and when they break down.</span></p>
       <div class="perspective-links"><a class="text-link" href="{{ '/about/' | relative_url }}"><span class="i18n i18n-zh">更多关于我</span><span class="i18n i18n-en">More about me</span> →</a><a class="text-link" href="{{ '/resume/' | relative_url }}"><span class="i18n i18n-zh">查看公开简历</span><span class="i18n i18n-en">View my résumé</span> →</a></div>
     </div>
   </section>

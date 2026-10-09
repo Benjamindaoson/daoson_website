@@ -13,19 +13,20 @@
       {% elsif project.id == 'rewardlens' %}
         {% include rewardlens-example.html compact=true id="rewardlens-home" %}
       {% else %}
-      <figure class="selected-project-image{% if project.image_compact %} has-compact-evidence{% endif %}">
+      {% assign home_image = project.home_image | default: project.image %}
+      <figure class="selected-project-image{% if project.image_compact and project.home_image == nil %} has-compact-evidence{% endif %}">
         <picture>
-        {% if project.image_compact %}<source media="(max-width: 900px)" srcset="{{ project.image_compact | relative_url }}" width="420" height="330">{% endif %}
-        <img src="{{ project.image | relative_url }}" alt="{{ project.image_alt_zh | default: project.name_zh | escape }}" data-alt-zh="{{ project.image_alt_zh | default: project.name_zh | escape }}" data-alt-en="{{ project.image_alt_en | default: project.name_en | escape }}" width="1200" height="760" loading="lazy">
+        {% if project.image_compact and project.home_image == nil %}<source media="(max-width: 900px)" srcset="{{ project.image_compact | relative_url }}" width="420" height="330">{% endif %}
+        <img src="{{ home_image | relative_url }}" alt="{{ project.home_image_alt_zh | default: project.image_alt_zh | default: project.name_zh | escape }}" data-alt-zh="{{ project.home_image_alt_zh | default: project.image_alt_zh | default: project.name_zh | escape }}" data-alt-en="{{ project.home_image_alt_en | default: project.image_alt_en | default: project.name_en | escape }}" width="1200" height="760" loading="lazy">
         </picture>
-        <figcaption><span class="i18n i18n-zh">两组任务与场景未配对；差异不能归因为初始化变化，改进方法尚未验证。</span><span class="i18n i18n-en">Tasks and scenes are unpaired. The difference cannot be attributed to initialization alone; mitigation remains unvalidated.</span></figcaption>
+        {% if project.home_caption_zh %}<figcaption><span class="i18n i18n-zh">{{ project.home_caption_zh }}</span><span class="i18n i18n-en">{{ project.home_caption_en }}</span></figcaption>{% endif %}
       </figure>
       {% endif %}
     </div>
     <div class="selected-project-details">
       <p class="evidence-kind"><span class="i18n i18n-zh">{{ project.evidence_kind_zh }}</span><span class="i18n i18n-en">{{ project.evidence_kind_en }}</span></p>
-      <div class="selected-project-evidence"><strong>{{ project.metric_value }}</strong><span><span class="i18n i18n-zh">{{ project.metric_label_zh }}</span><span class="i18n i18n-en">{{ project.metric_label_en }}</span></span></div>
-      {% if project.metric_context_zh %}<p class="evidence-context"><span class="i18n i18n-zh">{{ project.metric_context_zh }}</span><span class="i18n i18n-en">{{ project.metric_context_en }}</span></p>{% endif %}
+      <div class="selected-project-evidence"><strong>{{ project.home_metric_value | default: project.metric_value }}</strong><span><span class="i18n i18n-zh">{{ project.home_metric_label_zh | default: project.metric_label_zh }}</span><span class="i18n i18n-en">{{ project.home_metric_label_en | default: project.metric_label_en }}</span></span></div>
+      {% if project.metric_context_zh or project.home_metric_context_zh %}<p class="evidence-context"><span class="i18n i18n-zh">{{ project.home_metric_context_zh | default: project.metric_context_zh }}</span><span class="i18n i18n-en">{{ project.home_metric_context_en | default: project.metric_context_en }}</span></p>{% endif %}
       <div class="selected-project-links"><a class="text-link" href="{{ project.case_url | relative_url }}"><span class="i18n i18n-zh">阅读项目案例</span><span class="i18n i18n-en">Read the case study</span> →</a><a href="{{ project.url }}" target="_blank" rel="noopener">GitHub ↗</a></div>
     </div>
   </article>

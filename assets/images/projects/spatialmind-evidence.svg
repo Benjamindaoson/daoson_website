@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 864 547.2" role="img" aria-labelledby="title desc">
+<title id="title">SpatialMind: four-policy metric-simulation comparison</title>
+<desc id="desc">336 simulated missions: twelve seeds, seven interventions, four policies, four fixed topologies. Full 81 of 84, 20.869 simulated metres; No-Memory 78 of 84, 20.619; Static-Memory 81 of 84, 20.869; Nearest-Search 82 of 84, 19.167. Nearest-Search outperforms Full in this suite. Not Gazebo or real hardware. Source: Core CI 37789657766, commit bd56671.</desc>
+<rect width="864" height="547.2" rx="18" fill="#f7f4ec"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#213b2c">
+<text x="40" y="43" font-size="17" letter-spacing="2">SPATIALMIND · VERIFIED SIMULATION</text>
+<text x="40" y="86" font-size="31" font-weight="700">A stronger baseline changes the conclusion</text>
+<text x="40" y="119" font-size="21">336 missions · 12 seeds × 7 interventions × 4 policies</text>
+<rect x="32" y="144" width="800" height="254" rx="12" fill="#e5eee1"/>
+<text x="52" y="177" font-size="18" font-weight="700">Policy</text>
+<text x="565" y="177" font-size="18" font-weight="700" text-anchor="end">Verified success</text>
+<text x="804" y="177" font-size="18" font-weight="700" text-anchor="end">Mean travel</text>
+<text x="52" y="222" font-size="23">Full Temporal Agent</text><text x="565" y="222" font-size="23" text-anchor="end">81 / 84</text><text x="804" y="222" font-size="23" text-anchor="end">20.869 m</text>
+<text x="52" y="271" font-size="23">No-Memory</text><text x="565" y="271" font-size="23" text-anchor="end">78 / 84</text><text x="804" y="271" font-size="23" text-anchor="end">20.619 m</text>
+<text x="52" y="320" font-size="23">Static-Memory</text><text x="565" y="320" font-size="23" text-anchor="end">81 / 84</text><text x="804" y="320" font-size="23" text-anchor="end">20.869 m</text>
+<text x="52" y="369" font-size="23" font-weight="700">Nearest-Search</text><text x="565" y="369" font-size="23" text-anchor="end">82 / 84</text><text x="804" y="369" font-size="23" text-anchor="end">19.167 m</text>
+<text x="40" y="433" font-size="22" font-weight="700">Nearest-Search succeeds more often and travels less here.</text>
+<text x="40" y="466" font-size="19">4 fixed topologies · simulated metres · not Gazebo or hardware</text>
+<text x="40" y="499" font-size="17">Source: Core CI 37789657766 · commit bd56671 · 2026-10-08</text>
+<text x="40" y="526" font-size="17">Full and Static-Memory have identical aggregate outcomes in this suite.</text>
+</g></svg>

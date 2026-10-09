@@ -18,6 +18,10 @@ bilingual: true
 
 两个多模态评判模型取得相同的静态偏好准确率，是否意味着它们都会正确响应视觉证据的变化？RewardLens 用独立静态评测和受控图像干预，测量这个分数背后仍可能存在的行为差异。[论文](https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/REWARDLENS_RelatedWork_Original.pdf)
 
+**研究状态（作者更新于 2026 年 10 月）：第一作者；已投稿 ICLR 2027，审稿中。** [OpenReview 投稿页面](https://openreview.net/forum?id=FQ0c7oaccp)
+
+这里关注的是评估的行为分辨率：当一个分数不能区分两个模型时，受控干预能否揭示它们使用视觉证据的差异。以下结果保留公开仓库的固定版本与具体评测口径。
+
 ## 关键决策：固定语言输入，改变视觉证据
 
 每组审计样本包含原图、相关编辑图和无关编辑图。问题、候选回答及候选顺序保持固定；相关编辑被构造成改变正确选项，无关编辑则保持正确选项。程序在渲染后重新检查场景事实与标签关系。[构造与验证](https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/sections/04_audit_construction.tex)
@@ -46,19 +50,37 @@ RA 相差 **15.05 个百分点**，配对 bootstrap 的 95% 区间为 10.21–20
 
 另一例来自 Qwen3-VL-4B 的 Count 审计：200 个原图正确案例中，166 个在相关编辑后仍保留原选择，因正确选项已改变而变成错误。这说明在该分支中，保持不变也可能是失败。[对应结果](https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/sections/06_results.tex)
 
+## 审计原图都答对之后，差异仍然存在
+
+另一种对照直接看同一审计的原图。Spatial（空间关系）因素上，以下五个模型均答对全部 200 张原图，但相关编辑后的 RA 从 55.0% 到 98.5%，相差 **43.5 个百分点**。[原始指标表](https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/results/paper_analysis/eight_model_raii/ra_ii_table.json)
+
+| 模型 | 空间关系审计原图准确率 | 相关适应 RA |
+|---|---:|---:|
+| Qwen3-VL-4B | 100% | 98.5% |
+| Skywork-VL-Reward-7B | 100% | 86.0% |
+| Idefics3-8B | 100% | 55.0% |
+| LLaVA-OneVision-7B | 100% | 87.0% |
+| InternVL3-8B | 100% | 91.5% |
+
+这里的 100% 是**审计原图准确率**，与前节单独采样的独立静态准确率不同。Count 因素也呈现类似分离：Qwen3-VL-4B 与 Skywork-VL-Reward-7B 的审计原图准确率分别为 100% 和 99.5%，RA 分别为 17.0% 和 62.81%，差 **45.81 个百分点**。这些差值由同一公开指标表复算，不能替代独立静态集上的匹配比较。
+
 ## 这项工作带来的判断
 
 当应用依赖模型随证据变化而调整判断时，静态偏好分数之外还需要检查具体干预行为。RewardLens 为评估增加了这个维度，并保留完整匹配比较、指标定义和结果工件，便于追溯结论。
 
 当前结果限于四类受控因素和冻结的候选顺序。静态分数相等指有限样本中的实测相等；研究没有由此推断模型内部推理，也没有验证部署系统的实际安全性。[讨论与限制](https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/sections/08_discussion.tex)
 
-[查看研究仓库](https://github.com/Benjamindaoson/RewardLens) · [阅读论文](https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/REWARDLENS_RelatedWork_Original.pdf)
+[查看研究仓库](https://github.com/Benjamindaoson/RewardLens) · [阅读论文](https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/REWARDLENS_RelatedWork_Original.pdf) · [OpenReview](https://openreview.net/forum?id=FQ0c7oaccp)
 
 </div>
 
 <div class="i18n i18n-en" markdown="1">
 
 If two multimodal judges have the same static preference accuracy, will they respond equally well when visual evidence changes? RewardLens combines an independent static evaluation with controlled image interventions to measure behavioral differences that a shared score can leave unresolved. [Paper](https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/REWARDLENS_RelatedWork_Original.pdf)
+
+**Research status (author update, October 2026): first author; submitted to ICLR 2027, under review.** [OpenReview submission](https://openreview.net/forum?id=FQ0c7oaccp)
+
+The question is one of behavioral resolution: when a score cannot distinguish two judges, can controlled interventions reveal how differently they respond to visual evidence? The results below retain the public repository's pinned version and explicit evaluation definitions.
 
 ## Key decision: fix the language inputs and edit visual evidence
 
@@ -88,12 +110,26 @@ The RA gap is **15.05 percentage points**, with a paired-bootstrap 95% interval 
 
 Qwen3-VL-4B's Count audit provides another example: in 166 of 200 base-correct cases, it retained its original choice after a relevant edit changed the correct answer. Prediction stability was a failure in that branch. [Corresponding result](https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/sections/06_results.tex)
 
+## Perfect audit-base accuracy still leaves behavioral differences
+
+A separate comparison uses the original images from the intervention audit itself. On Spatial, the following five judges answer all 200 base images correctly, yet their RA ranges from 55.0% to 98.5%: a **43.5 percentage-point gap**. [Recorded metric table](https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/results/paper_analysis/eight_model_raii/ra_ii_table.json)
+
+| Judge | Spatial audit-base accuracy | Relevant Adaptation |
+|---|---:|---:|
+| Qwen3-VL-4B | 100% | 98.5% |
+| Skywork-VL-Reward-7B | 100% | 86.0% |
+| Idefics3-8B | 100% | 55.0% |
+| LLaVA-OneVision-7B | 100% | 87.0% |
+| InternVL3-8B | 100% | 91.5% |
+
+The 100% figure is **audit-base accuracy**, distinct from the separately sampled independent static accuracy used above. Count provides another separation: Qwen3-VL-4B and Skywork-VL-Reward-7B have audit-base accuracies of 100% and 99.5%, with RA of 17.0% and 62.81% respectively, a **45.81 percentage-point gap**. These gaps are recalculated from the same public metric table and do not replace the independent-static matched comparisons.
+
 ## What the work adds
 
 When an application depends on a judge adapting to changing evidence, static preference accuracy can be complemented with direct intervention measurements. RewardLens supplies this additional axis and preserves the complete matched comparison set, metric definitions, and result artifacts.
 
 The findings apply to four controlled factors and a frozen candidate order. An equal static score means equal observed accuracy on a finite sample. The study does not identify internal reasoning or establish deployed-system safety. [Discussion and limitations](https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/sections/08_discussion.tex)
 
-[Research repository](https://github.com/Benjamindaoson/RewardLens) · [Read the paper](https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/REWARDLENS_RelatedWork_Original.pdf)
+[Research repository](https://github.com/Benjamindaoson/RewardLens) · [Read the paper](https://github.com/Benjamindaoson/RewardLens/blob/d0f355a9e3926eb25ab46fd5a9797034fb4c7394/paper/REWARDLENS_RelatedWork_Original.pdf) · [OpenReview](https://openreview.net/forum?id=FQ0c7oaccp)
 
 </div>

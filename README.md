@@ -1,16 +1,16 @@
-# 本杰铭个人网站
+# Benjamin Taoson / 赖建铭个人网站
 
-这是 **本杰铭** 的个人 AI 工程作品集，使用 Jekyll、Liquid、Markdown、手写 CSS 和原生 JavaScript 构建，并通过 GitHub Pages 发布。
+这是 **Benjamin Taoson / 赖建铭** 的双语个人网站，使用 Jekyll、Liquid、Markdown、手写 CSS 和原生 JavaScript 构建，并通过 GitHub Pages 发布。
 
-本站聚焦个人介绍、求职项目案例、简历索取与职业联系。公开写作与其他知识内容由独立内容站承接。
+本站面向工程合作、研究交流、授课分享与职业机会，呈现个人背景、Digital AI / Physical AI 项目、研究与工程案例，以及公开简历和中英文 PDF。公开写作与其他知识内容由独立内容站承接，官网提供导航入口。
 
 ## 官网与独立笔记站
 
-- 本仓库维护个人介绍、求职项目案例、简历索取与职业联系入口。
+- 本仓库维护个人介绍、作品与研究、公开简历和联系入口；个人履历读取 `_data/profile.yml`，公开范围遵循 [当前授权与隐私边界](docs/public-privacy-boundary.md)。
 - 公开知识内容站继续在 [`gitpagewebnote`](https://github.com/Benjamindaoson/gitpagewebnote) 独立维护和发布；官网通过导航中的「知识星球 / Knowledge Hub」入口链接过去，地址由 `_config.yml` 的 `notes_url` 配置。
 - 内容站承载技术博客、论文及后续实际发布的视频、音频、电子书和自媒体外链；不放简历或职业联系模块。
 - 官网旧 `/knowledge/` 地址保留跳转兼容；本仓库的 `knowledge/` 源码作为历史材料保留，不参与官网构建。新笔记写入独立笔记仓库。
-- 首页、项目列表、三篇核心案例、关于和联系支持中英文切换；历史文章保留自己的内容语言。
+- 首页、项目列表、公开案例、关于、简历和联系支持中英文切换；历史文章保留自己的内容语言。
 - 首页和项目列表共同读取 `_data/projects.yml`，精选案例使用 `featured: true` 和 `featured_order` 排序。
 
 当前维护关系见 [网站归属记录](docs/repository-consolidation-2026-09.md)。
@@ -193,7 +193,7 @@ lang: en
 translation_key: stable-shared-key
 ```
 
-当前公开站点以中文为主；不要为了对称创建质量不足的英文版本。
+历史写作默认使用中文；不要为了对称创建质量不足的英文文章。个人网站的主要页面与公开案例按双语维护。
 
 ## 维护项目数据
 

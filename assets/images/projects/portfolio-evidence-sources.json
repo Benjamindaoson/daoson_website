@@ -38,5 +38,64 @@
     "intrinsic_score_driver_recall": 0.9,
     "query_aware_driver_recall": 1,
     "conditions": "Internal RetailHarnessAblation-v1; same typed workstream outputs and underlying analytical operators/data; Complete Journey CC0 dataset."
+  },
+  "spatialmind": {
+    "repository": "https://github.com/Benjamindaoson/SpatialMind",
+    "commit": "bd56671c5d59c837d3006c343ea6356bce7db7e4",
+    "source": "https://github.com/Benjamindaoson/SpatialMind/actions/runs/37789657766",
+    "home_grid_scenario": {
+      "scenario": "memory_hint_toolbox",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "no_memory_steps": [
+        44,
+        81,
+        44
+      ],
+      "full_steps": [
+        21,
+        20,
+        17
+      ],
+      "reduction_percent": 65.7,
+      "conditions": "One remembered-location scenario in the 54-trial 2D grid suite; not an all-scenario average or physical-robot result."
+    },
+    "metric_simulation": {
+      "trials": 336,
+      "seeds": 12,
+      "interventions": 7,
+      "policies": 4,
+      "unique_topologies": 4,
+      "aggregate": {
+        "full": {
+          "n": 84,
+          "success_count": 81,
+          "mean_distance_m": 20.869,
+          "false_positive_completions": 0
+        },
+        "no_memory": {
+          "n": 84,
+          "success_count": 78,
+          "mean_distance_m": 20.619,
+          "false_positive_completions": 1
+        },
+        "static_memory": {
+          "n": 84,
+          "success_count": 81,
+          "mean_distance_m": 20.869,
+          "false_positive_completions": 0
+        },
+        "nearest_search": {
+          "n": 84,
+          "success_count": 82,
+          "mean_distance_m": 19.167,
+          "false_positive_completions": 0
+        }
+      },
+      "conditions": "Pure Python metric-grid simulation. Nearest-Search succeeds more often and travels less than Full; Full and Static-Memory have identical aggregate results. No physical-robot result."
+    }
   }
 }

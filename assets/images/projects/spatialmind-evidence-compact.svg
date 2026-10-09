@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="330" viewBox="0 0 420 330" role="img" aria-labelledby="title desc">
+<title id="title">SpatialMind: metric-simulation results</title>
+<desc id="desc">Full 81/84 successes and 20.869 simulated metres; No-Memory 78/84 and 20.619; Static-Memory 81/84 and 20.869; Nearest-Search 82/84 and 19.167. 336 missions on four fixed topologies, not physical hardware.</desc>
+<rect width="420" height="330" rx="12" fill="#f7f4ec"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#213b2c">
+<text x="20" y="34" font-size="23" font-weight="700">SpatialMind · baseline audit</text>
+<text x="20" y="63" font-size="19">336 metric-simulation missions</text>
+<rect x="12" y="79" width="396" height="187" rx="10" fill="#e5eee1"/>
+<text x="22" y="105" font-size="18" font-weight="700">Policy</text>
+<text x="278" y="105" font-size="18" font-weight="700" text-anchor="end">Success</text>
+<text x="398" y="105" font-size="18" font-weight="700" text-anchor="end">Travel (m)</text>
+<text x="22" y="141" font-size="18">Full Agent</text><text x="278" y="141" font-size="21" text-anchor="end">81/84</text><text x="398" y="141" font-size="21" text-anchor="end">20.869</text>
+<text x="22" y="177" font-size="18">No-Memory</text><text x="278" y="177" font-size="21" text-anchor="end">78/84</text><text x="398" y="177" font-size="21" text-anchor="end">20.619</text>
+<text x="22" y="213" font-size="18">Static-Memory</text><text x="278" y="213" font-size="21" text-anchor="end">81/84</text><text x="398" y="213" font-size="21" text-anchor="end">20.869</text>
+<text x="22" y="249" font-size="18" font-weight="700">Nearest-Search</text><text x="278" y="249" font-size="21" text-anchor="end">82/84</text><text x="398" y="249" font-size="21" text-anchor="end">19.167</text>
+<text x="20" y="292" font-size="18">4 fixed topologies · simulated metres</text>
+<text x="20" y="316" font-size="18">Not Gazebo or physical hardware</text>
+</g></svg>

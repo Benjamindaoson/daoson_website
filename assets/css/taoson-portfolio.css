@@ -75,6 +75,8 @@ body.portfolio-site .site-main-inner { width: 100%; max-width: var(--portfolio-w
 .identity-heading h1 { margin: 0 0 .8rem; font-size: clamp(2.65rem, 4.9vw, 4.25rem); font-weight: 600; line-height: 1.1; letter-spacing: -.055em; }
 .identity-tagline { margin: 0; max-width: 29rem; font-size: clamp(1.15rem, 1.8vw, 1.45rem); line-height: 1.6; color: var(--text-muted); }
 .identity-lead { margin: 0; max-width: 29rem; font-size: 1.06rem; line-height: 1.9; color: var(--text-muted); }
+.identity-introduction { min-width: 0; }
+.identity-background { max-width: 29rem; margin: .85rem 0 0; padding-left: .8rem; border-left: 2px solid var(--border-strong); color: var(--text-muted); font-size: .9rem; line-height: 1.75; overflow-wrap: anywhere; }
 .identity-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1.35rem; margin-top: 1.5rem; }
 .identity-contact { display: inline-flex; gap: .6rem; align-items: center; min-height: 44px; font-size: .94rem; font-weight: 600; text-decoration: none; }
 .identity-contact:hover { text-decoration: underline; }
@@ -120,6 +122,14 @@ body.portfolio-site .site-main-inner { width: 100%; max-width: var(--portfolio-w
 .selected-project-lead h3 { font-size: clamp(1.6rem, 2.65vw, 2.15rem); }
 .selected-project-lead .selected-project-evidence { margin-top: .2rem; }
 
+/* A short route into the three complementary post-training cases. */
+.home-training-path { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 1rem 1.4rem; align-items: center; margin-top: 2.2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+.home-training-path > p { margin: 0; font-size: .91rem; font-weight: 600; color: var(--text-muted); }
+.home-training-path > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; min-width: 0; }
+.home-training-path a { display: flex; align-items: center; justify-content: space-between; gap: .6rem; min-width: 0; min-height: 54px; padding: .7rem .9rem; border: 1px solid var(--border); border-radius: 6px; color: var(--text); text-decoration: none; font-size: .9rem; line-height: 1.55; overflow-wrap: anywhere; }
+.home-training-path a:hover { background: var(--accent-bg); border-color: var(--border-strong); color: var(--text); }
+.home-training-path a > [aria-hidden] { flex-shrink: 0; color: var(--accent); }
+
 .home-perspective { display: grid; grid-template-columns: 1fr 1.1fr; gap: 3rem; margin-bottom: 3.5rem; padding-top: 2.7rem; border-top: 1px solid var(--border); }
 .home-perspective h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 500; line-height: 1.5; margin: 0; }
 .perspective-copy p { margin: 0; font-size: 1rem; line-height: 1.9; color: var(--text-muted); }
@@ -164,6 +174,38 @@ body.portfolio-site .site-main-inner { width: 100%; max-width: var(--portfolio-w
 .resume-skills { display: grid; grid-template-columns: 10rem 1fr; gap: 1rem 1.5rem; }
 .resume-skills dt { font-weight: 600; }
 .resume-skills dd { margin: 0; color: var(--text-muted); }
+
+/* Shared career and education content, with a shorter About presentation. */
+.about-english-name { display: inline-block; margin-left: .4em; color: var(--text-muted); font-size: .56em; font-weight: 400; line-height: 1.5; letter-spacing: 0; white-space: nowrap; }
+.resume-role { margin: -.35rem 0 .65rem; color: var(--text); font-size: 1.12rem; line-height: 1.6; font-weight: 600; }
+.portfolio-site .career-timeline { display: grid; gap: 1.8rem; margin: 1.2rem 0 0; padding: 0; list-style: none; }
+.portfolio-site .career-timeline > .career-entry { position: relative; min-width: 0; margin: 0; padding: 0 0 0 1.3rem; border-left: 1px solid var(--border-strong); overflow-wrap: anywhere; }
+.career-entry::before { content: ""; position: absolute; top: .42rem; left: -4px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.portfolio-site .career-entry > .resume-period { margin: 0 0 .3rem; color: var(--text-muted); font-size: .88rem; line-height: 1.6; font-variant-numeric: tabular-nums; }
+.portfolio-site .career-entry > h3 { margin: 0 0 .4rem; font-size: 1.15rem; line-height: 1.5; }
+.portfolio-site .career-entry > .career-company { margin: 0 0 .6rem; color: var(--text-muted); font-size: .94rem; line-height: 1.75; }
+.career-company strong { color: var(--text); font-weight: 600; }
+.portfolio-site .career-entry > p:not(.resume-period):not(.career-company) { margin: .6rem 0; }
+.portfolio-site .career-entry > ul { margin: .75rem 0 0; padding-left: 1.15rem; }
+.portfolio-site .career-entry > ul > li { margin: 0 0 .65rem; padding-left: .1rem; line-height: 1.8; }
+.portfolio-site .career-entry > ul > li:last-child { margin-bottom: 0; }
+.portfolio-site .career-timeline-compact { gap: 1.5rem; }
+.portfolio-site .career-timeline-compact > .career-entry { padding-left: 1.15rem; }
+.portfolio-site .career-timeline-compact .career-company { margin-bottom: .4rem; }
+.profile-education, .profile-directions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 2rem; margin: 1.1rem 0; }
+.education-entry, .profile-directions > div { min-width: 0; overflow-wrap: anywhere; }
+.education-entry { padding: 1.1rem 1.2rem; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-elevated); }
+.portfolio-site .education-entry h3, .portfolio-site .profile-directions h3 { margin: 0 0 .6rem; font-size: 1.1rem; line-height: 1.5; }
+.portfolio-site .education-entry p { margin: .45rem 0 0; font-size: .94rem; line-height: 1.75; }
+.portfolio-site .education-entry .resume-period { color: var(--text-muted); font-size: .88rem; }
+.profile-directions > div { padding: 1.15rem 1.3rem; border-radius: 6px; background: #f1eee3; }
+.profile-directions > div:nth-child(2) { background: var(--accent-bg); }
+.portfolio-site .profile-directions p { margin: .6rem 0 .9rem; color: var(--text-muted); font-size: .96rem; }
+.profile-directions .text-link { display: inline-flex; align-items: center; min-height: 44px; flex-wrap: wrap; }
+.research-status { color: var(--text-muted); font-size: .91rem; line-height: 1.75; }
+.resume-certifications, .resume-languages { color: var(--text-muted); font-size: .93rem; line-height: 1.8; overflow-wrap: anywhere; }
+.resume-certifications strong { color: var(--text); }
+.resume-updated { margin: 2rem 0 0; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: .88rem; line-height: 1.7; }
 .contact-topics { display: grid; grid-template-columns: 10rem 1fr; gap: 1.4rem 2rem; }
 .contact-topics dt { font-weight: 600; }
 .contact-topics dd { margin: 0; color: var(--text-muted); }
@@ -200,6 +242,14 @@ body.portfolio-site .site-main-inner { width: 100%; max-width: var(--portfolio-w
 .portfolio-site .work-evidence > span { font-size: .8rem; }
 .portfolio-site .work-read { font-size: .9rem; }
 .portfolio-site .work-evidence > strong { font-weight: 600; }
+.portfolio-site .work-grid .work-card-text { display: flex; flex-direction: column; }
+.portfolio-site .work-card-text .work-card-intro, .portfolio-site .work-card-text .work-card-details { flex: 0 0 auto; }
+.portfolio-site .work-card-text .work-card-details { margin-top: auto; }
+.portfolio-site .work-grid .work-card.work-card-text:only-child { display: flex; }
+.portfolio-site .work-artifacts { min-width: 0; margin: 0 1.35rem 1rem; padding: 1rem 1.1rem; border-radius: 6px; background: var(--accent-bg); overflow-wrap: anywhere; }
+.portfolio-site .work-artifacts h4 { margin: 0 0 .5rem; font-size: .88rem; font-weight: 600; line-height: 1.6; letter-spacing: 0; }
+.portfolio-site .work-artifacts p { margin: 0; color: var(--text-muted); font-size: .92rem; line-height: 1.8; }
+.portfolio-site .work-metric-context { margin: .2rem 0 .8rem; color: var(--text-muted); font-size: .875rem; line-height: 1.75; overflow-wrap: anywhere; }
 .portfolio-site .labs-grid { gap: 1rem; }
 .portfolio-site .project-card { background: var(--bg-elevated); border-color: var(--border); border-radius: 8px; box-shadow: none; }
 .portfolio-site .project-card:hover { border-color: var(--border-strong); box-shadow: none; transform: none; }
@@ -324,13 +374,16 @@ body.portfolio-site .site-main-inner { width: 100%; max-width: var(--portfolio-w
   .identity-hero { grid-template-columns: 1fr; gap: 1.5rem; padding: 2.7rem 0 2rem; }
   .identity-heading h1 { font-size: clamp(2.55rem, 7vw, 4.15rem); }
   .identity-lead { max-width: 43rem; }
-  .identity-introduction { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
-  .identity-actions { margin-top: 0; gap: .8rem; flex-direction: column; align-items: start; }
+  .identity-introduction { display: grid; grid-template-columns: minmax(0, 1fr) max-content; column-gap: 1.8rem; row-gap: .65rem; align-items: start; }
+  .identity-introduction .identity-lead { grid-column: 1; grid-row: 1; }
+  .identity-background { grid-column: 1; grid-row: 2; max-width: 43rem; margin-top: 0; }
+  .identity-actions { grid-column: 2; grid-row: 1 / 3; align-self: center; margin-top: 0; gap: .8rem; flex-direction: column; align-items: start; }
   .direction-guide { margin-bottom: 3rem; }
   .selected-project-lead { gap: 0 1.6rem; grid-template-columns: 1fr 1fr; }
   .selected-project-lead h3 { font-size: 1.55rem; }
   .selected-projects { gap: 1.8rem; }
   .selected-project-image.has-compact-evidence img { aspect-ratio: 14 / 11; }
+  .home-training-path { grid-template-columns: minmax(0, 1fr); gap: .75rem; }
   .portfolio-site .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .portfolio-site .work-card { display: flex; }
   .portfolio-site .work-figure { border-bottom: 1px solid var(--border); }
@@ -343,6 +396,7 @@ body.portfolio-site .site-main-inner { width: 100%; max-width: var(--portfolio-w
   .identity-tagline { font-size: 1.12rem; }
   .identity-introduction { display: block; }
   .identity-lead { font-size: .97rem; line-height: 1.75; }
+  .identity-background { margin-top: .8rem; font-size: .875rem; }
   .identity-actions { flex-direction: row; margin-top: .9rem; gap: 1.3rem; }
   .direction-guide { grid-template-columns: 1fr 1fr; gap: .6rem; margin-bottom: 1.8rem; }
   .direction-link { padding: .8rem .85rem; }
@@ -360,6 +414,9 @@ body.portfolio-site .site-main-inner { width: 100%; max-width: var(--portfolio-w
   .selected-project-summary { font-size: .96rem; }
   .selected-project-links > a { min-height: 44px; }
   .home-work { margin-bottom: 3rem; }
+  .home-training-path { margin-top: 1.7rem; padding-top: 1.25rem; }
+  .home-training-path > div { grid-template-columns: minmax(0, 1fr); gap: .55rem; }
+  .home-training-path a { min-height: 46px; padding: .7rem .85rem; }
   .home-perspective { grid-template-columns: 1fr; gap: 1.4rem; padding-top: 2rem; margin-bottom: 2.5rem; }
   .home-perspective h2 { font-size: 1.65rem; }
   .perspective-copy p { font-size: .96rem; }
@@ -375,11 +432,19 @@ body.portfolio-site .site-main-inner { width: 100%; max-width: var(--portfolio-w
   .portfolio-site .page-lead { font-size: 1rem; }
   .resume-skills, .contact-topics { grid-template-columns: 1fr; gap: .45rem; }
   .resume-skills dd, .contact-topics dd { margin-bottom: .8rem; }
+  .profile-education, .profile-directions { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .education-entry, .profile-directions > div { padding: 1rem 1.1rem; }
+  .portfolio-site .career-timeline { gap: 1.6rem; }
+  .portfolio-site .career-timeline > .career-entry { padding-left: 1rem; }
+  .portfolio-site .career-entry > h3 { font-size: 1.08rem; }
+  .portfolio-site .career-entry > ul { padding-left: 1rem; }
+  .resume-role { font-size: 1.03rem; }
   .portfolio-site .work-grid, .portfolio-site .labs-grid { grid-template-columns: 1fr; }
   .portfolio-site .work-grid .work-card:only-child { display: flex; }
   .portfolio-site .work-grid .work-card:only-child .work-figure { align-self: stretch; }
   .portfolio-site .work-grid .work-card:only-child .work-figure { border-bottom: 1px solid var(--border); }
   .portfolio-site .work-caption { padding: 1.2rem; }
+  .portfolio-site .work-artifacts { margin-right: 1.2rem; margin-left: 1.2rem; padding: .9rem; }
   .portfolio-site .post-header h1 { font-size: 1.8rem; }
   .portfolio-site .post-content { font-size: .98rem; }
   .portfolio-site .post-content table { font-size: .84rem; }
@@ -393,9 +458,11 @@ body.portfolio-site .site-main-inner { width: 100%; max-width: var(--portfolio-w
   .portfolio-header-inner { gap: .5rem; }
   .portfolio-header.nav-ready .portfolio-menu-toggle { gap: .5rem; }
   .identity-actions { gap: .75rem; }
+  .portfolio-site .career-entry > ul { padding-left: .9rem; }
+  .portfolio-site .work-artifacts { margin-right: 1rem; margin-left: 1rem; }
 }
 @media print {
-  @page { margin: 16mm 17mm; }
+  @page { margin: 12mm 14mm; }
   html { background: #fff; background-image: none; }
   .portfolio-header, .portfolio-footer, .skip-link, .pagefind-modal, .resume-actions, .resume-page .page-actions { display: none !important; }
   body.portfolio-site { --bg: #fff; --bg-elevated: #fff; background: #fff; background-image: none; color: #111; font-size: 10pt; line-height: 1.5; }
@@ -404,14 +471,60 @@ body.portfolio-site .site-main-inner { width: 100%; max-width: var(--portfolio-w
   body.portfolio-site .site-main { padding: 0; min-height: 0; }
   body.portfolio-site .site-main-inner, .resume-page { max-width: none; width: 100%; padding: 0; }
   .resume-page :is(h1,h2,h3,p,li,a) { color: #111; }
-  .resume-page .portfolio-page-header { margin-bottom: 1rem; }
-  .resume-page .portfolio-page-header h1 { font-size: 25pt; }
+  .resume-page .portfolio-page-header { margin-bottom: .65rem; }
+  .resume-page .portfolio-page-header .page-kicker { display: none; }
+  .resume-page .portfolio-page-header h1 { margin: 0 0 .3rem; font-size: 23pt; }
   .resume-page .page-lead, .resume-page .resume-summary { font-size: 10pt; line-height: 1.5; }
   .resume-section { margin-top: 1rem; padding-top: .7rem; }
   .resume-section h2 { font-size: 13pt; break-after: avoid; }
   .resume-section h3 { font-size: 11pt; break-after: avoid; }
   .resume-section li { margin-bottom: .25rem; }
   .resume-page a { text-decoration: none; }
-  .resume-page article { break-inside: avoid; }
+  .resume-page .resume-project, .resume-page #research > .resume-entry, .resume-page .education-entry { break-inside: avoid; page-break-inside: avoid; }
+  .resume-page .resume-role { margin: 0 0 .4rem; font-size: 11pt; line-height: 1.5; }
+  .resume-page .about-english-name { font-size: 13pt; color: #111; }
+  .resume-page .resume-contact, .resume-page .resume-note, .resume-page .resume-period,
+  .resume-page .research-status, .resume-page .resume-certifications, .resume-page .resume-languages,
+  .resume-page .resume-updated, .resume-page .resume-skills :is(dt,dd) { font-size: 10pt; line-height: 1.5; color: #111; }
+  .resume-page .career-timeline { display: block; margin: .7rem 0 0; padding: 0; }
+  .resume-page .career-timeline > .career-entry { margin: 0 0 1rem; padding: 0; border: 0; break-inside: auto; page-break-inside: auto; }
+  .resume-page .career-entry::before { display: none; }
+  .resume-page .career-entry > .resume-period,
+  .resume-page .career-entry > h3,
+  .resume-page .career-entry > .career-company { break-after: avoid; page-break-after: avoid; }
+  .resume-page .career-entry > h3 { margin: .15rem 0; font-size: 11pt; line-height: 1.5; }
+  .resume-page .career-entry > .career-company { margin: 0 0 .35rem; font-size: 10pt; line-height: 1.5; color: #111; }
+  .resume-page .career-entry > p, .resume-page .career-entry > ul > li { font-size: 10pt; line-height: 1.5; orphans: 3; widows: 3; }
+  .resume-page .career-entry > ul { margin: .4rem 0 0; padding-left: 1rem; }
+  .resume-page .career-entry > ul > li { margin-bottom: .3rem; padding-left: 0; break-inside: avoid; page-break-inside: avoid; }
+  .resume-page .profile-education { display: block; margin: .7rem 0; }
+  .resume-page .education-entry { margin: 0 0 .7rem; padding: 0; border: 0; border-radius: 0; background: transparent; }
+  .resume-page .education-entry h3 { font-size: 11pt; margin: 0 0 .2rem; }
+  .resume-page .education-entry p { margin: .2rem 0; font-size: 10pt; line-height: 1.5; }
+  .resume-page .resume-project p { font-size: 10pt; line-height: 1.5; orphans: 3; widows: 3; }
+  .resume-page .resume-updated { margin-top: 1rem; padding-top: .5rem; }
   .resume-section:has(.resume-skills) > .resume-note { break-after: avoid; }
+  /* Keep a complete public CV compact without reducing its 10pt body type. */
+  .resume-page .resume-role { margin: 0 0 .2rem; }
+  .resume-page .page-lead { margin: .2rem 0; }
+  .resume-page .resume-contact { margin: .3rem 0 0; }
+  .resume-page .resume-section { margin-top: .65rem; padding-top: .45rem; }
+  .resume-page .resume-section h2 { margin-bottom: .4rem; font-size: 12pt; }
+  .resume-page .resume-section p { margin: .3rem 0; }
+  /* The printed CV puts experience and projects before the repeated skill list. */
+  .resume-page .resume-skills { display: none; }
+  .resume-page .resume-summary, .resume-page .resume-section p,
+  .resume-page .career-entry > p, .resume-page .resume-project p { line-height: 1.4; }
+  .resume-page .resume-section article { margin: .45rem 0; }
+  .resume-page .resume-section h3 { margin-bottom: .2rem; }
+  .resume-page .career-timeline > .career-entry { margin-bottom: .6rem; }
+  .resume-page .career-entry > p:not(.resume-period):not(.career-company) { margin: .3rem 0; }
+  .resume-page .career-entry > ul { margin-top: .25rem; }
+  .resume-page .career-entry > ul > li { margin-bottom: .2rem; line-height: 1.4; }
+  .resume-page .career-entry:last-child > ul { display: none; }
+  .resume-page #selected-projects { break-before: page; page-break-before: always; margin-top: 0; }
+  .resume-page .profile-education { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; margin: .5rem 0; }
+  .resume-page .education-entry { margin: 0; }
+  .resume-page .education-entry h3 { font-size: 10.5pt; }
+  .resume-page .resume-updated { margin-top: .6rem; padding-top: .35rem; }
 }
