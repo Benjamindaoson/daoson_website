@@ -552,3 +552,28 @@ body.portfolio-site .site-main-inner { width: 100%; max-width: var(--portfolio-w
   .resume-page .education-entry h3 { font-size: 10.5pt; }
   .resume-page .resume-updated { margin-top: .6rem; padding-top: .35rem; }
 }
+
+/* The work directory also reveals its cards without a second landing-page hero. */
+.portfolio-site .labs-hero-compact {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: .5rem 1.5rem; max-width: none;
+  margin: 0; padding: 1rem 0 .8rem; border-bottom: 1px solid var(--border);
+}
+.portfolio-site .labs-hero-compact h1 {
+  margin: 0; font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  line-height: 1.35; font-weight: 650; letter-spacing: -.04em;
+}
+.portfolio-site .labs-shortcuts { display: flex; flex-wrap: wrap; gap: .3rem 1.25rem; }
+.portfolio-site .labs-shortcuts a {
+  display: inline-flex; align-items: center; gap: .25rem;
+  min-height: 36px; border: 0; color: var(--accent);
+  font-weight: 600; font-size: .85rem; text-decoration: none;
+}
+.portfolio-site .labs-shortcuts a:hover { text-decoration: underline; }
+.portfolio-site .labs-section.project-domain { margin: 1.45rem 0 3.1rem; }
+.portfolio-site .labs-section.project-domain .selected-work-head { margin-bottom: .35rem; }
+.portfolio-site .labs-section.project-domain .project-domain-intro { margin: .3rem 0 .95rem; }
+@media (max-width: 640px) {
+  .portfolio-site .labs-hero-compact { padding: .6rem 0 .65rem; }
+  .portfolio-site .labs-section.project-domain { margin: .85rem 0 2.3rem; }
+}
