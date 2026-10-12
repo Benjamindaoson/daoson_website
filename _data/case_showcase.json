@@ -1,0 +1,658 @@
+{
+  "enterprise-data-agent": {
+    "topic_zh": "从经营提问到可追溯分析报告",
+    "topic_en": "From business questions to traceable reports",
+    "steps": [
+      {
+        "title_zh": "业务提问",
+        "title_en": "Business question",
+        "detail_zh": "解析业务目标与指标限制",
+        "detail_en": "Parse the investigation goal and metric constraints"
+      },
+      {
+        "title_zh": "语义层",
+        "title_en": "Semantic layer",
+        "detail_zh": "统一指标、维度与访问范围",
+        "detail_en": "Resolve metrics, dimensions and governed access"
+      },
+      {
+        "title_zh": "Supervisor 与专家",
+        "title_en": "Supervisor + specialists",
+        "detail_zh": "按依赖编排五类分析工作流",
+        "detail_en": "Orchestrate five specialist workstreams"
+      },
+      {
+        "title_zh": "确定性计算",
+        "title_en": "Deterministic computation",
+        "detail_zh": "只读 SQL、算子与证据校验",
+        "detail_en": "Read-only SQL, analytical operators and evidence checks"
+      },
+      {
+        "title_zh": "报告与再调查",
+        "title_en": "Report + replan",
+        "detail_zh": "交付图表、依据、建议与后续问题",
+        "detail_en": "Deliver findings, evidence, charts and next steps"
+      }
+    ],
+    "highlights": [
+      {
+        "title_zh": "不让模型随意编指标",
+        "title_en": "Prevent metric hallucinations",
+        "detail_zh": "模型负责调查路径，语义层和确定性算子负责计算与约束。",
+        "detail_en": "The model plans; the versioned semantic layer and deterministic operators govern metrics."
+      },
+      {
+        "title_zh": "长任务有状态、有边界",
+        "title_en": "Bounded, recoverable investigations",
+        "detail_zh": "以检查点保存工作流和中间证据，工具权限、查询成本与异常处理明确。",
+        "detail_en": "Checkpoint workstreams and evidence; bound tools, query cost and failure handling."
+      },
+      {
+        "title_zh": "评估最终结论而非聊天流畅度",
+        "title_en": "Evaluate conclusions, not fluent prose",
+        "detail_zh": "以独立 SQL 与冻结任务集核对驱动因素、数值及问题相关性。",
+        "detail_en": "Use independent SQL and frozen tasks to check driver findings, numbers and relevance."
+      }
+    ],
+    "metrics": [
+      {
+        "value_zh": "147 万",
+        "value_en": "1.47M",
+        "label_zh": "公开交易明细",
+        "label_en": "Public transaction rows",
+        "note_zh": "Complete Journey 的 1,469,307 条交易记录；并非商业客户生产数据。",
+        "note_en": "1,469,307 Complete Journey rows; not a customer's production data."
+      },
+      {
+        "value_zh": "+10 pp",
+        "value_en": "+10 pp",
+        "label_zh": "驱动召回率差值",
+        "label_en": "Driver-recall improvement",
+        "note_zh": "相同分析输出、10 个内部案例：90% → 100%；仅比较选择策略。",
+        "note_en": "Same analysis outputs, ten internal cases: 90% to 100%, a finding-selection ablation."
+      },
+      {
+        "value_zh": "206 / 210",
+        "value_en": "206 / 210",
+        "label_zh": "内部对抗任务通过",
+        "label_en": "Internal adversarial tasks passed",
+        "note_zh": "开发集 164/168、冻结集 42/42；仍有 4 个缺失数据措辞失败。",
+        "note_en": "164/168 development and 42/42 frozen cases; four missing-data wording failures remain."
+      }
+    ]
+  },
+  "reward-modeling-lab": {
+    "topic_zh": "训练一个奖励模型，也要检验它学到的捷径",
+    "topic_en": "Train a reward model; audit what it actually learns",
+    "steps": [
+      {
+        "title_zh": "偏好数据治理",
+        "title_en": "Preference data",
+        "detail_zh": "问题级隔离、去重、分层",
+        "detail_en": "Isolate questions, deduplicate and stratify"
+      },
+      {
+        "title_zh": "8B QLoRA 训练",
+        "title_en": "8B QLoRA training",
+        "detail_zh": "单张 A10、4-bit NF4、1000 步",
+        "detail_en": "One A10, NF4 4-bit, 1,000 updates"
+      },
+      {
+        "title_zh": "冻结测试",
+        "title_en": "Held-out evaluation",
+        "detail_zh": "独立问题上的成对比较",
+        "detail_en": "Pairwise judgments on held-out questions"
+      },
+      {
+        "title_zh": "偏差审计",
+        "title_en": "Shortcut audit",
+        "detail_zh": "长度匹配与优质短答案挑战",
+        "detail_en": "Length-matched and shorter-better challenges"
+      },
+      {
+        "title_zh": "排序与复盘",
+        "title_en": "Ranking & review",
+        "detail_zh": "多候选排序、检查点比较",
+        "detail_en": "Multi-candidate ranking and checkpoint review"
+      }
+    ],
+    "highlights": [
+      {
+        "title_zh": "准确率不是最终答案",
+        "title_en": "A high score is not enough",
+        "detail_zh": "“总选较长回答”的规则超过了微调模型原始准确率，因此主动补做困难测试。",
+        "detail_en": "A pick-the-longer rule beat the model on the original test, motivating harder controls."
+      },
+      {
+        "title_zh": "单卡可复现后训练",
+        "title_en": "Reproducible single-GPU post-training",
+        "detail_zh": "基于冻结训练配置保留步数、硬件与评测工件；V2 GPU 仍未运行。",
+        "detail_en": "Preserve frozen training configs, hardware and results; V2 GPU training has not run."
+      },
+      {
+        "title_zh": "检查成对分数之外的能力",
+        "title_en": "Check beyond pairwise scores",
+        "detail_zh": "引入 NDCG@5、长度控制及 Checkpoint 对照，明确结论适用范围。",
+        "detail_en": "Use NDCG@5, length-controlled tests and checkpoint comparisons."
+      }
+    ],
+    "metrics": [
+      {
+        "value_zh": "1,000",
+        "value_en": "1,000",
+        "label_zh": "单卡训练更新步数",
+        "label_en": "Single-GPU updates",
+        "note_zh": "NVIDIA A10 23GB 的 V1 冻结实验，约 3 小时 18 分钟。",
+        "note_en": "Frozen V1 experiment on one A10 23GB, about 3h18m."
+      },
+      {
+        "value_zh": "91.35%",
+        "value_en": "91.35%",
+        "label_zh": "微调后成对判断准确率",
+        "label_en": "Pairwise accuracy after training",
+        "note_zh": "451 个独立问题、4510 对冻结测试；仅一次种子实验。",
+        "note_en": "451 held-out questions / 4,510 pairs in a single-seed evaluation."
+      },
+      {
+        "value_zh": "94.61%",
+        "value_en": "94.61%",
+        "label_zh": "简单长度规则准确率",
+        "label_en": "Length-heuristic accuracy",
+        "note_zh": "“总选更长回答”规则高于原分布上的奖励模型分数，揭示潜在捷径。",
+        "note_en": "Always choosing the longer answer beats the model on the original distribution."
+      }
+    ]
+  },
+  "rewardlens": {
+    "topic_zh": "分数相同，模型会不会依赖不同的视觉证据？",
+    "topic_en": "Same scores, different responses to visual evidence?",
+    "steps": [
+      {
+        "title_zh": "固定语言任务",
+        "title_en": "Fix language inputs",
+        "detail_zh": "保持问题与候选答案不变",
+        "detail_en": "Keep questions and candidate answers fixed"
+      },
+      {
+        "title_zh": "生成受控图像",
+        "title_en": "Create controlled edits",
+        "detail_zh": "相关变化与无关变化分别处理",
+        "detail_en": "Apply relevant and irrelevant image edits"
+      },
+      {
+        "title_zh": "多模型评判",
+        "title_en": "Run model judges",
+        "detail_zh": "比较原图与编辑后的判断",
+        "detail_en": "Judge original and edited images"
+      },
+      {
+        "title_zh": "分因素评估",
+        "title_en": "Factor-specific measures",
+        "detail_zh": "测量 RA（适应）与 II（不变）",
+        "detail_en": "Measure RA (adaptation) and II (invariance)"
+      },
+      {
+        "title_zh": "匹配对比",
+        "title_en": "Matched comparison",
+        "detail_zh": "静态近分模型的行为差异",
+        "detail_en": "Compare behavior among static-score matches"
+      }
+    ],
+    "highlights": [
+      {
+        "title_zh": "区分静态成绩和干预行为",
+        "title_en": "Separate scores from intervention behavior",
+        "detail_zh": "静态偏好分数不能替代模型对证据变化的响应测试。",
+        "detail_en": "Static preference accuracy is not a substitute for testing evidence sensitivity."
+      },
+      {
+        "title_zh": "只改变可控的视觉因素",
+        "title_en": "Change only controlled visual factors",
+        "detail_zh": "数量、属性、存在和空间关系，区分正确选项应改变与应保持的情况。",
+        "detail_en": "Edit count, attribute, existence and spatial factors under relevant/irrelevant conditions."
+      },
+      {
+        "title_zh": "评测结论保留条件",
+        "title_en": "Keep the conditional estimand explicit",
+        "detail_zh": "RA 在每个模型自身的原图正确子集上计算；不声称通用模型排名。",
+        "detail_en": "RA is measured within each judge's own base-correct subset, not a universal ranking."
+      }
+    ],
+    "metrics": [
+      {
+        "value_zh": "8 × 4",
+        "value_en": "8 × 4",
+        "label_zh": "模型与视觉因素",
+        "label_en": "Judges and visual factors",
+        "note_zh": "8 个评判模型、4 类受控因素。",
+        "note_en": "Eight judges and four controlled factors."
+      },
+      {
+        "value_zh": "2,400",
+        "value_en": "2,400",
+        "label_zh": "受控审计图像",
+        "label_en": "Controlled audit images",
+        "note_zh": "800 个三元组，2,400 张渲染图像；与独立静态集分开。",
+        "note_en": "800 triplets/2,400 rendered images, separate from the static set."
+      },
+      {
+        "value_zh": "15.05 pp",
+        "value_en": "15.05 pp",
+        "label_zh": "Attribute 上的 RA 差异",
+        "label_en": "Attribute RA difference",
+        "note_zh": "独立静态分数均 80.5%；RA 按各模型自己原图正确子集计算。",
+        "note_en": "Both static scores are 80.5%; RA uses each model's own base-correct subset."
+      }
+    ]
+  },
+  "spatialmind": {
+    "topic_zh": "机器人记住的位置，也必须接受新观察的检验",
+    "topic_en": "A robot must verify memories against new observations",
+    "steps": [
+      {
+        "title_zh": "环境观察",
+        "title_en": "Observation",
+        "detail_zh": "可见区域、遮挡与证据",
+        "detail_en": "Visibility, occlusions and observations"
+      },
+      {
+        "title_zh": "持久空间记忆",
+        "title_en": "Persistent spatial memory",
+        "detail_zh": "SQLite 保存位置、置信度与历史",
+        "detail_en": "SQLite locations, confidence and history"
+      },
+      {
+        "title_zh": "主动搜索",
+        "title_en": "Active search",
+        "detail_zh": "兼顾记忆线索、覆盖率与代价",
+        "detail_en": "Balance remembered hints, coverage and cost"
+      },
+      {
+        "title_zh": "执行与恢复",
+        "title_en": "Execution + recovery",
+        "detail_zh": "任务状态、障碍变化、有界重试",
+        "detail_en": "Task state, changing obstacles and retries"
+      },
+      {
+        "title_zh": "验证与重规划",
+        "title_en": "Verify + replan",
+        "detail_zh": "确认目标后才结束，否则修正记忆",
+        "detail_en": "Finish only on evidence; otherwise revise memory"
+      }
+    ],
+    "highlights": [
+      {
+        "title_zh": "不把先前记忆当成当前事实",
+        "title_en": "Memory is not current truth",
+        "detail_zh": "只有目标位置真正可见且缺失时才降低旧记忆置信度。",
+        "detail_en": "Lower memory confidence only when a historically expected location is actually visible and empty."
+      },
+      {
+        "title_zh": "避免未观察就宣布成功",
+        "title_en": "No success without observation",
+        "detail_zh": "Ray Casting 的可见性与观测证据共同决定完成判定。",
+        "detail_en": "Tie task completion to ray-cast visibility and positive observation evidence."
+      },
+      {
+        "title_zh": "公平展示简单基线",
+        "title_en": "Show where simple baselines win",
+        "detail_zh": "同时报告历史线索单场景收益与 336 次度量仿真全套对照。",
+        "detail_en": "Present both a three-seed remembered-location gain and the broader 336-mission suite."
+      }
+    ],
+    "metrics": [
+      {
+        "value_zh": "65.7%",
+        "value_en": "65.7%",
+        "label_zh": "单场景平均步数减少",
+        "label_en": "Mean step reduction in one scenario",
+        "note_zh": "memory_hint_toolbox 的 3 种子二维网格对照，56.3 → 19.3 步。",
+        "note_en": "Three seeds in memory_hint_toolbox 2D grids: 56.3 to 19.3 steps."
+      },
+      {
+        "value_zh": "336",
+        "value_en": "336",
+        "label_zh": "度量仿真任务",
+        "label_en": "Metric-simulation missions",
+        "note_zh": "4 个固定拓扑、7 种干预、4 种策略、12 个种子。",
+        "note_en": "Four fixed topologies, seven interventions, four policies and twelve seeds."
+      },
+      {
+        "value_zh": "82 / 84",
+        "value_en": "82 / 84",
+        "label_zh": "Nearest-Search 成功次数",
+        "label_en": "Nearest-Search successes",
+        "note_zh": "该基线在新度量仿真中优于 Full（81/84）；没有真机证据。",
+        "note_en": "Nearest-Search outperforms Full (81/84) in the newer suite; no physical-robot evidence."
+      }
+    ]
+  },
+  "multimodal-content-creation-agent": {
+    "topic_zh": "让视频 AI 剪辑有证据、有审核、失败后可恢复",
+    "topic_en": "Make AI video editing inspectable, reviewable and recoverable",
+    "steps": [
+      {
+        "title_zh": "素材与转写",
+        "title_en": "Media & transcription",
+        "detail_zh": "音视频接入、ASR 分段",
+        "detail_en": "Ingest media and segment ASR"
+      },
+      {
+        "title_zh": "候选片段",
+        "title_en": "Candidate windows",
+        "detail_zh": "重叠窗口与结构化建议",
+        "detail_en": "Overlapping windows and structured proposals"
+      },
+      {
+        "title_zh": "证据与质量门",
+        "title_en": "Evidence & quality gates",
+        "detail_zh": "时间戳、摘录、完整性约束",
+        "detail_en": "Timestamps, excerpts and hard constraints"
+      },
+      {
+        "title_zh": "审核与导出",
+        "title_en": "Review & export",
+        "detail_zh": "人工审核、精确 FFmpeg 输出",
+        "detail_en": "Human approval and frame-accurate FFmpeg exports"
+      },
+      {
+        "title_zh": "持久化恢复",
+        "title_en": "Checkpoint & recovery",
+        "detail_zh": "复用已完成阶段，避免重复副作用",
+        "detail_en": "Resume saved stages and avoid repeated side effects"
+      }
+    ],
+    "highlights": [
+      {
+        "title_zh": "建议必须有时间戳和证据",
+        "title_en": "Suggestions must cite timestamps",
+        "detail_zh": "把模型建议变成结构化的可检查时间片段，再精确输出视频。",
+        "detail_en": "Make suggestions inspectable time ranges before exporting media."
+      },
+      {
+        "title_zh": "硬质量门优先于模型评分",
+        "title_en": "Hard gates trump model scores",
+        "detail_zh": "时长、覆盖率与媒体完整性确定性校验，人工审核保留最终控制。",
+        "detail_en": "Deterministically validate duration, coverage and file integrity; keep a human approval gate."
+      },
+      {
+        "title_zh": "阶段恢复与外部副作用隔离",
+        "title_en": "Recover without duplicating external actions",
+        "detail_zh": "ASR 块、候选、素材和发布状态分别持久化，避免不安全重试。",
+        "detail_en": "Persist ASR chunks, candidates, media and publish attempts across recovery."
+      }
+    ],
+    "metrics": [
+      {
+        "value_zh": "53",
+        "value_en": "53",
+        "label_zh": "多模态范围 CI 测试",
+        "label_en": "Multimodal-slice CI tests",
+        "note_zh": "包含真实 FFmpeg 与固定 ASR、规划替身；并非生产模型效果。",
+        "note_en": "Includes real FFmpeg but ASR/planner doubles; not a production model-quality result."
+      },
+      {
+        "value_zh": "17 s",
+        "value_en": "17 s",
+        "label_zh": "合成媒体测试输入",
+        "label_en": "Generated media test clip",
+        "note_zh": "测试短片来自本地生成的样例，不是企业客户素材。",
+        "note_en": "Local generated fixture, not a customer's original media."
+      },
+      {
+        "value_zh": "未评测",
+        "value_en": "Not measured",
+        "label_zh": "企业业务收益",
+        "label_en": "Enterprise business impact",
+        "note_zh": "实际审核节省工时、供应商端到端和偏好收益尚未建立。",
+        "note_en": "Labor savings, credentialed E2E and preference-learning gains have not been established."
+      }
+    ]
+  },
+  "llm-fine-tuning": {
+    "topic_zh": "训练只是一个环节：把金融领域模型做成可追溯的交付链",
+    "topic_en": "A traceable fine-tuning and delivery workflow for financial LLMs",
+    "steps": [
+      {
+        "title_zh": "原始来源治理",
+        "title_en": "Source governance",
+        "detail_zh": "去重、来源隔离与数据审计",
+        "detail_en": "Deduplicate and isolate source documents"
+      },
+      {
+        "title_zh": "监督样本生产",
+        "title_en": "Supervision generation",
+        "detail_zh": "来源标记、任务划分与重试",
+        "detail_en": "Source tags, task partitioning and retries"
+      },
+      {
+        "title_zh": "两阶段 LoRA SFT",
+        "title_en": "Two-stage LoRA SFT",
+        "detail_zh": "知识任务，再到数值与对话",
+        "detail_en": "Knowledge tasks, then numerical reasoning"
+      },
+      {
+        "title_zh": "专项离线评测",
+        "title_en": "Offline evaluation",
+        "detail_zh": "事实、数值与无依据数字",
+        "detail_en": "Facts, calculations and unsupported numbers"
+      },
+      {
+        "title_zh": "模型交付",
+        "title_en": "Model delivery",
+        "detail_zh": "版本服务、A/B 对照与回滚入口",
+        "detail_en": "Versioned serving, A/B and rollback hooks"
+      }
+    ],
+    "highlights": [
+      {
+        "title_zh": "避免训练与测试共享来源",
+        "title_en": "Prevent source-level leakage",
+        "detail_zh": "先隔离 source_id 再生成问答，补做跨集哈希审计。",
+        "detail_en": "Split by source_id before QA generation and audit hashes across datasets."
+      },
+      {
+        "title_zh": "两阶段训练平衡专项能力",
+        "title_en": "Balance specialization with replay",
+        "detail_zh": "第二阶段突出数值任务，同时按抽样概率保留其他金融任务回放。",
+        "detail_en": "Focus stage two on numeric tasks with probabilistic replay of broader financial QA."
+      },
+      {
+        "title_zh": "快照不等于独立复现",
+        "title_en": "A snapshot is not a full reproduction",
+        "detail_zh": "代码可检查，但汇总评测缺少可共享的运行日志和逐题评审。",
+        "detail_en": "Engineering code is inspectable; aggregate metrics lack public run logs and per-item judgments."
+      }
+    ],
+    "metrics": [
+      {
+        "value_zh": "160 万",
+        "value_en": "1.6M",
+        "label_zh": "配置记录的原始金融文本",
+        "label_en": "Configured source text scale",
+        "note_zh": "项目配置的记录规模，不代表公开分发了该数据集。",
+        "note_en": "Project configuration volume; not a public dataset release."
+      },
+      {
+        "value_zh": "12.8 万",
+        "value_en": "128K",
+        "label_zh": "配置记录的监督样本",
+        "label_en": "Configured supervised examples",
+        "note_zh": "源级隔离与生成脚本可查；完整数据未公开。",
+        "note_en": "Source isolation and generation scripts exist; full datasets are not published."
+      },
+      {
+        "value_zh": "73.6%",
+        "value_en": "73.6%",
+        "label_zh": "公开汇总快照的综合任务正确率",
+        "label_en": "Aggregate snapshot task accuracy",
+        "note_zh": "快照报告 51.8% → 73.6%；缺少公开权重和逐题结果，未独立复现。",
+        "note_en": "Snapshot reports 51.8% to 73.6%; weights and per-item evaluations are not available for independent reproduction."
+      }
+    ]
+  },
+  "agentic-rl": {
+    "topic_zh": "确保 SQL Agent 是通过学习变好，而不是多试几次",
+    "topic_en": "Distinguish policy learning from more execution attempts",
+    "steps": [
+      {
+        "title_zh": "盲任务输入",
+        "title_en": "Blind task input",
+        "detail_zh": "问题、Schema 与受控观察",
+        "detail_en": "Question, schema and bounded context"
+      },
+      {
+        "title_zh": "策略生成 SQL",
+        "title_en": "Policy rollout",
+        "detail_zh": "单次或有限轮查询提议",
+        "detail_en": "Generate SQL under a fixed attempt budget"
+      },
+      {
+        "title_zh": "只读执行反馈",
+        "title_en": "Read-only execution",
+        "detail_zh": "结构化错误、结果与安全限制",
+        "detail_en": "Structured errors and safe results"
+      },
+      {
+        "title_zh": "离线计算奖励",
+        "title_en": "Post-trajectory reward",
+        "detail_zh": "在轨迹完成后才访问 Gold",
+        "detail_en": "Gold answer only after the trajectory"
+      },
+      {
+        "title_zh": "GRPO 与对照",
+        "title_en": "GRPO & controls",
+        "detail_zh": "No-update、参数变化与同预算对照",
+        "detail_en": "No-update, tensor deltas and equal-budget controls"
+      }
+    ],
+    "highlights": [
+      {
+        "title_zh": "防止 Gold 答案泄漏",
+        "title_en": "Isolate Gold answers",
+        "detail_zh": "策略运行时只允许可见任务类型，标准答案独立保存在评分器。",
+        "detail_en": "The rollout accepts only public task types; Gold stays in the evaluator."
+      },
+      {
+        "title_zh": "证明权重更新不是空跑",
+        "title_en": "Prove updates changed weights",
+        "detail_zh": "计划比较 Base、GRPO、No-update 张量差异，并审计恢复后的权重身份。",
+        "detail_en": "Prepare Base, GRPO and No-update tensor checks and reloaded checkpoint identities."
+      },
+      {
+        "title_zh": "同预算比较，才有学习结论",
+        "title_en": "Equal budgets for causal attribution",
+        "detail_zh": "固定上下文和执行次数；当前 GPU 训练及对照尚未运行。",
+        "detail_en": "Hold context and execution attempts fixed; GPU updates and comparisons are pending."
+      }
+    ],
+    "metrics": [
+      {
+        "value_zh": "CPU CI",
+        "value_en": "CPU CI",
+        "label_zh": "逻辑与契约验证",
+        "label_en": "Logic and contract verification",
+        "note_zh": "SQL 环境、泄漏审计和上游框架契约已有固定 CI。",
+        "note_en": "SQL runner, leakage checks and upstream-framework contracts have CI evidence."
+      },
+      {
+        "value_zh": "GRPO",
+        "value_en": "GRPO",
+        "label_zh": "策略训练接口",
+        "label_en": "Policy-training integration",
+        "note_zh": "Agent Lightning 与 veRL 的框架接入代码已存在。",
+        "note_en": "Agent Lightning and veRL integration code is present."
+      },
+      {
+        "value_zh": "待验证",
+        "value_en": "Pending",
+        "label_zh": "真实 GPU 策略收益",
+        "label_en": "Actual GPU policy gain",
+        "note_zh": "无可声明的训练前后准确率改善；应完成更新和盲对照后报告。",
+        "note_en": "No verified pre/post-training gain; a blind controlled GPU run is needed."
+      }
+    ]
+  },
+  "startshift-vla": {
+    "topic_zh": "保留一份诚实的机器人策略研究归档",
+    "topic_en": "An honest archived study of robot-policy initialization",
+    "steps": [
+      {
+        "title_zh": "SmolVLA 基础策略",
+        "title_en": "Frozen SmolVLA",
+        "detail_zh": "一组固定策略及种子安排",
+        "detail_en": "One policy and seed schedule"
+      },
+      {
+        "title_zh": "历史仿真分组",
+        "title_en": "Saved baselines",
+        "detail_zh": "ID 与 RobotInit 子集评估",
+        "detail_en": "ID and RobotInit group evaluations"
+      },
+      {
+        "title_zh": "来源审计",
+        "title_en": "Provenance audit",
+        "detail_zh": "核对任务、状态和轨迹对应",
+        "detail_en": "Audit task/state/trajectory provenance"
+      },
+      {
+        "title_zh": "证据边界",
+        "title_en": "Limit interpretation",
+        "detail_zh": "保留未配对的差异与失败项",
+        "detail_en": "Retain unpaired contrasts and failure modes"
+      },
+      {
+        "title_zh": "归档复盘",
+        "title_en": "Archive & reflect",
+        "detail_zh": "未核验方法收益，不继续训练",
+        "detail_en": "Do not train or claim unverified method gains"
+      }
+    ],
+    "highlights": [
+      {
+        "title_zh": "未配对不作因果估计",
+        "title_en": "Unpaired results are not causal",
+        "detail_zh": "任务与场景不匹配，不能把成功率差异全部归因于起始状态。",
+        "detail_en": "Task/scenario selections do not match; their rate gap is not a reset-only effect."
+      },
+      {
+        "title_zh": "证据来源决定下一步",
+        "title_en": "Provenance before training",
+        "detail_zh": "缺少初始状态和可重放视频，因此停止方法训练而非掩盖空缺。",
+        "detail_en": "Without saved initial state or replay videos, training was withheld."
+      },
+      {
+        "title_zh": "失败与未完成也可复核",
+        "title_en": "Preserve failures and unfinished work",
+        "detail_zh": "保存哈希与离线校验工具；没有真机或 RISE 效果声明。",
+        "detail_en": "Hashes and offline checks remain; no physical-robot or RISE improvement claim."
+      }
+    ],
+    "metrics": [
+      {
+        "value_zh": "920",
+        "value_en": "920",
+        "label_zh": "保存的评估记录",
+        "label_en": "Saved evaluation records",
+        "note_zh": "120 次 ID 与 800 次 RobotInit；两者任务/场景未配对。",
+        "note_en": "120 ID and 800 RobotInit episodes; task/scenario groups are unpaired."
+      },
+      {
+        "value_zh": "86 / 120",
+        "value_en": "86 / 120",
+        "label_zh": "ID 组成功次数",
+        "label_en": "ID success count",
+        "note_zh": "71.67%，vanilla LIBERO 的任务子集。",
+        "note_en": "71.67%, a vanilla LIBERO task subset."
+      },
+      {
+        "value_zh": "36 / 800",
+        "value_en": "36 / 800",
+        "label_zh": "RobotInit 成功次数",
+        "label_en": "RobotInit success count",
+        "note_zh": "4.50%，另一组审计子集；不能与 ID 组作纯初始化因果比较。",
+        "note_en": "4.50%, a different audit subset; not a reset-only causal comparison."
+      }
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{% assign item = include.showcase %}
+<section class="case-paper-block case-paper-snapshot" id="case-snapshot" aria-labelledby="case-snapshot-heading">
+  <div class="case-paper-section-heading">
+    <p class="case-paper-kicker">AT A GLANCE / {{ include.project.name_en }}</p>
+    <h2 id="case-snapshot-heading"><span class="i18n i18n-zh">关键结果与实验条件</span><span class="i18n i18n-en">Key results and experimental conditions</span></h2>
+    <p><span class="i18n i18n-zh">指标来自已经保存的记录。仿真、汇总快照和真实模型实验分别标注，不能混为业务收益。</span><span class="i18n i18n-en">These figures retain their original measurement conditions. Simulations, aggregate snapshots and actual model experiments are not business-impact claims.</span></p>
+  </div>
+  <div class="case-paper-metric-grid">
+    {% for metric in item.metrics %}
+    <div class="case-paper-metric">
+      <strong class="case-paper-metric-value"><span class="i18n i18n-zh">{{ metric.value_zh }}</span><span class="i18n i18n-en">{{ metric.value_en }}</span></strong>
+      <h3><span class="i18n i18n-zh">{{ metric.label_zh }}</span><span class="i18n i18n-en">{{ metric.label_en }}</span></h3>
+      <p><span class="i18n i18n-zh">{{ metric.note_zh }}</span><span class="i18n i18n-en">{{ metric.note_en }}</span></p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="case-paper-block case-paper-architecture" id="case-architecture" aria-labelledby="case-architecture-heading">
+  <div class="case-paper-section-heading">
+    <p class="case-paper-kicker">SYSTEM DESIGN</p>
+    <h2 id="case-architecture-heading"><span class="i18n i18n-zh">系统架构与执行流程</span><span class="i18n i18n-en">Architecture and workflow</span></h2>
+    <p><span class="i18n i18n-zh">以下是基于现有实现与研究流程归纳的模块关系，不是对所有模块已通过生产验证的声明。</span><span class="i18n i18n-en">An overview derived from the documented implementation and research workflow, not a claim that every component has been production-validated.</span></p>
+  </div>
+  <ol class="case-paper-flow" aria-label="Project architecture flow">
+    {% for step in item.steps %}
+    <li>
+      <span class="case-flow-index">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+      <h3><span class="i18n i18n-zh">{{ step.title_zh }}</span><span class="i18n i18n-en">{{ step.title_en }}</span></h3>
+      <p><span class="i18n i18n-zh">{{ step.detail_zh }}</span><span class="i18n i18n-en">{{ step.detail_en }}</span></p>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section class="case-paper-block" id="case-challenges" aria-labelledby="case-challenges-heading">
+  <div class="case-paper-section-heading">
+    <p class="case-paper-kicker">ENGINEERING &amp; RESEARCH DECISIONS</p>
+    <h2 id="case-challenges-heading"><span class="i18n i18n-zh">核心技术难点与解决取舍</span><span class="i18n i18n-en">Technical challenges and tradeoffs</span></h2>
+  </div>
+  <div class="case-paper-challenges">
+    {% for highlight in item.highlights %}
+    <article>
+      <span class="case-paper-challenge-count">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+      <h3><span class="i18n i18n-zh">{{ highlight.title_zh }}</span><span class="i18n i18n-en">{{ highlight.title_en }}</span></h3>
+      <p><span class="i18n i18n-zh">{{ highlight.detail_zh }}</span><span class="i18n i18n-en">{{ highlight.detail_en }}</span></p>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="case-paper-block case-paper-validation" id="case-validation" aria-labelledby="case-validation-heading">
+  <div class="case-paper-section-heading">
+    <p class="case-paper-kicker">EVIDENCE &amp; SCOPE</p>
+    <h2 id="case-validation-heading"><span class="i18n i18n-zh">我的贡献、交付物与验证边界</span><span class="i18n i18n-en">My contribution, deliverables and validation limits</span></h2>
+  </div>
+  {% include case-summary.html project_id=include.project.id %}
+  {% if include.project.id != 'enterprise-data-agent' and include.project.id != 'rewardlens' %}
+  {% include project-evidence.html project_id=include.project.id %}
+  {% endif %}
+</section>

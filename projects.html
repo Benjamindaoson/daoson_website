@@ -68,7 +68,7 @@ bilingual: true
 <section class="labs-section" aria-label="More work">
   <div class="labs-section-header">
     <h2><span class="i18n i18n-zh">更多工程与研究</span><span class="i18n i18n-en">Further work</span></h2>
-    <p><span class="i18n i18n-zh">智能体运行框架、多模态应用、工具与学习材料。仓库中保留各项目的实现范围和当前状态。</span><span class="i18n i18n-en">Agent runtimes, multimodal applications, tools, and learning materials. Each repository documents its implementation scope and current status.</span></p>
+    <p><span class="i18n i18n-zh">上方重点项目均可在本站阅读完整案例。以下是其他工程仓库和研究原型；尚未制作完整案例页的项目会明确标注跳往 GitHub。</span><span class="i18n i18n-en">The featured projects above have detailed on-site case studies. Other engineering repositories and research prototypes are clearly labeled when they open GitHub instead.</span></p>
   </div>
   <div class="labs-grid">{% for project in site.data.projects %}{% unless project.featured %}{% include project-card.html project=project class="labs-card" %}{% endunless %}{% endfor %}</div>
 

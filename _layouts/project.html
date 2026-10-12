@@ -2,22 +2,89 @@
 layout: default
 ---
 
-<article class="post">
-  <nav class="case-breadcrumb" aria-label="Breadcrumb"><a href="{{ '/projects/' | relative_url }}"><span class="i18n i18n-zh">← 全部项目</span><span class="i18n i18n-en">← All projects</span></a></nav>
-  <header class="post-header">
-    <span class="prompt">~/projects/{{ page.slug }}</span>
-    <h1>{% if page.title_en %}<span class="i18n i18n-zh">{{ page.title }}</span><span class="i18n i18n-en">{{ page.title_en }}</span>{% else %}{{ page.title }}{% endif %}</h1>
-    {% if page.description %}<p class="post-description">{% if page.description_en %}<span class="i18n i18n-zh">{{ page.description }}</span><span class="i18n i18n-en">{{ page.description_en }}</span>{% else %}{{ page.description }}{% endif %}</p>{% endif %}
-  </header>
+{% assign case_project = site.data.projects | where: "case_url", page.url | first %}
+{% assign showcase = site.data.case_showcase[case_project.id] %}
+{% assign detail = site.data.case_details[case_project.id] %}
+<article class="post case-paper">
+  <nav class="case-breadcrumb" aria-label="Breadcrumb">
+    <a href="{{ '/projects/' | relative_url }}"><span class="i18n i18n-zh">← 返回作品与研究</span><span class="i18n i18n-en">← All projects</span></a>
+  </nav>
 
-  {% assign case_project = site.data.projects | where: "case_url", page.url | first %}
-  {% if case_project %}{% include case-share.html project=case_project %}{% endif %}
-  {% include case-summary.html project_id=case_project.id %}
-  {% if case_project.url %}<p class="case-source"><a href="{{ case_project.url }}" target="_blank" rel="noopener"><span class="i18n i18n-zh">查看源码与项目资料 ↗</span><span class="i18n i18n-en">Source code and project materials ↗</span></a></p>{% endif %}
-  {% if case_project.id != 'enterprise-data-agent' and case_project.id != 'rewardlens' %}{% include project-evidence.html project_id=case_project.id %}{% endif %}
-
-  <div class="post-content">
-    {{ content }}
+  <div class="case-paper-head">
+    <header class="post-header case-paper-title">
+      <p class="case-paper-eyebrow">
+        {% if case_project.domain == "physical" %}PHYSICAL AI{% else %}DIGITAL AI{% endif %}
+        <span aria-hidden="true">/</span>
+        <span class="i18n i18n-zh">{{ case_project.display_status_zh | default: "技术案例" }}</span>
+        <span class="i18n i18n-en">{{ case_project.display_status_en | default: "Technical case study" }}</span>
+      </p>
+      <h1>
+        {% if page.title_en %}
+        <span class="i18n i18n-zh">{{ page.title }}</span>
+        <span class="i18n i18n-en">{{ page.title_en }}</span>
+        {% else %}{{ page.title }}{% endif %}
+      </h1>
+      {% if page.description %}
+      <p class="post-description">
+        {% if page.description_en %}<span class="i18n i18n-zh">{{ page.description }}</span><span class="i18n i18n-en">{{ page.description_en }}</span>
+        {% else %}{{ page.description }}{% endif %}
+      </p>
+      {% endif %}
+      {% if showcase %}
+      <p class="case-paper-thesis"><span class="i18n i18n-zh">{{ showcase.topic_zh }}</span><span class="i18n i18n-en">{{ showcase.topic_en }}</span></p>
+      {% endif %}
+      <div class="case-paper-primary-actions">
+        <a class="btn" href="#case-deep-dive"><span class="i18n i18n-zh">阅读完整项目记录</span><span class="i18n i18n-en">Read the full technical record</span> <span aria-hidden="true">↓</span></a>
+        {% if case_project.url %}
+        <a class="text-link case-paper-source" href="{{ case_project.url }}" target="_blank" rel="noopener">
+          <span class="i18n i18n-zh">源码与工程资料</span><span class="i18n i18n-en">Source &amp; artifacts</span> ↗
+        </a>
+        {% endif %}
+      </div>
+    </header>
+    {% if case_project %}
+    <div class="case-paper-share">
+      {% include case-share.html project=case_project %}
+    </div>
+    {% endif %}
   </div>
-  {% if page.bilingual %}{% assign project_subject = 'Project discussion: ' | append: case_project.name_en | url_encode | replace: '+', '%20' %}<aside class="case-contact"><h2><span class="i18n i18n-zh">交流项目与工程实践</span><span class="i18n i18n-en">Discuss the work</span></h2><p><span class="i18n i18n-zh">从这个项目中的一个设计取舍、实验观察或应用场景开始。</span><span class="i18n i18n-en">Start with a design decision, an experimental observation, or a use case from this project.</span></p><div class="page-actions"><a class="btn" href="mailto:{{ site.email }}?subject={{ project_subject }}"><span class="i18n i18n-zh">写信讨论这个项目</span><span class="i18n i18n-en">Email about this project</span></a><a class="text-link" href="{{ '/contact/' | relative_url }}"><span class="i18n i18n-zh">其他合作与联系</span><span class="i18n i18n-en">Other ways to connect</span> →</a></div></aside>{% endif %}
+
+  {% if showcase %}
+  <nav class="case-paper-section-nav" aria-label="项目内容目录 / Case study sections">
+    <a href="#case-snapshot"><span class="i18n i18n-zh">关键结果</span><span class="i18n i18n-en">Key results</span></a>
+    <a href="#case-architecture"><span class="i18n i18n-zh">系统架构</span><span class="i18n i18n-en">Architecture</span></a>
+    <a href="#case-challenges"><span class="i18n i18n-zh">难点与取舍</span><span class="i18n i18n-en">Challenges</span></a>
+    <a href="#case-validation"><span class="i18n i18n-zh">证据与边界</span><span class="i18n i18n-en">Evidence &amp; limits</span></a>
+    <a href="#case-deep-dive"><span class="i18n i18n-zh">完整记录</span><span class="i18n i18n-en">Deep dive</span></a>
+  </nav>
+  {% include case-paper-showcase.html project=case_project showcase=showcase %}
+  {% else %}
+  {% include case-summary.html project_id=case_project.id %}
+  {% if case_project.id != 'enterprise-data-agent' and case_project.id != 'rewardlens' %}
+  {% include project-evidence.html project_id=case_project.id %}
+  {% endif %}
+  {% endif %}
+
+  <section class="case-paper-deep-dive" id="case-deep-dive" aria-labelledby="case-deep-dive-heading">
+    <div class="case-paper-section-heading">
+      <p class="case-paper-kicker">DEEP DIVE</p>
+      <h2 id="case-deep-dive-heading"><span class="i18n i18n-zh">完整技术与实验记录</span><span class="i18n i18n-en">Full technical &amp; experimental record</span></h2>
+      <p><span class="i18n i18n-zh">以下保留原始案例中的实验口径、设计取舍、复核链接以及未完成的部分。</span><span class="i18n i18n-en">The full account below retains methodology, design decisions, source links and unfinished work.</span></p>
+    </div>
+    <div class="post-content case-paper-long-form">
+      {{ content }}
+    </div>
+  </section>
+
+  {% if page.bilingual %}
+  {% assign project_subject = 'Project discussion: ' | append: case_project.name_en | url_encode | replace: '+', '%20' %}
+  <aside class="case-contact case-paper-contact">
+    <h2><span class="i18n i18n-zh">讨论这个项目</span><span class="i18n i18n-en">Discuss this project</span></h2>
+    <p><span class="i18n i18n-zh">欢迎从一个设计细节、实验观察或实际应用问题开始交流。</span><span class="i18n i18n-en">Start with a design decision, an experimental observation or a practical use case.</span></p>
+    <div class="page-actions">
+      <a class="btn" href="mailto:{{ site.email }}?subject={{ project_subject }}"><span class="i18n i18n-zh">邮件交流</span><span class="i18n i18n-en">Email about this project</span></a>
+      <a class="text-link" href="{{ '/projects/' | relative_url }}"><span class="i18n i18n-zh">查看其他案例</span><span class="i18n i18n-en">Other case studies</span> →</a>
+    </div>
+  </aside>
+  {% endif %}
 </article>

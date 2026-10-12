@@ -577,3 +577,11 @@ body.portfolio-site .site-main-inner { width: 100%; max-width: var(--portfolio-w
   .portfolio-site .labs-hero-compact { padding: .6rem 0 .65rem; }
   .portfolio-site .labs-section.project-domain { margin: .85rem 0 2.3rem; }
 }
+
+/* Make the whole featured card a case-study destination; GitHub stays distinct. */
+.portfolio-site .project-domain .work-card { position: relative; }
+.portfolio-site .project-domain .work-name a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.portfolio-site .project-domain .work-figure,
+.portfolio-site .project-domain .project-links a { position: relative; z-index: 2; }
+.portfolio-site .project-domain .work-card:hover { border-color: #88a58d; }
+.portfolio-site .project-card-target { color: var(--accent); font-size: .85rem; font-weight: 680; margin: .35rem 0 .6rem; }
