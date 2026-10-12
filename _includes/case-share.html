@@ -1,19 +1,17 @@
 {% assign share_url = site.url | downcase | append: site.baseurl | append: page.url %}
 {% assign share_qr_base = '/assets/qr/projects/' | append: include.project.id | relative_url %}
 <aside class="case-share case-share-prominent" data-case-share data-case-url="{{ share_url | escape }}" data-case-qr-base="{{ share_qr_base | escape }}" aria-label="分享此案例 / Share this case" data-pagefind-ignore>
-  <div class="case-share-heading">
-    <strong><span class="i18n i18n-zh">项目专属二维码</span><span class="i18n i18n-en">Project QR code</span></strong>
-    <p><span class="i18n i18n-zh">简历扫码直达本页，不是 GitHub。</span><span class="i18n i18n-en">Scan from a résumé to open this page, not GitHub.</span></p>
-  </div>
   <div class="case-share-content">
     <div class="case-share-qr">
-      <img src="{{ share_qr_base }}-zh.png" data-case-share-qr width="148" height="148" loading="eager" alt="扫描二维码打开项目技术案例" data-alt-zh="扫描二维码打开项目技术案例" data-alt-en="Scan to open this project's case study">
+      <img src="{{ share_qr_base }}-zh.png" data-case-share-qr width="112" height="112" loading="eager" alt="扫描二维码打开项目技术案例" data-alt-zh="扫描二维码打开项目技术案例" data-alt-en="Scan to open this project's case study">
     </div>
     <div class="case-share-links">
-      <button class="case-share-copy" type="button" data-case-share-copy hidden><span class="i18n i18n-zh">复制本页链接</span><span class="i18n i18n-en">Copy this case URL</span> <span aria-hidden="true">↗</span></button>
+      <strong class="case-share-label"><span class="i18n i18n-zh">本项目二维码</span><span class="i18n i18n-en">Project QR code</span></strong>
+      <p class="case-share-note"><span class="i18n i18n-zh">扫码直达本页</span><span class="i18n i18n-en">Opens this case page</span></p>
       <a class="case-share-download" href="{{ share_qr_base }}-zh.png" data-case-share-download download="{{ include.project.id }}-zh-qr.png"><span class="i18n i18n-zh">下载二维码 PNG</span><span class="i18n i18n-en">Download QR PNG</span> <span aria-hidden="true">↓</span></a>
+      <button class="case-share-copy" type="button" data-case-share-copy hidden><span class="i18n i18n-zh">复制项目链接</span><span class="i18n i18n-en">Copy case link</span> <span aria-hidden="true">↗</span></button>
       <details class="case-share-details">
-        <summary><span class="i18n i18n-zh">查看与手动复制链接</span><span class="i18n i18n-en">View &amp; manually copy URL</span></summary>
+        <summary><span class="i18n i18n-zh">手动复制网址</span><span class="i18n i18n-en">Copy URL manually</span></summary>
         <div class="case-share-panel">
           <label for="case-share-url-{{ include.project.id }}"><span class="i18n i18n-zh">项目案例网址</span><span class="i18n i18n-en">Case study URL</span></label>
           <textarea id="case-share-url-{{ include.project.id }}" class="case-share-url" data-case-share-url readonly rows="3" spellcheck="false" autocapitalize="none">{{ share_url | escape }}?lang=zh</textarea>
