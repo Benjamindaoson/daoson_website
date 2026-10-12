@@ -16,6 +16,13 @@
     <span class="i18n i18n-zh">{{ project.description_zh | default: project.description }}</span>
     <span class="i18n i18n-en">{{ project.description_en | default: project.description }}</span>
   </p>
+  <div class="project-card-target">
+    {% if project.case_url %}
+    <span class="i18n i18n-zh">站内完整案例 →</span><span class="i18n i18n-en">Read full case study →</span>
+    {% else %}
+    <span class="i18n i18n-zh">GitHub 仓库 ↗</span><span class="i18n i18n-en">GitHub repository ↗</span>
+    {% endif %}
+  </div>
   <div class="project-meta">
     {% if include.show_category and project.portfolio_group %}<span>{{ project.portfolio_group }}</span>{% endif %}
     {% if include.show_category and project.category %}<span>{{ project.category }}</span>{% endif %}

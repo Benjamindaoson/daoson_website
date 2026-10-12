@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ cache_bust }}">
 <link rel="stylesheet" href="{{ '/assets/css/portfolio-refresh.css' | relative_url }}?v={{ cache_bust }}">
 {% if page.portfolio_shell %}<link rel="stylesheet" href="{{ '/assets/css/taoson-portfolio.css' | relative_url }}?v={{ cache_bust }}">{% endif %}
+{% if page.layout == 'project' %}<link rel="stylesheet" href="{{ '/assets/css/case-paper.css' | relative_url }}?v={{ cache_bust }}">{% endif %}
 
 {%- comment -%} RSS：可见入口按语言分流，feed.xml 保留为全量聚合 feed {%- endcomment -%}
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }} (All posts)" href="{{ '/feed.xml' | relative_url }}">
