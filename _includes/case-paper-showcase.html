@@ -3,7 +3,7 @@
   <div class="case-paper-section-heading">
     <p class="case-paper-kicker">AT A GLANCE / {{ include.project.name_en }}</p>
     <h2 id="case-snapshot-heading"><span class="i18n i18n-zh">关键结果与实验条件</span><span class="i18n i18n-en">Key results and experimental conditions</span></h2>
-    <p><span class="i18n i18n-zh">指标来自已经保存的记录。仿真、汇总快照和真实模型实验分别标注，不能混为业务收益。</span><span class="i18n i18n-en">These figures retain their original measurement conditions. Simulations, aggregate snapshots and actual model experiments are not business-impact claims.</span></p>
+
   </div>
   <div class="case-paper-metric-grid">
     {% for metric in item.metrics %}
@@ -14,6 +14,7 @@
     </div>
     {% endfor %}
   </div>
+  <p class="case-paper-metric-footnote"><span class="i18n i18n-zh">每项结果下方保留数据范围与实验条件；仿真、汇总快照与实际模型实验不可混同为业务收益。</span><span class="i18n i18n-en">Scope and conditions are listed with each result. Simulations, aggregate snapshots and actual model tests are not business-impact claims.</span></p>
 </section>
 
 <section class="case-paper-block case-paper-architecture" id="case-architecture" aria-labelledby="case-architecture-heading">

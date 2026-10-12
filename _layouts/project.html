@@ -24,20 +24,20 @@ layout: default
         <span class="i18n i18n-en">{{ page.title_en }}</span>
         {% else %}{{ page.title }}{% endif %}
       </h1>
-      {% if page.description %}
-      <p class="post-description">
-        {% if page.description_en %}<span class="i18n i18n-zh">{{ page.description }}</span><span class="i18n i18n-en">{{ page.description_en }}</span>
-        {% else %}{{ page.description }}{% endif %}
+      {% assign intro_zh = case_project.home_purpose_zh | default: case_project.summary_zh | default: page.description %}
+      {% assign intro_en = case_project.home_purpose_en | default: case_project.summary_en | default: page.description_en %}
+      <p class="post-description case-paper-intro">
+        <span class="i18n i18n-zh">{{ intro_zh }}</span>
+        <span class="i18n i18n-en">{{ intro_en }}</span>
       </p>
-      {% endif %}
-      {% if showcase %}
-      <p class="case-paper-thesis"><span class="i18n i18n-zh">{{ showcase.topic_zh }}</span><span class="i18n i18n-en">{{ showcase.topic_en }}</span></p>
-      {% endif %}
-      <div class="case-paper-primary-actions">
-        <a class="btn" href="#case-deep-dive"><span class="i18n i18n-zh">阅读完整项目记录</span><span class="i18n i18n-en">Read the full technical record</span> <span aria-hidden="true">↓</span></a>
+      <div class="case-paper-quicklinks">
+        <a class="case-paper-read-next" href="#case-snapshot">
+          <span class="i18n i18n-zh">↓ 向下看：关键结果、架构、技术难点与实验记录</span>
+          <span class="i18n i18n-en">↓ Scroll for results, architecture, challenges and experiments</span>
+        </a>
         {% if case_project.url %}
         <a class="text-link case-paper-source" href="{{ case_project.url }}" target="_blank" rel="noopener">
-          <span class="i18n i18n-zh">源码与工程资料</span><span class="i18n i18n-en">Source &amp; artifacts</span> ↗
+          <span class="i18n i18n-zh">GitHub 源码</span><span class="i18n i18n-en">GitHub source</span> ↗
         </a>
         {% endif %}
       </div>

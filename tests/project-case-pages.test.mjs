@@ -51,3 +51,21 @@ test('the project catalog identifies hosted case studies separately from GitHub-
     assert.ok(html.includes('href="/daoson_website'+project.case_url+'"'),project.id+' must link to its hosted case')
   }
 })
+
+test('the project header is concise and directs readers to the results without a large landing-page hero', async () => {
+  for (const project of cases) {
+    const slug = project.case_url.split('/').filter(Boolean).join('/')
+    const html = await readFile(join(siteOutput, slug, 'index.html'), 'utf8')
+    const hero = html.slice(html.indexOf('class="case-paper-head"'), html.indexOf('id="case-snapshot"'))
+    assert.ok(hero.includes('class="post-description case-paper-intro"'), project.id+' requires a direct project introduction')
+    assert.ok(hero.includes('href="#case-snapshot"'), project.id+' requires a scroll-to-results invitation')
+    assert.ok(!hero.includes('class="case-paper-primary-actions"'), project.id+' cannot add back a bulky hero CTA')
+    assert.ok(!hero.includes('class="case-paper-thesis"'), project.id+' should not repeat a redundant second tagline')
+    assert.ok(hero.includes('class="case-share-content"'), project.id+' must retain the QR')
+    assert.ok(!hero.includes('class="case-share-heading"'), project.id+' must not reserve a separate QR heading row')
+    assert.ok(html.indexOf('case-paper-metric-grid') < html.indexOf('case-paper-metric-footnote'), project.id+' should put data before generic cautions')
+  }
+  const css = await readFile('assets/css/case-paper.css','utf8')
+  assert.match(css, /\.case-paper-share \.case-share-content \{\s*flex-direction: row/)
+  assert.match(css, /\.case-paper-snapshot \.case-paper-kicker \{ display: none; \}/)
+})
