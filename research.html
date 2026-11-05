@@ -10,57 +10,110 @@ bilingual: true
 ---
 
 <article class="portfolio-page research-page">
-  <header class="portfolio-page-header">
-    <p class="page-kicker">RESEARCH / WORLD MODELS · ROBOT LEARNING · MULTIMODAL AI</p>
-    <h1><span class="i18n i18n-zh">世界模型何时真正有助于决策？</span><span class="i18n i18n-en">When do world models improve decisions?</span></h1>
-    <p class="page-lead"><span class="i18n i18n-zh">我研究动作条件世界模型的预测能力，何时能够转化为机器人更可靠的闭环决策。关注长时域误差、反事实动作比较，以及预测准确率与实际任务成功率之间的差距。</span><span class="i18n i18n-en">I investigate when action-conditioned prediction translates into more reliable closed-loop robot decisions, with a focus on long-horizon errors, counterfactual action comparisons, and the gap between predictive accuracy and task success.</span></p>
-    <div class="page-actions">
-      <a class="btn" href="#selected-research"><span class="i18n i18n-zh">查看研究记录</span><span class="i18n i18n-en">Explore research</span></a>
-      <a class="btn secondary" href="https://github.com/Benjamindaoson" target="_blank" rel="noopener">GitHub ↗</a>
+  <header class="research-hero">
+    <div class="research-hero-copy">
+      <p class="page-kicker">INDEPENDENT RESEARCH / PHYSICAL AI</p>
+      <h1><span class="i18n i18n-zh">世界模型何时真正改善机器人决策？</span><span class="i18n i18n-en">When do world models improve robot decisions?</span></h1>
+      <p class="research-lead"><span class="i18n i18n-zh">我研究动作条件世界模型的预测能力，何时能够转化为更可靠的机器人闭环决策。重点关注反事实动作比较、长时域误差，以及预测准确率与实际决策价值之间的差距。</span><span class="i18n i18n-en">I investigate when action-conditioned world-model predictions translate into more reliable closed-loop robot decisions, focusing on counterfactual action comparisons, long-horizon errors, and the gap between predictive accuracy and decision value.</span></p>
+      <div class="research-tags" aria-label="Research areas">
+        <span>World Models</span><span>Robot Learning</span><span>VLA</span><span>Multimodal AI</span>
+      </div>
+      <div class="page-actions">
+        <a class="btn" href="#research-projects"><span class="i18n i18n-zh">查看研究记录</span><span class="i18n i18n-en">Explore research</span></a>
+        <a class="btn secondary" href="https://github.com/Benjamindaoson" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="research-flow-panel" aria-label="Research concept: observations, candidate actions, world model, predicted futures, decision">
+      <p class="research-flow-label">A DECISION-CENTRIC VIEW</p>
+      <div class="research-flow-node"><span>01</span><strong><span class="i18n i18n-zh">当前观测</span><span class="i18n i18n-en">Observation</span></strong><small>oₜ</small></div>
+      <div class="research-flow-arrow" aria-hidden="true">↓</div>
+      <div class="research-flow-node"><span>02</span><strong><span class="i18n i18n-zh">候选动作</span><span class="i18n i18n-en">Candidate actions</span></strong><small>a₁ … aₖ</small></div>
+      <div class="research-flow-arrow" aria-hidden="true">↓</div>
+      <div class="research-flow-node research-flow-model"><span>03</span><strong><span class="i18n i18n-zh">动作条件世界模型</span><span class="i18n i18n-en">Action-conditioned world model</span></strong><small>p(sₜ₊₁:ₜ₊H | oₜ, a)</small></div>
+      <div class="research-flow-arrow" aria-hidden="true">↓</div>
+      <div class="research-flow-node"><span>04</span><strong><span class="i18n i18n-zh">未来预测与排序</span><span class="i18n i18n-en">Predicted futures &amp; ranking</span></strong><small>Δ future · confidence</small></div>
+      <div class="research-flow-arrow" aria-hidden="true">↓</div>
+      <div class="research-flow-node research-flow-decision"><span>05</span><strong><span class="i18n i18n-zh">闭环决策</span><span class="i18n i18n-en">Closed-loop decision</span></strong><small>act · observe · replan</small></div>
+      <p class="research-flow-footnote"><span class="i18n i18n-zh">核心问题：预测差异是否足以支持可靠的动作选择？</span><span class="i18n i18n-en">Core question: are predicted differences reliable enough to support action selection?</span></p>
     </div>
   </header>
 
-  <section class="content-section" id="research-agenda">
-    <p class="page-kicker">RESEARCH AGENDA</p>
-    <h2><span class="i18n i18n-zh">核心研究问题</span><span class="i18n i18n-en">Research questions</span></h2>
-    <p><span class="i18n i18n-zh">一个世界模型可以生成看似合理的未来，却仍然选错动作。我希望用受控干预和可复现的闭环评估，研究哪些预测能力真正服务于决策。</span><span class="i18n i18n-en">A world model can produce plausible futures and still rank actions incorrectly. I use controlled interventions and reproducible closed-loop evaluations to study which predictive capabilities actually matter for decisions.</span></p>
-    <ul>
-      <li><span class="i18n i18n-zh"><strong>反事实可靠性：</strong>相同初态下，不同动作的预测差异是否可信？</span><span class="i18n i18n-en"><strong>Counterfactual reliability:</strong> Can predicted differences between actions be trusted from the same initial state?</span></li>
-      <li><span class="i18n i18n-zh"><strong>长时域决策：</strong>预测误差如何影响动作排序和闭环规划？</span><span class="i18n i18n-en"><strong>Long-horizon decisions:</strong> How do predictive errors affect action ranking and closed-loop planning?</span></li>
-      <li><span class="i18n i18n-zh"><strong>计算与数据取舍：</strong>什么条件下，训练世界模型比直接训练策略更值得？</span><span class="i18n i18n-en"><strong>Compute and data tradeoffs:</strong> When does learning a world model justify its cost relative to direct policy learning?</span></li>
-    </ul>
-    <p><span class="i18n i18n-zh">相邻兴趣包括 VLA、具身智能、机器人学习，以及多模态基础模型。这些是研究方向，不代表所有方向都已有成熟成果。</span><span class="i18n i18n-en">Related interests include VLA, embodied intelligence, robot learning, and multimodal foundation models. These are research interests, not claims of completed results in every area.</span></p>
+  <section class="research-thesis" id="research-agenda">
+    <div class="research-thesis-heading">
+      <p class="page-kicker">CORE RESEARCH QUESTION</p>
+      <h2><span class="i18n i18n-zh">预测得更准，<br>是否就能做出更好的决策？</span><span class="i18n i18n-en">Does better prediction<br>lead to better decisions?</span></h2>
+    </div>
+    <div class="research-thesis-copy">
+      <p><span class="i18n i18n-zh">一个世界模型可以生成看似合理的未来，却仍然错误地比较候选动作。我的研究重点不是单独追求视频或状态预测指标，而是检验模型能否保留与决策相关的反事实差异，并在分布变化和长时域规划中维持可靠性。</span><span class="i18n i18n-en">A world model can generate plausible futures yet still compare candidate actions incorrectly. Rather than optimizing video or state-prediction metrics in isolation, I study whether a model preserves decision-relevant counterfactual differences and remains reliable under distribution shift and long-horizon planning.</span></p>
+      <p class="research-thesis-note"><span class="i18n i18n-zh">这是正在推进的研究议程；各项目页面会区分已验证结果、负面结果和待完成的实验。</span><span class="i18n i18n-en">This is an ongoing research agenda. Individual project records distinguish validated results, negative findings, and experiments that remain to be done.</span></p>
+    </div>
   </section>
 
-  <section class="content-section" id="selected-research">
-    <p class="page-kicker">SELECTED RESEARCH / PUBLIC CODE</p>
-    <h2><span class="i18n i18n-zh">公开研究记录</span><span class="i18n i18n-en">Research projects and evidence</span></h2>
-
-    <h3><a href="https://github.com/Benjamindaoson/WorldDynamics" target="_blank" rel="noopener">WorldDynamics ↗</a></h3>
-    <p><strong>Action-conditioned and counterfactual world models</strong></p>
-    <p><span class="i18n i18n-zh">研究从同一物理状态出发的不同动作分支，以及干预不足时如何表达不确定性。公开仓库当前包含可审计的简化基线、验证测试和后续物理实验设计；尚未证明配对分支监督优于独立监督。</span><span class="i18n i18n-en">Investigates alternative action futures from the same physical state and uncertainty under sparse interventions. The public repository currently includes auditable simplified baselines, tests, and a plan for physical validation; it has not established an advantage for paired-branch supervision.</span></p>
-    <p><a class="text-link" href="https://github.com/Benjamindaoson/WorldDynamics" target="_blank" rel="noopener"><span class="i18n i18n-zh">代码、实验边界与后续验证</span><span class="i18n i18n-en">Code, limitations, and validation gates</span> ↗</a></p>
-
-    <h3><a href="https://github.com/Benjamindaoson/WorldPolicy" target="_blank" rel="noopener">WorldPolicy ↗</a></h3>
-    <p><strong>Robot policy learning and world-model-guided control</strong></p>
-    <p><span class="i18n i18n-zh">在 MuJoCo FetchPush 仿真中比较状态输入的 ACT、Diffusion Policy、学习动力学规划与物理 Oracle。公开结果包含不同种子和配对初态的评估；当前不能当作官方 LIBERO、语言条件 VLA 或真实机器人实验。</span><span class="i18n i18n-en">Compares state-conditioned ACT, Diffusion Policy, learned-dynamics planning, and a physics oracle in MuJoCo FetchPush simulation. Public results report seeded and paired-initial-state evaluations; they are not official LIBERO, language-conditioned VLA, or real-robot results.</span></p>
-    <p><a class="text-link" href="https://github.com/Benjamindaoson/WorldPolicy" target="_blank" rel="noopener"><span class="i18n i18n-zh">方法、结果与科学审计</span><span class="i18n i18n-en">Methods, results, and scientific audit</span> ↗</a></p>
-
-    <h3><a href="https://github.com/Benjamindaoson/WorldSystems" target="_blank" rel="noopener">WorldSystems ↗</a></h3>
-    <p><strong>World-model training and inference infrastructure</strong></p>
-    <p><span class="i18n i18n-zh">探索受限 GPU 条件下世界模型训练、断点恢复、CUDA Graph 推理和部署接口。公开证据覆盖部分可重复的训练与系统测试；这仍是进行中的研究工程工作，而非完整的生产级平台。</span><span class="i18n i18n-en">Explores world-model training, checkpoint recovery, CUDA Graph inference, and serving interfaces under constrained GPU resources. Public evidence covers selected reproducible training and systems tests; this remains research engineering in progress, not a completed production platform.</span></p>
-    <p><a class="text-link" href="https://github.com/Benjamindaoson/WorldSystems" target="_blank" rel="noopener"><span class="i18n i18n-zh">实现与公开验证记录</span><span class="i18n i18n-en">Implementation and public validation records</span> ↗</a></p>
+  <section class="research-agenda-grid" aria-label="Research directions">
+    <article class="research-agenda-card">
+      <span class="research-card-index">01 / COUNTERFACTUALS</span>
+      <h3><span class="i18n i18n-zh">反事实可靠性</span><span class="i18n i18n-en">Counterfactual reliability</span></h3>
+      <p><span class="i18n i18n-zh">相同初态下，不同动作的预测差异是否可信？模型是否识别了真正由动作引起的变化？</span><span class="i18n i18n-en">Are predicted differences between actions trustworthy from the same initial state? Does the model capture changes actually caused by the action?</span></p>
+    </article>
+    <article class="research-agenda-card">
+      <span class="research-card-index">02 / LONG HORIZON</span>
+      <h3><span class="i18n i18n-zh">长时域决策可靠性</span><span class="i18n i18n-en">Long-horizon decision reliability</span></h3>
+      <p><span class="i18n i18n-zh">预测误差如何累积并改变动作排序？不确定性是否能指导规划时域、重新观测与恢复？</span><span class="i18n i18n-en">How do prediction errors accumulate and alter action rankings? Can uncertainty guide planning horizon, re-observation, and recovery?</span></p>
+    </article>
+    <article class="research-agenda-card">
+      <span class="research-card-index">03 / DECISION VALUE</span>
+      <h3><span class="i18n i18n-zh">世界模型的决策价值</span><span class="i18n i18n-en">Decision value of world models</span></h3>
+      <p><span class="i18n i18n-zh">在相同数据、模型容量和计算预算下，什么条件下世界模型值得额外的训练与推理成本？</span><span class="i18n i18n-en">Under matched data, model capacity, and compute budgets, when does a world model justify its additional training and inference cost?</span></p>
+    </article>
   </section>
 
-  <section class="content-section">
-    <p class="page-kicker">RESEARCH PRACTICE</p>
-    <h2><span class="i18n i18n-zh">可复核的研究，而不只是演示</span><span class="i18n i18n-en">Evidence before claims</span></h2>
-    <p><span class="i18n i18n-zh">我重视同初态干预、匹配预算的对照、独立测试、多随机种子、失败案例，以及预测质量和真实决策价值之间的区别。项目成果会按照公开证据区分已实现、仍在验证和计划中的工作；未经过同行评审的仓库不标为已发表论文。</span><span class="i18n i18n-en">My evaluations emphasize same-state interventions, budget-matched baselines, independent tests, multiple seeds, failure analysis, and the distinction between prediction quality and decision value. Public records distinguish implemented, under-validation, and planned work; code repositories are not labeled as peer-reviewed publications.</span></p>
+  <section class="research-project-section" id="research-projects">
+    <div class="research-section-heading">
+      <div>
+        <p class="page-kicker">SELECTED RESEARCH / PUBLIC REPOSITORIES</p>
+        <h2><span class="i18n i18n-zh">研究项目与公开证据</span><span class="i18n i18n-en">Research projects &amp; public evidence</span></h2>
+      </div>
+      <p><span class="i18n i18n-zh">优先展示与当前研究主线直接相关的工作。</span><span class="i18n i18n-en">Selected work most directly connected to the current research agenda.</span></p>
+    </div>
+    <div class="research-project-grid">
+      <article class="research-project-card">
+        <div class="research-project-meta"><span>01 / WORLD MODELS</span><span class="research-status research-status-active">EARLY-STAGE RESEARCH</span></div>
+        <h3><a href="https://github.com/Benjamindaoson/WorldDynamics" target="_blank" rel="noopener">WorldDynamics <span aria-hidden="true">↗</span></a></h3>
+        <p class="research-project-subtitle">Action-conditioned &amp; counterfactual world models</p>
+        <p><span class="i18n i18n-zh">研究从同一物理状态出发的不同动作分支，以及干预不足时如何表达不确定性。公开仓库包含可审计的简化基线、验证测试和后续物理实验设计；目前尚未证明配对分支监督优于独立监督。</span><span class="i18n i18n-en">Studies alternative action futures from the same physical state and uncertainty under sparse interventions. The public repository includes auditable simplified baselines, tests, and a plan for physical validation; it has not established that paired-branch supervision outperforms independent supervision.</span></p>
+        <div class="research-project-bottom"><span>Python · PyTorch · MuJoCo</span><a href="https://github.com/Benjamindaoson/WorldDynamics" target="_blank" rel="noopener"><span class="i18n i18n-zh">代码与验证边界</span><span class="i18n i18n-en">Code &amp; validation gates</span> ↗</a></div>
+      </article>
+      <article class="research-project-card">
+        <div class="research-project-meta"><span>02 / ROBOT LEARNING</span><span class="research-status">SIMULATION STUDY</span></div>
+        <h3><a href="https://github.com/Benjamindaoson/WorldPolicy" target="_blank" rel="noopener">WorldPolicy <span aria-hidden="true">↗</span></a></h3>
+        <p class="research-project-subtitle">Robot policy learning &amp; model-guided control</p>
+        <p><span class="i18n i18n-zh">在 MuJoCo FetchPush 仿真中比较状态输入的 ACT、Diffusion Policy、学习动力学规划与物理 Oracle。公开结果包含不同种子和配对初态评估；不是官方 LIBERO、语言条件 VLA 或真实机器人实验。</span><span class="i18n i18n-en">Compares state-conditioned ACT, Diffusion Policy, learned-dynamics planning, and a physics oracle in MuJoCo FetchPush simulation. The public results include seeded and paired-initial-state evaluations; they are not official LIBERO, language-conditioned VLA, or real-robot experiments.</span></p>
+        <div class="research-project-bottom"><span>Python · ACT · Diffusion Policy</span><a href="https://github.com/Benjamindaoson/WorldPolicy" target="_blank" rel="noopener"><span class="i18n i18n-zh">方法与科学审计</span><span class="i18n i18n-en">Methods &amp; scientific audit</span> ↗</a></div>
+      </article>
+      <article class="research-project-card">
+        <div class="research-project-meta"><span>03 / RESEARCH SYSTEMS</span><span class="research-status">IN PROGRESS</span></div>
+        <h3><a href="https://github.com/Benjamindaoson/WorldSystems" target="_blank" rel="noopener">WorldSystems <span aria-hidden="true">↗</span></a></h3>
+        <p class="research-project-subtitle">Training, recovery &amp; inference infrastructure</p>
+        <p><span class="i18n i18n-zh">探索受限 GPU 条件下世界模型训练、断点恢复、CUDA Graph 推理和部署接口。公开证据覆盖部分可重复的训练与系统测试；这是进行中的研究工程工作，而非完整的生产级平台。</span><span class="i18n i18n-en">Explores world-model training, checkpoint recovery, CUDA Graph inference, and serving interfaces under constrained GPU resources. Public evidence covers selected reproducible training and systems tests; this is ongoing research engineering, not a completed production platform.</span></p>
+        <div class="research-project-bottom"><span>PyTorch · CUDA · Inference</span><a href="https://github.com/Benjamindaoson/WorldSystems" target="_blank" rel="noopener"><span class="i18n i18n-zh">实现与公开结果</span><span class="i18n i18n-en">Implementation &amp; results</span> ↗</a></div>
+      </article>
+    </div>
   </section>
 
-  <section class="case-contact">
-    <h2><span class="i18n i18n-zh">研究交流与合作</span><span class="i18n i18n-en">Research conversations and collaboration</span></h2>
-    <p><span class="i18n i18n-zh">欢迎围绕世界模型、机器人学习、VLA 与多模态模型的研究问题交流。学术简历和更完整的研究材料可通过邮件单独提供。</span><span class="i18n i18n-en">I welcome discussions about world models, robot learning, VLA, and multimodal models. An academic CV and detailed research materials are available upon request by email.</span></p>
-    <a class="btn" href="mailto:{{ site.email }}"><span class="i18n i18n-zh">发邮件联系</span><span class="i18n i18n-en">Contact by email</span> ↗</a>
+  <section class="research-practice">
+    <div>
+      <p class="page-kicker">RESEARCH PRACTICE</p>
+      <h2><span class="i18n i18n-zh">证据先于结论。</span><span class="i18n i18n-en">Evidence before claims.</span></h2>
+    </div>
+    <div>
+      <p><span class="i18n i18n-zh">我重视相同初态干预、匹配预算的对照、独立测试、多随机种子和失败案例分析，也会区分仿真与真实机器人结果、预测指标与任务成功率。公开记录明确标注已完成、验证中和计划中的工作。</span><span class="i18n i18n-en">I emphasize same-state interventions, budget-matched baselines, independent tests, multiple seeds, and failure analysis. I distinguish simulation from real-robot results, predictive metrics from task success, and completed work from ongoing or planned experiments.</span></p>
+      <p><span class="i18n i18n-zh">目前公开的项目仓库是研究代码与实验记录，不代表已经发表或经过同行评审的论文。</span><span class="i18n i18n-en">The public repositories contain research code and experimental records; they are not presented as published or peer-reviewed papers.</span></p>
+    </div>
+  </section>
+
+  <section class="case-contact research-contact">
+    <h2><span class="i18n i18n-zh">研究交流与合作</span><span class="i18n i18n-en">Research conversations</span></h2>
+    <p><span class="i18n i18n-zh">欢迎围绕世界模型、机器人学习、VLA 与多模态基础模型开展学术交流。Academic CV 和更完整的研究材料可通过邮件单独提供。</span><span class="i18n i18n-en">I welcome academic discussions on world models, robot learning, VLA, and multimodal foundation models. An academic CV and a more detailed research summary are available by email.</span></p>
+    <a class="btn" href="mailto:{{ site.email }}"><span class="i18n i18n-zh">邮件联系</span><span class="i18n i18n-en">Get in touch</span> ↗</a>
   </section>
 </article>
