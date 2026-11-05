@@ -127,7 +127,7 @@
 }
 .research-section-heading h2 { margin: 0; font-size: clamp(1.5rem, 2.7vw, 2rem); font-weight: 620; }
 .research-section-heading > p { max-width: 24rem; margin: 0; color: var(--text-muted); font-size: .86rem; line-height: 1.7; }
-.research-project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.research-project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
 .research-project-card {
   display: flex;
   flex-direction: column;
