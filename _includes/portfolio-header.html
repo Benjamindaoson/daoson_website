@@ -12,6 +12,7 @@
     </button>
     <div class="portfolio-navigation" id="portfolio-navigation">
       <nav class="portfolio-nav" aria-label="主导航 / Main navigation">
+        <a href="{{ '/research/' | relative_url }}"{% if current_url contains '/research/' %} aria-current="page"{% endif %}><span class="i18n i18n-zh">学术研究</span><span class="i18n i18n-en">Research</span></a>
         <a href="{{ '/projects/' | relative_url }}"{% if current_url contains '/projects/' %} aria-current="page"{% endif %}><span class="i18n i18n-zh">作品与研究</span><span class="i18n i18n-en">Work &amp; Research</span></a>
         <a href="{{ '/about/' | relative_url }}"{% if current_url contains '/about/' %} aria-current="page"{% endif %}><span class="i18n i18n-zh">关于我</span><span class="i18n i18n-en">About</span></a>
         <a href="{{ site.notes_url }}"><span class="i18n i18n-zh">知识星球</span><span class="i18n i18n-en">Knowledge Hub</span><span class="nav-external" aria-hidden="true">↗</span></a>
