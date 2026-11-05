@@ -1,11 +1,11 @@
 # Public technical introduction. Employment histories and résumés are not published.
 name_zh: 赖建铭
 display_name: Benjamin Taoson
-home_lead_zh: 我构建大模型与智能体系统，探索机器人如何感知、记忆与行动。这里记录我的项目、实验与技术思考。
-home_lead_en: I build language-model and agent systems, and explore how robots perceive, remember, and act. This is where I share my projects, experiments, and technical thinking.
-home_background_zh: 智能体系统 · 模型后训练 · 机器人学习
-home_background_en: Agent systems · Model post-training · Robot learning
-summary_zh: 我关心 AI 如何从理解问题走向可靠行动。实践围绕两条方向展开：数字世界中的大模型与智能体，以及物理世界中的机器人学习。
-summary_en: "I am interested in how AI moves from understanding a problem to acting reliably. My work follows two directions: language models and agents in the digital world, and robot learning in the physical world."
+home_lead_zh: 我研究世界模型何时能够改善机器人决策，也构建多模态大模型和智能体系统。这里记录研究问题、实验、证据与局限。
+home_lead_en: I investigate when world models improve robot decisions, alongside work on multimodal models and agent systems. I share research questions, experiments, evidence, and limitations.
+home_background_zh: 世界模型 · 机器人学习 · 多模态基础模型
+home_background_en: World models · Robot learning · Multimodal foundation models
+summary_zh: 我关注动作条件世界模型、机器人策略学习与多模态模型的交汇，尤其研究预测质量与闭环决策可靠性之间的关系，也探索可复核的智能体系统。
+summary_en: "My interests span action-conditioned world models, robot policy learning, and multimodal models, especially the link between prediction quality and closed-loop decision reliability. I also study verifiable agent systems."
 approach_zh: 我习惯从具体任务出发，把问题拆成可以实现和验证的步骤。做完一个系统，还要回头检查：结果从哪里来，换一个条件是否成立，失败又说明了什么。项目页面记录这些过程，也保留做出技术选择时的判断。
 approach_en: I start with a concrete task and break it into steps I can implement and test. After building a system, I ask where the result comes from, whether it holds under different conditions, and what failures reveal. The case studies document that process and the reasoning behind the design decisions.
